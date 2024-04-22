@@ -11,16 +11,30 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "bse",
-      "aliases": ["BSE", "BSE"],
-      "extensions": [".bs"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "bse",
-      "scopeName": "source.bse",
-      "path": "./syntaxes/BSE.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "bse",
+        "aliases": [
+          "BSE",
+          "BSE"
+        ],
+        "extensions": [
+          ".bs"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bse",
+        "scopeName": "source.bse",
+        "path": "./syntaxes/BSE.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.88.0",
+    "@vscode/test-electron": "^2.3.9"
   }
+
 }
