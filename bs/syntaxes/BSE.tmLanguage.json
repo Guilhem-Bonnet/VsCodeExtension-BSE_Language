@@ -33,7 +33,7 @@
         },
         "keywords": {
             "patterns": [
-                {"name": "keyword.control.bse", "match": "\\b(if|else|while|begin|end|and|or|not|return|then)\\b"},
+                {"name": "keyword.control.bse", "match": "\\b(if|else|while|begin|end|and|or|not|return|function|then)\\b"},
                 {"name": "keyword.other.bse", "match": "\\b(local|uses|error)\\b"}
             ]
         },
