@@ -1,20 +1,32 @@
 import * as vscode from 'vscode';
-
+import * as path from 'path';
+import { promises as fs } from 'fs';
 
 export function activate(context: vscode.ExtensionContext) {
     console.log('Congratulations, your extension "bse" is now active!');
     let diagnosticCollection = vscode.languages.createDiagnosticCollection('bseErrors');
 
-    context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(event => {
-        if (event.document.languageId === 'bse') {
-            updateDiagnostics(event.document, diagnosticCollection);
+    context.subscriptions.push(vscode.workspace.onDidSaveTextDocument((document) => {
+        if (document.languageId === 'bse') {
+            checkLibraries(document);
         }
     }));
 
-    context.subscriptions.push(vscode.workspace.onDidCloseTextDocument(doc => {
+    context.subscriptions.push(vscode.workspace.onDidOpenTextDocument((document) => {
+        if (document.languageId === 'bse') {
+            checkLibraries(document);
+        }
+    }));
+
+    context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(event => {
+        checkLibraries(event.document);
+        
+    }));
+
+    context.subscriptions.push(vscode.workspace.onDidCloseTextDocument((doc) => {
         diagnosticCollection.delete(doc.uri);
     }));
-    
+
     // Enregistrement du HoverProvider
     const hoverProvider = vscode.languages.registerHoverProvider('bse', {
         provideHover(document, position, token) {
@@ -29,34 +41,35 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(hoverProvider);
 }
 
-function parseErrorsFromLine(line: string, lineNumber: number): vscode.Diagnostic[] {
-    let diagnostics: vscode.Diagnostic[] = [];
-    const regex = /syntax error at position (\d+)/; // Exemple d'expression régulière
-    const match = regex.exec(line);
-    if (match) {
-        const position = parseInt(match[1]);
-        const range = new vscode.Range(lineNumber, position, lineNumber, position + 1);
-        const diagnostic = new vscode.Diagnostic(range, "Syntax error detected", vscode.DiagnosticSeverity.Error);
-        diagnostics.push(diagnostic);
+async function checkLibraries(document: vscode.TextDocument): Promise<void> {
+    if (document.languageId !== 'bse') {
+        return;
     }
-    return diagnostics;
-}
 
-function updateDiagnostics(document: vscode.TextDocument, collection: vscode.DiagnosticCollection): void {
     const diagnostics: vscode.Diagnostic[] = [];
+    const lines = document.getText().split(/\r?\n/);
 
-    const text = document.getText();
-    const lines = text.split(/\r?\n/);
-    lines.forEach((line, i) => {
-        if (line.includes('error')) {
-            const index = line.indexOf('error');
-            const range = new vscode.Range(i, index, i, index + 'error'.length);
-            const diagnostic = new vscode.Diagnostic(range, "Error detected here", vscode.DiagnosticSeverity.Error);
-            diagnostics.push(diagnostic);
+    for (const [i, line] of lines.entries()) {
+        if (line.match(/^\s*(Uses|uses)\s+/)) {
+            const libraryName = line.split(' ')[1];
+            if (libraryName) {
+                // Construction du chemin relatif à l'emplacement du document actuel
+                const libraryPath = path.join(path.dirname(document.uri.fsPath), '../libs', `${libraryName}.bs`);
+
+                try {
+                    await fs.access(libraryPath);
+                } catch {
+                    // Si le fichier n'existe pas, fs.access lancera une exception que nous attrapons ici
+                    const range = new vscode.Range(i, 0, i, line.length);
+                    const diagnostic = new vscode.Diagnostic(range, "Library file not found", vscode.DiagnosticSeverity.Error);
+                    diagnostics.push(diagnostic);
+                }
+            }
         }
-    });
+    }
 
-    collection.set(document.uri, diagnostics);
+    let diagnosticCollection = vscode.languages.createDiagnosticCollection('bseErrors');
+    diagnosticCollection.set(document.uri, diagnostics);
 }
 
 export function deactivate() {

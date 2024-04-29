@@ -22,18 +22,37 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const vscode = __importStar(require("vscode"));
+const path = __importStar(require("path"));
+const fs_1 = require("fs");
 function activate(context) {
     console.log('Congratulations, your extension "bse" is now active!');
     let diagnosticCollection = vscode.languages.createDiagnosticCollection('bseErrors');
-    context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(event => {
-        if (event.document.languageId === 'bse') {
-            updateDiagnostics(event.document, diagnosticCollection);
+    context.subscriptions.push(vscode.workspace.onDidSaveTextDocument((document) => {
+        if (document.languageId === 'bse') {
+            checkLibraries(document);
         }
     }));
-    context.subscriptions.push(vscode.workspace.onDidCloseTextDocument(doc => {
+    context.subscriptions.push(vscode.workspace.onDidOpenTextDocument((document) => {
+        if (document.languageId === 'bse') {
+            checkLibraries(document);
+        }
+    }));
+    context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(event => {
+        checkLibraries(event.document);
+    }));
+    context.subscriptions.push(vscode.workspace.onDidCloseTextDocument((doc) => {
         diagnosticCollection.delete(doc.uri);
     }));
     // Enregistrement du HoverProvider
@@ -50,31 +69,34 @@ function activate(context) {
     context.subscriptions.push(hoverProvider);
 }
 exports.activate = activate;
-function parseErrorsFromLine(line, lineNumber) {
-    let diagnostics = [];
-    const regex = /syntax error at position (\d+)/; // Exemple d'expression régulière
-    const match = regex.exec(line);
-    if (match) {
-        const position = parseInt(match[1]);
-        const range = new vscode.Range(lineNumber, position, lineNumber, position + 1);
-        const diagnostic = new vscode.Diagnostic(range, "Syntax error detected", vscode.DiagnosticSeverity.Error);
-        diagnostics.push(diagnostic);
-    }
-    return diagnostics;
-}
-function updateDiagnostics(document, collection) {
-    const diagnostics = [];
-    const text = document.getText();
-    const lines = text.split(/\r?\n/);
-    lines.forEach((line, i) => {
-        if (line.includes('error')) {
-            const index = line.indexOf('error');
-            const range = new vscode.Range(i, index, i, index + 'error'.length);
-            const diagnostic = new vscode.Diagnostic(range, "Error detected here", vscode.DiagnosticSeverity.Error);
-            diagnostics.push(diagnostic);
+function checkLibraries(document) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (document.languageId !== 'bse') {
+            return;
         }
+        const diagnostics = [];
+        const lines = document.getText().split(/\r?\n/);
+        for (const [i, line] of lines.entries()) {
+            if (line.match(/^\s*(Uses|uses)\s+/)) {
+                const libraryName = line.split(' ')[1];
+                if (libraryName) {
+                    // Construction du chemin relatif à l'emplacement du document actuel
+                    const libraryPath = path.join(path.dirname(document.uri.fsPath), '../libs', `${libraryName}.bs`);
+                    try {
+                        yield fs_1.promises.access(libraryPath);
+                    }
+                    catch (_a) {
+                        // Si le fichier n'existe pas, fs.access lancera une exception que nous attrapons ici
+                        const range = new vscode.Range(i, 0, i, line.length);
+                        const diagnostic = new vscode.Diagnostic(range, "Library file not found", vscode.DiagnosticSeverity.Error);
+                        diagnostics.push(diagnostic);
+                    }
+                }
+            }
+        }
+        let diagnosticCollection = vscode.languages.createDiagnosticCollection('bseErrors');
+        diagnosticCollection.set(document.uri, diagnostics);
     });
-    collection.set(document.uri, diagnostics);
 }
 function deactivate() {
     console.log('Your extension "bse" has been deactivated');
