@@ -1,4 +1,4 @@
-# La Meilleure Extension VS Jamais Inventée (par Guilhem et Tristan)
+# La Meilleure Extension VS Code Jamais Inventée (par Guilhem et Tristan)
 
 ## Future Features (Roadmap)
  - Afficher la définition (navigation)
