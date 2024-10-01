@@ -1,0 +1,172 @@
+<body>
+<!-- titre page -->
+<h1 class="h1">Expressions régulières</h1>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>RegEx:SetSyntaxOption(<i>regExObject, options, ...</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			La fonction permet d'ajouter des options qui contrôlent la façon dont une chaîne d'expression régulière doit être interprétée.
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>regExObject</code> : Un objet de type 'RegEx'<br>
+			<code>options</code> : Liste des options, séparées par des "," (string)
+		</p>
+
+		<p><b>Résultat</b>: </p>
+
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<pre><span class="bai_code">
+local regExObject  
+regExObject := RegEx:New("Some people, when confronted with a problem, think I know, I'll use regular expressions. Now they have two problems.")
+if RegEx:Search(regExObject, "CONFRONTED") then
+  DisplayResult(regExObject)
+RegEx:SetSyntaxOption(regExObject, "icase")
+if RegEx:Search(regExObject, "CONFRONTED") then
+DisplayResult(regExObject)
+return 0 
+
+function DisplayResult(regExObj)
+local i
+  i := 0
+  while i </span></pre>
+				</div>	
+			
+			<p>
+				<b>Résultat :</b>
+				</p><div class="bai_code">
+					<pre>
+Match index 0 → "confronted" 
+Script result:
+0</pre>
+				</div>
+			
+		</div>
+	</div>
+	
+	
+<h2 class="h2">BSE les options de syntaxe pour l'objet RegEx</h2>
+
+<div>
+	Les options suivantes sont utilisées afin de contrôler la façon dont une chaîne d'expression régulière doit être interprétée. (string, non sensitive à la casse)
+</div>
+
+
+<h3 class="h3">Pre Set<h3>
+
+</h3></h3><table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">Perl Pre set </th></tr>
+</header>
+
+<tr><td> ECMAScript </td></tr>
+<tr><td> Perl </td></tr>
+<tr><td> Normal</td></tr>
+<tr><td> JavaScript</td></tr>
+<tr><td> JScript </td></tr>
+
+</table>
+
+<table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">POSIX extended Pre set</th></tr>
+</header>
+
+<tr><td> Extended</td></tr>
+<tr><td> egrep </td></tr>
+<tr><td> awk </td></tr>
+
+</table>
+
+<table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">POSIX Basic Pre set</th></tr>
+</header>
+
+<tr><td> basic </td></tr>
+<tr><td> sed </td></tr>
+<tr><td> grep </td></tr>
+<tr><td> emacs </td></tr>
+
+</table>
+
+<table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">Literal</th></tr>
+</header>
+
+<tr><td> literal </td><td>
+
+</td></tr></table>
+
+<h3 class="h3"> Options pour les pre set de type Perl</h3>
+
+<table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">Option</th><th class="text-center">Description</th></tr>
+</header>
+
+<tr><td> icase </td><td> Spécifie que la correspondance des expressions régulières avec une séquence de conteneur de caractères doit être effectuée sans tenir compte de la casse</td></tr>
+<tr><td> nosubs </td><td> Spécifie que lorsqu'une expression régulière est comparée à une séquence de conteneur de caractères, aucune correspondance de sous-expression ne sera fournie.</td></tr>
+<tr><td> collate </td><td> Spécifie que les plages de caractères du formulaire doivent être sensibles aux paramètres régionaux. [a-b] </td></tr>
+<tr><td> noexcept </td><td> Empêche la lever d'une exception lorsqu'une expression invalide est rencontrée. </td></tr>
+<tr><td> nomodm </td><td>  Préfixer l'expression avec (?-m). </td></tr>
+<tr><td> nomods </td><td> Spécifier cet indicateur équivaut à préfixer l'expression avec et provoque donc "." ne pas correspondre à un caractère de saut de ligne, qu'il soit défini ou non dans les indicateurs de correspondance.</td></tr>
+<tr><td> mods </td><td> Spécifier cet indicateur équivaut à préfixer l'expression avec et provoque donc "." pour correspondre à un caractère de saut de ligne, qu'il soit défini ou non dans les indicateurs de correspondance </td></tr>
+<tr><td> modx </td><td>  les espaces blancs non échappés dans l'expression sont ignorés. </td></tr>
+<tr><td> noemptyexpressions </td><td>  les expressions/alternatives vides sont interdites. </td><td>
+
+</td></tr></table>
+
+<h3 class="h3"> Options pour les pre set de type POSIX extended</h3>
+
+<table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">Option</th><th class="text-center">Description</th></tr>
+</header>
+
+<tr><td> icase </td><td> Spécifie que la correspondance des expressions régulières avec une séquence de conteneur de caractères doit être effectuée sans tenir compte de la casse</td></tr>
+<tr><td> nosubs </td><td> Spécifie que lorsqu'une expression régulière est comparée à une séquence de conteneur de caractères, aucune correspondance de sous-expression ne sera fournie.</td></tr>
+<tr><td> collate </td><td> Spécifie que les plages de caractères du formulaire doivent être sensibles aux paramètres régionaux. [a-b] </td></tr>
+<tr><td> noescapeinlists </td><td> Lorsqu'il est défini, cela rend le caractère d'échappement ordinaire à l'intérieur des listes, ce qui correspondrait à '\' ou 'b'.  (activé par défaut) </td></tr>
+<tr><td> noexcept </td><td> Empêche la lever d'une exception lorsqu'une expression invalide est rencontrée. </td><td>
+
+</td></tr></table>
+
+<h3 class="h3"> Options pour les pre set de type POSIX Basic</h3> 
+
+<table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">Option</th><th class="text-center">Description</th></tr>
+</header>
+
+<tr><td> icase </td><td> Spécifie que la correspondance des expressions régulières avec une séquence de conteneur de caractères doit être effectuée sans tenir compte de la casse </td></tr>
+<tr><td> nosubs </td><td> Spécifie que lorsqu'une expression régulière est comparée à une séquence de conteneur de caractères, aucune correspondance de sous-expression ne sera fournie. </td></tr>
+<tr><td> collate </td><td> Spécifie que les plages de caractères du formulaire doivent être sensibles aux paramètres régionaux. [a-b] </td></tr>
+<tr><td> nocharclasses</td><td> Lorsqu'il est défini, les classes de caractères telles  [[:alnum:]] que ne sont pas autorisées. </td></tr>
+<tr><td> noescapeinlists </td><td> Lorsqu'il est défini, cela rend le caractère d'échappement ordinaire à l'intérieur des listes, ce qui correspondrait à '\' ou 'b'.  (activé par défaut) </td></tr>
+<tr><td> nointervals</td><td> Lorsqu'il est défini, les répétitions limitées telles que {2,3} ne sont pas autorisées.  </td></tr>
+<tr><td> bkplusqm </td><td>Lorsqu'il est défini, \? agit alors comme un opérateur de répétition zéro ou un et \+ agit comme un opérateur de répétition un ou plusieurs. </td></tr>
+<tr><td> bkvbar </td><td>  Lorsqu'il est défini, \ agit alors comme opérateur d'alternance. </td></tr>
+<tr><td> noexcept </td><td> Empêche la levée d'une exception lorsqu'une expression invalide est rencontrée. </td><td>
+
+</td></tr></table>
+
+<h3 class="h3"> Options pour les pre set de type literal</h3>
+
+<table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">Option</th><th class="text-center">Description</th></tr>
+</header>
+
+<tr><td> icase </td><td> Spécifie que la correspondance des expressions régulières avec une séquence de conteneur de caractères doit être effectuée sans tenir compte de la casse </td></tr>
+
+</table>
+	
+</body>

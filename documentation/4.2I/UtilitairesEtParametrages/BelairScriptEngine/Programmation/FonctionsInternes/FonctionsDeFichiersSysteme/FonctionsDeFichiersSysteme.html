@@ -1,0 +1,253 @@
+<body>
+<h2>Fonctions de fichiers liées au système d'exploitation</h2>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>FileCopy(<i>source, dest</i>)</code> ou <code>CopyFile(<i>source, dest</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Copie d'un fichier sur un autre fichier
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>source</code> : fichier à copier<br>
+			<code>dest</code> : fichier à créer par cette copie<br>
+		</p>
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>FileDelete(<i>filename</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Suppression d'un fichier existant
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>filename</code> : fichier à supprimer<br>
+		</p>
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>FileExists(<i>filename</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Retourne True ou False selon l'existence d'un fichier
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>filename</code> : nom du fichier<br>
+		</p>
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>FileExtractName(<i>filename</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Retourne le nom du fichier sans le chemin d'accès
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>filename</code> : nom du fichier<br>
+		</p>
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<span class="bai_code">
+					FileExtractName("C:\windows\temp\monfichier.txt") <span class="bai_comment"><br>Résultat : "monfichier.txt"</span>
+				</span>
+			</div>	
+					
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>FileExtractPath(<i>filename</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Retourne le chemin d'accès d'un fichier
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>filename</code> : nom du fichier<br>
+		</p>
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<span class="bai_code">
+					FileExtractPath("C:\windows\temp\monfichier.txt") <span class="bai_comment"><br>Résultat : "C:\windows\temp"</span>
+				</span>
+			</div>	
+					
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>FileGetTempName(<i>filetype</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Retourne le nom d'un fichier temporaire (aléatoire)
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>filetype</code> : type de fichier<br>
+		</p>
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<span class="bai_code">
+					FileGetTempName("txt") <span class="bai_comment"><br>Résultat : "12064996274399.txt"</span>
+				</span>
+			</div>	
+					
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>FileRename(<i>filename, newfilename</i>)</code> ou <code>RenameFile(<i>source, dest</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Renomme ou déplace un fichier
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>filename</code> : fichier à renommer ou déplacer<br>
+			<code>newfilename</code> : nouveau nom<br>
+		</p>
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>PathAddDelim(<i>path</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Ajoute si nécessaire le "\" final à un nom de répertoire
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>path</code> : nom du répertoire<br>
+		</p>
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<span class="bai_code">
+					PathAddDelim(""C:\windows\temp") <span class="bai_comment"><br>Résultat : ""C:\windows\temp\"</span>
+				</span>
+			</div>	
+					
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>PathDelete(<i>path</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<div class="alert alert-danger" role="alert">
+		DANGER !!!
+		</div>
+		<p>
+			Effacement d'un répertoire <b>et de tout son contenu</b>
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>path</code> : nom du répertoire<br>
+		</p>
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>PathDelim()</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Retourne le caractère sépaarateur des noms de répertoire
+		</p>
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>PathExists(<i>path</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Retourne True ou False selon l'existence d'un répertoire
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>path</code> : nom complet du répertoire<br>
+		</p>
+	</div>
+</div>
+
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>PathExpand(<i>baipath</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Transforme un nom de répertoire "belair" en nom Windows
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>baipath</code> : nom du répertoire<br>
+		</p>
+		<p>
+			<b>Exemples :</b><br>
+			</p><div class="bai_exemple">
+				<span class="bai_code">	PathExpand("[APPLIC]automate") <span class="bai_comment"><br>Résultat : "D:\belair42\APPDEI\automate"</span><br>
+				<br>
+				<span class="bai_code"> PathExpand("[SCANNER]") <span class="bai_comment"><br>Résultat : "D:\belair42\APPDEI\SCANNER\"</span>
+			</span></span></div>	
+					
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>PathForceDirs(<i>path</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			Force la création des répertoires jusqu'à un répertoire donné
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>path</code> : nom complet du répertoire final<br>
+		</p>
+	</div>
+</div>
+
+</body>

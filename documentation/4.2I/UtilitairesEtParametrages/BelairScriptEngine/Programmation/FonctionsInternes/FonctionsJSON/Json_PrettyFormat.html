@@ -1,0 +1,66 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:PrettyFormat(doc)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>cette fonction formate le texte d'un document JSON en format lisible par l'humain.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Le texte (UnicodeString) contenant le JSON formaté
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewArray(doc, "colors")
+  Json:NewArrayValue(doc, "Red")
+  Json:NewArrayValue(doc, "Green")
+  Json:NewArrayValue(doc, "Blue")
+Json:EndArray(doc)
+Json:NewArray(doc, "Entier")
+  Json:NewArrayValue(doc, 1)
+  Json:NewArrayValue(doc, 2)
+  Json:NewArrayValue(doc, 3)
+Json:EndArray(doc)
+Json:Close(doc)                                    
+return Json:PrettyFormat(doc)
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre style="color:#000000;background:#ffffff;"><span style="color:#696969; ">{</span>
+<span style="color:#696969; ">  "colors": [</span>
+<span style="color:#696969; ">    "Red",</span>
+<span style="color:#696969; ">    "Green",</span>
+<span style="color:#696969; ">    "Blue" </span>
+<span style="color:#696969; ">  ],</span>
+<span style="color:#696969; ">  "Entier": [</span>
+<span style="color:#696969; ">    1,</span>
+<span style="color:#696969; ">    2,</span>
+<span style="color:#696969; ">    3</span>
+<span style="color:#696969; ">  ]</span>
+<span style="color:#696969; ">}</span>
+</pre>
+<!--Created using ToHtml.com on 2019-09-20 14:13:03 UTC -->
+	</div>
+</div>
+</body>

@@ -1,0 +1,47 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Sinatt_ListItems</code></h3>
+		</div>
+
+<p>Listes des situations d'attente d'un sinistre</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>sinistre (int, obligatoire) : numéro de sinistre</li>
+		<li>all (boolean, optionnel) : si TRUE, toutes les situations ; si FALSE (par défaut), seules les non traitées</li>
+		<li>statut (string, optionnel) : filtre sur le code statut</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;sinatt</span> <span class="na">sinistre=</span><span class="s">"24"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"sinatt"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Codeatt"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>03<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Commen"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Dateatt"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2014-09-10T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_tab_statut"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Reçu incomplet<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ficage"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"-1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Modifpar"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>SUPERVISEUR<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Recue"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Sinistre"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"24"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Statut"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Traite"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/sinatt&gt;</span>
+</code></pre>
+</div></body>

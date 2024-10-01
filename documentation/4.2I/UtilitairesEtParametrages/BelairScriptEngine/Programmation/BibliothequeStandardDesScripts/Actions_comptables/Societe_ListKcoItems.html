@@ -1,0 +1,62 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Societe_ListKcoItems</code></h3>
+		</div>
+
+<p>Liste des comptabilités existantes (associées ou non à une entité comptable) OU résumé de l'utilisation des codes</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Summary (Bool, optionnel)</li>
+	</ul>
+
+
+	<a name="R%C3%A9sultat"></a>
+<h3>Résultat<a href="#R%C3%A9sultat" class="wiki-anchor"></a></h3>
+
+
+	<p>Si summary = True</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;kco-codes&gt;</span>
+  <span class="nt">&lt;used&gt;</span>12A<span class="nt">&lt;/used&gt;</span>
+  <span class="nt">&lt;free&gt;</span>3456789BCDEFGHIJKLMNOPQRSTUVWXYZ<span class="nt">&lt;/free&gt;</span>
+  <span class="nt">&lt;firstavailable&gt;</span>3<span class="nt">&lt;/firstavailable&gt;</span>
+<span class="nt">&lt;/kco-codes&gt;</span></code></pre>
+
+	<p>Si summary = False</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;kco-rows&gt;</span>
+  <span class="nt">&lt;kco&gt;</span>
+    <span class="nt">&lt;codek&gt;</span>1<span class="nt">&lt;/codek&gt;</span>
+    <span class="nt">&lt;entite&gt;</span>1<span class="nt">&lt;/entite&gt;</span>
+    <span class="nt">&lt;libk&gt;</span>Comptabilité Modèle n. 1 Bel Air<span class="nt">&lt;/libk&gt;</span>
+    <span class="nt">&lt;siren&gt;</span>357465454546541<span class="nt">&lt;/siren&gt;</span>
+    <span class="nt">&lt;orias&gt;</span>94039849<span class="nt">&lt;/orias&gt;</span>
+  <span class="nt">&lt;/kco&gt;</span>
+  <span class="nt">&lt;kco&gt;</span>
+    <span class="nt">&lt;codek&gt;</span>2<span class="nt">&lt;/codek&gt;</span>
+    <span class="nt">&lt;entite&gt;</span>2<span class="nt">&lt;/entite&gt;</span>
+    <span class="nt">&lt;libk&gt;</span>Comptabilité NUMERO 2 Bel Air<span class="nt">&lt;/libk&gt;</span>
+    <span class="nt">&lt;siren</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;orias</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/kco&gt;</span>
+  <span class="nt">&lt;kco&gt;</span>
+    <span class="nt">&lt;codek&gt;</span>A<span class="nt">&lt;/codek&gt;</span>
+    <span class="nt">&lt;entite&gt;</span>0<span class="nt">&lt;/entite&gt;</span>
+    <span class="nt">&lt;libk&gt;</span>Compta A<span class="nt">&lt;/libk&gt;</span>
+    <span class="nt">&lt;siren&gt;</span>357465454546541<span class="nt">&lt;/siren&gt;</span>
+    <span class="nt">&lt;orias</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/kco&gt;</span>
+<span class="nt">&lt;/kco-rows&gt;</span>
+</code></pre>
+</div></body>

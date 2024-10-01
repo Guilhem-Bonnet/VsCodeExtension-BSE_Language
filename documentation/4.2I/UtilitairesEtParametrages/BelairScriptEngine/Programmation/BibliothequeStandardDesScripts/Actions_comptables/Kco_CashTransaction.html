@@ -1,0 +1,128 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Kco_CashTransaction</code></h3>
+		</div>
+
+<p>Enregistrement d'une transaction d'encaissement / affectation</p>
+
+
+	<p><span style="color:blue;">Cette action utilise le service <code>BaiimpPoolService</code></span></p>
+
+
+	<h3>Parametre :
+	<ul>
+	<li>data : flux XML</li>
+	</ul></h3>
+
+
+<pre><code class="sql syntaxhl"><span class="o">&lt;?</span><span class="n">xml</span> <span class="k">version</span><span class="o">=</span><span class="nv">"1.0"</span> <span class="k">encoding</span><span class="o">=</span><span class="nv">"utf-8"</span><span class="o">?&gt;</span>
+<span class="o">&lt;</span><span class="n">operation_comptable</span> <span class="n">entity</span><span class="o">=</span><span class="nv">"1"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">operations</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="k">operation</span> <span class="n">typeoperation</span><span class="o">=</span><span class="nv">"enc"</span> <span class="n">typeenc</span><span class="o">=</span><span class="nv">"1"</span> <span class="n">targetkind</span><span class="o">=</span><span class="nv">"Tiers"</span> <span class="n">targetid</span><span class="o">=</span><span class="nv">"1046"</span> <span class="n">montant</span><span class="o">=</span><span class="nv">"2040"</span> <span class="n">devise</span><span class="o">=</span><span class="nv">"EUR"</span> <span class="n">date</span><span class="o">=</span><span class="nv">"2020-10-19T00:00:00.000"</span> <span class="n">dateff</span><span class="o">=</span><span class="nv">"2020-10-19T00:00:00.000"</span> <span class="n">reference</span><span class="o">=</span><span class="nv">"REF XXX"</span> <span class="n">tierspayeur</span><span class="o">=</span><span class="nv">""</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="k">operation</span> <span class="n">typeoperation</span><span class="o">=</span><span class="nv">"aff"</span> <span class="n">targetkind</span><span class="o">=</span><span class="nv">"Quit"</span> <span class="n">targetid</span><span class="o">=</span><span class="nv">"653"</span> <span class="n">montant</span><span class="o">=</span><span class="nv">"2040"</span> <span class="n">devise</span><span class="o">=</span><span class="nv">"EUR"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="k">operation</span> <span class="n">typeoperation</span><span class="o">=</span><span class="nv">"eff"</span> <span class="n">targetkind</span><span class="o">=</span><span class="nv">"Quit"</span> <span class="n">targetid</span><span class="o">=</span><span class="nv">"653"</span> <span class="n">date</span><span class="o">=</span><span class="nv">"2020-10-19T00:00:00.000"</span> <span class="n">typeeff</span><span class="o">=</span><span class="nv">"A"</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">operations</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">operation_comptable</span><span class="o">&gt;</span>
+</code></pre>
+
+	<a name="Structure-du-flux-XML"></a>
+<h3>Structure du flux XML<a href="#Structure-du-flux-XML" class="wiki-anchor"></a></h3>
+
+
+	<table border="1">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>Balise</td>
+			<td>Commentaire</td>
+			<td>Attributs</td>
+		</tr>
+		<tr>
+			<td>X</td>
+			<td></td>
+			<td></td>
+			<td>operation_comptable</td>
+			<td>en-tête</td>
+			<td>entity=entité comptable</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>X</td>
+			<td></td>
+			<td>operations</td>
+			<td>liste des opérations</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>X</td>
+			<td>operation</td>
+			<td>Encaissement</td>
+			<td>- <strong>typeoperation="enc"</strong><br>- typeenc=type encaissement<br>- targetkind=Tiers/Cont/Quit:Qint<br>- targetqintid=id de l'intervenant (optionnel, uniquement si targetkind = Qint)<br>- montant=montant encaissé<br>- devise=devise<br>- date=date encaissement (optionnel: par défaut, date du jour)<br>- dateff=date effet encaissement (optionnel)<br>- reference=réference complémentaire (optionnel)<br>- tierspayeur=nom du tiers payeur (optionnel)<br></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>X</td>
+			<td>operation</td>
+			<td>Affectation</td>
+			<td>- <strong>typeoperation="aff"</strong><br>- targetkind=Tiers/Cont/Quit<br>- targetid=id du tiers/contrat/quittance<br>- montant=montant encaissé<br>- devise=devise<br></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>X</td>
+			<td>operation</td>
+			<td>Solde ristourne</td>
+			<td>- <strong>typeoperation="aff"</strong><br>- targetkind=Quit<br>- targetid=id quittance<br>- montant=montant de la ristourne (en négatif)<br>- devise=devise<br></td>
+		</tr>
+		<tr>
+
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>X</td>
+			<td>operation</td>
+			<td>Remise en impayé</td>
+			<td>- <strong>typeoperation="imp"</strong><br>- targetkind=Quit<br>- targetid=id quittance<br></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>X</td>
+			<td>operation</td>
+			<td>Effacement quittance</td>
+			<td>- <strong>typeoperation="eff"</strong><br>- targetkind=Quit<br>- targetid=id quittance<br>- date=date effacement (optionnel: par défaut, date du jour)<br>- typeeff=motif effacement<br></td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Contr%C3%B4les-effectu%C3%A9s"></a>
+<h3>Contrôles effectués<a href="#Contr%C3%B4les-effectu%C3%A9s" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Existence de la cible (Tiers, Contrat, Quittance)</li>
+		<li>Compatibilité de la cible avec l'entité comptable de l'ensemble des opérations (pour Contrat ou Quittance)</li>
+		<li>SI reprise d'un acompte, vérification du montant disponible préalable</li>
+		<li>Si affectation à une quittance, contrôle du montant affecté avec le solde-du préalable</li>
+		<li>Si remise en impayé de quittance, la quittance doit être soldée</li>
+		<li>Si effacement de quittance, la quittance doit être impayée</li>
+		<li>Contrôle de la balance de l'ensemble des opérations</li>
+	</ul>
+
+
+	<a name="Fonctionnement-en-mode-transactionnel"></a>
+<h3>Fonctionnement en mode transactionnel<a href="#Fonctionnement-en-mode-transactionnel" class="wiki-anchor"></a></h3>
+
+
+	<p>SI une anomalie est détectée, rien n'est écrit en base: ni sur les entités Tiers, Contrat, Quittance, ni sur mouvements comptables, ni en comptabilité générale</p>
+
+</div></body>

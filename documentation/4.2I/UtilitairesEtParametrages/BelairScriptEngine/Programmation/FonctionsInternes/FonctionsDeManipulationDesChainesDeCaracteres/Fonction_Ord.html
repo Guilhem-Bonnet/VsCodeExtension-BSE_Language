@@ -1,0 +1,51 @@
+<body>
+
+
+<h3>Fonctions de manipulation des chaînes de caractères (strings)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Ord()</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie le code de caractère.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. La chaîne de caractères (uniquement le premier caractère est pris en compte).</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>Le code (en UTF-16) ou la valeur vide si la chaîne est vide.
+			</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">Print(Ord(<span class="string"><span class="delimiter">"</span><span class="content">A</span><span class="delimiter">"</span></span>))
+Print(Ord(<span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>))
+Print(Ord(<span class="string"><span class="delimiter">"</span><span class="content">ABC</span><span class="delimiter">"</span></span>))
+Print(Ord(<span class="string"><span class="delimiter">"</span><span class="content">Ê</span><span class="delimiter">"</span></span>))
+Print(Ord(<span class="string"><span class="delimiter">"</span><span class="content">€</span><span class="delimiter">"</span></span>))
+Print(Ord(<span class="string"><span class="delimiter">"</span><span class="content">Щ</span><span class="delimiter">"</span></span>))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre>
+65
+
+65
+202
+8364
+1065
+</pre>
+				
+			
+		</div>
+	</div>
+</body>

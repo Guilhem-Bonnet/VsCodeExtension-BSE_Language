@@ -1,0 +1,81 @@
+<body>
+	<h2>Actualisation / Enregistrement des données d'une table</h2>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>REFRESH("<i>code</i>") </code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet d'actualiser les données d'une table, dans une formule de calcul.<br>
+				Cette fonction est particulièrement utile lorsque des modifications de données sont faites par SQL (sinon, la table ne voit pas les modifications en temps réel)<br>
+				<br>
+				<b>Paramètre :</b><br><br>
+				<code>"code"</code> : nom de la table à mettre à jour.<br>
+				<br>
+				<b>Exemple d'utilisation :</b>
+				</p><div class="bai_exemple">
+					La table <code>XDGRI</code> est une extension multiple et un bouton relié à une formule de calcul en SQL permet d'initialiser cette table.<br>
+					L'instruction <code>REFRESH</code> à la fin, permet de voir la grille se remplir (sinon, il fallait quitter l'écran et revenir).<br>
+					<br>
+					<div class="bai_code">
+						sql:new(lprod)<br>
+						*select b_codeprod from [prod]<br>
+						...............<br>
+						..............<br>
+						:FIN<br>
+						SQL:free(lprod)<br>
+						REFRESH("XDGRI")<br>
+						=IY<br>
+					</div>
+				</div>
+			
+		</div>
+		</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>WINMES(VERIFONGLETS)</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet d'actualiser l'affichage d'onglets conditionnés par une formule de calcul.<br>
+				Cette commande est utilisable dans une condition de saisie d'un champ ou dans une formule de calcul déclenchée par un bouton.<br>
+				(Peut être utilisé après la fonction <code>REFRESH</code>)
+			</p>
+		</div>
+		</div>
+			<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>OK</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Enregistrement (commit) des tables dont un champ au moins a été modifié par la formule de calcul
+			</p>
+		</div>
+		</div>
+				<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>SaveAll </code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Enregistrement (commit) de toutes les tables en cours d'édition, même si elles n'ont pas été modifiées par la formule de calcul.
+				<br>
+				Cette fonction rend VRAI ou FAUX
+			</p>
+		</div>
+		<b>Exemple d'utilisation :</b>
+		<div class="bai_code">
+			IAX := SAVEALL<br>
+		</div>
+</div>
+	
+</body>

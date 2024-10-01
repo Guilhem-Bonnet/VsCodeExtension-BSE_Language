@@ -1,0 +1,93 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Quittance_Create</code></h3>
+		</div>
+
+<p>Création d'une quittance manuelle ou automatique</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>contrat (int, obligatoire) : numéro interne du contrat cible</li>
+		<li>piece (int, obligatoire) : numéro de la piece du contrat cible</li>
+		<li>bordereau (int, obligatoire) : numéro du bordereau cible</li>
+		<li>autocalcul (booléen, optionnel) : si True, émission automatique (produit tarifé) / si False, émission manuelle (False par défaut)
+	<ul>
+	<li>Si Emission automatique: <span style="color:red;">(cette option nécessite le service BaiimpPool)</span>
+	<ul>
+	<li>datedebut (datetime, obligatoire) : date début période</li>
+		<li>datefin (datetime, obligatoire) : date fin période</li>
+		<li>reprise (booléen, optionnel) : type de reprise de l'historique
+	<ul>
+	<li>True : l'historique est repris</li>
+		<li>False : pas de reprise, meme si le contrat est résilié</li>
+		<li>(non renseigné) : reprise de l'historique uniquement si le contrat est résilié</li>
+	</ul>
+	</li>
+	</ul>
+	</li>
+		<li>Si émission manuelle
+	<ul>
+	<li>data : flux XML de toutes les informations de la quittance à créer<br><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;quit&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"quit"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catnat"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catnat1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Code_tva"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Coeff"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Coeffenc"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"4.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Commatt"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Commatt1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Datenc"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Debeffet"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2020-01-01T00:00:00.000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Fineffet"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2020-12-31T00:00:00.000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frcbt"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.50000000000000E+0001"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frcbt1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frcie"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"4.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frcie1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frgest"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.50000000000000E+0001"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frgest1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Mandat"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pnette"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"4.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pnette1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ppure"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"-4.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ppure1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ptotale"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"4.28000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ptotale1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Rcm"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"5.00000000000000E-0001"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taux_tva"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"2.00000000000000E+0001"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxatt"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxatt1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"2.80000000000000E-0001"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+    .....
+  <span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/quit&gt;</span>
+</code></pre></li>
+	</ul></li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li>affectation (booléen, optionnel) : si True, affectation de la quittance créée (False par défaut) <span style="color:red;">(cette option nécessite le service BaiimpPool)</span></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;quit&gt;</span>
+  <span class="nt">&lt;numero&gt;</span>1002<span class="nt">&lt;/numero&gt;</span>
+  <span class="nt">&lt;idente&gt;</span>Q158.14<span class="nt">&lt;/idente&gt;</span>
+<span class="nt">&lt;/quit&gt;</span>
+</code></pre>
+</div></body>

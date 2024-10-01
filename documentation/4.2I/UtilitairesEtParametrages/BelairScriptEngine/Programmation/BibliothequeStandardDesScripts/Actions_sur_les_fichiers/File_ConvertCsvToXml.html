@@ -1,0 +1,62 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+						<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>File_ConvertCsvToXml</code></h3>
+		</div>
+
+<p>Cette action permet de convertir un fichier CSV en un flux XML</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>inputfilename (string, obligatoire) : fichier CSV à convertir</li>
+		<li>encoding (string, optionnel) : encodage parmi les valeurs ci-dessous (par défaut "ANSI")
+	<ul>
+	<li>ANSI</li>
+		<li>UTF8 ou UTF-8</li>
+		<li>UTF16 ou UTF-16</li>
+	</ul>
+	</li>
+		<li>ReadcolumnNames (booléen, optionnel) : si True, les noms des colonnes sont extraites de la 1ere ligne d'entête du fichier (suppression des accents, ...)</li>
+		<li>SkipFirstLine (booléen, optionnel) : si True, la 1ere ligne est ignorée (ligne d'en-tête). Forcé à True si ReadcolumnNames = True</li>
+		<li>Columns (string, optionnel) : liste des nom des colonnes à obtenir (noms séparés par ";")
+	<ul>
+	<li>Le nombre de noms indiqué (N) peut être inférieur au nombre de colonnes du fichier CSV : dans ce cas, seuls les Neres colonnes sont extraites</li>
+	</ul>
+	</li>
+		<li>Rowname (string, optionnel) : nom de la balise pour chaque ligne extraite dans le XML (par défaut "row")</li>
+		<li>outputfileName (string, optionnel) : nom du fichier XML à enregistrer
+	<ul>
+	<li>Si le nom ne contient pas de répertoire, le fichier est créé dans le même répertoire que le fichier d'entrée</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="R%C3%A9sultat"></a>
+<h3>Résultat<a href="#R%C3%A9sultat" class="wiki-anchor"></a></h3>
+
+
+	<p><strong>Si <code>outputfilename</code> est vide</strong></p>
+
+
+<blockquote>
+
+	<p>Flux XML</p>
+
+
+</blockquote>
+
+	<p><strong>Si <code>outputfilename</code> est renseigné</strong></p>
+
+
+<blockquote>
+
+	<p>Nom du ficheir créé</p>
+
+
+</blockquote>
+</div></body>

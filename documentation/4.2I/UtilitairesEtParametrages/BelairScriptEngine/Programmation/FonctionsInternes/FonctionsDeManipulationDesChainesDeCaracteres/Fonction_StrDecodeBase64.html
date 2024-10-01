@@ -1,0 +1,46 @@
+<body>
+
+
+<h3>Fonctions de manipulation des chaînes de caractères (strings)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>StrDecodeBase64</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie le string décodé au format <a href="https://en.wikipedia.org/wiki/Base64" target="__BLANK">Base64</a>.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. Le string à décoder.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>La chaîne de caractères décodée.
+			</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local s1, s2
+s1 := StrEncodeBase64(<span class="string"><span class="delimiter">"</span><span class="content">Hello Base 64</span><span class="delimiter">"</span></span>)
+Print(s1)
+s2 := StrDecodeBase64(s1)
+Print(s2)
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">SGVsbG8gQmFzZSA2NA==
+Hello Base 64
+</span></code></pre>
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

@@ -1,0 +1,101 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Query_Execute</code></h3>
+		</div>
+
+	<p>Execution d'une requête et Upload du résultat</p>
+
+
+	<p>Cette fonction execute une requête et récupère le résultat : état sous forme PDF et/ou fichier CSV si extraction (spécifications non faite pour l'extraction)</p>
+
+
+	<a name="param%C3%A8tres"></a>
+<h3>Paramètres<a href="#param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>QueryName (string, obligatoire) : Nom de la requête à exécuter</li>
+		<li>Params (string, obligatoire) : Flux XML contenant la valeur des paramètres d'execution<br>Flux XML (même norme que pour les entités, pour simplifier les manipulations dans le script)</li>
+	</ul>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;query_execute</span> <span class="na">name=</span><span class="s">"Nom_de_la_requete"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"query_params"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Nom_du_parametre"</span> <span class="na">type=</span><span class="s">"ptxxxxxx"</span> <span class="err">etc.....</span><span class="nt">&gt;</span>value<span class="nt">&lt;/param&gt;</span>
+    .....
+    <span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/query_execute&gt;</span>
+</code></pre>
+
+	<p>Il y aura donc par exemple <br></p><pre><code class="xml syntaxhl"><span class="nt">&lt;query_execute</span> <span class="na">name=</span><span class="s">"Nom_de_la_requete"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"query_params"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CODP"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>7090<span class="nt">&lt;/param&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"APPORTEUR"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"2004"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CAPITAL"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"5.00000000000000E+0004"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"SANSTACITE"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DATEDEBUT"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2021-04-14T11:02:02.757"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DATEFIN"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- parametre non saisi = "toutes valeurs" --&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/query_execute&gt;</span>
+</code></pre>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML<br></p><pre><code class="xml syntaxhl"><span class="nt">&lt;query_execute</span> <span class="na">name=</span><span class="s">"Nom_de_la_requete"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"query_params"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- on retourne dans le résultat les parametres utilisés --&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CODP"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>7090<span class="nt">&lt;/param&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"APPORTEUR"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"2004"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CAPITAL"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"5.00000000000000E+0004"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"SANSTACITE"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DATEDEBUT"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2021-04-14T11:02:02.757"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DATEFIN"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- parametre non saisi = "toutes valeurs" --&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;query_result&gt;</span>
+        <span class="nt">&lt;pdf_file&gt;</span>
+           <span class="nt">&lt;data&gt;</span>contenu en base 64<span class="nt">&lt;/data&gt;</span>
+        <span class="nt">&lt;/pdf_file&gt;</span>
+        <span class="nt">&lt;extract_file</span> <span class="na">type=</span><span class="s">"unknown"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- regles à définir, on met "unknown" --&gt;</span>
+           <span class="nt">&lt;data&gt;</span>contenu en base 64<span class="nt">&lt;/data&gt;</span> <span class="c">&lt;!-- vide pour le moment --&gt;</span>
+        <span class="nt">&lt;/extract_file&gt;</span>      
+    <span class="nt">&lt;/query_result&gt;</span>
+<span class="nt">&lt;/query_execute&gt;</span>
+</code></pre>
+
+
+	<p>En cas d'erreur lors de l'exécution de la requête, flux XML:<br></p><pre><code class="xml syntaxhl"><span class="nt">&lt;query_execute</span> <span class="na">name=</span><span class="s">"Nom_de_la_requete"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"query_params"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- on retourne dans le résultat les parametres utilisés --&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CODP"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>7090<span class="nt">&lt;/param&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"APPORTEUR"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"2004"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CAPITAL"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"5.00000000000000E+0004"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"SANSTACITE"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DATEDEBUT"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2021-04-14T11:02:02.757"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DATEFIN"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- parametre non saisi = "toutes valeurs" --&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;query_result&gt;</span>
+        <span class="nt">&lt;error&gt;</span>texte de l'erreur<span class="nt">&lt;/error&gt;</span>
+    <span class="nt">&lt;/query_result&gt;</span>
+<span class="nt">&lt;/query_execute&gt;</span>
+</code></pre>
+
+
+	<a name="Fonctionnement"></a>
+<h3>Fonctionnement<a href="#Fonctionnement" class="wiki-anchor"></a></h3>
+
+
+Le lancement d'une requête se fait par la fonction automate <code>REQUETE("NOM", {listparams})</code> : si un état est généré, le nom du fichier PDF créé est dans <code>PDFFILE</code><br>Le script BSE devra donc utiliser la fonction intégrée <code>Automate(script, [data])</code>
+	<ul>
+	<li>script: chaine contenant le contenu du string (lignes séparées par un CrLf()</li>
+		<li>data : inutile dans ce contexte</li>
+	</ul>
+
+
+	<p>Il faut donc composer la liste des parametres ("-nom:valeur") à partir de l'objet Query_Params (ignorer si 'is_null') et composer le script automate:<br></p><pre>
+script := "REQUETE(" + DoubleQuote() + QueryName + DoubleQuote() + "," + DoubleQuote() + params + DoubleQuote() + ")" + Crlf() + "PRINT(PDFFILE)" + CrLf()
+</pre><br>Après execution de la commande <code>Automate(script)</code> :<br>Le contenu du fichier PDF créé (dont le nom est renvoyé par l'automate) doit être codé en base 64 et retourné dans le XML (balise &lt;pdf&gt;&lt;data&gt;)
+
+</div></body>

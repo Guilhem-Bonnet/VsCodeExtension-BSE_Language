@@ -1,0 +1,52 @@
+<body><h3>Fonctions de StopWatch</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>StopWatch:IsRunning(mockStopWatch)</code>
+	</h3></div>
+	<div class="panel-body">
+	<p>La fonction retourne une valeur indiquant si le minuteur est en cours d’exécution.</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>mockStopWatch</code> : Un objet de type 'BaiStopWatch'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>valeur de type booléen
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><div class="bai_exemple"><pre><span class="n">local</span> <span class="n">mockStopWatch</span><span class="p">,</span> <span class="n">i</span>
+<span class="n">mockStopWatch</span> <span class="o">:=</span> <span class="n">StopWatch</span><span class="o">:</span><span class="n">New</span><span class="p">()</span>
+<span class="n">StopWatch</span><span class="o">:</span><span class="n">Start</span><span class="p">(</span><span class="n">mockStopWatch</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">StopWatch</span><span class="o">:</span><span class="n">IsRunning</span><span class="p">(</span><span class="n">mockStopWatch</span><span class="p">))</span> <span class="n">then</span>
+<span class="n">begin</span>
+  <span class="n">StopWatch</span><span class="o">:</span><span class="n">Stop</span><span class="p">(</span><span class="n">mockStopWatch</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">not</span> <span class="n">StopWatch</span><span class="o">:</span><span class="n">IsRunning</span><span class="p">(</span><span class="n">mockStopWatch</span><span class="p">))</span> <span class="n">then</span>
+     <span class="n">Print</span><span class="p">(</span><span class="s">"BaiStopWatch is stopped"</span><span class="p">)</span>
+  <span class="k">else</span>
+    <span class="n">Error</span><span class="p">(</span><span class="s">"BaiStopWatch not stopped"</span><span class="p">)</span>
+<span class="n">end</span>  
+<span class="k">else</span>
+  <span class="n">Error</span><span class="p">(</span><span class="s">"BaiStopWatch not started"</span><span class="p">)</span>
+<span class="k">return</span> <span class="mi">0</span>  
+</pre></div>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<div class="bai_exemple"><pre><span class="n">StopWatch</span> <span class="n">is</span> <span class="n">stopped</span>
+<span class="n">Script</span> <span class="n">result</span><span class="o">:</span>
+<span class="mi">0</span>
+</pre>
+	</div>
+</div>
+</div></body>

@@ -1,0 +1,22 @@
+<body>
+
+<h3>Les fonctions internes</h3>
+<br>
+<p>Les fonctions internes font partie du langage BS.</p>
+<div class="alert alert-warning" role="alert">
+<p>
+<b>Les noms des fonctions ne sont pas réservés.</b><br>
+Cela veut dire, qu'une variable déclarée "cache" le nom d'une fonction, à l'exception d'un appel explicite avec des parenthèses.</p>
+</div>
+<br>
+<pre>local currentDate
+currentDate := 1
+Print(currentDate)    // la variable est utilisée.
+Print(CurrentDate())  // la fonction est appelée.</pre>
+<br>
+<p>Résultat :</p>
+
+<pre>1
+25/02/2018</pre>
+
+</body>

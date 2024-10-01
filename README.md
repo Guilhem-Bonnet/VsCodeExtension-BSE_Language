@@ -1,6 +1,9 @@
 # VsCodeBSE
 # BSE :
 
+Pour déboguer le BSE, il faut être connecté.
+Pour se connecter, sur le BelAir Developer, cliquer sur le menu "Run" => "Parameters". Il faut cocher "Log on to Belair" et rentrer ses credentials.
+
 # Belair4
 
 # Dosiers des Scripts

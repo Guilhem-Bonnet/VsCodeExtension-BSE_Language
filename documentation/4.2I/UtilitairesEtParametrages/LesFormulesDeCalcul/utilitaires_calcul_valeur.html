@@ -1,0 +1,111 @@
+<body>
+	<h2>Qu'est-ce qu'une valeur ?</h2>
+
+	<p>
+		Une valeur est une suite de paramètres combinés avec des opérateurs. 
+		<br> La syntaxe générale d'une valeur est donc :
+	</p>
+	<p>
+		<span class="bai_code">paramètre_1 { opérateur_1 paramètre_2 { opérateur_2 paramètre_3 { opérateur_3 paramètre_4 {……}}}</span>
+	</p>
+	<p>
+		<b>Exemple :</b>
+		</p><div class="bai_exemple">
+			<span class="bai_code">12 + 5</span> : combine les paramètres 12 et 5 avec l'opérateur '+'
+		</div>
+	
+	<p>
+		Les paramètres combinés doivent être de même nature.<br>
+		</p><div class="bai_exemple">
+			<i><span class="bai_code">12 + 5 = 17</span> : addition de 2 paramètres numériques</i><br>
+			<i><span class="bai_code">"AB" + "123" = "AB123"</span> : addition de 2 paramètres alphabétiques (= concaténation)</i><br>
+			<i><span class="bai_code">12 + "coucou"</span> : donne un message d'erreur car les 2 paramètres ne sont pas de même nature</i>
+		</div>
+	
+	<p>Les opérateurs permettant de combiner les paramètres dépendent du type (ou format) de formule de calcul :</p>
+
+	<ul>
+		<li>
+			<b>Formules alphabétiques :</b><br>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<td>+</td>
+						<td>Concaténation</td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+
+		<li><b>Formules numériques et Dates :</b><br>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<td>+</td>
+						<td>Plus</td>
+					</tr>
+					<tr>
+						<td>-</td>
+						<td>Moins</td>
+					</tr>
+					<tr>
+						<td>*</td>
+						<td>Multiplié par</td>
+					</tr>
+					<tr>
+						<td>/</td>
+						<td>Divisé par</td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+
+		<li><b>Formules booléennes :</b><br>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<td>ET</td>
+						<td>Et logique</td>
+					</tr>
+					<tr>
+						<td>OU</td>
+						<td>Ou logique</td>
+					</tr>
+					<tr>
+						<td>=&lt;</td>
+						<td>Egal à</td>
+					</tr>
+					<tr>
+						<td>&lt;&gt;</td>
+						<td>Diffèrent de</td>
+					</tr>
+					<tr>
+						<td>&lt;&lt;</td>
+						<td>Inférieur à</td>
+					</tr>
+					<tr>
+						<td>&gt;</td>
+						<td>Supérieur à</td>
+					</tr>
+					<tr>
+						<td>&lt;=</td>
+						<td>Jusqu'à (inférieur ou égal à)</td>
+					</tr>
+					<tr>
+						<td>&gt;=</td>
+						<td>A partir de (supérieur ou égal à)</td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+	</ul>
+
+	<p>Des parenthèses '(' et ')' peuvent être insérées dans les calculs de valeur :
+		</p><div class="bai_exemple">
+			<div class="bai_code">
+				(12 * 5) + 10 = 70<br>
+				(5  "B") = FAUX
+			</div>
+		</div>
+	
+</body>

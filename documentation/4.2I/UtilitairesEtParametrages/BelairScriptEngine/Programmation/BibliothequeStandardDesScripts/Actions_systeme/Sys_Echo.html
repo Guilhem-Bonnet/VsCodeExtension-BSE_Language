@@ -1,0 +1,45 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Sys_Echo</code></h3>
+		</div>
+		<div class="panel-body">
+
+<p>L'action teste la disponibilité de service des actions et renvoie une chaîne de caractères passée en paramètres.</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h2>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li><code>Message</code> (string, obligatoire) : une chaîne de caractères à retourné comme l'écho</li>
+	</ul>
+
+
+	<a name="R%C3%A9sultats"></a>
+<h2>Résultats<a href="#R%C3%A9sultats" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li><code>ScriptResult</code> : copie de la chaîne de caractères envoyée</li>
+	</ul>
+
+
+	<a name="Exemples"></a>
+<h2>Exemples<a href="#Exemples" class="wiki-anchor"></a></h2>
+
+
+<pre><code class="php syntaxhl"><span class="cp">&lt;?php</span>
+  <span class="nv">$actionClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BasActionClient</span><span class="p">(</span><span class="nv">$BASE_URL</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">"trace"</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"exceptions"</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">));</span> 
+  <span class="nv">$params</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BasParams</span><span class="p">();</span>
+  <span class="nv">$params</span><span class="o">-&gt;</span><span class="na">AddString</span><span class="p">(</span><span class="s2">"Message"</span><span class="p">,</span> <span class="s2">"Hello from PHP client!"</span><span class="p">);</span>
+  <span class="nv">$result</span> <span class="o">=</span> <span class="nx">BasParams</span><span class="o">::</span><span class="na">CreateCopy</span><span class="p">(</span><span class="nv">$actionClient</span><span class="o">-&gt;</span><span class="na">RunAction</span><span class="p">(</span><span class="nv">$sc</span><span class="p">,</span> <span class="s2">"Sys_Echo"</span><span class="p">,</span> <span class="nv">$params</span><span class="o">-&gt;</span><span class="na">ToSoapVar</span><span class="p">(</span><span class="s2">"params"</span><span class="p">)));</span>
+  <span class="k">foreach</span><span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">Item</span> <span class="k">as</span> <span class="nv">$param</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nv">$param</span><span class="o">-&gt;</span><span class="na">DebugPrint</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre>
+</div></div></body>

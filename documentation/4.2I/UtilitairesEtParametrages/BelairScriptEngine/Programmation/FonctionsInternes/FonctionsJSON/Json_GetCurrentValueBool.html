@@ -1,0 +1,55 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:GetCurrentValueBool(doc)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>La fonction renvoie le texte de la valeur courante convertie en type booléen.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Le texte de la valeur courante convertie en type booléen<br>
+			Génère une erreur si la conversion n'est pas possible
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "colors")
+  Json:NewValue(doc, "color1", True)
+  Json:NewValue(doc, "color2", False)
+Json:EndObject(doc)
+Json:Close(doc)            
+Json:ValueExist(doc, "colors.color1")
+print(Json:GetCurrentValueBool(doc))
+Json:Next(doc)
+print(Json:GetCurrentValueBool(doc))
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+True
+False
+</pre>
+	</div>
+</div>
+</body>

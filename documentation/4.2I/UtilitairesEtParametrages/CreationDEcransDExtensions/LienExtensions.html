@@ -1,0 +1,92 @@
+<body>
+	<h2>Lien des extensions aux écrans du portefeuille</h2>
+
+	<h3>Lien aux tiers</h3>
+	<p>
+		Des extensions Tiers peuvent être déclarées obligatoires pour un type de tiers:<br>
+		Ces extensions seront alors automatiquement attachés à chaque nouveau tiers de ce type.
+	</p>
+
+	<p>
+		Menu <span class="menu">Gestion | Tiers | Type de Tiers</span>
+	</p>
+
+	<p>
+		Sélectionner le type de tiers concerné puis ouvrir l'onglet "Extensions"
+	</p>
+	<p><img src="images/extensions_typetiers.png" class="img-responsive"></p>
+	<p>
+		Sélectionner l'extension dans la partie "Disponible(s)" et cliquer sur le bouton ajouter.
+	</p>
+	<p>
+		Les extensions non définies en obligatoires peuvent néanmoins être ajoutées sur un tiers existant.<br>
+		A partir du tiers, demander la fonction de menu <span class="menu">Fichier | Extensions</span><br>
+		Sélectionner l'extension dans la partie "Disponible(s)" et cliquer sur le bouton ajouter.<br>
+		Les extensions sélectionnées s'afficheront en onglet supplémentaire sur le tiers.
+	</p>
+	<br>
+	
+	<h3>Lien aux contrats, sinistres</h3>
+	<h4>Extensions obligatoires pour un produit (contrat et sinistre)</h4>
+	<p>
+		Des extensions contrat et sinistre peuvent être déclarées obligatoires pour un produit:
+		ces extensions seront alors automatiquement attachés à chaque nouveau contrat de ce produit, et pour chaque sinistre ouvert sur ces contrats.
+	</p>
+	<p>
+	Menu <span class="menu">Gestion | Contrats | Produits</span>
+	</p>
+
+	<p>
+		Sélectionner l'onglet "Produits distribués" et le produit concerné<br><br>
+		Menu <span class="menu">Edition | Extensions obligatoires du produit</span>.<br><br>
+		Sélectionner l'extension dans la partie "Disponible(s)" et cliquer sur le bouton ajouter.<br>
+		Les extensions sélectionnées s'afficheront en onglet supplémentaire sur les contrats (sinistres) concernés.
+	</p>
+
+	<p>
+		Les extensions non définies en obligatoires peuvent néanmoins être ajoutées sur un contrat ou un sinistre existant.<br>
+		</p><ul>
+			<li>A partir du contrat, demander la fonction de menu  <span class="menu">Fichier | Extensions</span></li>
+			<li>A partir du sinistre, demander la fonction de menu  <span class="menu">Fichier | Modification extensions</span></li>
+		</ul>
+	
+	<br>
+	<h4>Extensions d'adhésions pour un type d'écran</h4>
+	<p>
+		Des extensions peuvent être associées aux risques des contrats des produits d'un type d'écran.
+	</p>
+	<p>
+	Menu <span class="menu">Gestion | Contrats | Produits</span>
+	</p>
+	<p>
+		Sélectionner l'onglet "Types d'écrans" et le type d'écran concerné<br>
+	</p>
+	<p><img src="images/extensions_typeecran.png" class="img-responsive"></p>
+
+
+	<p>	
+		La partie droite affiche les caractéristiques techniques du risque assuré et les extensions disponibles, selon les caractéristiques techniques du risque assuré 
+		(par exemple, si le type d'écran ne prévoit pas la présence d'un véhicule, les extensions 'véhicule' ne sont pas disponibles).
+	</p>
+	<p>
+		Il existe 4 options:<br>
+		</p><ul>
+			<li><span style="color:navy;">Non</span> : extension non disponible (elle ne pourra pas être ajoutée manuellement)</li>
+			<li><span style="color:green;">Fac</span> : extension facultative (elle pourra pas être ajoutée manuellement)</li>
+			<li><span style="color:red;">Obl</span> : extension obligatoire (elle sera ajoutée automatiquement)</li>
+			<li><span style="color:red;">Lié</span> : extension obligatoire liée (pas d'onglet supplémentaire, les données sont intégrées dans l'écran de saisie principal du risque</li>
+		</ul>
+		Pour changer le type d'association de l'extension, cliquer sur son nom. 
+	
+	<div class="alert alert-info" role="alert">
+		Vous ne pouvez pas déclarer ici une extension liée. Cette opération se fait par le module 'modélisation des écrans'
+	</div>
+
+	<p>
+		Les extensions facultatives peuvent  être ajoutées au coup par coup sur une adhésion.<br>
+		demander la fonction de menu  <span class="menu">Adhésion | Extensions</span>.<br>
+		Sélectionner l'extension dans la partie "Disponible(s)" et cliquer sur le bouton ajouter.<br>
+		Les extensions sélectionnées s'afficheront en onglet supplémentaire sur le détail du risque.
+	</p>
+
+</body>

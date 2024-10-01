@@ -1,0 +1,65 @@
+<body>
+
+
+<h3>Fonctions de manipulation des objets</h3>
+<br>
+<h4><b>Opérations sur les tableaux</b></h4>
+<br>
+<p>Les tableaux dynamiques font la partie de langage BSE. 
+<br>De plus, comme les tableaux sont aussi des objets, il est possible de les manipuler par les fonctions "Obj:Get/SetArrayItems" mentionnées ci-dessous.
+</p>
+
+<p><b><br>Exemples</b></p>
+
+<b>Accès direct aux éléments</b>
+
+<pre><code class="c syntaxhl"><span class="CodeRay">local nums, i
+nums := Obj:NewArray()
+nums[<span class="integer">0</span>] := <span class="integer">11</span>
+nums[<span class="integer">1</span>] := <span class="string"><span class="delimiter">"</span><span class="content">String 22</span><span class="delimiter">"</span></span> 
+nums[<span class="integer">2</span>] := <span class="integer">3</span><span class="float">3</span><span class="float">.44</span>
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Length(nums) begin
+  Print(<span class="string"><span class="delimiter">"</span><span class="content">nums[%s]: %s</span><span class="delimiter">"</span></span>, i, nums[i])
+  i := i + <span class="integer">1</span>
+end
+SetLength(nums, <span class="integer">2</span>) <span class="comment">// resize array to 2</span>
+Print(DumpVar(nums))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre>nums[0]: 11
+nums[1]: String 22
+nums[2]: 33,44
+Array length: 2
+[0]: 11
+[1]: String 22</pre>
+<br>
+<br><b>Accès aux éléments en utilisant des fonctions</b>
+
+<pre><code class="c syntaxhl"><span class="CodeRay">local nums, i
+nums := Obj:NewArray()
+Obj:AddArrayItems(nums, <span class="integer">11</span>) <span class="comment">// inserted to back</span>
+Obj:AddArrayItems(nums, <span class="string"><span class="delimiter">"</span><span class="content">String 22</span><span class="delimiter">"</span></span>)
+Obj:SetArrayItems(nums, <span class="integer">2</span>, <span class="integer">3</span><span class="float">3</span><span class="float">.44</span>) <span class="comment">// resized and set</span>
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Length(nums) begin
+  Print(<span class="string"><span class="delimiter">"</span><span class="content">nums[%s]: %s</span><span class="delimiter">"</span></span>, i, Obj:GetArrayItems(nums, i))
+  i := i + <span class="integer">1</span>
+end
+Obj:DelArrayItems(nums, <span class="integer">0</span>) <span class="comment">// Delete first array item</span>
+Print(DumpVar(nums))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre>nums[0]: 11
+nums[1]: String 22
+nums[2]: 33,44
+Array length: 2
+[0]: String 22
+[1]: 33,44</pre>
+<br><br>
+
+</body>

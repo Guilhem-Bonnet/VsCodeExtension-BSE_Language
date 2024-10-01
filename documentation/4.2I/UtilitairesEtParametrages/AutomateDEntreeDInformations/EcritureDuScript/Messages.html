@@ -1,0 +1,59 @@
+<body>
+	<h2>Messages</h2>
+
+	<p>
+		Les instructions ECRAN et PRINT permettent à la volonté du programmeur, de suivre le déroulement des traitements effectués.
+	</p>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>PRINT("message")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Le message s'affiche dans la fenêtre "Compte-rendu" (habituellement réservée aux anomalies éventuellement rencontrées) et s'écrit dans le Log de traitement.
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>PRINTLOG("message")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Le message ne s'affiche pas dans la fenêtre "Compte-rendu", il s'écrit seulement dans le Log de traitement.
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SAVELOG("fichier")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Sauvegarde le Log de traitement dans un fichier donné (fichier pouvant être donné par la commande de formule de calcul CHOIXFICHIER).
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>ECRAN("message")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Le message s'affiche dans la fenêtre "Messages" (informations sur le déroulement normal du script) sans inscription dans le Log de traitement.<br>
+				La syntaxe est : ECRAN("police : " + ?POLI("b_police")) où une chaîne de caractères entre double-quotes est incluse entre les parenthèses.<br>
+				Dans cet exemple : 'police : ' est une chaîne de caractère quelconque, et ?POLI("b_police") est le nom d'une donnée de la base de données Belair.
+			</p>
+		</div>
+	</div>
+	<p>
+		Ces instructions de suivi n'interrompent pas le traitement.<br>
+		Il est possible de faire apparaître ou de tester le numéro d'ordre de l'enregistrement traité par l'instruction RECORD : <span class="bai_code">ECRAN(RECORD)</span>
+	</p><br>
+	
+
+</body>

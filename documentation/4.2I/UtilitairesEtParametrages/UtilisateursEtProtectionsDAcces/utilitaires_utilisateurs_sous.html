@@ -1,0 +1,24 @@
+<body>
+	<div class="alert alert-danger"><h2>N'EXISTE PAS/PLUS</h2></div>
+	<h2>Limitation d'accès à un portefeuille en fonction du nom de l'utilisateur</h2>
+
+	<p>
+		Cette manipulation permet de limiter l'accès à chaque portefeuille au gestionnaire correspondant.
+		Chaque gestionnaire (portefeuille) doit avoir son nom de renseigné dans la table de codes PORTEFEUIL (liste des noms proposés dans les champs CONT.b_portef et CLI.b_portef, information "Portefeuille" des écrans Tiers et Contrats) de la même manière qu'en gestion des UTILISATEURS.
+		Dans le menu Utilisateurs | Gestion des utilisateurs, créer un pro36 dédié à cette gestion des accès par portefeuille.
+	</p>
+
+	<b>Exemple :</b>
+	<div class="bai_exemple">
+		Code : Z | Nom : Portefeuilles
+	</div>
+
+	<p>
+		Intégrer les utilisateurs-gestionnaires de portefeuille dans ce groupe.
+		Demander ensuite Fichier | Groupe "Portefeuilles". Taper la lettre affectée au groupe des "portefeuilles" (dans notre exemple : Z).
+	</p>
+
+	<p>
+		Par la suite, si on se connecte avec un nom d'utilisateur de ce groupe de limitation, on a alors accès uniquement aux clients et contrats comportant ce nom en gestionnaire de portefeuille et à ceux pour lesquels cette information n'a pas été renseignée.
+	</p>
+</body>

@@ -1,0 +1,44 @@
+<body>
+
+
+<h3>Fonctions de manipulation de dates</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>IsInLeapYear(Date)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Indique si la valeur DateTime spécifiée appartient à une année bissextile.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Date</code> : la date.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>La valeur de type booléan.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local date
+date := EncodeDate(<span class="integer">2016</span>, <span class="integer">10</span>, <span class="integer">11</span>)
+Print(IsInLeapYear(date))
+date := EncodeDate(<span class="integer">2018</span>, <span class="integer">10</span>, <span class="integer">11</span>)
+Print(IsInLeapYear(date))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">True
+False
+</span></code></pre>
+				
+			
+			<br>
+		</div>
+	</div>
+	<br><br>
+</body>

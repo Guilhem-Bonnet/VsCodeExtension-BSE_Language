@@ -1,0 +1,51 @@
+<body>
+
+
+<h3>Fonctions de HTML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTML:ConvertFileToPdf(html, headerfile, footerfile, options)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction permet de convertir une chaine qui représente le contenu d'un HTML vers un fichier PDF puis retourne le résultat.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul><li><code>Html</code> : Une chaine qui représente le contenu d'un HTML.</li>
+				<li><code>Headerfile </code> : Chemin vers un fichier HTML représentant l'entête (optionnel, string).</li>
+				<li><code>Footerfile </code> : Chemin vers un fichier HTML représentant le pied de page (optionnel, string).</li>
+				<li><code>Options  </code> : Options pour l'Edition du PDF (optionnel, string).</li></ul>
+			
+			<br>
+			<p>Note: Le fichier doit être encodé en Unicode (UTF8 ou UTF16)</p>
+			<br>
+			<p><b>Résultat :</b>
+			<br></p><li>Le chemin vers le fichier PDF</li>
+			<br>
+			<p>Si le programme retourne une erreur, celle ci sera retournée par la fonction.</p>
+			<br>
+<h4> Exemple :</h4>
+<pre>
+local f1, htmlText, pdfFile
+
+htmlText :=  "&lt;HTML&gt;&lt;BODY&gt;Test Convert HTML TO PDF by Text&lt;/BODY&gt;&lt;/HTML&gt;"
+f1 := File:Create("Test.html", "utf16")
+File:WriteLine(f1, htmlText)
+File:Close(f1)
+
+pdfFile :=  HTML:ConvertFileToPdf("Test.html", "", "")
+
+return pdfFile
+</pre>			
+<br>
+			<p><b>Résultat :</b>
+			</p><pre>Script result:
+C:\Users\test\Documents\BelAir\16460051091623.pdf</pre>
+		</div>
+	</div>
+	
+	
+</body>

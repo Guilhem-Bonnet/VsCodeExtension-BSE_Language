@@ -1,0 +1,53 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:CurrentIsObject(doc)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>Indique si la valeur courante est du type JSONObject.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>La valeur de type booléenne True/False
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()          
+Json:NewObject(doc, "colors")
+  Json:NewValue(doc, "color", "red")
+Json:EndObject(doc)
+Json:Close(doc)                             
+Json:ValueExist(doc, "colors.color")
+print(Json:CurrentIsObject(doc))  
+Json:ValueExists(doc, "colors")
+print(Json:CurrentIsObject(doc))            
+return 0  
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+False
+True
+</pre>
+	</div>
+</div>
+</body>

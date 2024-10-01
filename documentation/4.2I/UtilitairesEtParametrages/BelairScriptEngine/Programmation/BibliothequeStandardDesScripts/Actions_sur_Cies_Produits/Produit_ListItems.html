@@ -1,0 +1,40 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Produit_ListItems</code></h3>
+		</div>
+
+<p>Produit_ListItems</p>
+
+	<a name="Param%C3%A8tres-"></a>
+<h3>Paramètres :<a href="#Param%C3%A8tres-" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>typeecran  : string, optionnel : type d'écran (A1, A2, etc)</li>
+		<li>branche  : string, optionnel : branche métier (PL, SA, etc...)</li>
+		<li>cie : integer, optionnel : filtre sur compagnie principale</li>
+		<li>entite : integer, optionnel : filtre sur l'entité comptable</li>
+		<li>disponible : boolean, optionnel : si True, on ignore les produits 'non disponibles'</li>
+	</ul>
+
+
+	<a name="R%C3%A9sultat-"></a>
+<h3>Résultat :<a href="#R%C3%A9sultat-" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;prod-rows&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"prod"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Branc"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EM<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Branche"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AP<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catalog"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cieprin"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"17"</span><span class="nt">/&gt;</span>
+      ...
+    <span class="nt">&lt;object&gt;</span>
+    ...
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/prod-rows&gt;</span>
+</code></pre>
+</div></body>

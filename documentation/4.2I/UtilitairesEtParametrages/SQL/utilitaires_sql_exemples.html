@@ -1,0 +1,500 @@
+<body>
+	<h2>Exemples d'utilisation</h2>
+
+	<p>
+		Pour saisir une formule SQL, à partir du Bureau, demander <b>Outils | Formules de calcul | Formules autonomes</b>.
+	</p>
+
+	<p><b>Exemple 1 :</b></p>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			<p>
+				IA$:="1"<br>
+				SQL:NEW(MAXKCTE)<br>
+				*SELECT MAX(b_interne) AS maximum FROM [KCTE]<br>
+				*WHERE b_code = :IA<br>
+				<br>
+				SQL:OPEN(MAXKCTE)
+				SI RESULT = 1 ;IA := ?SQLMAXKCTE("maximum") ;IA:=0<br>
+				SQL:CLOSE(MAXKCTE)<br>
+				SQL:FREE(MAXKCTE)<br>
+				<br>
+				<span class="bai_comment">//dans IA, vous avez le b_interne maximum pour la comptabilité "1"</span>
+			</p>
+		</div>
+
+		<p>
+			A noter que l'on peut ajouter des commentaires à la suite des symboles '//'
+		</p>
+	</div>
+
+	<p><b>Exemple 2 : Comment insérer le nom et la valeur d'un indice dans un courrier</b></p>
+
+	<div class="bai_exemple">
+		<div class="bai_code">
+			<p>
+				IA := ?PIEC("b_adhprin")<br>
+				SQL:NEW(TOTO)<br>
+				*SELECT DISTINCT b_indice, b_vindice FROM [GARAN]<br>
+				*WHERE b_adhesion = :IA<br>
+				*AND NOT (b_vindice IS NULL)<br>
+				SQL:OPEN(TOTO)<br>
+				IA$ := ?SQLTOTO("b_indice") + " = " + ?SQLTOTO("b_vindice")<br>
+				SQL:CLOSE(TOTO)<br>
+				SQL:FREE(TOTO)<br>
+				=IA
+			</p>
+		</div>
+
+		<p>
+			Puis en gestion de texte, sélectionner le courrier, cliquer sur l'onglet "champs de fusion" et ouvrir le "dictionnaire".
+		</p>
+		<p>
+			Sélectionner ensuite l'onglet "calcul" et glisser la formule TOTO dans "champs de fusion".
+		</p>
+	</div>
+
+	<p><b>Exemple 3 : Dans une requête, comment utiliser les commandes ALLER_TIERS et RETOUR_TIERS utilisées en gestion de textes.</b></p>
+
+	<div class="bai_exemple">
+		<p>
+			Dans le bandeau 'En-tête de groupe', créer une zone de calcul 'alphabétique'.<br>
+			La formule de calcul sera la suivante :
+		</p>
+
+		<div class="bai_code">
+			<p>
+				IA := ?CONT("b_realis")<br>
+				SQL:NEW(ADRTIERS)<br>
+				*SELECT b_rsociale, b_adr1, b_adr2, b_adr3, b_codp, b_ville <br>
+				*FROM [TIERS] WHERE b_numtiers = :IA<br>
+				SQL:OPEN(ADRTIERS)<br>
+				IA$ := ?SQLADRTIERS("b_rsociale")<br>
+				IB$ := ?SQLADRTIERS("b_adr1")<br>
+				IC$ := ?SQLADRTIERS("b_adr2")<br>
+				ID$ := ?SQLADRTIERS("b_adr3")<br>
+				IE$ := ?SQLADRTIERS("b_codp") + " " + ?SQLADRTIERS("b_ville")<br>
+				SQL:CLOSE(ADRTIERS)<br>
+				SQL:FREE(ADRTIERS)<br>
+				=IA
+			</p>
+		</div>
+
+		<p>
+			Cette formule sélectionne le nom/prénom et les zones d'adresse de l'apporteur et initialise les variables suivantes :
+			</p><ul>
+				<li>IA$ = nom/prénom</li>
+				<li>IB$ = adresse1</li>
+				<li>IC$ = adresse2</li>
+				<li>ID$ = adresse3</li>
+				<li>IE$ = code postal + ville</li>
+			</ul>
+			Elle se termine en rendant comme résultat IA (nom et prénom)
+		
+
+		<p>
+			Créer ensuite d'autres zones de calcul alphabétiques pour récupérer les autres valeurs<br>
+			Pour l'adresse 1 : =IB<br>
+			Pour l'adresse 2 : =IC<br>
+			etc...
+		</p>
+	</div>
+
+	<p><b>Exemple 4 : Comment reprendre, en gestion de texte, les information du RIB d'un tiers</b></p>
+
+	<div class="bai_exemple">
+		<p>
+			Par le menu Outils / Formules de calcul / Formules autonomes, créer une formule de calcul 'alphabétique'.
+			La formule de calcul sera la suivante :
+		</p>
+
+		<div class="bai_code">
+			<p>
+				IP:=?TIERS("b_numtiers")<br>
+				SQL:NEW(RIBPREV)<br>
+				*select b_guichet, b_ncompte, b_codebank, b_domicil<br>
+				*from [RIB]<br>
+				*where b_numtiers=:IP<br>
+				IQ$:=""<br>
+				IR$:=""<br>
+				IS$:=""<br>
+				IT$:=""<br>
+				SQL:OPEN(RIBPREV)<br>
+				IR$:=?SQLRIBPREV("b_guichet")<br>
+				IS$:=?SQLRIBPREV("b_ncompte")<br>
+				IQ$:=?SQLRIBPREV("b_codebank")<br>
+				IT$:=?SQLRIBPREV("b_domicil")<br>
+				SQL:CLOSE(RIBPREV)<br>
+				SQL:FREE(RIBPREV)<br>
+				=IQ
+			</p>
+		</div>
+
+		<p>
+			Reprendre la formule de calcul par le dictionnaire, onglet 'Calcul'. Le champ créé rendra la valeur IQ, soit le code banque. Créer ensuite des champs reprenant les valeurs IR (code guichet), IS (n° de compte) et IT (domiciliation).
+		</p>
+	</div>
+
+	<p><b>Exemple 5 : Comment reprendre, en gestion de texte, les information sur les garanties acquises d'un risque</b></p>
+
+	<div class="bai_exemple">
+		<p>
+			Par le menu Outils / Formules de calcul / Formules autonomes, créer une formule de calcul 'alphabétique'.<br>
+			La formule de calcul sera la suivante :
+		</p>
+		<div class="bai_code">
+			<p>
+				IA := ?ADH("b_adhesion")<br>
+				SQL:NEW(GARACQUIS)<br>
+				*select O.b_codegar, O.b_affiche from [GARAN] G, [OPT] O<br>
+				*where G.b_adhesion =: IA and G.b_numopt = O.b_numopt<br>
+				*order by O.b_affiche<br>
+				<br>
+				IB$ := "" <span class="bai_comment">// libelles</span><br>
+				IC$ := "" <span class="bai_comment">// capitaux</span><br>
+				ID$ := "" <span class="bai_comment">// franchises</span><br>
+				IE$ := "" <span class="bai_comment">// primes nettes</span><br>
+				IF$ := "" <span class="bai_comment">// taxes</span><br>
+				IG$ := "" <span class="bai_comment">// primes totales</span><br>
+				<br>
+				SQL:OPEN(GARACQUIS)<br>
+				:SUIVANTE<br>
+				SI RESULT = 0 ;&gt;FINLISTE<br>
+				<br>
+				IA$ := ?SQLGARACQUIS("b_codegar")<br>
+				IB$ := IB + GARL(IA) + CHR$(13) + CHR$(10)<br>
+				IC$ := IC + GARK(IA) + CHR$(13) + CHR$(10)<br>
+				ID$ := ID + GARF(IA) + CHR$(13) + CHR$(10)<br>
+				IE$ := IE + PBN(IA) + CHR$(13) + CHR$(10)<br>
+				IF$ := IF + PBX(IA) + CHR$(13) + CHR$(10)<br>
+				IG$ := IG + PBT(IA) + CHR$(13) + CHR$(10)<br>
+				SQL:NEXT(GARACQUIS)<br>
+				&gt;SUIVANTE<br>
+				<br>
+				:FINLISTE<br>
+				SQL:CLOSE(GARACQUIS)<br>
+				SQL:FREE(GARACQUIS)<br>
+				<br>
+				=IB <span class="bai_comment">// on rend IB comme résultat</span>
+			</p>
+		</div>
+
+		<p>
+			Reprendre la formule de calcul par le dictionnaire, onglet 'Calcul'. Le champ créé rendra la valeur IB.
+		</p>
+
+		<p>
+			A noter que l'on peut renommer les tables à la suite du FROM (exp : from [GARAN] G),Ce qui permet de ne pas avoir à retaper le nom des tables en entier par la suite.<br>
+			On indique les noms des tables pour appeler les champs lorsq'ils ont des noms identiques dans les différentes tables ouvertes par le SQL (exp : G.b_numopt et O.b_numopt).
+		</p>
+
+		<p>
+			L'ajout des commandes CHR$(13) + CHR$(10) permet de mettre les valeurs calculées dans un tableau. Ces commandes permettent de rester dans la même colonne et de passer automatiquement à la ligne pour toute nouvelle valeur du champ répondant aux conditions du SQL.
+		</p>
+	</div>
+
+	<p><b>Exemple 6 : Comment reprendre, en gestion de texte, les libellés des clauses</b></p>
+
+	<div class="bai_exemple">
+		<p>
+			Par le menu Outils / Formules de calcul / Formules autonomes, créer une formule de calcul 'alphabétique'.<br>
+			La formule de calcul sera la suivante :
+		</p>
+
+		<div class="bai_code">
+			<p>
+				SQL:NEW(CLA)<br>
+				*SELECT P.b_clause, C.b_clause, C.b_libelle<br>
+				*FROM [PCLA] P, [CLAUSE] C<br>
+				*WHERE P.b_clause=C.b_clause and P.b_codeprod=C.b_codeprod<br>
+				*and P.b_contrat=:IA and P.b_piece=:IB<br>
+				<br>
+				IC$:=" "<br>
+				<br>
+				SQL:OPEN(CLA)<br>
+				SI RESULT=0;&gt;FINTAB<br>
+				:BOUCLE<br>
+				<br>
+				IC$:=IC+?SQLCLA("b_libelle")+", "<br>
+				<br>
+				SQL:NEXT(CLA)<br>
+				SI RESULT&gt;0;&gt;BOUCLE<br>
+				<br>
+				:FINTAB<br>
+				SQL:CLOSE(CLA)<br>
+				SQL:FREE(CLA)<br>
+				<br>
+				=IC
+			</p>
+		</div>
+
+		<p>
+			La valeur IC donne la liste des libellés de clauses séparés par des virgules.
+		</p>
+	</div>
+
+	<p><b>Exemple 7 : Comment éditer des avis de prélèvement.</b></p>
+
+	<div class="bai_exemple">
+		<p>
+			Par le menu Outils / Formules de calcul / Formules autonomes, créer deux formules de calcul 'alphabétique'.<br>
+			La 1ere formule de calcul nommée TABPRELEV1 sera la suivante :
+		</p>
+
+		<div class="bai_code">
+			<p>
+				IA := ?TIERS("b_numtiers")<br>
+				IH$ := ""<br>
+				<br>
+				SQL:NEW(TABPRELEV)<br>
+				*select distinct con.b_intitule,cie.b_nomcie,<br>
+				*quit.b_police,quit.b_fineffet,quit.b_ptotale, quit.b_ptotale1 <br>
+				*from [QUIT] quit,[CONT] con,[CIE] cie, [PREL] prel<br>
+				*where quit.b_contrat = con.b_contrat<br>
+				*and quit.b_cie = cie.b_ncie<br>
+				*and prel.b_quit = quit.b_numero<br>
+				*and con.b_ntiers = :IA<br>
+				<br>
+				IB$ := ""<br>
+				IC$ := ""<br>
+				ID$ := ""<br>
+				IE$ := ""<br>
+				IF$ := ""<br> 
+				IG$ := ""<br>
+				IJ := 0<br>
+				<br>
+				SQL:OPEN(TABPRELEV)<br>
+				SI RESULT = 0 ;&gt;FINTAB<br>
+				:BOUCLE<br>
+				IB$ := IB + EXT(?SQLTABPRELEV("b_intitule"),1,22) + CHR$(13) + CHR$(10)<br>
+				IC$ := IC + EXT(?SQLTABPRELEV("b_police"),1,15) + CHR$(13) + CHR$(10)<br>
+				ID$ := ID + EXT(?SQLTABPRELEV("b_nomcie"),1,20) + CHR$(13) + CHR$(10)<br>
+				IE$ := IE + ?SQLTABPRELEV("b_fineffet") + CHR$(13) + CHR$(10)<br>
+				IF$ := IF + DEVFMT(?SQLTABPRELEV("b_ptotale"),?SQLTABPRELEV("b_ptotale1")) + CHR$(13) + CHR$(10)<br>
+				IJ := IJ + DEVISE(?SQLTABPRELEV("b_ptotale"),"EUR")<br>
+				SQL:NEXT(TABPRELEV)<br>
+				SI RESULT &gt; 0 ;&gt;BOUCLE<br>
+				<br>
+				:FINTAB<br>
+				SQL:CLOSE(TABPRELEV)<br>
+				SQL:FREE(TABPRELEV)<br>
+				IH$ := DEVFMT(IJ,"EUR")<br>
+				=IB
+			</p>
+		</div>
+
+		<p>
+			La 2e formule de calcul nommée TABPRELEV2 sera la suivante :
+		</p>
+
+		<div class="bai_code">
+			<p>
+				IA := ?TIERS("b_numtiers")<br>
+				IM$ := ""<br>
+				<br>
+				SQL:NEW(TABPRELEV)<br>
+				*select distinct prel.b_date,sum(prel.b_montant) as montant,prel.b_montant1,prel.b_dateprel<br>
+				*from [QUIT] quit,[CONT] con, [PREL] prel<br>
+				*where quit.b_contrat = con.b_contrat<br>
+				*and prel.b_dateprel is NULL<br>
+				*and prel.b_quit = quit.b_numero<br>
+				*and con.b_ntiers = :IA<br>
+				*group by prel.b_date,prel.b_montant1,prel.b_dateprel<br>
+				<br>
+				IB$ := ""<br>
+				IC := 0<br>
+				IF$ := ""<br>
+				ID$ := ""<br>
+				IJ := 0<br>
+				IK := 0<br>
+				<br>
+				SQL:OPEN(TABPRELEV)<br>
+				SI RESULT = 0 ;&gt;FINTAB<br>
+				:BOUCLE<br>
+				IB$ := IB + ?SQLTABPRELEV("b_date") + CHR$(13) + CHR$(10)<br>
+				IC := ?SQLTABPRELEV("montant")<br>
+				ID$ := DEVFMT(?SQLTABPRELEV("montant"),?SQLTABPRELEV("b_montant1"))<br>
+				IF$ := IF + ID + CHR$(13) + CHR$(10)<br>
+				IJ := DEVSOM(IC,?SQLTABPRELEV("b_montant1"),"EUR")<br>
+				IK := IK + IJ<br>
+				SQL:NEXT(TABPRELEV)<br>
+				SI RESULT &gt; 0 ;&gt;BOUCLE<br>
+				<br>
+				:FINTAB<br>
+				SQL:CLOSE(TABPRELEV)<br>
+				SQL:FREE(TABPRELEV)<br>
+				IM$ := DEVFMT(IK,"EUR")<br>
+				=IB
+			</p>
+		</div>
+
+		<p>
+			Dans les deux formules de calcul, les 2 requêtes SQL portent le même nom, ce qui n'est pas dérangeant puisqu'elles ne seront pas exploitées simultanément. Nous aurions pu leur donner deux noms différents.<br>
+			Toutes les valeurs calculées avec CHR$ doivent être contenues dans un tableau, le document word devra donc contenir deux tableaux :
+		</p>
+
+		<div class="container-fluid no-padding">
+			<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
+				<table class="table table-bordered table-responsive">
+					<thead>
+						<tr>
+							<th>Contrat</th>
+							<th>Cie</th>
+							<th>N° Police</th>
+							<th>Date effet</th>
+							<th>Montant</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>"TABPRELEV1"</td>
+							<td>"nomcie"</td>
+							<td>"police"</td>
+							<td>"dateeffet"</td>
+							<td>"totalquit"</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5" class="text-center">
+								soit un montant total de "TOTA"
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+
+		<div class="container-fluid no-padding">
+			<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
+				<table class="table table-bordered table-responsive">
+					<thead>
+						<tr>
+							<th>Date de prélèvement</th>
+							<th>Montant de prélèvement</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>"TABPRELEV2"</td>
+							<td>"montant"</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5" class="text-center">
+								soit un montant total de "TOTPRE"
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+
+		<p>
+			TOTA et TOTPRE ne font pas partie des tableaux, il ne sont pas calculés avec l'information de retour à la ligne CHR$.<br>
+			L'onglet 'champs de fusion et commandes' de votre document de fusion devra contenir les informations suivantes (le nom des champs n'est pas imposé, l'important est de reprendre les bonnes valeurs Ix) :
+		</p>
+
+		<div class="bai_code">
+			<p>
+				TABPRELEV1={"TABPRELEV1"} <span class="bai_comment">// ce champ doit précéder toutes les valeurs police=IC</span><br>
+				calculées dans la formule correspondante<br>
+				nomcie=ID<br>
+				dateeffet=IE<br>
+				totalquit=IF<br>
+				TOTA=IH<br>
+				TABPRELEV2={"TABPRELEV2"} <span class="bai_comment">// Idem (IF pouvant provenir du calcul de TABPRELEV1)</span><br>
+				montant=IF<br>
+				TOOTPRE=IM<br>
+				Les commandes EXT permettent de définir le nombre de caractères retenus d'une valeur calculée, vous devez le choisir en fonction de la largeur de vos colonnes.<br>
+				EXT(?SQLTABPRELEV("b_police"),1,15) signifie que l'on prend le numéro de police du 1er au 15e caractère.
+			</p>
+		</div>
+	</div>
+
+	<p><b>Exemple 8 : Détournement des commandes ALLER_TIERS et RETOUR_TIERS en gestion de textes</b></p>
+
+	<div class="bai_exemple">
+		<p>
+			Rappel : Ces commandes permettent d'adresser un courrier ou de reprendre le nom d'un autre tiers que celui du dossier d'origine.<br>
+			Par contre, si le champ appelé par la commande ALLER_TIERS n'est pas renseigné, c'est le nom (l'adresse) du dossier d'origine qui est repris.
+		</p>
+
+		<p>
+			La commande SQL suivante permet de faire en sorte de ne traduire aucune valeur lorsque le champ contenant une information de tiers n'est pas renseignée.
+		</p>
+
+		<p>
+			L'exemple est donné pour l'expert sur les sinistres (et il convient de modifier pour les autres champs)
+		</p>
+
+		<p>
+			Créer une formule de calcul autonome de la façon suivante :
+		</p>
+		<div class="bai_code">
+			<p>
+				SI ?SIN("b_expert")=FAUX ;=""<br>
+				IA:=?SIN("b_expert")<br>
+				SQL:NEW(ADR)<br>
+				*SELECT b_titre,b_rsociale FROM [TIERS] WHERE b_numtiers=:IA<br>
+				SQL:OPEN(ADR)<br>
+				SI RESULT =1 ;IA$:=?SQLADR("b_titre")+""+?SQLADR("b_rsociale");IA$:=""<br>
+				SQL:CLOSE(ADR)<br>
+				SQL:FREE(ADR)<br>
+				=IA
+			</p>
+		</div>
+
+		<p>
+			Dans le paramétrage de la lettre, glisser le nom de cette formule de calcul.
+		</p>
+
+		<p>
+			NB : la ligne 6 de la formule permet de traduire le titre et le nom du tiers. Si d'autres renseignements sont nécessaires, il convient de les ajouter sur cette ligne.
+		</p>
+
+		<p>
+			Au moment de l'envoi de la lettre sur le sinistre, si le numéro de tiers de l'expert est renseigné, les éléments demandés dan la formule de calcul seront traduits. Par contre, si le numéro de tiers de l'expert n'est pas renseigné, rien ne sera traduit.
+		</p>
+	</div>
+
+	<p><b>Exemple 9 : Comment retrouver les "tiers" pour lesquels il n'y a pas eu d'enregistrement dans la table CHRO (événements de GRC) depuis une date</b></p>
+
+	<div class="bai_exemple">
+		<p>
+			Créer une formule de calcul autonome de la façon suivante :
+		</p>
+
+		<div class="bai_code">
+			<p>
+				IA$:=""<br>
+				SQL:NEW(QTIERS)<br>
+				*SELECT  B_NUMTIERS, MAX(B_DATE)  FROM  [CHRO]<br>
+				*WHERE  B_NUMTIERS  BETWEEN  1000  AND  1100<br>
+				*GROUP  BY  B_NUMTIERS<br>
+				*HAVING  MAX(B_DATE) 
+				*ORDER  BY  2<br>
+				SQL:OPEN(QTIERS)<br>
+				SI RESULT = 0 ;&gt;FINTAB<br>
+				:BOUCLE<br>
+				IA$:=IA+?SQLQTIERS("B_NUMTIERS")<br>
+				SQL:NEXTQTIERS)<br>
+				SI RESULT &gt; 0 ;&gt;BOUCLE<br>
+				:FINTAB<br>
+				SQL:CLOSE(QTIERS)<br>
+				SQL:FREE(QTIERS)<br>
+				=IA
+			</p>
+		</div>
+
+		<p>
+			SELECT : sur n° de tiers et dernier enregistrement de la GRC concernant ce tiers<br>
+			WHERE...BETWEEN : dans cet exemple, on ne recherche que les tiers dont le dossier est compris entre 1000 et 1100<br>
+			GROUP BY : obligatoire de regrouper par tiers dans ce SQL car on utilise la commande MAX(...)<br>
+			HAVING... on ne retient que les lignes ou le MAX est inférieur à une date donnée (ici 01/01/2007). Donc on exclut ceux pour lesquels un événement à été inscrit après cette date.<br>
+			ORDER BY 2 : on trie sur le colonne n°2 du SELECT, donc sur MAX(B_DATE)
+		</p>
+	</div>
+
+</body>

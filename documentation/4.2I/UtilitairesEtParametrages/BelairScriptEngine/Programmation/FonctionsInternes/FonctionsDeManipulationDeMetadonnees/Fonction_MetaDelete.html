@@ -1,0 +1,40 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:Delete(Entity)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Supprime un objet du méta-modèle.
+			<br>
+			<br>
+			</p><div class="alert alert-info" role="alert">  <p><b>Notez que :</b>
+			<br>
+			<br>Cette modification n'est définitive, et doit être enregistrée par <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de manipulation de métadonnées" name="Fonctions%20de%20manipulation%20de%20m%C3%A9tadonn%C3%A9es%20:%20Meta:SaveModel"><b><i>Meta:SaveModel</i></b></a>.  </p> </div> 
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Entity</code>: l'objet à supprimer.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>local entity
+entity := Meta:GetEntityByCode("XRGST")
+Meta:Delete(entity)
+// Autres manipulations à faire
+...
+Meta:SaveModel()</pre>
+			
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

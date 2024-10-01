@@ -1,0 +1,80 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:GetNodeCurrency(doc, default)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie le texte du nœud courant converti en type monétaire.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>default</code> : la valeur par défaut.</li>
+				</ul>
+			
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>La valeur de type monétaire (Currency) convertie à partir du texte du nœud courant.
+			<br>Si le texte est vide ou absent alors : la valeur par défaut est retournée.
+			<br>
+			<br>Génère une erreur si la conversion n'est pas possible.
+			</p>
+			<br>
+			<p><b>Les valeurs/formats acceptées/és :</b></p>
+			<ul><li>Format fixe.</li>
+			<li>Format scientifique.</li></ul>
+			<p>Les valeurs ne sont pas sensitives à la casse de caractères.</p>
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">items</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item1</span><span class="delimiter">"</span></span>, <span class="integer">12345</span><span class="float">6</span><span class="float">.78</span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item2</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">123456.78</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item3</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">1.2345678E5</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item4</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc)
+XML:First(doc)
+XML:FirstChild(doc)
+Print(XML:GetNodeCurrency(doc))
+XML:Next(doc)
+Print(XML:GetNodeCurrency(doc))
+XML:Next(doc)
+Print(XML:GetNodeCurrency(doc))
+XML:Next(doc)
+Print(XML:GetNodeCurrency(doc, <span class="integer">87654</span><span class="float">3</span><span class="float">.21</span>))
+XML:First(doc)
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">123456,78
+123456,78
+123456,78
+876543,21
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;items&gt;</span>
+  <span class="tag">&lt;item1&gt;</span>1.23456780000000E+0005<span class="tag">&lt;/item1&gt;</span>
+  <span class="tag">&lt;item2&gt;</span>123456.78<span class="tag">&lt;/item2&gt;</span>
+  <span class="tag">&lt;item3&gt;</span>1.2345678E5<span class="tag">&lt;/item3&gt;</span>
+  <span class="tag">&lt;item4</span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/items&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

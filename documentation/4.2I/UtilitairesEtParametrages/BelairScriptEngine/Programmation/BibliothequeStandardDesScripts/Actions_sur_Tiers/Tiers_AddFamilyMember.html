@@ -1,0 +1,122 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tiers_AddFamilyMember</code></h3>
+		</div>
+
+<p>Ajout d'une personne à la cellule familiale d'un tiers 'Personne physique'</p>
+
+	<p>Cette action permet de créer un DPP et de l'ajouter à la famille, ou d'ajouter un DPP déjà existant à une famille</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (integer, obligatoire) : n. de tiers</li>
+		<li>numdpp (integer, optionnel) : numéro de DPP (default=0)</li>
+		<li>data : flux XML (identique au retour de l'action Tiers_FamilyMemberDetails  <a class="issue tracker-2 status-5 priority-4 priority-default closed child" title="Evolution: Action BSE : Tiers_FamilyMemberDetails (BL) (Terminé)" href="http://redmine4.belair.local/issues/15107">#15107</a>)</li>
+	</ul>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;familymember&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"FAM"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPP"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/familymember&gt;</span>
+</code></pre>
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;familymember&gt;</span>
+  <span class="nt">&lt;input&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"FAM"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPP"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/familymember&gt;</span>
+</code></pre>
+
+	<p>Exemple , ajout d'une personne déjà existante (balise object DPP facultative)<br></p><pre><code class="xml syntaxhl"><span class="nt">&lt;familymember&gt;</span>
+ <span class="nt">&lt;input&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+   <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"FAM"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"parente"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>P<span class="nt">&lt;/param&gt;</span>
+   <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+ <span class="nt">&lt;/input&gt;</span>
+<span class="nt">&lt;/familymember&gt;</span>
+</code></pre>
+
+
+	<p>Exemple , ajout d'une nouvelle personne (balise object DPP OBLIGATOIRE)<br></p><pre><code class="xml syntaxhl"><span class="nt">&lt;familymember&gt;</span>
+ <span class="nt">&lt;input&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+   <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"FAM"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"parente"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>P<span class="nt">&lt;/param&gt;</span>
+   <span class="nt">&lt;/object&gt;</span>
+   <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPP"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"prenom"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Robert<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"nom"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>BIDOCHON<span class="nt">&lt;/param&gt;</span>
+   <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+ <span class="nt">&lt;/input&gt;</span>
+<span class="nt">&lt;/familymember&gt;</span>
+</code></pre>
+
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier : 
+	<ul>
+	<li>vérification existence du tiers : Error("Le numéro de dossier indiqué nnn n'existe pas")</li>
+		<li>vérification tiers Personne physique (tiers.numdpp = 0) : Error(    "Le numéro de dossier indiqué nnn ne correspond pas à une personne morale")</li>
+	</ul>
+	</li>
+		<li>numdpp (si renseigné) : 
+	<ul>
+	<li>vérification existence du DPP: Error("DPP numéro xxxx inexistant")</li>
+		<li>vérification si déjà existant comme membre e la famille: Error("Cette personne est déjà correspondant de la personne morale nnn")</li>
+	</ul>
+	</li>
+		<li>data vérification de la présence de &lt;familymember&gt;</li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>si numdpp = 0, création d'un nouveau DPP, sinon, lecture à partir de la base</li>
+		<li>création d'un nouveau FAM</li>
+	</ul>
+
+
+	<ul>
+	<li>Si balise &lt;Object typename="FAM"&gt; 
+	<ul>
+	<li>modification de l'enregistrement FAM</li>
+	</ul>
+	</li>
+		<li>Si balise &lt;Object typename="DPP"&gt; 
+	<ul>
+	<li>modification de l'enregistrement DPP</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;fam&gt;</span>
+  <span class="nt">&lt;numtiers&gt;</span>xxxxx<span class="nt">&lt;/numtiers&gt;</span>
+  <span class="nt">&lt;numdpp&gt;</span>yyyyy<span class="nt">&lt;/numdpp&gt;</span>
+<span class="nt">&lt;/fam&gt;</span>
+</code></pre>
+</div></body>

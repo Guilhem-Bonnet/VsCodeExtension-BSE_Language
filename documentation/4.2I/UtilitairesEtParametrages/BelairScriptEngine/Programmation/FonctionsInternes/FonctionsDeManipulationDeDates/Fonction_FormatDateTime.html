@@ -1,0 +1,150 @@
+<body>
+
+
+<h3>Fonctions de manipulation de dates</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FormatDateTime(FormatString, DateValue)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie le string (chaîne de caratères) contenant la date et le temps formatés.
+			<br>La spécification de format correspond à un <a href="http://docwiki.embarcadero.com/Libraries/Tokyo/en/System.SysUtils.FormatDateTime" target="__BLANK">formatage en Delphi</a>.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>FormatString</code> : le string (chaîne de caractères) de format.</li>
+				<li><code>DateValue</code> : la date/le temps.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>La chaîne de caractères formatée.</p>			
+			
+			<p><b><br>Spécificateurs de formatage :</b></p>
+			
+			<table class="table table-bordered"> 
+ <tbody> 
+
+ <tr>
+			<td>Spécificateur</td>
+			<td>Affichage</td>
+		</tr>
+		<tr>
+			<td>c</td>
+			<td>La date, en utilisant le format court de Windows, puis l'heure, en utilisant le format de Windows. L'heure n'est pas affichée si la partie fractionnaire de la date est égale à zéro.</td>
+		</tr>
+		<tr>
+			<td>d</td>
+			<td>Le numéro du jour, sans le préfixer d'un zéro (de 1 à 31).</td>
+		</tr>
+		<tr>
+			<td>dd</td>
+			<td>Le numéro du jour, en le préfixant d'un zéro (de 01 à 31).</td>
+		</tr>
+		<tr>
+			<td>ddd</td>
+			<td>Le Jour abrégé (de Dim à Sam).</td>
+		</tr>
+		<tr>
+			<td>dddd</td>
+			<td>Le jour complet (de Dimanche à Samedi).</td>
+		</tr>
+		<tr>
+			<td>ddddd</td>
+			<td>La date, en utilisant le format court de Windows.</td>
+		</tr>
+		<tr>
+			<td>dddddd</td>
+			<td>La date, en utilisant le format long de Windows.</td>
+		</tr>
+		<tr>
+			<td>m</td>
+			<td>Le numéro du mois, sans le préfixer d'un zéro (de 1 à 12). Si le spécificateur "m" suit immédiatement un spécificateur "h" ou "hh", les minutes sont affichées à la place du numéro du mois.</td>
+		</tr>
+		<tr>
+			<td>mm</td>
+			<td>Le numéro du mois, en le préfixant d'un zéro (de 01 à 12). Si le spécificateur "m" suit immédiatement un spécificateur "h" ou "hh", les minutes sont affichées plutôt que le numéro du mois.</td>
+		</tr>
+		<tr>
+			<td>mmm</td>
+			<td>Le mois abrégé (de Jan à Déc).</td>
+		</tr>
+		<tr>
+			<td>mmmm</td>
+			<td>Le mois complet (de Janvier à Décembre).</td>
+		</tr>
+		<tr>
+			<td>yy</td>
+			<td>Le numéro de l'année, sous la forme de deux chiffres (de 00 à 99).</td>
+		</tr>
+		<tr>
+			<td>yyy</td>
+			<td>L'année, sous la forme de quatre chiffres (de 0000-9999).</td>
+		</tr>
+		<tr>
+			<td>h</td>
+			<td>L'heure, sans la préfixer d'un zéro (de 0 à 23).</td>
+		</tr>
+		<tr>
+			<td>hh</td>
+			<td>L'heure, en la préfixant d'un zéro (de 00 à 23).</td>
+		</tr>
+		<tr>
+			<td>n</td>
+			<td>Les minutes, sans les préfixer d'un zéro (de 0 à 59).</td>
+		</tr>
+		<tr>
+			<td>nn</td>
+			<td>Les minutes, en les préfixant d'un zéro (de 00 à 59).</td>
+		</tr>
+		<tr>
+			<td>s</td>
+			<td>Les secondes, sans les préfixer d'un zéro (de 0 à 59).</td>
+		</tr>
+		<tr>
+			<td>ss</td>
+			<td>Les secondes, en les préfixant d'un zéro (de 00 à 59).</td>
+		</tr>
+		<tr>
+			<td>t</td>
+			<td>L'heure, en utilisant le format d'heure court de Windows.</td>
+		</tr>
+		<tr>
+			<td>tt</td>
+			<td>L'heure, en utilisant le format d'heure long de Windows.</td>
+		</tr>
+		<tr>
+			<td>/</td>
+			<td>Le séparateur de la date de Windows.</td>
+		</tr>
+		<tr>
+			<td>:</td>
+			<td>Le séparateur des heures de Windows.</td>
+		</tr>
+ 
+ </tbody> 
+</table> 
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local date1
+date1 := EncodeDateTime(<span class="integer">2017</span>, <span class="integer">2</span>, <span class="integer">22</span>, <span class="integer">10</span>, <span class="integer">55</span>, <span class="integer">32</span>) 
+Print(FormatDateTime(<span class="string"><span class="delimiter">"</span><span class="content">yyyy-mm-nn hh:nn:ss</span><span class="delimiter">"</span></span>, date1))
+Print(FormatDateTime(<span class="string"><span class="delimiter">"</span><span class="content">dddddd</span><span class="delimiter">"</span></span>, date1))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">2017-02-55 10:55:32
+mercredi 22 février 2017
+</span></code></pre>
+				
+			
+			<br>
+		</div>
+	</div>
+	<br><br>
+</body>

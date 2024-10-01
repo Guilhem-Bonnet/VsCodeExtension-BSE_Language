@@ -1,0 +1,47 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:Open(content)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction crée un objet de type "document XML" à partir d'XML spécifiés dans une chaîne de caractères.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>content</code> : la chaîne de caractères contenant l'XML.</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>Un objet de type "document XML".
+
+			</p>
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc, s
+s := <span class="string"><span class="delimiter">"</span><span class="content">&lt;colors&gt;&lt;color&gt;red&lt;/color&gt;&lt;color&gt;green&lt;/color&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/colors&gt;</span><span class="delimiter">"</span></span> 
+doc := XML:Open(s)
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="tag">&lt;colors&gt;</span>
+  <span class="tag">&lt;color&gt;</span>red<span class="tag">&lt;/color&gt;</span>
+  <span class="tag">&lt;color&gt;</span>green<span class="tag">&lt;/color&gt;</span>
+  <span class="tag">&lt;color&gt;</span>blue<span class="tag">&lt;/color&gt;</span>
+<span class="tag">&lt;/colors&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

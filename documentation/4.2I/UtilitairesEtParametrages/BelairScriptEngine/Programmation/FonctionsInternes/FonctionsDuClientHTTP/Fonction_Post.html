@@ -1,0 +1,62 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:Post</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			Appelle une URL avec la méthode POST.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. objet HTTP</li></ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			</p><p>Renvoi le corps de la réponse.</p>
+			<p>En cas d'erreur, le résultat est vide.</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				</p><p>Code :</p>
+				<div class="bai_exemple"><pre>local http, body, json
+http := HTTP:New()
+HTTP:AddField(http, "name", "spencer")
+body := HTTP:POST(http, "http://httpbin.org/post")
+Assert(HTTP:ResponseCode(http) = 200) // raise if not 200
+json := JSON:Open(body)
+print(JSON:PrettyFormat(json))
+				</pre></div>
+			
+			
+			<p>Résultat :</p>
+			
+			<pre>{
+  "args": {},
+  "data": "",
+  "files": {},
+  "form": {
+    "name": "spencer"
+  },
+  "headers": {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Content-Length": "190",
+    "Content-Type": "multipart/form-data; boundary=--------022120111742709; charset=UTF-8",
+    "Host": "httpbin.org",
+    "User-Agent": "Mozilla/3.0 (compatible; Indy Library)",
+    "X-Amzn-Trace-Id": "Root=1-5e4fae47-315b0960efb2d97adae547d7"
+  },
+  "json": null,
+  "origin": "194.206.193.74",
+  "url": "http://httpbin.org/post" 
+}</pre>
+		</div>
+	</div>
+	<br><br>
+</body>

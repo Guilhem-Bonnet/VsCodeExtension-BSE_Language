@@ -1,0 +1,112 @@
+<body>
+<h2>Création d'une nouvelle extension</h2>
+
+<h3>Démarrage de la fonction de création d'une nouvelle extension</h3>
+
+<p>En cliquant sur la ligne 'Extensions' et par le menu principal<br><img src="images/baimodel_ext_new_menu.png" class="img-responsive"></p>
+
+<p>Par le menu surgissant, en faisant un clic-droit sur la ligne 'Extensions'<br><img src="images/baimodel_ext_new_menu.png" class="img-responsive"></p>
+
+<p>L'interface 'Nouvelle table d'extension apparait:'<br><img src="images/baimodel_ext_new_choixtype.png" class="img-responsive"></p>
+
+
+<h3>Choix du type d'extension</h3>
+
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td><b>Type</b></td>
+			<td><b>Table maitre associée</b></td>
+			<td><b>Code de l'extension</b></td>
+		</tr>
+		<tr>
+			<td>Personne assurée</td>
+			<td>RDPP</td>
+			<td><b>XP</b>aaa</td>
+		</tr>
+		<tr>
+			<td>Quittance</td>
+			<td>QUIT (bientôt...)</td>
+			<td><b>XQ</b>aaa</td>
+		</tr>
+		<tr>
+			<td>Risque automobile</td>
+			<td>RVEH</td>
+			<td><b>XV</b>aaa</td>
+		</tr><tr>
+			<td>Risque divers</td>
+			<td>RDIV</td>
+			<td><b>XD</b>aaa</td>
+		</tr>
+		<tr>
+			<td>Risque immobilier</td>
+			<td>RIMM</td>
+			<td><b>XI</b>aaa</td>
+		</tr><tr>
+			<td>Sinistres</td>
+			<td>SIN</td>
+			<td><b>XS</b>aaa</td>
+		</tr>
+		<tr>
+			<td>Tiers</td>
+			<td>TIERS</td>
+			<td><b>XT</b>aaa</td>
+		</tr>
+		<tr>
+			<td>Tous les contrats</td>
+			<td>CONT</td>
+			<td><b>XC</b>aaa</td>
+		</tr>
+		<tr>
+			<td>Tous risques</td>
+			<td>RISA</td>
+			<td><b>XR</b>aaa</td>
+		</tr>
+		<tr>
+			<td>Toutes pièces</td>
+			<td>PIEC</td>
+			<td><b>XA</b>aaa</td>
+		</tr>
+	</tbody><tbody>
+</tbody></table>
+
+<h3>Code de table</h3>
+
+<p>
+	Saisissez ici un identifiant unique de 3 à 5 lettres, sans espace ni signe.<br>
+	Le code final de la table sera donc les 2 premieres lettres imposées, selon le type d'extension et l'identifiant saisi ici
+</p>
+
+<h3>Extension multiple</h3>
+
+<p>
+	Par défaut, il n'y a qu'un seul enregistrement d'extension associé à l'enregistrement maitre.<br>
+	SI vous souhaitez que plueisurs enregistrements puissent être associés, cochez cette option:<br>
+	Dans ce cas, l'onglet contiendra une grille est des boutons de navigation
+</p>
+
+<h3>Validation de la création</h3>
+
+<p>
+	Cliquez sur OK pour valider la création de la table.<br><br>
+	L'écran suivant apparait, présentant le squelette de la table créée<br>
+	<img src="images/baimodel_ext_new_valide.png" class="img-responsive">
+</p>
+
+<p>
+	<b>Nom</b> ajoutez derrière le nom généré le suffixe de votre application (3 lettres). Ce sera le nom physique de la table dans la base.
+</p>
+
+<div class="alert alert-danger" role="alert"> 
+	<p>
+		Les champs de la clé primaire de l'extension sont automatiquement créés en fonction du type d'extension.<br>
+		<b>Il ne faut pas modifier ces champs</b>
+	</p>
+</div>
+
+<p>
+	Vous êtes maintenant prêt à compléter votre extension des champs de données souhaités:<br>
+	reportez-vous à la page <b>Modification d'une table</b>
+</p>
+
+</body>

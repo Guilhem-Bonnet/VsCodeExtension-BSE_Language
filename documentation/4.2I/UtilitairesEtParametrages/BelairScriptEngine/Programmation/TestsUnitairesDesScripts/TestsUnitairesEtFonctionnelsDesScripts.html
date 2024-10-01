@@ -1,0 +1,98 @@
+<body>
+<h2>Tests unitaires et fonctionnels des scripts</h2>
+<br>
+<h3>Vue d'ensemble</h3>
+<br>
+<p>
+Le test est le script BSE qui appelle un ou plusieurs scripts à tester et vérifier le résultat.
+<br>Le script de tests passe les paramètres externes dans le script testé. Le scenario d'un test "typique" est le suivant :
+
+</p><pre><code class="c syntaxhl"><span class="CodeRay">LOCAL doc, ... <span class="comment">// Les variables à stocker les résultats</span>
+<span class="comment">// Nettoyer les paramètres avant l'appelle</span>
+ClearExtParams() 
+<span class="comment">// Remplir les paramètres</span>
+SetExtParam(<span class="string"><span class="delimiter">"</span><span class="content">dossier</span><span class="delimiter">"</span></span>, <span class="integer">1009</span>)
+doc := ExecScript(<span class="string"><span class="delimiter">"</span><span class="content">Tiers_Details</span><span class="delimiter">"</span></span>)
+Assert(not IsNull(doc), <span class="string"><span class="delimiter">"</span><span class="content">XML result expected</span><span class="delimiter">"</span></span>)
+... <span class="comment">// Autres vérifications</span>
+</span></code></pre>
+
+<p>Le script de test peut être exécuté unitairement dans l'environnement de développement <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Outils, BSEDev" name="BSEDev%20-%20l'environnement%20de%20d%C3%A9veloppement%20des%20scripts/tests">BSEDev</a> ou par <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Outils, BSEExec" name="BSEExec%20-%20l'outil%20d'ex%C3%A9cution%20des%20scripts%20%C3%A0%20partir%20de%20ligne%20de%20commande">BSEExec</a>.</p>
+<br>
+<h3>Préconisations</h3>
+<br>
+<h4><b>Emplacement</b></h4>
+<br>
+<p>Les scripts de test "Standard" sont stockés dans SVN :
+<br>"\APPDEI\BASScripts\StdTests".</p>
+<br>
+<h4><b>Obligations</b></h4>
+
+<p>Chaque script de test doit être inclus dans un ensemble (test suite), voir ci-dessous, afin d'assurer les test automatisés.
+<br>
+<br>Chaque script "standard" développé et stocké dans "\APPDEI\BASScripts\Std" doit avoir un test correspondant, sinon il ne sera pas autorisé à l'exploitation.</p>
+<br>
+<h3>Test suite (ensemble de tests)</h3>
+<br>
+<p>Le "test suite" regroupe les tests dans un package, qui est exploité par <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Outils, BSEExec" name="BSEExec%20-%20l'outil%20d'ex%C3%A9cution%20des%20scripts%20%C3%A0%20partir%20de%20ligne%20de%20commande">BSEExec</a> de la manière suivante :
+</p><ul><li><a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Outils, BSEExec" name="BSEExec%20-%20l'outil%20d'ex%C3%A9cution%20des%20scripts%20%C3%A0%20partir%20de%20ligne%20de%20commande">BSEExec</a> ouvre le "test suite" (le fichier XML).</li>
+<li>Les options de ligne de commande sont prises en compte.</li>
+<li>Le fichier d'historique est ouvert dans le même répertoire que celui de "test suite", le nom est le même + ".log".</li>
+<li>On sauvegarde l'environnement d'application (BDD et fichiers).</li>
+<li>Pour chaque test, dans l'ensemble :
+<ul><li>On lance le script.</li>
+<li>On traite les erreurs éventuelles.</li>
+<li>On historise les résultats.</li>
+<li>On restaure l'environnement de l'application.</li></ul></li>
+<li>Si tous les tests sont passés sans erreur, le statut ("errorlevel") retourné est 0, si non : 1.</li></ul>
+<br>
+<h4><b>Format de package</b></h4>
+<br>
+<p>Le package "test suite" est un fichier XML de format suivant :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;suite</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">BASStdScripts</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;test</span> <span class="attribute-name">file</span>=<span class="string"><span class="delimiter">"</span><span class="content">[APP_HOME]\BASScripts\StdTests\File_Tests.bs</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;test</span> <span class="attribute-name">file</span>=<span class="string"><span class="delimiter">"</span><span class="content">[APP_HOME]\BASScripts\StdTests\Tiers_Details_Test.bs</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;/suite&gt;</span>
+</span></code></pre>
+
+<p>[APP_HOME] ou [CHEMIN] sont les macros acceptables d'environnement Belair. Ils sont substitués par le chemin racine de l'application exploitée, i.e. "D:\belair\APPDEI".</p>
+<br>
+<h4><b>Exemple de démarrage de tests</b></h4>
+<br>
+<p>A partir de l'invite de commande.</p>
+
+<pre>BSEExec.exe /:TS:D:\belair\APPDEI\BASScripts\StdTestsSuite.xml</pre>
+<br>
+<p>A partir d'un fichier batch.</p>
+
+<pre>@echo off
+BSEExec.exe /:TS:D:\belair\APPDEI\BASScripts\StdTestsSuite.xml
+if errorlevel 1 goto tests_failed
+echo.Tests OK
+exit /b 0
+
+:tests_failed
+echo.Tests FAILED
+exit /b 1</pre>
+<br>
+<h3>Fonctions utiles pour les tests</h3>
+<br>
+<p>Les fonctions de manipulations des paramètres externes attribuent et récupèrent les valeurs d'entrée/sortie.</p>
+
+<ul><li><i>ClearExtParams</i></li>
+<li><i>SetExtParam</i></li>
+<li><i>GetExtParam</i></li>
+<li><i>GetExtParamDef</i></li>
+<li><i>SaveExtParams</i></li></ul>
+<br>
+<p>La fonction d'exécution d'un script.</p>
+<ul><li><i>ExecScript</i></li></ul>
+<br>
+<p>Les fonctions de vérification.</p>
+<ul><li> <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de système" name="Fonctions%20de%20syst%C3%A8me%20:%20Assert">Assert</a></li></ul>
+<br>
+<br>
+
+</body>

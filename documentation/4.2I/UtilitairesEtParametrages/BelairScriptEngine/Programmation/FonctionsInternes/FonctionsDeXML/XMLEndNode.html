@@ -1,0 +1,52 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:EndNode(doc)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction revient vers le nœud courant comme il était avant le dernier appel de <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de XML" name="Fonctions%20de%20XML%20:%20XML:StartNode">XML:StartNode</a>.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>Aucun.
+			</p>
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">cars</span><span class="delimiter">"</span></span>)
+  Print(XML:GetNodeName(doc))
+  XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">toyota</span><span class="delimiter">"</span></span>)
+    Print(XML:GetNodeName(doc))
+  XML:EndNode(doc)
+  Print(XML:GetNodeName(doc))
+XML:EndNode(doc)
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre>cars
+toyota
+cars</pre>
+
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

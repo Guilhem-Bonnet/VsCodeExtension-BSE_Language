@@ -1,0 +1,38 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>WorkGroup_ListUsers</code></h3>
+		</div>
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<p><code>group (string, obl)</code>: code du groupe (param <code>group</code> pour rester cohérent avec les autres actions mais on devrait utiliser partout le nom de l'entité qui est <code>workgroup</code>)<br><code>userdetails (boolean, opt) </code>: si true alors on retourne tous les autres champs de l'entité <code>user</code> <span style="color:red;">sauf <code>passwordhash</code></span></p>
+
+
+	<a name="Retour-si-OK"></a>
+<h3>Retour si OK<a href="#Retour-si-OK" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;user-rows</span> <span class="na">group=</span><span class="s">"[code du groupe]"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;user&gt;</span>
+    <span class="nt">&lt;id&gt;&lt;/id&gt;</span>
+    <span class="nt">&lt;login&gt;&lt;/login&gt;</span>
+    <span class="nt">&lt;fullname&gt;&lt;/fullname&gt;</span>
+    <span class="nt">&lt;disabled&gt;&lt;/disabled&gt;</span>
+    <span class="c">&lt;!-- si userdetails = true alors tous les autres champs de l'entité user --&gt;</span>
+  <span class="nt">&lt;/user&gt;</span>
+  ...
+<span class="nt">&lt;/user-rows&gt;</span>
+</code></pre>
+
+	<a name="Retour-si-pas-OK"></a>
+<h3>Retour si pas OK<a href="#Retour-si-pas-OK" class="wiki-anchor"></a></h3>
+
+
+	<ol>
+	<li>Code du groupe non défini dans la base : warning = "Le groupe [code du groupe] n'existe pas"</li>
+	</ol>
+</div></body>

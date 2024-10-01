@@ -1,0 +1,369 @@
+<body>
+	<h2>Descriptif technique</h2>
+
+	<p>
+		Ce module optionnel autorise l'importation de données extérieures au système BELAIR.
+	</p>
+
+	<p>
+		C'est un système généralisé de description et de traitement des données destinées à être intégrées à la base de données du système Belair, en respectant ses logiques et contraintes.
+	</p>
+
+	<p>
+		C'est un système de programmation.
+		Il peut se limiter à des fonctions simples, comme il peut gérer des situations très complexes.
+		Si des développements sophistiqués doivent être conduits par ce système, il est indispensable qu'ils le soient par une personne dotée d'une culture 'programmation'. 
+	</p>
+
+	<p>
+		Les traitements envisageables sont du type : 
+		</p><ul>
+			<li>Compléter le portefeuille par reprise d'un fichier</li>
+			<li>Import de quittances reçues sous forme de fichier informatique, dans un bordereau préexistant</li>
+			<li>Mises à jour d'un portefeuille, par des mouvements reçus d'un autre site</li>
+			<li>Etc…</li>
+		</ul>
+	
+
+	<p>
+		Pour exécuter de telles actions, il convient de : 
+		</p><ul>
+			<li>Définir précisément la structure des données d'entrée</li>
+			<li>Programmer le script d'import</li>
+		</ul>
+	
+
+	<p>
+		Le lancement du module s'effectue à partir du bureau Belair :
+		<br><br>
+		<img src="images/automate_menu.jpg" class="img-responsive">
+	</p>
+
+	<p>
+		La fenêtre ouverte propose 2 icônes : <img src="images/nouveau_automate.jpg"> et <img src="images/ouvrir.jpg">
+		Le clic sur <img src="images/nouveau_automate.jpg"> propose la création totale.
+		Le clic sur <img src="images/ouvrir.jpg"> affiche les scripts déjà constitués (suffixe : .BSI dans le répertoire 'Automate').
+	</p>
+
+	<p>
+		Lors de la création, 4 onglets sont à disposition : 
+		</p><ul>
+			<li>Description</li>
+			<li>Script</li>
+			<li>Voir données</li>
+			<li>Compte-rendu</li>
+		</ul>
+	
+
+	<br><br>
+	<p>
+		Onglet : <img src="images/description.jpg">
+		<br><br>
+		Il permet de définir le format des données à importer.
+	</p>
+
+	<p>
+		<b>3 possibilités</b> :
+
+		</p><ul>
+			<li>
+				<b>Fichier Texte (ASCII)</b>
+
+				<p>
+					Doit être en caractères de type ASCII, en format texte (exp. fichier .txt, tableau Excel au format .csv). <br>
+					Seules, sont acceptées les données numériques codées sur 1 ou 2 octets (8 ou 16 bits), ou à la norme BCD (codification par demi-octets).
+				</p>
+
+				<p>
+					Sont admis les enregistrements de longueur fixe, ou de longueur variable avec séparateurs d'informations (par exemple : " ; " ou " / ") et marques de fin d'enregistrement ( CR + LF ).
+				</p>
+
+				<ul>
+					<li>
+						Cocher '<b>Fichier texte</b>'. 
+					</li>
+
+					<li>
+						Cliquer sur <img src="images/selectionner.jpg"> pour choisir le fichier à traiter. La zone 'Fichier à traiter' se renseigne en indiquant le chemin pour atteindre le fichier. 
+					</li>
+
+					<li>
+						Si enregistrements de longueurs fixe : cocher '<b>Longueur fixe</b>' et indiquer la longueur. 
+					</li>
+
+					<li>
+						Si enregistrements de longueur variable : sélectionner le '<b>Séparateur de champs</b>' ou le taper dans cette zone s'il n'existe pas dans la liste proposée. 
+					</li>
+
+					<li>
+						Le cas échéant, préciser le '<b>Délimiteur de champs</b>'<br>
+						Ex : " pour : "NOM";"PRENOM";…. 
+					</li>
+
+					<li>
+						'<b>Longueur en-tête</b>' : éventuellement, le nombre d'octets qu'il convient d'ignorer avant le premier enregistrement. 
+					</li>
+
+					<li>
+						'<b>Format des dates</b>' : à choisir dans la liste proposée ou à taper directement dans la zone.<br>
+						Il s'agira du format dans lequel seront traduites l'ensemble des dates provenant du fichier à traiter. 
+					</li>
+
+					<li>
+						La fenêtre blanche est destinée à recevoir la description des enregistrements du fichier lu (différentes "colonnes").<br>
+						1 ligne par data<br>
+						1 nom symbolique par ligne, suivi par sa description (format ou format + longueur si fichier en longueur fixe), telle que précisée au centre de l'onglet (syntaxe et type d'informations).<br>
+						<span class="bai_exemple">ex : num_police,A,25</span>
+						La première ligne sera accédée par le script par ce nom symbolique, ou par son rang dans l'enregistrement (en commençant par 0) précédé du nom de table DATA.<br>
+						<span class="bai_exemple">ex : ?DATA(0) pour la première ligne, ?DATA(1) pour la seconde, etc.</span>
+						ou ?DATA("num_police") pour l'exemple donné précédemment.<br><br>
+						<div class="alert alert-danger"><b>Attention :</b> pour les champs numériques codés, la longueur s'exprime en nombre d'octets.</div>
+					</li>
+
+					<li>
+						Le bouton <img src="images/importer_structure.jpg"> permet de lire un fichier texte contenant la structure pré-renseignée du fichier à traiter.
+					</li>
+				</ul>
+			</li>
+
+			<li>
+				<b>Table de données</b>
+
+				<p>
+					Une case à cocher <b>"Enregistrer les informations d'identification"</b> permet si nécessaire de stocker les informations de connexion à la base de données.
+					Lorsqu'elle est cochée, il est demandé les informations de connexion, Utilisateur et Mot de passe, qui sont ensuite enregistrés.
+				</p>
+
+				<p>
+					<b>Table externe</b> à Belair issue d'une base de données ayant un pilote ODBC, native BDE (exp. : base oracle)
+					</p><ul>
+						<li>
+							Cocher 'SGDB'. 
+						</li>
+
+						<li>
+							Renseigner les zones 'Alias' et 'Table' 
+						</li>
+
+						<li>
+							La fenêtre blanche est destinée à recevoir la description des enregistrements du fichier lu.<br>
+							1 ligne par data<br>
+							1 nom symbolique par ligne, suivi par sa description, telle que précisée sur l'écran.<br>
+							<span class="bai_exemple">ex : numero_police,A</span>
+							La première ligne sera accédée par le script par ce nom symbolique ou par son rang dans l'enregistrement (en commençant par 0) précédé du nom de table DATA.<br>
+							ex : ?DATA(0) pour la première ligne, ?DATA(1) pour la seconde, etc, ou ?DATA("numero_police") pour l'exemple donné précédemment.<br><br>
+							<div class="alert alert-danger"><b>Attention :</b> pour les champs numériques codés, la longueur s'exprime en nombre d'octets.</div>
+						</li>
+
+						<li>
+							Le bouton <img src="images/importer_structure.jpg"> permet de lire un fichier texte contenant la structure pré-renseignée du fichier à traiter.
+						</li>
+					</ul>
+				
+
+				<b>Tables Belair</b>
+
+				<p>
+					On peut utiliser l'automate d'import en "interne" pour effectuer un lot des vérifications et/ou des modifications sur les données de Belair.
+					</p><ul>
+						<li>
+							Cocher '<b>SGDB</b>'. Indiquer "<b>BAIBASE</b>" dans la zone '<b>Alias</b>'. La table peut être sélectionnée par la liste proposée dans la zone '<b>Table</b>'.<br>
+							La fenêtre blanche destinée à recevoir la description des champs de la table lue se renseigne aussitôt d'elle-même, la structure des tables Belair étant connue.<br>
+							ou<br>
+							La ou les tables peuvent être sélectionnées en cliquant sur le bouton [Requête SQL]Une fenêtre s'ouvre permettant de saisir un SQL de SELECT pouvant comporter des jointures entre différentes tables de l'application Belair scrutée.<br>
+							<span class="bai_exemple">Exemple, pour une application APPXYZ, la table CONT doit être dénommée CONTXYZ dans le SQL.</span>
+						</li>
+
+						<li>
+							Le bouton <img src="images/lire_champs.jpg"> renseigne alors la fenêtre blanche destinée à recevoir la description des champs avec la liste des champs retenus dans le SELECT du SQL.
+						</li>
+					</ul>
+				
+			</li>
+
+			<li>
+				<b>Fichier XML</b>
+
+				<ul>
+					<li>
+						Cocher 'XML'.
+					</li>
+
+					<li>
+						Choisir &lt;fichier&gt; comme source puis cliquer sur <img src="images/selectionner_un_fichier.jpg"> pour choisir le fichier à traiter. 
+					</li>
+
+					<p>
+						Pour le traitement de fichiers de ce format, il ne faut pas renseigner la fenêtre blanche destinée à recevoir le descriptif de fichier d'entrée.<br>
+						Tout fichier xml se compose de la manière suivante :
+						</p><div class="bai_code">
+							<div class="bai_tab">
+								&lt;node1&gt;
+								<div class="bai_tab">
+									&lt;node21&gt;
+									<div class="bai_tab">
+										&lt;texte&gt;bonjour&lt;/texte&gt;<br>
+										&lt;node31&gt;
+										<div class="bai_tab">
+											&lt;contenu&gt;coucou&lt;/contenu&gt;
+										</div>
+										&lt;/node31&gt;<br>
+										&lt;node31&gt;
+										<div class="bai_tab">
+											&lt;contenu&gt;hello&lt;/contenu&gt;
+										</div>
+										&lt;/node31&gt;
+									</div>
+									&lt;/node21&gt;<br>
+									&lt;node22&gt;
+									<div class="bai_tab">
+										...
+									</div>
+									&lt;/node22&gt;
+								</div>
+								&lt;/node1&gt;
+							</div>
+						</div>
+
+						Le 'node1' est toujours unique, c'est le point d'entrée du fichier xml.<br>
+						L'automate d'import parcourt les éléments de rang2. Ainsi, selon cet exemple, l'automate d'import va se placer sur le nœud 'node21', puis sur le nœud 'node22'.  
+					
+
+					<li>
+						'<b>Vérification du schéma</b>' : si cette case est cochée, le schéma du fichier est vérifié par rapport au fichier xsd, définition des règles du fichier XML portant le même nom que ce dernier et situé dans le même répertoire. Ce fichier va permettre par exemple de dire qu'un tiers doit avoir 1 ou plusieurs contrats, qu'il n'a qu'un seul nom, mais peut avoir plusieurs prénoms, etc...<br>
+						Si le fichier n'est pas conforme, un message d'erreur le signale lors de l'exécution du script.
+					</li>
+				</ul>
+			</li>
+		</ul>
+	
+	<br>
+	<p>
+		<b>Options</b> : 5 cases à cocher donnant des consignes à respecter pendant l'exploitation.
+		</p><ul>
+			<li>
+				<b>'M.à.j. accès alpha'</b> : si la case cochée, le traitement s'effectuera en mettant si nécessaire à jour la table des accès alphabétiques. 
+			</li>
+			<li>
+				<b>'Champs calculés'</b> : si la case est cochée, les champs du portefeuille "calculés" seront mis à jour durant le traitement effectué s'ils sont situés dans des tables ouvertes par le script. 
+			</li>
+			<li>
+				<b>'Trace modif.'</b> : si la case est cochée et que le fichier 'trace' est géré, celui-ci sera mis à jour durant le traitement effectué par le script.
+			</li>
+			<li>
+				<b>'Compte rendu horodaté'</b> : ajoute la date et l'heure au fichier Log généré par le compte-rendu. Cette option permet si le script est exploité à plusieurs reprises (cas de traitements quotidiens, d'EDI par exemple) de ne pas écraser les comptes-rendus à chaque traitement et donc d'en garder un historique.
+			</li>
+			<li>
+				<b>'Timer (sec.)'</b> : Permet la réexécution automatique du script à intervalle régulier (en secondes).
+			</li>
+		</ul>
+		Si les 3 premières options sont activées, elles entraînent un ralentissement conséquent du traitement.
+	
+	
+		<br><br>
+	<p>
+		Onglet : <img src="images/script.jpg">
+		<br><br>
+		Il permet de saisir et modifier le programme de traitement des données du fichier ou de la table d'entrée.
+	</p>
+
+	<p>
+		Chaque ligne est précédé d'un n° qui sera reporté dans les messages d'anomalie et d'interruption éventuellement affichés lors de l'exécution du script.
+	</p>
+
+	<p>
+		Le programme est capable de reconnaître les éléments saisis par l'utilisateur et de leur adjoindre une codification "couleurs" pour faciliter l'écriture et la lecture du script.
+		</p><ul>
+			<li><b style="color:black">Mot-clé</b> : noir et en gras</li>
+			<li><i style="color:blue">Commentaire</i> : bleu et italique</li>
+			<li><span style="color:red">Chiffre</span> : en rouge</li>
+			<li><b style="color:LightSeaGreen">"Chaîne de caractères"</b> (entre guillemets) : en vert et en gras</li>
+			<li><b style="color:brown">Label</b> : en marron et en gras</li>
+		</ul>
+	
+
+	<p>
+		Il est possible dans cet onglet d'utiliser les raccourcis clavier Windows pour :
+		</p><ul>
+			<li><b>Copier</b> : <kbd>Ctrl</kbd> + <kbd>C</kbd></li>
+			<li><b>Couper</b> : <kbd>Ctrl</kbd> + <kbd>X</kbd></li>
+			<li><b>Coller</b> : <kbd>Ctrl</kbd> + <kbd>V</kbd></li>
+			<li><b>Annuler la dernière action</b> : <kbd>Ctrl</kbd> + <kbd>Z</kbd></li>
+		</ul>
+	
+
+	<p>
+		2 boutons dans le haut de l'écran, en dessous du menu 'Exécuter', sont utilisables à partir de cet onglet pour faciliter l'écriture du script :
+		</p><ul>
+			<li>
+				<img src="images/dico.jpg"> : comme dans les autres fonctionnalités de BELAIR, il permet d'accéder aux onglet 'Tables', 'Capture', 'Fonctions' et 'Calcul' permettant de glisser dans le script des champs, formules et commandes sans avoir à les saisir, permettant de retrouver facilement les informations et évitant des erreurs de saisie.
+			</li>
+			<li>
+				<img src="images/champs_dimport.jpg"> : donne en colonne dans la gauche de l'onglet, les DATA du fichier d'entrée tels que listées dans l'onglet "Description" avec la possibilité comme avec <img src="images/dico.jpg"> de glisser les informations dans le script.
+			</li>
+		</ul>
+	
+	
+	<br><br>
+	<p>
+		Onglet : <img src="images/voir_donnees.jpg">
+		<br><br>
+		Pour vérifier la bonne cohérence de la description de données, (y compris pendant l'évolution de sa construction) il est possible de procéder à la visualisation du fichier ou de la table concerné.
+	</p>
+	<p>
+		Cocher '<b>Voir données traduites</b>' permet de constater les valeurs 'texte' des zones numériques et dates.
+	</p>
+	<p>
+		Cliquer sur <img src="images/ouvrir_automate.jpg"> pour consulter les données (l'éventuelle zone définie en 'en-tête' est automatiquement sautée.)
+	</p>
+	<p>
+		Vous pouvez saisir dans la fenêtre un numéro de l'enregistrement à partir duquel vous voulez consulter le fichier et cliquer sur <img src="images/aller.jpg"> pour vous positionnez dessus
+	</p>
+	<p>
+		Vous pouvez également saisir une valeur déterminée et cliquer sur <img src="images/chercher_button.jpg">, l'enregistrement qui contient cette valeur sera sélectionné.
+	</p>
+	<p>
+		Un clic sur <img src="images/inf.jpg"> affichera l'enregistrement suivant.
+	</p>
+	<p>
+		A la fin de la consultation, il est impératif de fermer le fichier avant toute nouvelle exploitation du script.
+	</p>
+	<br><br>
+	<p>
+		Onglet : <img src="images/compte_rendu.jpg">
+		<br><br>
+		<b>Encadré "Messages"</b> affiche :
+		</p><ul>
+			<li>
+				toutes les lignes exécutées dans le script, si la fonction de suivi est activée par le menu 'Exécuter / Suivi du script'.
+				Un nouveau clic sur ce menu cessera l'affichage du déroulement. L'utilisation de ce suivi ralentit le déroulement du script.
+			</li>
+			<li>
+				tous les messages rendus par l'exécution de la commande <b>ECRAN</b>.
+			</li>
+		</ul>
+	
+
+	<p>
+		<b>Encadré "Compte-rendu"</b> affiche :
+		</p><ul>
+			<li>
+				la date et l'heure de début et de fin de traitement.
+			</li>
+			<li>
+				les éventuels messages d'anomalies et d'interruption du script.
+			</li>
+			<li>
+				tous les messages rendus par l'exécution de la commande <b>PRINT</b>.
+			</li>
+		</ul>
+	
+
+	<p>
+		Toutes les informations de l'encadré "Compte-rendu" sont écrites dans un fichier Log situé dans le répertoire 'Travail' du poste ayant effectué le traitement.<br>
+		Le fichier log porte le même nom que le script et l'extension '.bsc'.<br>
+		Le nom du fichier peut être complété par la date et l'heure de traitement si l'option "compte-rendu horodaté" (ajoutée au programme en août 2008) est cochée. <br>
+		Il peut être lu avec n'importe quel éditeur de fichier texte.
+	</p>
+
+</body>

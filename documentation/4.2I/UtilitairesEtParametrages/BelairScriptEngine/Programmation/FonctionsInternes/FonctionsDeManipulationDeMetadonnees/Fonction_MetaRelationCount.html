@@ -1,0 +1,69 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:RelationCount(Entity)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie le nombre des relations.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				<br><code>Entity</code> : l'entité. Utilisez <code>Meta:RelationCount()</code> pour obtenir toutes les relations du modèle.
+			</p>
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>Le nombre (integer).</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local entity, relation, i
+Print(<span class="string"><span class="delimiter">"</span><span class="content">Relations of ADH</span><span class="delimiter">"</span></span>)
+entity := Meta:GetEntityByCode(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>)
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Meta:RelationCount(entity)
+begin
+  relation := Meta:GetRelations(entity, i)
+  Print(relation.Name)
+  i := i + <span class="integer">1</span>
+end
+Print(<span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>)
+Print(<span class="string"><span class="delimiter">"</span><span class="content">All model relations</span><span class="delimiter">"</span></span>)
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Meta:RelationCount()
+begin
+  relation := Meta:GetRelations(i)
+  Print(relation.Name)
+  i := i + <span class="integer">1</span>
+end
+</span></code></pre>
+
+				
+				
+				<p>Résultat :</p>
+				<pre>Relations of ADH
+ADH--GARAN
+PIEC--ADH
+ADH--RDPP
+ADH--RVEH
+ADH--RIMM
+ADH--RDIV
+ADH--PB
+ADH--CONATT
+ADH--RISA
+
+All model relations
+CLA--LET
+CLAUSE--PCLA
+...
+TIERS--RVEH
+TIERS--ZONLIB</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

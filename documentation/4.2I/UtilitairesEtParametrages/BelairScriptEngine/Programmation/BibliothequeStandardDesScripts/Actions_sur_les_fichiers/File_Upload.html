@@ -1,0 +1,56 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+				<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>File_Upload</code></h3>
+		</div>
+
+<p>Archivage et indexation d'un fichier</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li><code>fileType</code> (string, obligatoire) : type du fichier d'origine, i.e. "txt", "doc", "jpg", "pdf" etc.</li>
+		<li><code>fileName</code> (string, optionnel) : nom du fichier d'origine (exemple « permis de conduire.pdf »)</li>
+		<li><code>data</code> (string, obligatoire) : contenu en <a href="https://en.wikipedia.org/wiki/Base64" class="external">Base64</a></li>
+		<li><code>eventFolder</code> (int, optionnel) : numéro du dossier tiers de l'événement auquel le fichier doit être attaché (correspond à CHRO.B_NUMTIERS)</li>
+		<li><code>eventId</code> (int, optionnel) : numéro dans le dossier tiers de l'événement auquel le fichier doit être attaché (correspond à CHRO.B_ORDRE)</li>
+	</ul>
+
+
+	<a name="Action"></a>
+<h3>Action<a href="#Action" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Recherche du volume concerné dans la table VOL (création si besoin)</li>
+		<li>Recherche id pour table FICH <code>IDGEN(FICH, B_ID)</code></li>
+		<li>Composition du nom du fichier afin de garantir l'unicité</li>
+		<li>Création du fichier dans le répertoire [SCANNER]\AAAAMM (AAAAMM selon la date du jour)</li>
+		<li>Enregistrement dans la table FICH</li>
+		<li>Si <code>eventfolder</code> et <code>eventid</code> sont renseignés:
+	<ul>
+	<li>eventfolder et eventid doivent correspondre à un enregistrement existant dans CHRO (CHRO.B_NUMTIERS = eventfolder , CHRO.B_ORDRE = eventid</li>
+		<li>ajout d'un enregistrement dans FICHREF pour ajouter une pièce jointe à cet événement du chrono (type 'CH')</li>
+		<li>SI CHRO.B_FICHIER est vide (c.d.a. ajout 1ere piece jointe), mettre le filename du fichier uploadé dans B_FICHIER</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>La balise <code>&lt;rank&gt;</code> n'est présente que si <code>eventfolder</code> et <code>eventid</code> sont renseignés.</p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;file&gt;</span>
+  <span class="nt">&lt;id&gt;</span>FICH.B_ID<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;name&gt;</span>FICH.B_FICHIER<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;rank&gt;</span>FICHREF.B_RANK<span class="nt">&lt;/rank&gt;</span>
+<span class="nt">&lt;file&gt;</span>
+</code></pre>
+</div></body>

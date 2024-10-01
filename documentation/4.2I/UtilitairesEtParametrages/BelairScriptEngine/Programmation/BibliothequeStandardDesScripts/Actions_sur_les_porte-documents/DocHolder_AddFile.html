@@ -1,0 +1,34 @@
+<body>
+			<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DocHolder_AddFile</code></h3>
+		</div>
+
+<p>Ajout d'un fichier dans le porte-document d'un Tiers/Contrat/Sinistre</p>
+
+
+	<p>Cette fonction ajoute dans un porte-documents un fichier <strong>déjà enregistré</strong> dans FICH (pas d'upload)</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h2>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li>TargetKind (string, obligatoire): T,C,S =&gt; indique la table concernée (TIERS, CONTRAT, SINISTRE)</li>
+		<li>TargetId (integer, obligatoire): id dans la table concernée</li>
+		<li>FileId (integer, obligatoire) : Id du fichier dans FICH</li>
+		<li>Path (string, optionnel) : si renseigné, contient le chemin vers un sous répertoire 'cible' du porte-documents</li>
+		<li>Title (string, optionnel) : titre du fichier dans le porte-documents</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h2>Retour<a href="#Retour" class="wiki-anchor"></a></h2>
+
+
+	<p>Flux XML<br></p><pre><code class="xml syntaxhl"><span class="nt">&lt;DocHolder_AddFile&gt;</span>
+    <span class="nt">&lt;id&gt;</span>id dans la table xxxx_FILES<span class="nt">&lt;/id&gt;</span>
+<span class="nt">&lt;/DocHolder_AddFile&gt;</span>
+</code></pre></div></body>

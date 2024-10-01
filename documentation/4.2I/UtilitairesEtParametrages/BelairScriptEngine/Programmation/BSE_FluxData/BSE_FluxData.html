@@ -1,0 +1,48 @@
+<body>
+<h2>BSE Flux Data</h2>
+<br>
+<p>
+
+Pour normaliser la gestion des flux de données de type Data (flux transmis en paramètres d'un script), il faut respecter les règles ci-dessous :
+
+</p><ul>
+	<li>Si la balise est absente, alors :<br>  Champ non mis à jour, ou non renseigné.</li>
+	</ul>
+
+
+	<ul>
+	<li>Si &lt;balise&gt;&lt;/balise&gt; ou &lt;balise/&gt;, alors :<br>  Champs mis à jour avec comme valeur " ".</li>
+	</ul>
+
+
+	<ul>
+	<li>Si &lt;balise&gt;Test&lt;/balise&gt;, alors :<br>  Champs mis à jour avec le texte "Test".</li>
+	</ul>
+
+
+	<ul>
+	<li>Si &lt;balise IsNull=True/&gt;&lt;/balise&gt;, alors : <br>  Champs mis à jour avec la valeur "Null".</li>
+	</ul>
+<br>
+
+	<p><b>Exemple d'un flux Data</b></p>
+
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="tag">&lt;data&gt;</span>
+  <span class="tag">&lt;login&gt;</span>(obligatoire) : Login utilisateur<span class="tag">&lt;/login&gt;</span>
+  <span class="tag">&lt;passwordhash&gt;</span>(obligatoire) : password<span class="tag">&lt;/passwordhash&gt;</span>
+  <span class="tag">&lt;credentialtype&gt;</span>(obligatoire) : type Credential <span class="tag">&lt;/credentialtype&gt;</span>
+  <span class="tag">&lt;fullname&gt;</span>(optionnel) : Nom Complet <span class="tag">&lt;/fullname&gt;</span> //peut être Null
+  <span class="tag">&lt;style&gt;</span><span class="inline">(<span class="tag">optionnel</span>) : <span class="tag">Style</span> </span><span class="tag">&lt;/style&gt;</span> //peut être Null
+  <span class="tag">&lt;palette&gt;</span>(optionnel) : Palette <span class="tag">&lt;/palette&gt;</span> //peut être Null
+  <span class="tag">&lt;language&gt;</span>(obligatoire) : language  ex "fr" <span class="tag">&lt;/language&gt;</span>
+  <span class="tag">&lt;workphone&gt;</span>(optionnel) : Work Phone <span class="tag">&lt;/workphone&gt;</span> //peut être Null
+  <span class="tag">&lt;cellphone&gt;</span>(optionnel) : Cell Phone <span class="tag">&lt;/cellphone&gt;</span> //peut être Null
+  <span class="tag">&lt;disabled&gt;</span>(obligatoire) : disabled <span class="tag">&lt;/disabled&gt;</span>
+  <span class="tag">&lt;email&gt;</span>(optionnel) : Mail default <span class="tag">&lt;/email&gt;</span>
+  <span class="tag">&lt;profilcrm&gt;</span>(optionnel) : Workgroup <span class="tag">&lt;/profilcrm&gt;</span>
+<span class="tag">&lt;/data&gt;</span>
+</span></code></pre>
+<br><br>
+
+</body>

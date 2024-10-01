@@ -1,0 +1,69 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:NewArrayValue(doc, value)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>La fonction affecte le texte converti de <code>value</code> au JSONArray courant.<br>
+		Génère une erreur si le parent n'est pas un JSONArray.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			<li><code>value</code> : ne variable de n'importe quel type primitif (booléen, currency, date, float, integer, int64, UnicodeString).<br>
+			La valeur NULL est acceptée
+			</li></ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Aucun.
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewArray(doc, "colors")
+  Json:NewArrayValue(doc, "Red")
+  Json:NewArrayValue(doc, "Green")
+  Json:NewArrayValue(doc, "Blue")
+Json:EndArray(doc)
+Json:NewArray(doc, "Entier")
+  Json:NewArrayValue(doc, 1)
+  Json:NewArrayValue(doc, 2)
+  Json:NewArrayValue(doc, 3)
+Json:EndArray(doc)           
+Json:Close(doc)  
+return Json:PrettyFormat(doc)
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre style="color:#000000;background:#ffffff;"><span style="color:#696969; ">{</span>
+<span style="color:#696969; ">  "colors": [</span>
+<span style="color:#696969; ">    "Red",</span>
+<span style="color:#696969; ">    "Green",</span>
+<span style="color:#696969; ">    "Blue" </span>
+<span style="color:#696969; ">  ],</span>
+<span style="color:#696969; ">  "Entier": [</span>
+<span style="color:#696969; ">    1,</span>
+<span style="color:#696969; ">    2,</span>
+<span style="color:#696969; ">    3</span>
+<span style="color:#696969; ">  ]</span>
+<span style="color:#696969; ">}</span>
+</pre>
+<!--Created using ToHtml.com on 2019-09-19 15:07:50 UTC -->
+	</div>
+</div>
+</body>

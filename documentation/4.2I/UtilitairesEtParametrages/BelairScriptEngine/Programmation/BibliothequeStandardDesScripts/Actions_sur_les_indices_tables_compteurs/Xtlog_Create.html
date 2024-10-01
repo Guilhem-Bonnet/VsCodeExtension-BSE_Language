@@ -1,0 +1,39 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Xtlog_Create</code></h3>
+		</div>
+
+	<p>Création d'un login de connexion à une plate forme Bel Air.</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (obligatoire) : numéro de tiers de rattachement</li>
+		<li>domain (obligatoire) : doit être une entrée de la table de codes XTLOGSITE</li>
+		<li>login (obligatoire) : login</li>
+		<li>mot de passe (un des deux est obligatoire):
+	<ul>
+	<li>password  : mot de passe en clair (sera encodé en MD5)</li>
+		<li>OU passwordMD5 (optionnel) : mot de passe encodé en MD5 (préférable)</li>
+	</ul>
+	</li>
+		<li>role (optionnel, "C" par défaut): doit être une entrée de la table de codes XTLOGROLE</li>
+		<li>user (optionnel) : nom utilisateur Belair associé au compte - dans ce cas, role est forcé à "U" </li>
+		<li>email (optionnel) : email associé au compte</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Si succès: "OK" avec message dans log "login xxxxxx du domaine xxxxxx créé avec succès" </li>
+		<li>Si échec: "KO" avec message d'erreur dans logerror "ensemble login/password déjà existant", "tiers %s inexistant", ...</li>
+	</ul>
+</div></body>

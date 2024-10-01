@@ -1,0 +1,43 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:SetBody</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			Défini la valeur du corps de la prochaine requête.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. objet HTTP</li>
+				<li>2. chaîne, contenu du body</li></ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			</p><p>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				</p><p>Note:</p>				
+				<p>Dans cet exemple, on utilise httpbin.org, un site qui permet de vérifier la demande qui lui a été faite.</p>
+				<p>Le site retourne en json le détail de la requête qui lui a été passée.</p>
+				
+				<p>Code :</p>
+				<div class="bai_exemple"><pre>local http, body, json
+http := HTTP:New()
+HTTP:SetBody(http, "42")
+body := HTTP:POST(http, "https://httpbin.org/post") // raise if not 200
+json := JSON:Open(body)
+print(JSON:SelectResult(json, "data"))
+				</pre></div>	
+			
+			
+				<p>Résultat :</p>
+<pre>42
+</pre></div>
+</div></body>

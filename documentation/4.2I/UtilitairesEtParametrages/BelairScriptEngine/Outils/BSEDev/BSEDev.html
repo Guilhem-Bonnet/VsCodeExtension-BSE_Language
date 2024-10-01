@@ -1,0 +1,154 @@
+<body>
+<h2>BSEDev: développement des scripts BSE</h2>
+<br>
+<p>
+BseDev est l'environnement intégré de développement des scripts BSE.</p>
+<p>
+Cet outil permet facilement de créer et tester vos scripts.<br>
+Les scripts BSE sont conçus pour traiter des paramètres en entrée (variables, flux de données, ...) et de restituer un résultat, simple ou complexe (par exemple un flux XML).<br><br>
+Ces scripts étant amenés à être exploités par un client externet (script Php, ...), il est souvent compliqué de bâtir un ensemble de paramètres d'entrée et de valider le résultat rendu par un script pour finaliser un développement.<br>
+
+</p>
+<h3>Lancement de BseDev</h3>
+<p>
+BseDev.exe est un fichier exécutable, placé dans votre répertoire d'installation de Belair:
+</p>
+<p><img src="images/bsedev_launch.png" class="img-responsive"></p>
+
+<h3>Interface de BseDev</h3>
+<p>
+L'interface de Bsedev se présente ainsi:
+</p>
+<p><img src="images/bsedev_mainform.png" class="img-responsive"></p>
+
+<h3>Eléments de l'interface</h3>
+<div>
+	<ul>
+		<li>Le menu</li>
+		<li>Une barre d'outils: nouveau, ouvrir, enregistrer, exxécuter:</li>
+		<li>La fenêtre d'écriture du script</li>
+		<li>4 onglets: sortie, messages, breakpoints, watches</li>
+	</ul>	
+</div>
+
+<h3>Création du répertoire de stockage des fichiers d'entrée et de sortie</h3>
+<p>
+Le protocole BSE prévoit le passage des paramètres d'entrée dans un format Xml.<br>
+De même, le résultat est un flux de sortie (format simple, xml, ...).<br>
+Pour fonctionner, Bsedev a besoin de lire et écrire les fichiers d'entrée et de sortie: créez sur votre poste de développement un répertoire à cet effet.<br><br>
+Exemple:
+</p><pre>D:\belair\bse\dev</pre>
+
+
+<h3>Création d'un fichier d'entrée vide et du script d'écriture des paramètres</h3>
+<div>
+<ul>
+	<li>Créez un nouveau script.</li>
+	<li>Copiez les lignes ci-dessous dans la fenêtre d'écriture et indiquez le nom du fichier d'entrée à créer (fichier XML)</li>
+</ul><pre>
+ClearExtParams()
+SaveExtParams("D:\belair\BSE\dev\extparams.xml")
+</pre>
+<li>Enregistrez le script.<br>Exemple:
+<pre>D:\belair\BSE\dev\extparams.bs</pre>
+<div class="alert alert-info" role="alert">
+Ce script d'écriture sera ensuite utilisé pour gérer vos paramètres d'entrée, au cours de vos développements.
+</div>
+</li>
+<li>Exécutez le script<br>
+Un fichier de paramètre vide est créé, au format attendu par BseDev
+<pre style="color:#000020;background:#f6f8ff;"><span style="color:#004a43; ">&lt;?</span><span style="color:#200080; font-weight:bold; ">xml</span><span style="color:#004a43; "> </span><span style="color:#074726; ">version</span><span style="color:#308080; ">=</span><span style="color:#800000; ">"</span><span style="color:#7d0045; ">1.0</span><span style="color:#800000; ">"</span><span style="color:#004a43; "> </span><span style="color:#074726; ">encoding</span><span style="color:#308080; ">=</span><span style="color:#800000; ">"</span><span style="color:#1060b6; ">utf-8</span><span style="color:#800000; ">"</span><span style="color:#004a43; ">?&gt;</span>
+<span style="color:#0057a6; ">&lt;</span><span style="color:#333385; ">params</span><span style="color:#0057a6; ">/&gt;</span>
+</pre>
+</li>
+
+</div>
+
+<h3>Paramètres d'exécution</h3>
+
+<menu>Run | Paramètres...</menu>
+
+<p><img src="images/bsedev_runparameters.png" class="img-responsive"></p>
+
+<p>
+Certains paramètres doivent être enregistrés pour faire fonctionner Bsedev.<br><br>
+<code>application configuration</code> : fichier de configuration de l'application cible.<br><br>
+<code>Entry parameters</code> : fichier contenant les paramètres d'entrée<br><br>
+<code>Write result to output</code> : cochez cette case pour afficher le résultat dans l'onglet <code>Sortie</code><br><br>
+<code>Write result to file</code> : cochez cette case pour enregistrer le résultat dans un fichier<br>
+indiquez ensuite le nom du fichier de résultat<br><br>
+<code>Log on to Belair</code> : cochez cette case pour exécuter vos scripts avec un compte utilisateur<br>
+Indiquez alors les paramètres <code>User</code> et <code>Password</code><br>
+</p>
+
+<h3>Onglets de compilation / Exécution</h3>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Messages</code></h3></div>
+<p>
+Cet onglet affiche les messages d'erreur du compilateur et les statisqtiques d'exécution
+</p>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Sortie</code></h3></div>
+<p>
+Cet onglet affiche les textes ajoutées lors de l'exécution par la fonction <code>Print(message)</code><br>
+SI l'option d'exécution <code>Write result to output</code> est activée, cet onglet affiche également le retour du script (insgtruction <code>return</code>)
+</p>
+</div>
+
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Breakpoints</code></h3></div>
+<p>
+Cet onglet affiche les points d'arrêt d'exécution du script.<br>
+Un point d'arrêt est ajouté en appuyant sur <kbd>F5</kbd> ou en cliquant à gauche du numéro de ligne dans le script: un point rouge apparait alors à cet endroit<br>
+Le point d'arrêt est enlevé de la même manière.<br><br>
+Un clic-droit affiche un menu:
+</p><ul>
+	<li><code>Aller vers la source</code> pour se positionner dans la fenêtre d'écriture sur la ligne sélectionnée</li>
+	<li><code>Delete</code> supprimer le point d'arrêt sélectionné</li>
+	<li><code>supprimer tous les points d'arrêt</code>/li&gt;
+	
+
+
+</li></ul></div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Watches</code></h3></div>
+<p>
+Cet onglet affiche le tableau des variables en obervation.<br>
+Les variables sont affichées lorsque le script est exécuté en mode 'pas à pas'<br><br>
+Un clic droit fait apparaitre un menu:
+</p><ul>
+<li><code>Ajouter</code> <kbd>Ctrl</kbd>+<kbd>F5</kbd> ajouter une variable: indiquez le nom de la variable</li>
+<li><code>Delete</code> supprimer la variable du tableau </li>
+<li><code>Supprimer tous</code> vider le tableau</li>
+
+
+</ul></div>
+
+<h3>Compilation du script</h3>
+fonction Run | Compile <kbd>Ctrl</kbd>+<kbd>F9</kbd><br>
+Cette opéation vérifie la syntaxe du script et affiche les ereurs éventuelles
+
+<h3>Exécution du script</h3>
+fonction Run | Démarrer <kbd>F9</kbd><br>
+Cette opéation compile et exécute le script.
+<div class="alert alert-warning" role="alert">
+Remarque: le script est compilé et enregistré avant chaque exécution.
+</div>
+
+<h3>Exécution en mode pas à pas</h3>
+Lorsque le script est exécuté, il s'interrompt lorsqu'il arrive sur un point d'arrêt.<br>
+Les opérations suivantes sont alors possibles
+<ul>
+<li>Reprendre <kbd>F9</kbd> : le script redémarre jusqu'au point d'arrêt suivant ou jusqu'à la fin.</li>
+<li>Step Over <kbd>F8</kbd> : le script passe à la ligne suivante</li>
+<li>Step Into <kbd>F7</kbd> : si le point d'arrêt est sur lappel d'une fonction programmée, le script passe à la 1ere ligne de cette fonction</li>
+<li>Run to cursor <kbd>F4</kbd> : le script reprend et d'arrête sur la ligne sélectionnée</li>
+<li>Program Reset <kbd>Ctrl</kbd>+<kbd>F2</kbd> : le script redémarre du début</li>
+</ul>
+
+</body>

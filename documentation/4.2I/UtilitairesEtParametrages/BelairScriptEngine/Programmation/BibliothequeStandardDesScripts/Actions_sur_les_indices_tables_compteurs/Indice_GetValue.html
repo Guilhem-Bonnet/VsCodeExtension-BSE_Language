@@ -1,0 +1,53 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Indice_GetValue</code></h3>
+		</div>
+
+<p>Valeur d'un indice à une date</p>
+
+
+	<p>Entité concernée : indval</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>indice (string, obligatoire) : nom de l'indice</li>
+		<li>date (date, obligatoire) : date de valeur</li>
+	</ul>
+
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles:<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Vérifier que l'indice existe =&gt; erreur</li>
+	</ul>
+
+
+	<ul>
+	<li>Rechercher la valeur à la date demandée</li>
+	</ul>
+
+
+<pre><code class="sql syntaxhl"><span class="k">select</span> <span class="n">b_valeur</span> <span class="k">from</span> <span class="p">[</span><span class="n">indval</span><span class="p">]</span> <span class="k">where</span> <span class="n">b_indice</span> <span class="o">=</span> <span class="p">:</span><span class="n">indice</span> <span class="k">and</span> <span class="n">b_date</span> <span class="o">&lt;=</span> <span class="p">:</span><span class="n">date</span> <span class="k">order</span> <span class="k">by</span> <span class="n">b_date</span> <span class="k">desc</span>
+</code></pre>
+
+	<ul>
+	<li>Si vide , valeur = 0 (pas d'erreur à retourner)</li>
+		<li>Appliquer à valeur le format de l'indice (c.a.d. le nombre de décimales)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;indval</span> <span class="na">indice=</span><span class="s">"aaaa"</span> <span class="na">date=</span><span class="s">"nnnnnn"</span><span class="nt">&gt;&lt;valeur&gt;</span>xxxxxx<span class="nt">&lt;/valeur&gt;&lt;/indval&gt;</span>
+</code></pre>
+</div></body>

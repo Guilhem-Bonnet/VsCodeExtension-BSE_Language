@@ -1,0 +1,63 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:Parent(doc)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>cette  fonction rend courant le conteneur (JSONObject et JSONArray) parent de la valeur courante.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>la valeur booléenne True/False: True si le positionnement a réussi et False si la valeur courante n'a pas de JSONObject ou JSONArray comme parent.
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewArray(doc, "colors")
+  Json:NewArrayValue(doc, "Red")
+  Json:NewArrayValue(doc, "Green")
+  Json:NewArrayValue(doc, "Blue")
+Json:EndArray(doc)
+Json:NewArray(doc, "Entier")
+  Json:NewArrayValue(doc, 1)
+  Json:NewArrayValue(doc, 2)
+  Json:NewArrayValue(doc, 3)
+Json:EndArray(doc)
+Json:Close(doc)                                    
+Json:ValueExists(doc, "colors")
+Json:Recurse(doc)
+while Json:Next(doc)
+  Print(Json:GetCurrentValueText(doc))
+Json:Parent(doc)
+Print("Parent --&gt; %s", Json:GetCurrentPath(doc))   
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+Green
+Blue
+Parent --&gt; colors
+</pre>
+	</div>
+</div>
+</body>

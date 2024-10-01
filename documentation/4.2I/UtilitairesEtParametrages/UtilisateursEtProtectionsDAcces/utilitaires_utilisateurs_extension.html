@@ -1,0 +1,35 @@
+<body>
+	<h2>Protection des écrans d'extension</h2>
+
+	<p>
+		Cette fonction permet d'occulter un onglet d'extension pour certains groupes d'utilisateurs.
+	</p>
+	<p>
+		</p><div class="alert alert-danger" role="alert">
+			<b>Attention</b> : le paramétrage est prévu à l'inverse des autres protections, c'est-à-dire que seul le(s) groupe(s) d'utilisateur(s) désignés auront accès à l'extension "protégée".
+		</div>
+	
+	<p>
+		Dans <b>Outils | Formules de calcul | Formules autonomes</b>.
+	</p>
+	<img src="images/utilitaires_utilisateurs_extension_menu.jpg">
+	<ul>
+		<li>
+			Créer une nouvelle formule (<img src="images/plus_icon.jpg">) dont le code est OBLIGATOIREMENT syntaxé de la façon suivante : PR:XXXXX (où xxxxx est le code de la table d'extension)<br>
+			Par exemple, si l'extension porte le code XTTIE, alors le code de la formule de calcul sera PR:XTTIE.
+		</li>
+
+		<li>ensuite, dans la feuille de calcul, cocher "VRAI/FAUX" (formule booléenne)</li>
+
+		<li>puis ouvrir le dictionnaire , onglet "Fonction", rubrique "Divers" et glisser la fonction "GROUPE("chaîne")"</li>
+
+		<li>
+			Remplacer "chaîne" par le(s) code(s) du (des) groupe(s) autorisé(s) à accéder à l'extension.
+			<div class="bai_exemple">
+				(Exemple : <span class="bai_code">=GROUPE("P")</span> - qui renvoie à VRAI si l'utilisateur appartient au groupe de limitation "P".
+			</div>
+		</li>
+
+		<li>Tous les utilisateurs faisant partie du groupe (P pour notre exemple) <b>auront accès</b> à l'onglet d'extension (XTTIE pour notre exemple).</li>
+	</ul>
+</body>

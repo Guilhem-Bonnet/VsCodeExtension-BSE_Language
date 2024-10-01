@@ -1,0 +1,60 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Indice_SetValue</code></h3>
+		</div>
+
+<p>Stockage d'une valeur à une date pour un indice</p>
+
+
+
+	<p>Entité concernée : indval</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>indice (string, obligatoire) : nom de l'indice</li>
+		<li>date (date, obligatoire) : date de valeur</li>
+		<li>data : flux XML</li>
+	</ul>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;data&gt;</span>
+   <span class="nt">&lt;valeur&gt;</span>nnnnnn<span class="nt">&lt;/valeur&gt;</span>
+<span class="nt">&lt;/data&gt;</span>
+</code></pre>
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>présence des 3 parametres</li>
+		<li>Controles : 
+	<ul>
+	<li>l'indice <code>indice</code> existe</li>
+		<li><code>date</code> est bien une date</li>
+		<li><code>data/valeur</code> existe</li>
+		<li><code>data/valeur</code> est non vide et est bien un numérique</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<p>1°) DELETE from [indval] (pas d'erreur si inexistant)<br>2°) INSERT INTO [indval]</p>
+
+
+	<a name="retour"></a>
+<h3>retour<a href="#retour" class="wiki-anchor"></a></h3>
+
+
+	<p>LogInfo("enregistrement indice %s au %s ", indice, date)</p>
+
+</div></body>

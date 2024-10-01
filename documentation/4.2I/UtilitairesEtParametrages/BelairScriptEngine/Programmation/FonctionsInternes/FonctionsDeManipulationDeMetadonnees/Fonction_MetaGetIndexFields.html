@@ -1,0 +1,53 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:GetIndexFields(Index, FieldNumber)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie un champ d'index, selon son numéro dans la liste des champs.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Index</code> : l'index.</li>
+				<li><code>FieldNumber</code> : le numéro de champ.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>L'objet de type "TMetaIndexField".</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local entity, index, field
+entity := Meta:GetEntityByCode(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>)
+index := Meta:GetIndexes(entity, <span class="integer">0</span>)
+field := Meta:GetIndexFields(index, <span class="integer">0</span>)
+Print(Obj:DumpVar(field))
+</span></code></pre>
+			
+			<p>Résultat :</p>
+			<pre>AscDesc (UnicodeString): ASC
+Changed (Boolean): False
+Field (Unknown): unknown
+Index (Unknown): unknown
+IsComplement (Boolean): False
+IsDataDictionnaryItem (Boolean): False
+IsMaster (Boolean): True
+Locked (Boolean): False
+LockedByOwner (Boolean): False
+Model (Unknown): unknown
+Name (UnicodeString): B_TIERS
+OldName (UnicodeString): 
+Owner (Unknown): unknown
+SortOrder (Unknown): unknown
+Table (Unknown): unknown</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

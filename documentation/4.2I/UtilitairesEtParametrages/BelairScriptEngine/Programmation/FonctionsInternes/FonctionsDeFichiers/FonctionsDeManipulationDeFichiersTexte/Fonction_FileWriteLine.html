@@ -1,0 +1,44 @@
+<body>
+
+
+<h3>Fonctions de fichiers</h3>
+
+<h4>Fonctions de manipulation de fichiers texte</h4>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>File:WriteLine(FileDescriptor, String)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction ajoute une ligne dans le fichier texte créé ou ouvert pour l'écriture préalable.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>FileDescriptor</code> : l'objet de type <i>FileDescriptor</i>.</li>
+				<li><code>String</code> : la chaîne de caractères.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>Aucun.
+			</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local f1
+f1 := File:Create(<span class="string"><span class="delimiter">"</span><span class="content">test.txt</span><span class="delimiter">"</span></span>)
+File:WriteLine(f1, <span class="string"><span class="delimiter">"</span><span class="content">First line</span><span class="delimiter">"</span></span>)
+File:WriteLine(f1, <span class="string"><span class="delimiter">"</span><span class="content">Second line</span><span class="delimiter">"</span></span>)
+File:Close(f1)
+</span></code></pre>
+
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

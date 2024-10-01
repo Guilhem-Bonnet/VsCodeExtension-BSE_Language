@@ -1,0 +1,25 @@
+<body>
+	<h2>Calcul d'une ligne contenue dans une variable </h2>
+
+	<!-- Fonction [!instruction] et {!instruction} -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>[!instruction] et {!instruction}</code><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>Il est maintenant possible de demander le calcul d'une ligne contenue dans une variable.<br><br><code>[!instruction]</code> : rend le résultat du calcul de l'instruction si celui-ci est au format numérique<br><br><code>{!instruction}</code> : rend le résultat du calcul de l'instruction si celui-ci est au format alpha<br><br>Ceci est utile lorsque l'instruction n'est pas forcément connue par avance mais doit être interprétée ou constituée en dynamique.</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						IA$ := ?CONT("B_TOTANN")<br>
+						SI ?CONT("B_FRAC") = "S" ; IA$ := IA + "/2"t;t;t;t;t;t;<br>
+						SI ?CONT("B_FRAC") = "T" ; IA$ := IA + "/4"<br>
+						SI ?CONT("B_FRAC") = "M" ; IA$ := IA + "/12"<br>
+						IX := [!IA]
+					</span></div>	
+			<br><p>L'intérêt principal est en fait de pouvoir interpréter une instruction de calcul contenue quelque part dans la base (par exemple, les champs de fusion en gestion de texte)</p>
+			
+		</div>	
+	</div>
+</body>

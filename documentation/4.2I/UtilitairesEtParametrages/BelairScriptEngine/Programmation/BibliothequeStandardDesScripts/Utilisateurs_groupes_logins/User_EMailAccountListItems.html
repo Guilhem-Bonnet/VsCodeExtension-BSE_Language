@@ -1,0 +1,45 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>User_EMailAccountListItems</code></h3>
+		</div>
+
+	<p>Liste des comptes mail associés à un utilisateur</p>
+
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>username (string, optionnel) : code utilisateur (UTIL.B_UTIL)
+	<ul>
+	<li>si absent, récupérer les parametres de l'utilisateur connecté (fonction interne <code>username</code>)</li>
+	</ul>
+	</li>
+		<li>default (booléen, optionnel) : si true, limiter au compte par défaut (b_default='T')</li>
+	</ul>
+
+
+	<a name="retour"></a>
+<h3>retour<a href="#retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;mailing-rows&gt;</span>
+  <span class="nt">&lt;mailing&gt;</span>
+    <span class="nt">&lt;codeuser&gt;</span>DANIEL<span class="nt">&lt;/codeuser&gt;</span>
+    <span class="nt">&lt;rank&gt;</span>0<span class="nt">&lt;/rank&gt;</span>
+    ...
+    <span class="c">&lt;!-- tous les champs rendus par le SQL --&gt;</span>
+  <span class="nt">&lt;/mailing&gt;</span>
+  <span class="nt">&lt;mailing&gt;</span>
+    <span class="nt">&lt;codeuser&gt;</span>DANIEL<span class="nt">&lt;/codeuser&gt;</span>
+    <span class="nt">&lt;rank&gt;</span>1<span class="nt">&lt;/rank&gt;</span>
+    ...
+    <span class="c">&lt;!-- tous les champs rendus par le SQL --&gt;</span>
+  <span class="nt">&lt;/mailing&gt;</span>
+<span class="nt">&lt;/mailing-rows&gt;</span>
+</code></pre>
+	</div></body>

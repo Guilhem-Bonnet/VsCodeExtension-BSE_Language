@@ -1,0 +1,59 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Sinreg_ListItems</code></h3>
+		</div>
+
+<p>Liste des règlements d'un sinistre</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres:<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>sinistre (int, obligatoire) : numéro sinistre</li>
+		<li>tiers (int, optionnel : tiers concerné</li>
+		<li>types (string, optionnel) : liste des types de réglement à afficher, séparés par des virgules (si vide, tous types)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour:<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;sinreg</span> <span class="na">sinistre=</span><span class="s">"16"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Sinreg"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Annule"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catreg"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>S<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Codeval"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Credit"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Credit1"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Date"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2006-07-04T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Debit"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"7.11920000000000E+0002"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Debit1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ecriture"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"283"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_sreg_libelle"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Règlement dommages<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Motif"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>C<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1010"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Option"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"356"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ordre"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Referenc"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>1.256.328<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Regeval"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>R<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Sinistre"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"16"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Typereg"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Sinreg"</span><span class="nt">&gt;</span>
+      ....
+    <span class="nt">&lt;/object&gt;</span>
+    ....
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/sinreg&gt;</span>
+</code></pre>
+</div></body>

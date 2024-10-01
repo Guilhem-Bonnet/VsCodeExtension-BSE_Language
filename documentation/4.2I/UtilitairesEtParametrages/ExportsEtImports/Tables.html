@@ -1,0 +1,71 @@
+<body>
+	<h2>Les tables</h2>
+
+	<p>
+		Les opérations suivantes s'effectuent dans <b>Outils | Paramètres | Modélisation de l'application</b>.
+	</p>
+
+	<h3>Exportation</h3>
+
+	<p>
+		A partir de l'application d'origine, demander <b>Fichier | Gestion des tables</b>.<br>
+		Sélectionner la table à exporter et demander <b>Tables | Exporter la structure</b>.<br>
+		Le nom du fichier d'export est XXXXYYY.BAI (où XXXX est le nom de la table et YYY le suffixe de votre application), cliquer dans <b>Enregistrer</b> (les fichiers d'export sont stockés implicitement dans le répertoire "travail" du poste mais il est possible d'indiquer un autre chemin de réception).
+	</p>
+
+	<p>
+		Une question est alors posée lorsque la table est rattachée à un dessin d'écran : "Vous venez d'exporter une table d'extension. Voulez-vous exporter ses éventuelles images écran ?"
+		</p><ul>
+			<li>
+				A la réponse <b>NON</b>, la fonction s'arrête là.
+			</li>
+			<li>
+				A la réponse <b>OUI</b>, s'enchaîne l'exportation de l'écran constituant un fichier d'export nommé TRFECRAN, cliquer sur <b>Ouvrir</b> (les fichiers d'export sont stockés implicitement dans le répertoire "travail" du poste mais il est possible d'indiquer un autre chemin de réception).
+			</li>
+		</ul>
+	
+
+	<p>
+		Plusieurs fichiers sont alors créés : XXXXYYY.BAI (pour la table) et TRFECRAN.MB, TRFECRAN.db (pour l'écran rattaché).
+	</p>
+
+	<h3>Importation</h3>
+
+	<p>
+		A partir de l'application d'arrivée, demander <b>Fichier | Gestion des tables</b>.<br>
+		Eventuellement, demander ensuite <b>Tables | Importer une structure</b>.<br>
+		Sélectionner le fichier XXXXYYYY.BAI dans le répertoire "travail" du poste, cliquer dans <b>Ouvrir</b> (si les fichiers ont été stockés à un autre endroit, il faut ouvrir le répertoire les contenant avant de cliquer sur <b>Ouvrir</b>).
+	</p>
+
+	<p>
+		</p><ul>
+			<li>
+				"Importer sur quel code" : taper XXXX (où XXXX est le nom de la table). Cliquer sur OK.<br>
+				Si la table existe déjà dans l'application d'arrivée, un message s'affiche immédiatement : "Le code XXXX est déjà associé à la table XXXXYYY - Voulez-vous continuer et modifier ainsi la structure de cette table"
+				<ul>
+					<li>
+						A la réponse <b>NON</b>, la fenêtre du choix du nom de la table est reproposée afin de taper un nouveau nom pour la table et l'importer.
+					</li>
+					<li>
+						A la réponse <b>OUI</b>, une nouvelle question est posée si la table importée est reliée à une image écran :<br>
+						"Vous venez d'importer une table d'extension. Voulez-vous importer ses éventuelles images écran."
+						<ul>
+							<li>
+								A la réponse <b>NON</b>, la fonction s'arrête là et les images écran ne sont pas importés.
+							</li>
+							<li>
+								A la réponse <b>OUI</b>, le fichier TRFECRAN est proposé dans le répertoire "travail" du poste, cliquer dans <b>Ouvrir</b> (si les fichiers ont été stockés à un autre endroit, il faut ouvrir le répertoire les contenant avant de cliquer sur <b>Ouvrir</b>).<br>
+								Le contenu du fichier apparaît dans une fenêtre vous permettant de sélectionner l' (ou les) écran(s) à importer. Cocher "Avec" ou "Sans" remplacement des préexistantes".<br>
+								Lorsque cette sélection est effectuée, cliquer sur un des boutons <b>Importer les sélectionnées</b> ou <b>Tout Importer</b> selon d'option choisie.
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	
+
+	<p>
+		Lorsque l'importation est terminée, un message apparaît "Import terminé". Cliquer sur OK.
+	</p>
+</body>

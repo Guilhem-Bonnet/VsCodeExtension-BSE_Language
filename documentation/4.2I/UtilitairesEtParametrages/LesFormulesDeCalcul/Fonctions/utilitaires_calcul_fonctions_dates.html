@@ -1,0 +1,325 @@
+<body>
+	<h2>Fonctions de date</h2>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>JOUR</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne la date du jour.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HEURE</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne l'heure actuelle.<br>
+				Dans les formules alphabétiques, la date est donnée en clair au  format JJ/MM/AAAA<br>
+				Dans les autres formules, c'est le numéro de jour de la date qui est rendu en partant du 30/12/1899 comme valeur=0.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>JOUR_HEURE</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Idem JOUR mais avec l'heure associée au format hh:mm dans les formules alphabétiques.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SEMAINE</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Numéro de la semaine dans l'année selon <i>DATE</i>
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HH</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Donne hh:mm (heure:minutes) de la date au format alphabétique.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>JJ</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Jour de <i>DATE</i>.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>MM</code> 
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Mois de <i>DATE</i>.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>AA</code> 
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Année de <i>DATE</i>.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DATECAL(<i>date de départ, "variation", "nombre"</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Calcul d'une nouvelle date.
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>date de départ</code> :  Date de départ
+				<br><br>
+				<code>variation</code> : Type de variation (J=jour, M=mois, A=année)
+				<br><br>
+				<code>nombre</code> : Nombre de jours, mois ou années à ajouter (si négatif, à enlever)
+			</p>
+			<p>
+				Dans les formules alphabétiques, la date est donnée en clair au format JJ/MM/AAAA<br>
+				Dans les autres formules, c'est le numéro de jour de la date qui est rendu en partant du 30/12/1899 comme valeur=0.
+			</p>
+		</div>
+	</div>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DATEALP(<i>date alpha</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Permet d'insérer une date constante dans une formule, en vue de calcul.<br>
+				Dans les formules alphabétiques, la date est donnée en clair au format JJ/MM/AAAA<br>
+				Dans les autres formules, c'est le numéro de jour de la date qui est rendu en partant du 30/12/1899 comme valeur=0.<br>
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>Date alpha</code> : constante alphabétique au format JJ/MM/AAAA
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						?DPP("b_datenais") - DATEALP("01/01/1900") <span class="bai_comment">= nombre de jours entre la date de naissance et le premier jour du siècle</span>
+					</span>
+				</div>	
+			
+		</div>
+	</div>
+	
+	<!-- Fonction DATETIMEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DATETIMEALP(<i>date heure alpha</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Idem DATEALP mais avec une heure d'associée à la date.
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>Date heure alpha</code> : constante alphabétique au format JJ/MM/AAAA hh:nn:ss
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						IBD:=DATETIMEALP("31/12/2009 11:00")
+					</span>
+				</div>	
+			
+		</div>
+	</div>
+	
+	<!-- Fonction DATE -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DATE(<i>JJ,MM,AAAA</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Donne une date à partir d'un jour, d'un mois et d'une année<br>
+				Dans les formules alphabétiques, la date est donnée en clair au format JJ/MM/AAAA<br>
+				Dans les autres formules, c'est le numéro de jour de la date qui est rendu en partant du 30/12/1899 comme valeur=0.
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>Date heure alpha</code> : constante alphabétique au format JJ/MM/AAAA hh:nn:ss
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						DATE(1,1,AA(?DPP("b_datenais"))
+					</span>
+					donne le 1er janvier de l'année de naissance
+				</div>	
+			
+		</div>
+	</div>
+
+	<!-- Fonction ADATE -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>ADATE(<i>date, chaîne</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Fonction de calcul alphabétique permettant de formater une date
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>Chaîne</code> : spécificateur de format respectant les conventions suivantes :
+			</p>
+			<br>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td><b>Spécificateur</b></td>
+						<td><b>Affichage</b></td>
+					</tr>
+					<tr>
+						<td><b>c</b></td>
+						<td>Date, en utilisant le format court de Windows puis l'heure, en utilisant le format de Windows. L'heure n'est pas affichée si la partie fractionnaire de Date  est égale à zéro.</td>
+					</tr>
+					<tr>
+						<td><b>d</b></td>
+						<td>Numéro du jour sans le préfixer d'un zéro (1 à 31).</td>
+					</tr>
+					<tr>
+						<td><b>dd</b></td>
+						<td>Numéro du jour en le préfixant d'un zéro (01 à 31).</td>
+					</tr>
+					<tr>
+						<td><b>ddd</b></td>
+						<td>Jour abrégé (Dim à Sam)</td>
+					</tr>
+					<tr>
+						<td><b>dddd</b></td>
+						<td>Jour complet (Dimanche à Samedi)</td>
+					</tr>
+					<tr>
+						<td><b>ddddd</b></td>
+						<td>Date en utilisant le format court de Windows</td>
+					</tr>
+					<tr>
+						<td><b>dddddd</b></td>
+						<td>Date en utilisant le format long de Windows</td>
+					</tr>
+					<tr>
+						<td><b>m</b></td>
+						<td>Numéro du mois sans le préfixer d'un zéro (1 à 12). Si le spécificateur m suit immédiatement un spécificateur h ou hh, les minutes sont affichées plutôt que le numéro du mois.</td>
+					</tr>
+					<tr>
+						<td><b>mm</b></td>
+						<td>Numéro du mois en le préfixant d'un zéro (01 à 12). Si le spécificateur m suit immédiatement un spécificateur h ou hh, les minutes sont affichées plutôt que le numéro du mois.</td>
+					</tr>
+					<tr>
+						<td><b>mmm</b></td>
+						<td>Mois abrégé (Jan à Déc)</td>
+					</tr>
+					<tr>
+						<td><b>mmmm</b></td>
+						<td>Mois complet (Janvier à Décembre)</td>
+					</tr>
+					<tr>
+						<td><b>yy</b></td>
+						<td>Numéro de l'année sous la forme de deux chiffres (00 à 99).</td>
+					</tr>
+					<tr>
+						<td><b>yyy</b></td>
+						<td>Année sous la forme de quatre chiffres (0000-9999).</td>
+					</tr>
+					<tr>
+						<td><b>h</b></td>
+						<td>Heure sans la préfixer d'un zéro (0 à 23).</td>
+					</tr>
+					<tr>
+						<td><b>hh</b></td>
+						<td>Heure en la préfixant d'un zéro (00 à 23).</td>
+					</tr>
+					<tr>
+						<td><b>n</b></td>
+						<td>Minutes sans les préfixer d'un zéro (0 à 59).</td>
+					</tr>
+					<tr>
+						<td><b>nn</b></td>
+						<td>Minutes en les préfixant d'un zéro (00 à 59).</td>
+					</tr>
+					<tr>
+						<td><b>s</b></td>
+						<td>Secondes sans les préfixer d'un zéro (0 à 59).</td>
+					</tr>
+					<tr>
+						<td><b>ss</b></td>
+						<td>Secondes en les préfixant d'un zéro (00 à 59).</td>
+					</tr>
+					<tr>
+						<td><b>t</b></td>
+						<td>Heure en utilisant le format d'heure court de Windows</td>
+					</tr>
+					<tr>
+						<td><b>tt</b></td>
+						<td>Heure en utilisant le format d'heure long de Windows</td>
+					</tr>
+					<tr>
+						<td><b>/</b></td>
+						<td>Caractère de séparation de date de Windows</td>
+					</tr>
+					<tr>
+						<td><b>:</b></td>
+						<td>Séparateur des heures de Windows</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						ADATE(JOUR,'dddddd')
+					</span>
+					donne "Vendredi 9 novembre 2011"
+				</div>	
+			
+		</div>
+	</div>
+</body>

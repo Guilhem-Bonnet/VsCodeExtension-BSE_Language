@@ -1,0 +1,32 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Cont_Create</code></h3>
+		</div>
+
+<p>Création d'un nouveau contrat</p>
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (int, obligatoire) : numéro de client (vérification présence record dans table CLI)</li>
+		<li>produit (string, obligatoire) : code produit de la nouvelle pièce</li>
+		<li>Effet (date, par défaut, date du jour) : date d'effet de la pièce</li>
+		<li>data (string, optionnel) : données administratives à modifier, une fois le contrat créé (c.f. action <code>Cont_Update</code>)</li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Création nouvau contrat et pièce 1</li>
+		<li>alimentation des garanties obligatoires du produit</li>
+		<li>en fonction des garanties obligatoires créées, alimentation de REPGAR et de POLI</li>
+		<li>si flux de données XML dans <em>data</em>, même traitement que <code>Cont_Update</code></li>
+	</ul>
+</div></body>

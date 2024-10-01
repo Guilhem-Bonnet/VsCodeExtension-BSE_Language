@@ -1,0 +1,93 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Metadata_GetEntityInfos</code></h3>
+		</div>
+
+	<p>Retourne les informations principales sur les métadonnées d'une entité (table)</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>EntityCode (string, obligatoire) : code de l'entité (i.e. "tiers", "xtlog", ....)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML<br></p><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;piec&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"TMetaTable"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"caption"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Pièces<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"code"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>PIEC<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Domain"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Tiers / Contrat / Sinistres<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"group"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Contrats<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsMaster"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Name"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>PIECEDEI<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Traced"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"UsesNameSuffix"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;fields&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"TMetaField"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"AllowModif"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Baiclass"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>L<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Code"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Contrat<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DefaultValue"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"DisplayLabel"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>N° contrat<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Indexed"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"InputCondition"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"InputFormat"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"InputRequired"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"InputVerification"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsKey"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsMaster"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsPersistent"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Name"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>B_CONTRAT<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"NotNull"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Order"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"SearchAlpha"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Size"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tableref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      ...
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/fields&gt;</span>
+  <span class="nt">&lt;relations&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"TRelation"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cardinality"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Changed"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"HasForeignKey"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsComplement"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsMaster"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsMasterDetailDefault"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Name"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>PIEC--PCLA<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Required"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"TableCode"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>PIEC<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"TableCode2"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>PCLA<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"TRelation"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cardinality"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Changed"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"HasForeignKey"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsComplement"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsMaster"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"IsMasterDetailDefault"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Name"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>PIEC--COTI<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Required"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"TableCode"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>PIEC<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"TableCode2"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>COTI<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      ...
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/relations&gt;</span>
+<span class="nt">&lt;/piec&gt;</span>
+</code></pre>
+</div></body>

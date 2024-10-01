@@ -1,0 +1,37 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:EncodeUrl(chaine)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			La fonction rend retourne la chaine dans le "codage UR" :https://fr.wikipedia.org/wiki/Encodage-pourcent
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><p><code>chaine</code> la chaîne de caractères à encoder</p>
+			
+			
+			<p><br><b>Résultat :</b>
+			</p><p>La chaîne de caractères encodée</p>
+			<p>
+				<b><br>Exemples :</b><br>
+				</p><p>Code :</p>
+				<div class="bai_exemple"><pre>local xml, xmlEncoded    
+xml := "&lt;?xml version=""1.0""?&gt;&lt;colors&gt;&lt;color&gt;red&lt;/color&gt;&lt;color&gt;green&lt;/color&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/colors&gt;" 
+xmlEncoded := HTTP:EncodeURL(xml)    
+print(xmlEncoded)
+</pre></div>	
+			
+			
+			<p>Résultat :</p>
+			<div class="bai_exemple"><pre>%3C%3Fxml+version%3D%221.0%22%3F%3E%3Ccolors%3E%3Ccolor%3Ered%3C%2Fcolor%3E%3Ccolor%3Egreen%3C%2Fcolor%3E%3Ccolor%3Eblue%3C%2Fcolor%3E%3C%2Fcolors%3E
+</pre></div>
+		</div>
+	</div>
+	<br><br>
+</body>

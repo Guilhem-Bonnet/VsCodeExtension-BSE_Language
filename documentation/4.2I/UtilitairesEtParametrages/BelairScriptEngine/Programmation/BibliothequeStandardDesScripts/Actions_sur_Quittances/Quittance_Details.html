@@ -1,0 +1,219 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Quittance_Details</code></h3>
+		</div>
+
+<p>Quittance Details</p>
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>quittance (int, obligatoire) : numéro interne quittance</li>
+		<li>details (booléen, optionnel) : si True, toues infos sur quittance, sinon, seulements les id</li>
+		<li>garanties (booléen, optionnel) : si True, détail primes par garantie</li>
+		<li>addinfospqg (booléen, optionnel) : si True, ajout de 4 champs "externes" sur chaque ligne pqg:
+	<ul>
+	<li>external_cie_nomcie" (i.e. CIE_B_NOMCIE)</li>
+		<li>external_opt_affiche (i.e. OPT_B_AFFICHE)</li>
+		<li>external_opt_codegar" (i.e. OPT_B_CODEGAR)</li>
+		<li>external_opt_libelle" (i.e. OPT_B_LIBELLEE)</li>
+	</ul>
+	</li>
+		<li>intervenants (booléen, optionnel) : si True, détail des intervenants (QINT)</li>
+		<li>addinfosqint (booléen, optionnel) : si True, ajout d'un champ "externe" sur chaque ligne qint
+	<ul>
+	<li> external_qint_rsociale" (i.e. TIERS.B_RSOCIALE)</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Exemple avec quittance = 141, garanties = True et addinfospqg  = True</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;quit</span> <span class="na">numero=</span><span class="s">"141"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"quit"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"idente"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Q59.2<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Lignebor"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numbor"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"59"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numero"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"141"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;pqg&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"pqg"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ccn"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cie"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"200"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cn1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.82500000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ctaxe"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"33"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ctxcn"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_cie_nomcie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>ALLIANZ<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_opt_affiche"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_opt_codegar"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>RC<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_opt_libelle"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Responsabilité Civile<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Option"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"295"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.21720000000000E+0002"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pn1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Quitt"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"141"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"4.02800000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Valvar"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"6.00000000000000E-0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xcn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xcomcn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xcompn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.50000000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xtaxe"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"3.31000000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xtxcn"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"pqg"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ccn"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cie"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"200"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Cn1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.09000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ctaxe"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"18"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ctxcn"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_cie_nomcie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>ALLIANZ<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_opt_affiche"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"3"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_opt_codegar"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>DR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_opt_libelle"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Défense Pénale et Recours<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Option"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"296"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"7.32000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pn1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Quitt"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"141"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.31000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Valvar"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xcn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xcomcn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xcompn"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.50000000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xtaxe"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.80000000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Xtxcn"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      ....        
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/pqg&gt;</span>
+<span class="nt">&lt;/quit&gt;</span>
+</code></pre>
+
+	<a name="Param%C3%A8tres-2"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres-2" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>quittance (int, obligatoire) : numéro interne quittance</li>
+		<li>details (booléen, optionnel) : si True, toues infos sur quittance, sinon, seulements les id</li>
+		<li>garanties (booléen, optionnel) : si True, détail primes par garantie</li>
+		<li>addinfospqg (booléen, optionnel) : si True, ajout de 4 champs "externes" sur chaque ligne pqg:
+	<ul>
+	<li>external_cie_nomcie" (i.e. CIE_B_NOMCIE)</li>
+		<li>external_opt_affiche (i.e. OPT_B_AFFICHE)</li>
+		<li>external_opt_codegar" (i.e. OPT_B_CODEGAR)</li>
+		<li>external_opt_libelle" (i.e. OPT_B_LIBELLEE)</li>
+	</ul>
+	</li>
+		<li><span style="color:blue;">intervenants (booléen, optionnel) : si True, détail des intervenants (QINT)</span></li>
+		<li> <span style="color:blue;">addinfosqint (booléen, optionnel) : si True, ajout d'un champ "externe" sur chaque ligne qint</span>
+	<ul>
+	<li> <span style="color:blue;">external_qint_rsociale" (i.e. TIERS.B_RSOCIALE)</span></li>
+	</ul></li>
+	</ul>
+
+
+	<p>Exemple avec quittance = 230, intervenants = True et addinfosqint = True</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;quit</span> <span class="na">numero=</span><span class="s">"230"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"quit"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Idente"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Q77.1<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Lignebor"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numbor"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"77"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numero"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"230"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;qint&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"qint"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Bloque"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catnat"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catnat1"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm1"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Commsup"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Datsit"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2007-12-31T00:00:00.000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_tiers_rsociale"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>APPORT N.101<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frcie"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frcie1"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Int"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"101"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Mretro"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.67600000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Mretro1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pnette"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pnette1"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Police"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ppure"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ppure1"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ptotale"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.67600000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ptotale1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Qit"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"230"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Retro"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.67600000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Retro1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ristec"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ristec1"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Role"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>O<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Sit"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>P<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Soldedu"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Soldedu1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tauxpart"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe1"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Typretro"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"qint"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Bloque"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catnat"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catnat1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"8.37800000000000E+0001"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Commsup"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Datsit"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2007-11-15T00:00:00.000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_tiers_rsociale"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>ALLIANZ<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frcie"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frcie1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Int"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"200"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Mretro"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Mretro1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pnette"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"5.70730000000000E+0002"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pnette1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Police"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>9815031010R<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ppure"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"4.86950000000000E+0002"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ppure1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ptotale"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"6.07410000000000E+0002"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ptotale1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Qit"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"230"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Retro"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Retro1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ristec"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ristec1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Role"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>P<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Sit"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>P<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Soldedu"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Soldedu1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tauxpart"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.20460000000000E+0002"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Typretro"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/qint&gt;</span>
+<span class="nt">&lt;/quit&gt;</span>
+</code></pre></div></body>

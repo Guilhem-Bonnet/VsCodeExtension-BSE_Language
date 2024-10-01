@@ -1,0 +1,40 @@
+<body>
+
+
+
+<h3>Fonctions de système</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Assert(condition, message)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p><br>La fonction vérifie l'expression de type booléen et génère une erreur si la valeur est "false".
+			</p>
+			<p>
+				<br><br><b>Paramètres d'entrée :</b>
+				<br>
+</p><ul><li><code>condition</code> : l'expression, ou variable, de type booléen ;</li>
+<li><code>message</code> : le message d'erreur (optionnel).</li></ul>
+			
+			
+			<p><br><strong>Résultat :</strong></p>
+			<p>Aucun</p>
+			<p><br>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local test
+test := <span class="integer">0</span>
+Assert(test = <span class="integer">0</span>) <span class="comment">// OK</span>
+Assert(not (test &lt; <span class="integer">0</span>), <span class="string"><span class="delimiter">"</span><span class="content">Negative value</span><span class="delimiter">"</span></span>) <span class="comment">// OK</span>
+Assert(test &gt; <span class="integer">0</span>, <span class="string"><span class="delimiter">"</span><span class="content">Natural number is expected</span><span class="delimiter">"</span></span>) <span class="comment">// Error</span>
+</span></code></pre>
+
+<br>
+
+				</div>	
+			
+		</div>
+	
+</body>

@@ -1,0 +1,73 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Risk_ListItems</code></h3>
+		</div>
+
+<p>Liste des risques sur un contrat/piece</p>
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>contrat (int, obligatoire) : numéro de contrat</li>
+		<li>piece (int, obligatoire) : numéro de pièce</li>
+		<li>all (booléen, default False) : si True, affichage de tous les risques, même ceux sortis du contrat</li>
+	</ul>
+
+
+	<a name="retour"></a>
+<h3>retour<a href="#retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux Xml contenant toutes les informations du risque (table RISA) auxquelles sont ajoutées 3 champs de la table ADH : entrée / sortie / motif sortie</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;risks</span> <span class="na">contrat=</span><span class="s">"102"</span> <span class="na">piee=</span><span class="s">"3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"risa"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Appel"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>VOLKSWAGEN TOURAN 1.6 FSI 7P - 5746 VZ 76<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Centre"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Datebia"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Dateori"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2006-01-01T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Datetar"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ext"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_adh_entree"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2009-01-01T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_adh_motif"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_adh_sortie"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Identifi"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>00001<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Images"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Memo"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1034"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Origine"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"165"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Risque"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"189"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tarif"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Zone"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"risa"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Appel"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>CITROEN C35 1800 RD - 8574 ZX 76<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Centre"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Datebia"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Dateori"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2006-02-22T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Datetar"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ext"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_adh_entree"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2009-01-01T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_adh_motif"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_adh_sortie"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Identifi"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>00003<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Images"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Memo"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1034"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Origine"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"167"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Risque"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"190"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tarif"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Zone"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    ...
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/risks&gt;</span>
+</code><pre></pre></pre>
+</div></body>

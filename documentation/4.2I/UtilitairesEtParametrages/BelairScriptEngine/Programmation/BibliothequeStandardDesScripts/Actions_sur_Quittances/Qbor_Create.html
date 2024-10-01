@@ -1,0 +1,39 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Qbor_Create</code></h3>
+		</div>
+
+<p>Création d'un bordereau à partir d'un modèle</p>
+
+
+
+	<a name="Parametres"></a>
+<h2>Parametres<a href="#Parametres" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li>modele (integer, obligatoire) : n. du bordereau modèle</li>
+		<li>nature (string, optionnel) : nature du bordereau ('C' par défaut)</li>
+		<li>annee (integer, optionnel) : annee du bordereau, par défaut année en cours</li>
+		<li>mois (integer, optionnel) : mois du bordereau, par défaut mois en cours</li>
+		<li>cie (integer, optionnel) : n. de compagnie (par défaut 0 = toutes cies)</li>
+		<li>nom (string, optionnel) : nom du bordereau</li>
+		<li>affecte (booléen, optionnel) : bordereau affecté (False par défaut)</li>
+		<li>XmlResult (booléen, optionnel) : résultat sous forme XML (False par défaut)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h2>Retour<a href="#Retour" class="wiki-anchor"></a></h2>
+
+
+	<p>Si XmlResult = True, Flux Xml donnant le numéro du bordereau créé</p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;qbor_create&gt;</span>
+   <span class="nt">&lt;numero&gt;</span>nnnn<span class="nt">&lt;/numero&gt;</span>
+<span class="nt">&lt;/qbor_create&gt;</span>
+</code></pre>
+</div></body>

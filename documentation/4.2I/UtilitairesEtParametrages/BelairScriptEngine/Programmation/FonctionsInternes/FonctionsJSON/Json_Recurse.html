@@ -1,0 +1,76 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:Recurse(doc)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>cette fonction rend courante la première valeur enfant d'un JSONObject ou JSONArray.<br>
+		Vous devez appeler Json:Recurse avant votre prochain appel à Json:Next pour vous assurer de ne pas sauter les valeurs du JSONArray ou JSONObject à venir.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>la valeur booléenne True/false. true si l'opération a réussi et False si la valeur courante n'est pas un JSONObject ou un JSONArray: la valeur courante n'est pas changée.
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "Cars")
+  Json:NewArray(doc, "Renault")
+    Json:NewObject(doc)
+      Json:NewValue(doc, "Model", "zoe")
+      Json:NewValue(doc, "Price", 25700.999)
+      Json:NewValue(doc, "Currency", "EUR")
+    Json:EndObject(doc)
+    Json:NewObject(doc)
+      Json:NewValue(doc, "Model", "clio")
+      Json:NewValue(doc, "Price", 10990)
+      Json:NewValue(doc, "Currency", "EUR")
+    Json:EndObject(doc)
+  Json:EndArray(doc)
+Json:EndObject(doc)
+Json:Close(doc) 
+if Json:ValueExists(doc, "Cars.renault[0]") then
+begin       
+  while Json:Recurse(doc)
+  begin
+    print("Path %s  Value %s", Json:GetCurrentPath(doc), Json:GetCurrentValueText(doc))     
+    while Json:Next(doc) 
+      print("Path %s  Value %s", Json:GetCurrentPath(doc), Json:GetCurrentValueText(doc))     
+    Json:Parent(doc)
+    Json:Next(doc)       
+  end     
+end
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre style="color:#000000;background:#ffffff;">Path Cars<span style="color:#808030; ">.</span>Renault<span style="color:#808030; ">[</span><span style="color:#008c00; ">0</span><span style="color:#808030; ">]</span><span style="color:#808030; ">.</span>Model  Value zoe
+Path Cars<span style="color:#808030; ">.</span>Renault<span style="color:#808030; ">[</span><span style="color:#008c00; ">0</span><span style="color:#808030; ">]</span><span style="color:#808030; ">.</span>Price  Value <span style="color:#008c00; ">25700</span><span style="color:#808030; ">,</span><span style="color:#008c00; ">999</span>
+Path Cars<span style="color:#808030; ">.</span>Renault<span style="color:#808030; ">[</span><span style="color:#008c00; ">0</span><span style="color:#808030; ">]</span><span style="color:#808030; ">.</span>Currency  Value EUR
+Path Cars<span style="color:#808030; ">.</span>Renault<span style="color:#808030; ">[</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">]</span><span style="color:#808030; ">.</span>Model  Value clio
+Path Cars<span style="color:#808030; ">.</span>Renault<span style="color:#808030; ">[</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">]</span><span style="color:#808030; ">.</span>Price  Value <span style="color:#008c00; ">10990</span>
+Path Cars<span style="color:#808030; ">.</span>Renault<span style="color:#808030; ">[</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">]</span><span style="color:#808030; ">.</span>Currency  Value EUR
+</pre>
+<!--Created using ToHtml.com on 2019-09-20 14:16:44 UTC -->
+	</div>
+</div>
+</body>

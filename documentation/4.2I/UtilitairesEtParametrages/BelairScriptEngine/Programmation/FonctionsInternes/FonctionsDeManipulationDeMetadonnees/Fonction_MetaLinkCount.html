@@ -1,0 +1,44 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:LinkCount(Relation)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie le nombre des links de relation.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				<br></p><ul><li><code>Relation</code> : la relation.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>Le nombre (integer).</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local entity, relation, link, i
+entity := Meta:GetEntityByCode(<span class="string"><span class="delimiter">"</span><span class="content">Catal</span><span class="delimiter">"</span></span>)
+relation := Meta:GetRelations(entity, <span class="integer">0</span>)
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Meta:LinkCount(relation)
+begin
+  link := Meta:GetLinks(relation, i)
+  Print(link.Name)
+  i := i + <span class="integer">1</span>
+end
+</span></code></pre>
+				
+				
+				<p>Résultat :</p>
+				<pre>b_cie=b_cie
+b_prodcie=b_prodcie</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

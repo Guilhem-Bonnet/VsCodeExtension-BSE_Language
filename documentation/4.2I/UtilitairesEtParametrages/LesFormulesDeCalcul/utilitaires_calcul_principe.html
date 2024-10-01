@@ -1,0 +1,46 @@
+<body>
+	<h2>Principe</h2>
+	<br>	
+	<p>
+		Le progiciel Bel Air est équipé d'un langage de "macro-programmation" permettant de calculer par exemple la valeur d'une information "calculée", la valeur par défaut d'une information non encore saisie, le montant d'une ligne comptable lors de l'exploitation d'une procédure comptable, etc… 
+		<br><br>
+		Les <b>formules de calcul</b> sont des "macros" dont le but est de fournir au système une valeur calculée. 
+		<br>
+		Le résultat donné par une formule de calcul peut être : 
+		<br>
+		</p><ul>
+			<li>une valeur numérique,</li> 
+			<li>une valeur alphabétique,</li> 
+			<li>une date, </li>
+			<li>une valeur booléenne (VRAI ou FAUX). </li>
+		</ul>
+		Ceci définit le format de la formule de calcul (ou "Type de calcul").
+	
+	<div class="alert alert-danger" role="alert"><b>Attention</b> : il s'agit du format du résultat, toutes les autres opérations contenues dans la formule de calcul peuvent porter sur des informations d'un autre format.</div>
+	<p>
+		Les formules de "condition de saisie" d'une information sont des formules booléennes (l'information n'est saisissable que si la formule associée rend la valeur VRAI)
+	</p>
+	<p>
+		Une formule de calcul est une <b>suite d'instructions</b> (lignes) exécutées en séquence, jusqu'à obtention du résultat.
+		La séquence peut être interrompue grâce à des instructions de débranchement (fixes ou conditionnelles).
+	</p>
+	<p>
+		Il existe 3 types de formules :
+		</p><ul>
+			<li>
+				Les formules liées à une information de la base de données (valeur par défaut, valeur permanente, condition de saisie et validation de saisie).<br>
+				Elles sont accessibles par : 
+				<ul>
+					<li>le menu Outils | Formules de calcul | Informations,</li> 
+					<li>la touche <kbd>F8</kbd> sur les champs en portefeuille.</li> 
+				</ul>
+			</li>
+			<li>
+				Les formules de travail, exploitées par exemple en Gestion de Textes pour obtenir la valeur des champs de fusion, dans les procédures comptables pour obtenir les montants et libellés des lignes comptables générées par la procédure, en paramétrage de tarifs pour obtenir le montant d'une prime nette. Elles sont accessibles en gestion de textes par l'appel du "Dictionnaire" puis de l'onglet "Calcul", ou en direct dans les procédures comptables et paramétrage de tarif.
+			</li>
+			<li>
+				Les formules autonomes pouvant être exploitées par d'autres formules (ce sont donc des "sous-formules" écrites une fois, réutilisables par les autres formules). Elles sont accessibles par le menu Outils | Formules de calcul | Formules autonomes à partir du bureau de BELAIR ou par Outils | Formules de calcul en portefeuille.
+			</li>
+		</ul>
+	
+</body>

@@ -1,0 +1,167 @@
+<body>
+
+
+<h3>BSE-exceptions</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Gestion des erreurs (exception)</code>
+		</h3></div>
+		<div class="panel-body">
+						<p>Lors d’exécution d'un script une exception peut être remontée :</p>
+		<ul>
+	<li>exception interne (système)</li>
+		<li>exception personnalisée générée par la fonction <code>Error</code></li>
+	</ul>
+	<p>Afin de mieux gérer la situation, les éléments de langage BSE ainsi que les fonctions système sont prévus dans ce but.</p>
+	
+			<p><b><br>Déclenchement de traitement</b>
+				</p><p>L'opérateur <code>on error</code> est prévu pour traiter la situation d'exception</p>
+
+
+	<ul>
+	<li><code>on error goto &lt;label_name&gt;</code> : passe immédiatement le flux d'exécution vers la libelle <code>&lt;label_name&gt;</code></li>
+		<li><code>on error resume</code> : passe le flux d'exécution a l'opérateur suivant celui qui a produit l'erreur</li>
+		<li><code>on error raise</code> : comportement par défaut, l'exception sera remontée</li>
+	</ul>
+
+
+	<p>Chaque <code>on error ...</code> réinitialise les informations sur la dernière erreur produite (voir l'exemple)</p>
+
+			<p><b><br>Récupérer les erreurs</b>
+				</p><p>L'ensemble de fonctions <code>LastErrXXX()</code> renvoie les éléments de la dernière erreur produite</p>
+
+
+	<ul>
+	<li><code>LastErrClear()</code> réinitialise les informations sur la dernière erreur produite</li>
+		<li><code>LastErrCode()</code> renvoie le code (integer) d'erreur</li>
+		<li><code>LastErrText()</code> renvoie le message (string) d'erreur</li>
+		<li><code>LastErrType()</code> renvoie le nom de classe (string) d'erreur</li>
+	</ul>
+
+
+	<p>En plus, dans certains cas il est possible de savoir les éléments d'origine de cette erreur :</p>
+
+
+	<ul>
+	<li><code>LastErrNativeCode()</code> renvoie le code natif (string) d'erreur, i.e. le code d'erreur SGBD en cas de SQL</li>
+		<li><code>LastErrNativeType()</code> renvoie le nom natif de classe (string) d'erreur</li>
+	</ul>	
+			
+<h3>Exemples</h3>
+<p><b><br>Passer le flux dans la ligne suivante.</b>
+</p><div class="bai_exemple"><pre>on error resume
+Error(123, "Test error")
+Print("Code: %s", LastErrCode())
+Print("Type: %s", LastErrType())
+Print("Message: %s", LastErrText())
+)</pre></div>
+
+<div class="bai_exemple"><pre>Code: 123
+Type: BSERuntimeException
+Message: Test error</pre></div>
+<p><b><br>Contrôler l'erreur dans la fonction d'utilisateur</b>
+</p><div class="bai_exemple"><pre>on error resume
+test()
+Print("Code: %s", LastErrCode())
+Print("Type: %s", LastErrType())
+Print("Message: %s", LastErrText())
+return
+
+function test
+  Error(123, "Test error")
+return)</pre></div>
+
+<div class="bai_exemple"><pre>Code: 123
+Type: BSERuntimeException
+Message: Test error</pre></div>
+<p><b><br>Rattraper une erreur SQL</b>
+</p><div class="bai_exemple"><pre>on error goto db_error
+test()
+return true
+:db_error
+Print("Code: %s", LastErrCode())
+Print("Type: %s", LastErrType())
+Print("Message: %s", LastErrText())
+Print("Native code: %s", LastErrNativeCode())
+Print("Native type: %s", LastErrNativeType())
+return false
+
+function test
+  SQL:ExecDirect("INSERT INTO applic (reference, valeur) values('test', '')")
+  SQL:ExecDirect("INSERT INTO applic (reference, valeur) values('test', '')")
+return</pre></div>
+
+<div class="bai_exemple"><pre>Code: 0
+Type: BSEException
+Message: violation of PRIMARY or UNIQUE KEY constraint "PK_APPLIC" on table "APPLIC" 
+Problematic key value is ("REFERENCE" = 'test')
+SQL: INSERT INTO applic (reference, valeur) values('test', '')
+
+Native code: -803
+Native type: EUniError
+Script result:
+False</pre></div>
+<p><b><br>Ne traiter plus des erreurs (revenir vers la montée d'exception)</b>
+</p><div class="bai_exemple"><pre>on error goto my_error
+on error raise
+test()
+return
+:my_error
+Print("Message: %s", LastErrText())
+return
+
+function test
+  Error(123, "Test error")
+return</pre></div>
+
+<div class="bai_exemple"><pre>Error: Test error
+PC:       35 (ICALL:15175) Error
+BP:        3
+Call stack:
+       0: RetAddr: 4  BP: 0
+       1: RetAddr: 14  BP: 3</pre></div>
+<p><b><br>Réinitialiser LastError</b>
+</p><div class="bai_exemple"><pre>on error resume
+TestError()
+Print("Error code: %s", LastErrCode())
+TestNoError()
+Print("No error occurred but the code is still: %s", LastErrCode()) // Error code is unchanged
+//
+Print("Reset last error with ON ERROR")
+on error resume
+TestNoError()
+Print("Error code: %s", LastErrCode())
+//
+Print("Reset last error with LastErrClear()")
+on error resume
+TestError()
+Print("Error code: %s", LastErrCode())
+LastErrClear()
+TestNoError()
+Print("Error code: %s", LastErrCode())
+
+function TestError
+  Error(123, "Test error")
+return
+
+function TestNoError
+  Print("No error")
+return
+</pre></div>
+	   
+<div class="bai_exemple"><pre>Error code: 123
+No error
+No error occurred but the code is still: 123
+Reset last error with ON ERROR
+No error
+Error code: 0
+Reset last error with LastErrClear()
+Error code: 123
+No error
+Error code: 0</pre></div>	   
+		</div>
+	</div>
+	<br><br>
+</body>

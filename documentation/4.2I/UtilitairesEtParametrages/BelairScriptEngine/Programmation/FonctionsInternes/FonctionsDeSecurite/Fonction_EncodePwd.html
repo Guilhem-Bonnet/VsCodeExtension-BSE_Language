@@ -1,0 +1,42 @@
+<body>
+
+
+<h3>Fonctions de sécurité</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>EncodePwd(password, casse)</code>
+		</h3></div>
+		<div class="panel-body">
+		<div class="alert alert-danger" role="alert"><p><b>Attention :</b>
+		<br>
+		<br>Cette fonction est dépréciée !
+		<br>Pour encoder le mot de passe d'un utilisateur : utiliser <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de sécurité" name="Fonctions%20de%20s%C3%A9curit%C3%A9%20:%20MakePasswordHash">MakePasswordHash</a>.</p></div>
+<br>
+La fonction renvoie le texte encodé, selon l'algorithme interne Belair de hachage (basé sur une clé).
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>password</code> : la chaîne de caractères à encoder.</li>
+				<li><code>casse</code> (optionnel, booléen) pour transformer les caractères à la casse majuscule, "True" par défaut.</li></ul>
+				<br>
+			
+			
+			<p><b>Résultat :</b>
+			<br>La valeur string encodée en minuscule.</p>
+			<br>
+			
+			<p>
+				<b>Exemples :</b><br>
+</p><pre>Print(EncodePwd("Password"))
+Print(EncodePwd("Password", false))</pre>			
+			
+			<p>Résultat :</p>
+			<pre>03081e0304001c03
+03283e2324203c23</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

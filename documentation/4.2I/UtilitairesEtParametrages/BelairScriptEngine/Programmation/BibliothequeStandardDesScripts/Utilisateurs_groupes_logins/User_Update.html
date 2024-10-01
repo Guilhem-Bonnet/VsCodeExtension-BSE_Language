@@ -1,0 +1,43 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>User_Update</code></h3>
+		</div>
+
+	<p>Modification d'un utilisateur</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>login (obligatoire) : Login utilisateur BELAIR</li>
+		<li>data (string, obligatoire) : flux XML contenant les données à modifier pour l'utilisateur 'login'</li>
+	</ul>
+<span style="color:red;">remarque sur la balise mdp</span>
+	<ul>
+	<li>L'action <code>User_details</code> retourne le mot de passe crypté dans la balise &lt;mdp&gt;</li>
+		<li>pour <code>User_update</code> :
+	<ul>
+	<li><del>si la balise &lt;mdp&gt; contient la même valeur, la valeur précédente n'est pas modifiée</del></li>
+		<li>si elle est différente, alors on considère que &lt;mdp&gt; est le nouveau mot de passe, EN CLAIR, qui sera donc crypté comme pour <code>User_Create</code></li>
+	</ul></li>
+	</ul>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;data&gt;</span>
+  <span class="nt">&lt;passwordhash&gt;</span>(optionnel) : password<span class="nt">&lt;/passwordhash&gt;</span>
+  <span class="nt">&lt;credentialtype&gt;</span>(optionnel) : type Credential <span class="nt">&lt;/credentialtype&gt;</span>
+  <span class="nt">&lt;fullname&gt;</span>(optionnel) : Nom Complet <span class="nt">&lt;/fullname&gt;</span> //peut être null
+  <span class="nt">&lt;style&gt;</span>(optionnel) : Style <span class="nt">&lt;/style&gt;</span> //peut être null
+  <span class="nt">&lt;palette&gt;</span>(optionnel) : Palette <span class="nt">&lt;/palette&gt;</span> //peut être null
+  <span class="nt">&lt;language&gt;</span>(optionnel) : language  ex "fr" <span class="nt">&lt;/language&gt;</span>
+  <span class="nt">&lt;workphone&gt;</span>(optionnel) : Work Phone <span class="nt">&lt;/workphone&gt;</span> //peut être null
+  <span class="nt">&lt;cellphone&gt;</span>(optionnel) : Cell Phone <span class="nt">&lt;/cellphone&gt;</span> //peut être null
+  <span class="nt">&lt;disabled&gt;</span>(optionnel) : disabled <span class="nt">&lt;/disabled&gt;</span>
+  <span class="nt">&lt;email&gt;</span>(optionnel) : Mail default <span class="nt">&lt;/email&gt;</span> 
+<span class="nt">&lt;/data&gt;</span>
+</code></pre>
+	</div></body>

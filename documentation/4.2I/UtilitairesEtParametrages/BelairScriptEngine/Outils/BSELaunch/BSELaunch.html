@@ -1,0 +1,195 @@
+<body>
+<h2>BSELauncher : exécution de script BSE à partir d'un écran de Belair</h2>
+
+<div class="alert alert-info" role="alert">
+Tout comme les scripts 'automate' les scripts BSE peuvent être exécutés à partir du Bureau et des écrans Tiers, Contrat, Quittance et Sinistre.<br>
+Une carte de paramétrage associée au script permet de saisir les paramêtres d'éxecution.
+</div>
+
+
+<h3>Paramétrage : </h3>
+
+<p>Pour permettre l'exécution d'un script BSE à partir d'un des écrans de Belair, son fichier de paramétrage doit être créé.</p>
+<div class="alert alert-warning" role="alert">
+Fonctionnalité reservée aux administrateurs
+</div>
+
+A partir à partir du Bureau et des écrans Tiers, Contrat, Quittance et Sinistre, fonction : <b><i>Bureautique --&gt; Paramétrage BSL</i></b>
+
+<p>
+<img src="images/bselaunch01.png" class="img-responsive"><br>
+</p>
+
+<div>
+<h4>Fonctionnalités</h4>
+<ul>
+<li>Ouvrir un BSL <kbd>Ctrl + O</kbd></li>
+<li>Enregistrer le paramétrage dans un fichier BSL <kbd>Ctrl + S</kbd></li>
+<li>Enregistrer sous <kbd>Alt + S</kbd></li>
+<li>Lancer le BSL afin de pouvoir le tester <kbd>Ctrl + L</kbd></li>
+</ul>
+</div>
+<br>
+<div>
+<h4>Création d'un fichier de paramétrage</h4>
+<ol>
+	<li>Choisir le script BSE dans la liste 'nom de l'action BSE'<br>
+	Cette liste présente tous les fichiers .BS de votre application (répertoires ..\APPxx\BASScripts\std et ..\APPxx\BASScripts\custom)</li>
+	<li>Libellé de la tâche: libellé qui sera affiché et historisé dans le compte-rendu d'exécution (Outils | Liste des traitements en cours)</li>
+	<li>Liste des parmêtres du script:<br>
+	Une fois le script sélectionné, la liste de l'ensemble des paramètres utilisés dans le script apparait.<br>
+	Un double-clic sur une ligne ouvre la fenêtre des détails du paramêtre sélectionné:
+	<p>
+	<img src="images/bselaunch02.png" class="img-responsive"><br>
+	</p>
+	Vous pouvez choisir:
+	<ol>
+		<li>le type de paramêtre
+			<ul>
+				<li>Entier</li>
+				<li>Alphanumérique</li>
+				<li>Numérique</li>
+				<li>Date/Temps</li>
+				<li>Fichier : à l'exécution, affichage d'une boite de dialogue permettant de sélectionner un fichier</li>
+			</ul>
+		</li>
+		<li>Libellé de la variable: libellé qui apparaitra à l'utilisateur lors de l'exécution du script.</li>
+	</ol>
+	</li>
+</ol>
+</div>
+<br>
+
+<div>
+<h4>Paramètres contextuels</h4>
+
+<p>Certains paramêtres, dits 'contextuels' sont disponibles selon l'écran de départ et sont automatiquement récupérables dans le script BSE
+</p></div>
+
+<div>
+<h4>Enregistrement d'un fichier de paramétrage</h4>
+Les boutons 'Enregistrer' et 'Enregistrer' permettent d'enregistrer le ficheir de paramêtrage.
+
+<p>Les fichiers de lancement des scripts BSE  (*.BSL) sont stockés dans le répertoire ..\APPxx\BASScripts\BSL de votre application.</p>
+<p>Comme pour les scripts 'automate' (*.BSI), les fichiers de lancement des scripts BSE doivent respecter le nommage suivant:
+</p><ul>
+	<li>"BUREAU xxxxxx.BSL" : script lancé à partir du bureau</li>
+	<li>"ECRANTIERS xxxxxx.BSL" : script lancé à partir de l'écran 'Tiers'</li>
+	<li>"ECRANCONT xxxxxx.BSL" : script lancé à partir de l'écran 'Contrat'</li>
+	<li>"ECRANSIN xxxxxx.BSL" : script lancé à partir de l'écran 'Sinistre'</li>
+	<li>"ECRANQUIT xxxxxx.BSL" : script lancé à partir de l'écran 'Quittance'</li>
+</ul>
+
+<div class="alert alert-warning" role="alert">
+Attention à bien respecter ces règles de nommage, qui déterminent l'écran à partir duquel le script pourra être exécuté.
+</div>
+</div>
+
+<div>
+<h4>Paramètres contextuels</h4>
+<p>Certains paramêtres, dits 'contextuels' sont disponibles selon l'écran de départ et sont automatiquement récupérables dans le script BSE
+
+</p><table class="table table-bordered"> 
+ <tbody> 
+  <tr>
+			<th>Nom      </th>
+			<th>Bureau</th>
+			<th>Ecran Tiers  </th>
+			<th>Ecran Contrat </th>
+			<th>Ecran Quittance  </th>
+			<th>Ecran Sinistre </th>
+		</tr>
+		<tr>
+			<td> Idtiers (n. de tiers)     </td>
+			<td>            </td>
+			<td>OUI         </td>
+			<td>OUI         </td>
+			<td>OUI         </td>
+			<td>OUI         </td>
+		</tr>
+		<tr>
+			<td> IdtContrat (n. interne contrat)     </td>
+			<td>            </td>
+			<td>            </td>
+			<td>OUI         </td>
+			<td>OUI         </td>
+			<td>OUI         </td>
+		</tr>
+		<tr>
+			<td> IdtQuittance (n. interne quittance)     </td>
+			<td>            </td>
+			<td>            </td>
+			<td>            </td>
+			<td>OUI         </td>
+			<td>            </td>
+		</tr>
+		<tr>
+			<td> IdtSinistre (n. interne sinistre)     </td>
+			<td>            </td>
+			<td>            </td>
+			<td>            </td>
+			<td>            </td>
+			<td>OUI         </td>
+		</tr>
+ </tbody> 
+</table>
+</div>
+<br>
+
+<h3>Exécution d'un script</h3>
+<div>
+<p>A partir à partir du Bureau et des écrans Tiers, Contrat, Quittance et Sinistre, fonction : <b><i>Bureautique --&gt; Paramétrage BSL</i></b><br>
+Sélectionnez le fichier de paramétrage.
+</p>
+<div class="alert alert-info" role="alert">
+Selon l'écran de départ, seuls les scripts repesctant la règle de nommage associée à l'écran de départ sont proposés.
+</div>
+La fenêtre de lancement apparait, invitant l'utilisateur à saisir les paramêtres d'exécution:
+	<p>
+	<img src="images/bselaunch03.png" class="img-responsive"><br>
+	</p>
+<div class="alert alert-warning" role="alert">
+Les paramêtres contextuels ne sont pas saisissables et ne sont alimentés qu'en fonction de l'écran de départ.
+</div>
+
+<div>
+<h4>Fonctionnalités</h4>
+<ul>
+<li>Ouvrir <kbd>Ctrl + O</kbd></li>
+<li>Lancer <kbd>Ctrl + L</kbd>
+Lancement du traitement par BAS.<br><br>
+<div class="alert alert-warning" role="alert">
+Le traitement est asynchrone.<br>
+Le suivi du traitement peut être contrôlé : fonction OUtils | Traitements en cours.
+</div>
+
+</li>
+<li>Extraction <kbd>Ctrl + S</kbd> :<br><br>
+ Enregistrement des valeurs saisies dans un fichier afin de pouvoir exécuter le script par l'utilitaire BasClientCmd.Exe<br>
+ (c.f. chapitre ci-dessous)
+<div class="alert alert-warning" role="alert">
+Fonctionnalité reservée aux administrateurs
+</div>
+<br>
+</li>
+</ul>
+</div>
+</div>
+
+<h3>Exécution d'un script par BasCLientCmd.exe</h3>
+<div>
+<p>BasClientCmd.exe est le moteur d'exécution des scripts BSE en ligne de commande.<br>
+Il peut donc être utilisé:
+</p><ul>
+<li>directement en ligne de commande</li>
+<li>via une tâche plannifiée Windows</li>
+</ul>
+
+Sa syntaxe est la suivante
+<pre><code>
+c:\Belair4\BasClientCmd.exe /ic:\Temp\Myparams.xml
+</code></pre>
+/i indique le nom du fichier contenant les paramètres de lancement du script, prélablement généré par la fonctionnalité 'Extraction' expliquée ci-dessus.
+</div>
+
+</body>

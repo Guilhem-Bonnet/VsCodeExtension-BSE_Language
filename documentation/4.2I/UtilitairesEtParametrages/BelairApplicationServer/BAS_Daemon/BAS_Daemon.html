@@ -1,0 +1,50 @@
+<body>
+<h2>BAS Daemon</h2>
+
+<p>L'application BAS Daemon est un service Windows qui gère le ou les instances de BAS (1 instance par solution).</p>
+
+<h3>Installation et démarrage</h3>
+<br>
+<p><b>Installer le service :</b></p>
+
+<pre>BasDaemon /install</pre>
+<br>
+<p><b>Désinstaller le service :</b></p>
+
+<pre>BasDaemon /unistall</pre>
+<br>
+<br>
+<p>Démarrez le service depuis le panneau de configuration (voir "services").</p>
+
+<h3>Configuration</h3>
+
+<p> Le fichier de configuration BasDaemon.conf doit être placé <u>dans le même répertoire que l'exécutable</u>.<br>
+Ce fichier décrit la ou les solutions (applications) servies par les instances de BAS.</p>
+
+<pre>[Apps]
+App1=D:\belair\APPDEI\appdei.conf
+App2=E:\APPTTT\appttt.conf</pre>
+
+<div class="alert alert-warning" role="alert">
+<p><b>IMPORTANT :</b>
+<br>
+<br>Les ports de BAS définis dans <i>le fichier de configuration</i> de chaque application <strong>doivent tous être différents.</strong>
+<br>I.e. 8080 pour App1, 8081 pour App2 etc.</p>
+</div>
+
+
+<h3>Démarrage</h3>
+
+<ul><li>Depuis la liste des services, trouvez le service BasDaemonService puis démarrez.</li>
+<li>Depuis la ligne de commande :
+<pre><br>net start BasDaemonService
+
+net stop BasDaemonService
+
+net restart BasDaemonService</pre></li></ul>
+
+<div class="alert alert-info" role="alert">
+<p>Toutes ces opérations de configuration et de paramétrage peuvent être effectuées via la console d'adminstration (BasAdmin)</p>
+</div>
+
+</body>

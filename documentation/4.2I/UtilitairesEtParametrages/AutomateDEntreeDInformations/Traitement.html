@@ -1,0 +1,177 @@
+<body>
+	<h2>Traitement</h2>
+<div>
+	<div class="alert alert-info" role="alert">
+Depuis la version 4, BaiReqAuto est obselète, il convient maintenant de passer en ligne de commande par BaiReqCmd
+</div>
+	<h3>Lancement du traitement</h3>
+	<p>
+		<img src="images/executer.jpg"> OU <img src="images/executer_executer.jpg"> OU <kbd>F9</kbd>
+		<br><br>
+		Lancent l'exécution du script à partir du premier enregistrement du fichier lu.
+	</p>
+	<br>
+	<p>
+		<img src="images/executer_apartirde.jpg" class="img-responsive">
+		<br>Permet le lancement du script à partir d'un numéro d'enregistrement quelconque, sachant que se pré-affichera le numéro du dernier enregistrement traité, si le script à été interrompu avant sa fin normale (à la suite d'un incident, ou d'un arrêt volontaire).
+	</p>
+	<br>
+	<p>
+		Le script s'exécute ligne à ligne dans l'ordre des instructions, sauf si un débranchement est rencontré, pour chacun des enregistrements lus.
+		Le traitement d'un enregistrement cesse avec la dernière ligne, ou dès qu'une instruction 'FIN' est rencontrée.
+		La boucle à l'enregistrement suivant est automatique.
+	</p>
+
+	<p>
+		La fin de l'exploitation du script est provoquée par :
+	</p>
+	<ul>
+		<li>la fin des enregistrements lus</li>
+		<li>une instruction 'STOP' rencontrée dans le déroulement du script</li>
+		<li>une anomalie de programmation du script (instruction non conforme)</li>
+		<li>l'arrêt volontaire de l'opérateur, par clic sur le bouton [Arrêt] ou [Pause] (prenant effet au premier FIN ou au premier BREAK rencontré)</li>
+	</ul>
+<div class="alert alert-info" role="alert">
+Quelle qu'en soit la raison, l'automate conserve la connaissance du numéro d'ordre du dernier enregistrement traité.
+</div>	
+</div>
+<div>
+	<h3>Débogage</h3>
+	<p>
+		<img src="images/deblocage.jpg" class="img-responsive">
+		<br>
+		Il s'ajoute alors :<br><br>
+		Un nouvel onglet intitulé <img src="images/script_execution.jpg"><br>
+		Ainsi qu'un nouveau bouton <img src="images/liste_variables.jpg"><br>
+		Et une barre de boutons <img src="images/barre_boutons.jpg"> servant au suivi du traitement, lors de l'exécution du script en mode débogage.
+	</p>
+	<br>
+	<ul>
+		<li>
+			<p>Onglet : <img src="images/script_execution.jpg"></p>
+			<p>
+				Il est bordé à gauche par une marge grise comportant les n° de lignes précédées de différents symboles :
+			</p>
+			<ul>
+				<li>
+					Point bleu : indique que la ligne contient des instructions qui vont être effectuées par le script et qu'un point d'arrêt peut être appliqué.
+				</li>
+				<li>
+					Rond rouge avec une coche verte : ligne sur laquelle un point d'arrêt a été positionné. Le point d'arrêt peut être ajouté ou enlevé en double-cliquant dans la marge grise de l'onglet devant la ligne concernée. La ligne est surlignée en rouge.
+				</li>
+				<li>
+					Flèche bleue : indique sur quel ligne le traitement est arrêté. Si l'exploitation du script n'a pas été lancée, la flèche est positionnée devant la ligne 0. La ligne concernée est surlignée en bleue sauf si elle comporte un point d'arrêt, dans ce cas, il est surlignée en vert.
+				</li>
+			</ul>
+			<p>
+				Les sur-lignages sont reportés dans l'onglet 'Script'.
+			</p>
+		</li>
+		<br>
+		<li>
+			<p>Bouton <img src="images/liste_variables.jpg"> ou <kbd>ctrl</kbd>+clic droit :</p>
+			<p>
+				Il permet d'afficher une fenêtre dans la gauche de l'onglet donnant les valeurs à jour, au fur et à mesure de la lecture du script, des informations RECORD et RESULT, ainsi que celles des variables locales In et Xn.
+			</p>
+		</li>
+		<br>
+		<li>
+			<p>Barre de boutons de débogage <img src="images/barre_boutons.jpg"></p>
+			<p>
+				7 boutons et leurs raccourcis clavier associés, de gauche à droite :
+			</p>
+			<ul>
+				<li>'Exécuter <kbd>F9</kbd>' : équivalent à l'utilisation du menu 'Exécuter / Exécuter'.</li>
+				<li>'pas à pas <kbd>F8</kbd>' : permet d'exécuter le script ligne à ligne.</li>
+				<li>'aller jusqu'au curseur <kbd>F4</kbd>' : permet d'exécuter le script jusqu'à la ligne où le curseur a été positionné par l'utilisateur. S'arrête sur les points d'arrêt situés en cours de route.</li>
+				<li>'Pause <kbd>F10</kbd>' : permet d'interrompre à tout moment le traitement pour effectuer des vérifications puis de le relancer (ou l'arrêter totalement).</li>
+				<li>'Stop <kbd>Ctrl</kbd> + <kbd>F2</kbd>' : permet d'arrêter définitivement le traitement.</li>
+				<li>'Basculer point d'arrêt <kbd>Ctrl</kbd> + <kbd>F8</kbd>' : permet de passer d'un point d'arrêt au suivant.</li>
+				<li>'Supprimer tous les points d'arrêt <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>F8</kbd>' : permet de supprimer tous les points d'arrêt.</li>
+			</ul>
+		</li>
+	</ul>
+	<br>
+	<p>
+		Lorsque le traitement est interrompu, par un point d'arrêt ou parce que le script est exécuté en pas à pas par exemple, l'utilisateur peut consulter, dans l'onglet 'Script (Execution)', la valeur des variables <i>In</i>, <i>Xn</i> et <i>LOCAL</i> et modifier celle-ci
+		en effectuant un clic gauche pour positionner le curseur au milieu du nom de la variable suivi d'un clic droit.<br><br>
+		Une fenêtre 'Modification variable' s'ouvre indiquant la valeur actuelle de la variable et son type.<br>
+		Une nouvelle valeur peut être saisie et validée en cliquant sur le bouton [Modifier].<br>
+		La suite du traitement se fera donc en prenant en compte cette nouvelle valeur jusqu'à ce qu'une instruction attribue une nouvelle à la variable concernée.
+	</p>
+</div>
+<div>
+	<h3>Chaînage automatique de scripts</h3>
+		Il est possible d'enchaîner le traitement de plusieurs scripts.<br>
+		Créer un fichier texte avec l'extension .BSE (exemple "chaînage automatique .BSE") qui contient la liste des scripts, un script par ligne, à exécuter.<br>
+		Dans l'automate, ne pas ouvrir de script, demander le menu 'Fichier | Enchaîner scripts' et choisir le fichier .BSE
+	<br><br>Les scripts sont lancés automatiquement en séquence.
+</div>
+<div>
+	<h3>Exécution en ligne de commande</h3>
+	<p>
+	L'automate de traitement peut être exécuté en ligne de commande, dans le cadre par exemple de traitements automatisés plannifiés.<br>
+	</p><h4>BaiReqCmd.exe : Paramètres utilisables</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Option</th>
+      <th scope="col" class="text-center">Commande</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">-c NAME (ou --config=NAME)</th>
+      <td class="text-center">Fichier de configuration Belair</td>
+    </tr>
+    <tr>
+      <th scope="row">-d NAME (ou --currency=NAME)</th>
+      <td class="text-center">The currency name</td>
+    </tr>
+    <tr>
+      <th scope="row">-e NAME (ou --exportfilename=NAME)</th>
+      <td class="text-center">Nom du fichier CSV</td>
+    </tr>
+    <tr>
+      <th scope="row">-h (ou --help)</th>
+      <td class="text-center">Afficher l'aide</td>
+    </tr>
+    <tr>
+      <th scope="row">-i NAME (ou --input=NAME)</th>
+      <td class="text-center">Nom du fichier de paramètres XML</td>
+    </tr>
+    <tr>
+      <th scope="row">-p NAME (ou --pdffilename=NAME)</th>
+      <td class="text-center">Nom du fichier PDF</td>
+    </tr>
+    <tr>
+      <th scope="row">-r NAME (ou --report=NAME)</th>
+      <td class="text-center">Nom de la requête</td>
+    </tr>
+    <tr>
+      <th scope="row">-user NAME (ou --user=NAME)</th>
+      <td class="text-center">Nom d'utilisateur</td>
+    </tr>
+    <tr>
+      <th scope="row">--password PASSWORD (ou --password=PASSWORD)</th>
+      <td class="text-center">Mot de passe utilisateur</td>
+    </tr>
+  </tbody>
+</table>	
+		
+<li>Fichier paramètres XML : Enregistrez le code ci dessous en tant que Retat.xml</li>
+		<div class="bai_code">
+			&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>
+			&lt;params&gt;<br>
+			&lt;param name="CDPFIN" type="ptString"&gt;01290&lt;/param&gt;<br>
+			&lt;/params&gt;<br>
+		</div>
+
+
+
+
+<h4>Exemple</h4>
+<div class="alert alert-info" role="alert">
+C:\Belair4\BaiReqCmd.exe --config=C:\Belair4\appxxx\appxxx.conf --user=SUPERVISEUR -r DS02 -i "C:\Belair4\appxxx\BASScripts\BSL\Retat.xml" -d USD -p C:\Users\Public\Documents\BelAir\etat.pdf -e C:\Users\Public\Documents\export.csv</div>
+</div>
+</body>

@@ -1,0 +1,61 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:GetAttrDate(doc, name, default)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie la valeur d'attribut du nœud courant convertie en type DateTime.
+			<br>Si l'attribut n'existe pas, et si la valeur par défaut n'est pas spécifiée : alors, une erreur est générée.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>name</code> : le nom d'attribut.</li>
+				<li><code>default</code> : la valeur par défaut (optionnel).</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>La valeur (DateTime).
+			</p>
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc, created, accessed
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">order</span><span class="delimiter">"</span></span>)
+  XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">created</span><span class="delimiter">"</span></span>, EncodeDate(<span class="integer">2017</span>, <span class="integer">11</span>, <span class="integer">7</span>))
+  created := XML:GetAttrDate(doc, <span class="string"><span class="delimiter">"</span><span class="content">created</span><span class="delimiter">"</span></span>)
+  accessed := XML:GetAttrDate(doc, <span class="string"><span class="delimiter">"</span><span class="content">accessed</span><span class="delimiter">"</span></span>, Today())
+XML:EndNode(doc)
+Print(DayOf(created))
+Print(MonthOf(created))
+Print(YearOf(created))
+Print(accessed)
+Print(XML:ToString(doc))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">7
+11
+2017
+08/11/2017
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;order</span> <span class="attribute-name">created</span>=<span class="string"><span class="delimiter">"</span><span class="content">2017-11-07T00:00:00.000</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

@@ -1,0 +1,74 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:FindFieldByCode(Entity, EncodeField)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie un champ d'entité, selon son code.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Entity</code> : l'entité.</li>
+				<li><code>EncodeField</code> : le code de champ.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>L'objet de type "TMetaField".</li>
+			<li>"Null" si le champ n'est pas trouvé.</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>local entity, field
+entity := Meta:GetEntityByCode("Adh")
+field := Meta:FindFieldByCode(entity, "Contrat")
+if not IsNull(field) then
+begin
+  Print("Entity ADH")
+  Print("Field Contrat")
+  Print("---")
+  Print(Obj:DumpVar(field))
+end</pre>
+			
+			<p>Résultat :</p>
+			<pre>Entity ADH
+Field Contrat
+---
+AccessProtected (UnicodeString): 
+AllowModif (Boolean): False
+CalcType (Unknown): unknown
+Changed (Boolean): False
+Code (UnicodeString): Contrat
+DefaultValue (UnicodeString): 
+DisplayLabel (UnicodeString): N° contrat
+FieldType (Unknown): unknown
+Indexed (Boolean): False
+InputCondition (Boolean): False
+InputFormat (UnicodeString): 
+InputRequired (Boolean): False
+InputVerification (Boolean): False
+IsComplement (Boolean): False
+IsDataDictionnaryItem (Boolean): False
+IsKey (Boolean): True
+IsMaster (Boolean): True
+IsPersistent (Boolean): True
+Locked (Boolean): False
+LockedByOwner (Boolean): False
+Model (Unknown): unknown
+Name (UnicodeString): B_CONTRAT
+NotNull (Boolean): True
+OldName (UnicodeString): 
+Order (Integer): 1
+Owner (Unknown): unknown
+SearchAlpha (Boolean): False
+Size (Integer): 0
+Table (Unknown): unknown
+TableRef (UnicodeString): </pre>
+			<br>
+		</div>
+	</div>
+</body>

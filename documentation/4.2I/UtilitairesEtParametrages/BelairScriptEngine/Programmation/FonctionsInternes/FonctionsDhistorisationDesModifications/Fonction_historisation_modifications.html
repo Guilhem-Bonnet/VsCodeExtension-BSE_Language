@@ -1,0 +1,85 @@
+<body>
+
+
+<h3>Fonctions d'historisation des modifications</h3>
+
+	<!-- Fonction DATEALP -->
+		<div class="panel panel-info">
+		<div class="panel-heading">
+		<h3 class="panel-title"><code>Histo:Enable</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction active l’historisation des modifications pour la connexion en cours.
+			</p>
+			<p>
+				<b><br>Remarques :</b>
+				</p><ul><li>Si aucun trigger n'a été déclenché la fonction n'aura aucun effet.</li>
+				<li>Par défaut les triggers sont toujours actif donc Histo:Enable va de pair avec la fonction Histo:Disable</li></ul>
+			
+			
+			<p><b><br>Paramètres d'entrée :</b>
+			<br>Aucun.</p>
+			
+			<p><b><br>Résultat :</b>
+			<br>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>Local tiersHisto, tiersNoHisto
+Histo:Disable()
+tiersHisto := Obj:GetByKey("TIERS", 1010)
+tiersHisto.RSociale := "Pas Historisé" 
+Obj:Save(tiersHisto)
+Histo:Enable()
+
+tiersNoHisto := Obj:GetByKey("TIERS", 1005)
+tiersNoHisto.RSociale := "Historisé" 
+Obj:Save(tiersNoHisto)                                                    
+
+return 0
+</pre>
+			<p><b><br>Résultat :</b><br>
+			<br>Ici les modifications du tiers 1005 seront tracé mais les modifications du tiers 1010 ne le seront pas..</p>
+			<br>
+			</div>
+
+		<div class="panel-heading">
+		<h3 class="panel-title"><code>Histo:Disable</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction désactive l’historisation des modifications pour la connexion en cour.
+			</p>
+			<p>
+				<b><br>Remarques :</b>
+				</p><ul><li>Si aucun trigger n'a été déclenché la fonction n'aura aucun effet.</li>
+				<li>A la fin de l’exécution d’un script les triggers seront automatiquement réactivés.</li></ul>
+			
+			
+			<p><b><br>Paramètres d'entrée :</b>
+			<br>Aucun.</p>
+			
+			<p><b><br>Résultat :</b>
+			<br>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>Local tiersHisto, tiersNoHisto
+
+Histo:Disable()
+tiersHisto := Obj:GetByKey("TIERS", 1010)
+tiersHisto.RSociale := "Pas Historisé" 
+Obj:Save(tiersHisto)
+Histo:Enable()
+
+tiersNoHisto := Obj:GetByKey("TIERS", 1005)
+tiersNoHisto.RSociale := "Historisé" 
+Obj:Save(tiersNoHisto)                                                    
+
+return 0
+</pre>
+			<p><b><br>Résultat :</b><br>
+			<br>Ici les modifications du tiers 1005 seront tracé mais les modifications du tiers 1010 ne le seront pas.</p>
+			<br>
+			</div>
+</div>
+</body>

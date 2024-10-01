@@ -1,0 +1,80 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>GT_GetMergeFields</code></h3>
+		</div>
+
+
+	<p><span style="color:red;">(cette action nécessite le service BaiimpPool)</span></p>
+
+
+	<p>Récupération des valeurs des champs de fusion d'un document Belair</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres:<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>target (string, obligatoire) ; entité cible : doit être parmi les valeurs suivantes:
+	<ul>
+	<li>T : Tiers</li>
+		<li>C : contrat</li>
+		<li>S : sinistre</li>
+		<li>Q: quittance</li>
+	</ul>
+	</li>
+		<li>id (int, obligatoire) ; identifiant de l'entité (numéro de tiers, n. interne contrat; n. interne sinistre; n. interne quittance)</li>
+		<li>document (string, obligatoire) : titre du document de Belair (correspond à LET.B_TITRE)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux Xml donnant les valeurs des champs de fusion du document<br><span style="color:blue;">Le flux XML peut servir à générer un objet compatible avec les fonctions de fusion HTML : Html:MergeFields, Html:MergeFieldsByFile, Html:MergeAndConvert)</span></p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;gt_getmergefields</span> <span class="na">document=</span><span class="s">"attestation scolaire"</span> <span class="na">target=</span><span class="s">"contrat"</span> <span class="na">id=</span><span class="s">"38"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"mergefields"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"auxiliaire_de_voie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"bureau_distributeur"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>L'HAY LES ROSES<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"code_postal"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>94240<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"datedujour"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>25 octobre 2021<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"datenais"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>19/02/2005
+05/12/2008<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"lieu_dit"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"moins18ansacharge"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Joel
+Marco<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"no_police"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>97-0059<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"nom"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>DELARUE
+DELARUE<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"nom_compagnie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>BEL AIR PSEUDO-ASS.<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"nom_prenom_ou_raison_sociale"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>DELARUE Adeline<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"numero_et_voie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>25 Boulevard de la rose<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"prenom"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Joel
+Marco<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"signataire"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"titre"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>MME<span class="nt">&lt;/param&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/gt_getmergefields&gt;</span>
+</code></pre>
+
+	<p>Si une erreur est constatée (document inexistant, etc...)<br></p><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;gt_getmergefields</span> <span class="na">document=</span><span class="s">"attestation scolaire xxxxxxxxxxxxxxxxxx"</span> <span class="na">target=</span><span class="s">"contrat"</span> <span class="na">id=</span><span class="s">"38"</span> <span class="na">error=</span><span class="s">"Classeur introuvable"</span><span class="nt">/&gt;</span>
+</code></pre>
+
+
+	<a name="Librairie-MergeFieldsLib"></a>
+<h2>Librairie MergeFieldsLib<a href="#Librairie-MergeFieldsLib" class="wiki-anchor"></a></h2>
+
+
+Cette librairie contient la fonction permettant de récupérer les champs fusionnés sous forme d'objet:
+	<ul>
+	<li>Utilisation de la fonction automate <code>GetMergeFields</code> (<a class="issue tracker-2 status-5 priority-4 priority-default closed" title="Evolution: Fonction Automate GetMergeFields(classeur, lettre) (Terminé)" href="http://redmine4.belair.local/issues/21816">#21816</a>)</li>
+		<li>Normalisation du nommage des propriétées de l'objet (suppression accents et espaces dans le nom du champ de fusion)</li>
+	</ul>
+</div></body>

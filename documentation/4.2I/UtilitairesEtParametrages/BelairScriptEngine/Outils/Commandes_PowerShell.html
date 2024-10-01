@@ -1,0 +1,26 @@
+<body>
+<h3>Lancement de processus Bse vers un programme générique</h3>
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Exec</code>
+		</h3></div>
+		<div class="panel-body">
+<p>La fonction exécute une commande puis retourne le résultat.</p><br>
+<p><b><u>Paramètres d'entrée :</u></b></p>
+<ul><li>1. Le nom du programme</li>
+<li>2. Les paramètres d'exécution</li>
+<li>3. Une chaîne a transmettre au programme (optionnel).</li></ul><br>
+<p><b><u>Résultat :</u></b></p>
+<p>#le texte de la valeur trouvée<br>Si le programme retourne une erreur. Le message d'erreur sera retourné par la fonction.</p>
+<p><b><u>Exemples :</u></b></p>
+<pre><code class="c syntaxhl"><span class="CodeRay">local result, Input
+Input := "Test" 
+Exec("d:\belair\belair.exe", "/Ad:\belair\test\appxxx.conf")
+result := Exec("Java", "-jar MonJar.jar", Input)
+return result </span></code></pre>
+<p><b><u>Résultat :</u></b></p>
+<pre><code class="c syntaxhl"><span class="CodeRay">Script result:
+Unit Test</span></code></pre></div>
+</div>
+</body>

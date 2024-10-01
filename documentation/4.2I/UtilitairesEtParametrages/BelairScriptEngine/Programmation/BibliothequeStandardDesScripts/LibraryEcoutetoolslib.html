@@ -1,0 +1,26 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+<br>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Library EcouteToolsLib</code>
+		</h3></div>
+		<div class="panel-body">
+		<p>Cette librairie permet de traiter des fichiers par un script BSI, via l'automate d'import. <br>L'intégration de fichier peut être utilisée par exemple pour enregistrer des dossiers saisis par internet.</p>
+		<p>Cette librairie contient les fonctions utilisées par l'action BSE Ecoute.bs</p></div>
+<a name="Utilisation-en-ligne-de-commande-ou-dans-un-plannificateur-de-t%C3%A2ches"></a>
+<h3>Utilisation en ligne de commande (ou dans un plannificateur de tâches)<a href="#Utilisation-en-ligne-de-commande-ou-dans-un-plannificateur-de-t%C3%A2ches" class="wiki-anchor"></a></h3>
+	<p><strong>Exemple:</strong></p>
+
+
+<pre>BSEExec.exe /D /:I:D:\belair\appdei\BASScripts\Std\Ecoute.bs /:IP:exececoute.xml.xml /:O:EcouteExecResult.out</pre>
+<br>
+	<p><strong>exececoute.xml</strong> - exemple de contenu du fichier de paramètres d'entrée :</p>
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;params&gt;</span>
+  <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"filename"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>C:\temp\ecoute\ecouteconf.xml<span class="nt">&lt;/param&gt;</span>
+  <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"returnlog"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/params&gt;</span>
+</code></pre>
+  </div>
+</body>

@@ -1,0 +1,54 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:AttrExists(doc, name)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction vérifie si l'attribut du nœud courant existe.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul><li><code>doc</code> : le document XML.</li>
+				<li><code>name</code> : le nom de l'attribut.</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			</p><ul><li>"True" - l'attribut existe.</li>
+			<li>"False" - l'attribut n'existe pas.</li></ul>
+			
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">order</span><span class="delimiter">"</span></span>)
+  Print(XML:AttrExists(doc, <span class="string"><span class="delimiter">"</span><span class="content">num</span><span class="delimiter">"</span></span>))
+  XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">num</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">N1234</span><span class="delimiter">"</span></span>)
+  Print(XML:AttrExists(doc, <span class="string"><span class="delimiter">"</span><span class="content">num</span><span class="delimiter">"</span></span>))
+  Print(XML:GetAttrStr(doc, <span class="string"><span class="delimiter">"</span><span class="content">num</span><span class="delimiter">"</span></span>))
+XML:EndNode(doc)
+Print(XML:ToString(doc))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">False
+True
+N1234
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;order</span> <span class="attribute-name">num</span>=<span class="string"><span class="delimiter">"</span><span class="content">N1234</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

@@ -1,0 +1,29 @@
+<body>
+	<h3>Calcul d'une prime de base</h3>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>CALCULTARIF([codegar])</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+			</p><p>Cette fonction de calcul numérique permet de recalculer la prime de base d'un risque assuré</p>
+
+			<p>
+				<b><br>Paramètre d'entrée :</b>
+				</p><ul><li><code>codegar</code> : code de la garantie (optionnel)</li></ul>
+			
+
+			<div class="alert alert-warning" role="info">
+				Si <code>codegar</code> est vide, toutes les garanties sont recalculées: la fonction rend la prime TOTALE
+				<br>
+				Sinon, le (re)calcul ne se fait que sur la garantie <code>codegar</code> et la fonction rend le montant de la prime totale de cette garantie
+			</div>
+			<p>Exemple<br>
+				</p><div class="bai_code">
+					IT := CALCULTARIF() // recalcul de toute la prime de base<br>
+					IT := CALCULTARIF("RC") // recalcul uniquement de la garantie RC<br>
+				</div>
+						
+		</div>
+	</div>
+</body>

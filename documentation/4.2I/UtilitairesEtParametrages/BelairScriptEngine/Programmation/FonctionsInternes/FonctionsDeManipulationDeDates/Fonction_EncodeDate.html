@@ -1,0 +1,45 @@
+<body>
+
+
+<h3>Fonctions de manipulation de dates</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>EncodeDate(YearValue, MonthValue, DayValue)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction encode la date spécifiée par les valeurs entières de l'année, du mois et du jour.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>YearValue</code> : l'année ("yyyy").</li>
+				<li><code>MonthValue</code> : le mois ("mm").</li>
+				<li><code>DayValue</code> : le jour ("nn").</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>La valeur de type DateTime (le temps reste à zéro).</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local date1
+date1 := EncodeDate(<span class="integer">2017</span>, <span class="integer">2</span>, <span class="integer">22</span>) 
+Print(date1)
+Print(FormatDateTime(<span class="string"><span class="delimiter">"</span><span class="content">yyyy-mm-nn</span><span class="delimiter">"</span></span>, date1))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">22/02/2017
+2017-02-00
+</span></code></pre>
+				
+			
+			<br>
+		</div>
+	</div>
+	<br><br>
+</body>

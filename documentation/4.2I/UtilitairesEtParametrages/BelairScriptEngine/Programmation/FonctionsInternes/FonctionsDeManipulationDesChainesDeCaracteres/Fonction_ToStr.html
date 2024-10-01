@@ -1,0 +1,49 @@
+<body>
+
+
+<h3>Fonctions de manipulation des chaînes de caractères (strings)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>ToStr</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Convertit une valeur de n'importe quel type dans une chaîne de caractères.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. La valeur.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>La chaîne.
+
+			</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">Print(<span class="string"><span class="delimiter">"</span><span class="content">Int: </span><span class="delimiter">"</span></span> + ToStr(<span class="integer">123</span>))
+Print(<span class="string"><span class="delimiter">"</span><span class="content">Num: </span><span class="delimiter">"</span></span> + ToStr(<span class="integer">12</span><span class="float">3</span><span class="float">.45</span>))
+Print(<span class="string"><span class="delimiter">"</span><span class="content">Bool: </span><span class="delimiter">"</span></span> + ToStr(<span class="predefined-constant">true</span>))
+Print(<span class="string"><span class="delimiter">"</span><span class="content">Date: </span><span class="delimiter">"</span></span> + ToStr(EncodeDate(<span class="integer">2018</span>, <span class="integer">3</span>, <span class="integer">15</span>)))
+Print(<span class="string"><span class="delimiter">"</span><span class="content">DateTime: </span><span class="delimiter">"</span></span> + ToStr(EncodeDateTime(<span class="integer">2018</span>, <span class="integer">3</span>, <span class="integer">15</span>, <span class="integer">9</span>, <span class="integer">25</span>, <span class="integer">36</span>)))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">Int: 123
+Num: 123,45
+Bool: True
+Date: 15/03/2018
+DateTime: 15/03/2018 09:25:36
+</span></code></pre>
+			
+			
+		</div>
+	</div>
+</body>

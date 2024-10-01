@@ -1,0 +1,41 @@
+<body>
+
+
+<h3>Fonctions de recherches alpha</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>AlphaSearchUpdateField</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction met à jour l'index de recherches pour le champ d'un objet.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. Le texte.</li>
+				<li>2. Le type d'objet (code d'entité).</li>
+				<li>3. Le nom de champ.</li>
+				<li>4. Les valeurs de clé (de type entier, jusqu'à 3 valeurs).</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>Le nombre des éléments d'index affectés.</p>
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">Print(AlphaSearchUpdateField(<span class="string"><span class="delimiter">"</span><span class="content">MARTIN Pierre</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">DPP</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">b_nompre</span><span class="delimiter">"</span></span>, <span class="integer">1000</span>, <span class="integer">1</span>))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">1
+</span></code></pre>
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

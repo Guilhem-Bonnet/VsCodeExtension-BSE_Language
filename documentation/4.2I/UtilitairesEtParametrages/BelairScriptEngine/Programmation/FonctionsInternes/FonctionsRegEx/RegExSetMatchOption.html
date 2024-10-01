@@ -1,0 +1,91 @@
+<body>
+<!-- titre page -->
+<h1 class="h1">Expressions régulières</h1>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>RegEx:SetMatchOption(<i>regExObject, options, ...</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			La fonction permet d'ajouter des options qui contrôlent la manière dont une expression régulière est mise en correspondance avec une séquence de caractères.
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>regExObject</code> : Un objet de type 'RegEx'<br>
+			<code>options</code> : Liste des options, séparées par des "," (string)
+		</p>
+
+		<p><b>Résultat</b>: </p>
+
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<pre><span class="bai_code">
+local regExObject  
+regExObject := RegEx:New("Some people, when confronted with a problem, think I know, I'll use regular expressions. Now they have two problems.")
+if RegEx:Search(regExObject, "CONFRONTED") then
+  DisplayResult(regExObject)
+RegEx:SetSyntaxOption(regExObject, "icase")
+if RegEx:Search(regExObject, "CONFRONTED") then
+DisplayResult(regExObject)
+return 0 
+
+function DisplayResult(regExObj)
+local i
+  i := 0
+  while i </span></pre>
+				</div>	
+			
+			<p>
+				<b>Résultat :</b>
+				</p><div class="bai_code">
+					<pre>
+Match index 0 → "confronted" 
+Script result:
+0</pre>
+				</div>
+			
+		</div>
+	</div>
+
+<h2 class="h2">Options de match pour l'objet RegEx</h2>
+
+<div>
+	Les options suivants sont utilisés afin de contrôler la façon dont une chaîne d'expression régulière doit être interprétée. (string, non sensitive à la casse, etc...)
+</div>
+
+<table class="table table-striped">
+<header>
+<tr class="table-secondary"><th class="text-center">Option</th><th class="text-center">Description</th></tr>
+</header>
+
+<tr><td> default </td><td> Spécifie que la correspondance des expressions régulières se déroule sans aucune modification des règles normales utilisées dans ECMA-262, ECMAScript </td></tr>
+<tr><td> notbob </td><td> Spécifie que les expressions "\A" et "\`" ne doivent pas correspondre à la sous-séquence [first,first). </td></tr>
+<tr><td> noteob </td><td> Spécifie que les expressions "\'", "\z" et "\Z" ne doivent pas correspondre à la sous-séquence [last,last). </td></tr>
+<tr><td> notbol </td><td> Spécifie que l'expression "^" ne doit pas être comparée à la sous-séquence [first,first). </td></tr>
+<tr><td> noteol </td><td> Spécifie que l'expression "$" ne doit pas être mise en correspondance avec la sous-séquence [last,last) .</td></tr>
+<tr><td> notbow </td><td> Spécifie que les expressions "\</td></tr>
+<tr><td> noteow </td><td> Spécifie que les expressions "\&gt;" et "\b" ne doivent pas être mises en correspondance avec la sous-séquence [last,last). </td></tr>
+<tr><td> any </td><td> Spécifie que si plus d'une correspondance est possible, alors toute correspondance est un résultat acceptable : cela trouvera toujours la correspondance la plus à gauche, mais peut ne pas trouver la "meilleure" correspondance à cette position. Utilisez cet indicateur si vous vous souciez de la vitesse de correspondance, mais ne vous souciez pas de ce qui a été mis en correspondance  </td></tr>
+<tr><td> notnull </td><td> Spécifie que l'expression ne peut pas être comparée à une séquence vide. </td></tr>
+<tr><td> continuous </td><td> Spécifie que l'expression doit correspondre à une sous-séquence qui commence en premier. </td></tr>
+<tr><td> partial </td><td> Spécifie que si aucune correspondance ne peut être trouvée, alors il est acceptable de renvoyer une correspondance [from, last) telle que from!= last, s'il peut exister une séquence plus longue de caractères [from,to) dont [from,last) est un préfixe, et qui donnerait une correspondance complète. Cet indicateur est utilisé lors de la mise en correspondance de textes incomplets ou très longs. </td></tr>
+<tr><td> singleline </td><td> Équivalent à l'inverse du modificateur m/ de Perl ; empêche ^ de correspondre après un caractère de saut de ligne intégré (afin qu'il ne corresponde qu'au début du texte mis en correspondance) et $ de correspondre avant un saut de ligne intégré (de sorte qu'il ne corresponde qu'à la fin du texte mis en correspondance). </td></tr>
+<tr><td> prevavail </td><td> Spécifie que --first est une position d'itérateur valide, lorsque cet indicateur est défini, les indicateurs notbob et notbow sont ignorés par les algorithmes d'expression régulière. </td></tr>
+<tr><td> notdotnewline </td><td> Spécifie que l'expression "." ne correspond pas à un caractère de saut de ligne. C'est l'inverse du modificateur s/ de Perl. </td></tr>
+<tr><td> notdotnull </td><td> Spécifie que l'expression "." ne correspond pas à un caractère null '\0'. </td></tr>
+<tr><td> all </td><td> Spécifie que l'expression doit trouver l'ensemble de l'entrée même si match_any est défini </td></tr>
+<tr><td> posix </td><td>  Spécifie que l'expression doit être mise en correspondance selon la règle POSIX la plus à gauche la plus longue , quel que soit le type d'expression . Soyez averti que ces règles ne fonctionnent pas bien avec de nombreuses fonctionnalités spécifiques à Perl telles que les répétitions "non-greedy" </td></tr>
+<tr><td> perl </td><td> Spécifie que l'expression doit être mise en correspondance conformément aux règles de correspondance Perl , quel que soit le type d'expression. </td></tr>
+<tr><td> nosubs </td><td> Fait en sorte que l'expression se comporte comme si elle n'avait pas de sous-expressions marquées, quel que soit le nombre de groupes de capture réellement présents.  </td></tr>
+<tr><td> replacedefault </td><td> Spécifie que lorsqu'une correspondance d'expression régulière doit être remplacée par une nouvelle chaîne, la nouvelle chaîne est construite à l'aide des règles utilisées par la fonction ECMAScript. Ceci est fonctionnellement identique aux règles de chaîne de format Perl .</td></tr>
+<tr><td> replacesed </td><td> Spécifie que lorsqu'une correspondance d'expression régulière doit être remplacée par une nouvelle chaîne, cette nouvelle chaîne est construite à l'aide des règles utilisées par l'utilitaire Unix sed dans IEEE , Portable Operating System Interface (POSIX ), Shells and Utilities. </td></tr>
+<tr><td> replaceperl </td><td> Spécifie que lorsqu'une correspondance d'expression régulière doit être remplacée par une nouvelle chaîne, cette nouvelle chaîne est construite en utilisant les mêmes règles que Perl 5 . </td></tr>
+<tr><td> replaceall </td><td> Spécifie que toutes les extensions de syntaxe sont activées, y compris les remplacements conditionnels (?ddexpression1:expression2) </td></tr>
+<tr><td> replacefirstonly </td><td> Lorsqu'il est spécifié lors d'une opération de recherche et de remplacement, seule la première occurrence de l'expression régulière est remplacée.</td></tr>
+
+</table>
+
+</body>

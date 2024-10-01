@@ -1,0 +1,58 @@
+<body>
+
+
+<h3>Fonctions de fichiers</h3>
+
+<h4>Fonctions de manipulation de fichiers texte</h4>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>File:Write(FileDescriptor, String)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction ajoute une chaîne de caractères dans le fichier texte créé ou ouvert pour l'écriture préalable.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>FileDescriptor</code> : l'objet de type <i>FileDescriptor</i>.</li>
+				<li><code>String</code> : la chaîne de caractères.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>Aucun.
+			</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local f1, i, c
+f1 := File:Create(<span class="string"><span class="delimiter">"</span><span class="content">test.txt</span><span class="delimiter">"</span></span>)
+File:Write(f1, <span class="string"><span class="delimiter">"</span><span class="content">ABC</span><span class="delimiter">"</span></span>)
+File:Close(f1)
+f1 := File:OpenRead(<span class="string"><span class="delimiter">"</span><span class="content">test.txt</span><span class="delimiter">"</span></span>)
+i := <span class="integer">1</span>
+<span class="keyword">while</span> not f1.<span class="predefined-constant">EOF</span> begin
+  c := File:ReadChar(f1)
+  Print(<span class="string"><span class="delimiter">"</span><span class="content">Char[%s]: %s (%s)</span><span class="delimiter">"</span></span>, i, c, Ord(c))
+  i := i + <span class="integer">1</span>
+end</span></code></pre>
+
+
+
+	<p>Résultat :</p>
+
+	<pre>
+Char[1]: A (65)
+Char[2]: B (66)
+Char[3]: C (67)
+</pre>
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

@@ -1,0 +1,410 @@
+<body>
+	<h2>Création d'enregistrement</h2>
+
+	<p>
+		Pour assurer la cohérence des créations de données, le langage de l'automate Belair propose des fonctions spécialisées. On les utilisera chaque fois que possible, car elles déclenchent des mécanismes assurant que des tables liées sont correctement mises à jour. Par exemple, la création d'un nouveau tiers de type personne physique par NEWTIERS() entraînera la création d'enregistrement correspondant dans la table DPP, sans que l'utilisateur ait à s'en préoccuper.  
+	</p>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWTIERS("type","nature",numero)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ouverture d'un nouveau tiers
+			</p>
+
+			<ul>
+				<li><b>type</b> : type de tiers à créer, peut être une chaine de calcul du genre IA, ?DATA(10), etc...</li>
+				<li><b>nature</b> : nature de tiers ("M" personne morale, "P" personne physique). Nature est ignoré si type correspond à un type de tiers forçant la nature de tiers.</li>
+				<li><b>numero</b> : entier, numéro de tiers à créer (si 0, numérotation automatique selon le type de tiers)</li>
+			</ul>
+
+			<p>
+				Si <b>nature</b> = "P", un enregistrement dans FAM et DPP est ouvert pour la création de la personne physique.<br>
+				Si <b>nature</b> = "M", un enregistrement dans DPM est ouvert pour la création de la personne morale.
+			</p>
+		</div>	
+	</div>
+	
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWFAM</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ouverture d'un nouveau membre de famille 
+			</p>
+
+			<p>
+				Un enregistrement dans FAM et DPP est ouvert pour la création du membre de famille secondaire.<br>
+				Le tiers doit être ouvert et être de nature personne physique
+			</p>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWCOR</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ouverture d'un nouveau correspondant
+			</p>
+
+			<p>
+				Un enregistrement dans COR et DPP est ouvert pour la création du correspondant.<br>
+				Le tiers doit être ouvert et être de nature personne morale
+			</p>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWCON("produit")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ouverture d'un nouveau contrat et de sa première pièce
+			</p>
+
+			<ul>
+				<li><b>produit</b> : code du produit à utiliser</li>
+			</ul>
+
+			<p>
+				Le tiers doit être ouvert<br>
+				Un enregistrement est créé dans CONT, ainsi que dans PIEC, POLI, ADH et RISA
+				Les garanties obligatoires du contrat sont automatiquement ajoutées.
+			</p>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWPIE("produit", "options")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ouverture d'une nouvelle pièce
+			</p>
+			<p>
+				Paramètres :
+			</p>
+			<ul>
+				<li><b>produit (chaine, optionnel)</b> : code du produit à utiliser</li>
+				<li><b>options (chaine, optionnel)</b> : options de reprise de la pièce actuelle
+				<ul><li>-gar : ajout de toutes les garanties acquises sur la piece actuelle</li>
+				<li> -adh : ajout de toutes les adhésions non fermées de la pièce actuelle (pour les contrats-multi-adhésion)</li></ul>
+			</li></ul>
+
+			<p>
+				Le contrat doit être ouvert.<br>
+				Si produit est renseigné, la pièce sera affectée du code produit "produit", sinon la pièce reprend le produit de la pièce initiale.			</p>
+
+			<p>
+				Le script doit "fermer" la pièce en cours avant de créer la nouvelle : au minimum, il faut renseigner le champ b_datefin.
+				Il est préférable de traiter aussi b_sitpiece, b_finpiece et de mettre à jour b_datesit.
+			</p>
+
+			<p>
+				L'adhésion principale est ouverte et les informations ADH.b_entree et ADH.b_sortie sont renseignées.
+			</p>
+			<p>
+			<b>Exemple :</b><br>
+			<code>NEWPIE("produit")</code> : Simple ouverture d'une nouvelle pièce avec reprise des données du risque de la pièce précédente, si le contrat n'est pas en multi-adhésion<br>
+			<code>NEWPIE("produit","-gar")</code> : ouverture d'une nouvelle pièce avec reprise des données du risque de la pièce précédente, si le contrat n'est pas en multi-adhésion et ajout de toutes les garanties<br>
+			<code>NEWPIE("produit","-adh")</code> : ajout de toutes les adhesions en cours<br>
+			<code>NEWPIE("produit","-gar -adh")</code> : ajout de toutes les garanties et adhesions		
+			</p>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWADH(tiers)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ouverture d'un nouveau risque et d'une nouvelle adhésion 
+			</p>
+
+			<ul>
+				<li><b>Tiers</b> : entier, n° de tiers (existant) lié à cette adhésion</li>
+			</ul>
+
+			<p>
+				Pour un contrat type flotte, mettre le n° du tiers du contrat.
+				Pour un contrat type "groupe ouvert", mettre le n° de tiers de l'adhérent (exemple prévoyance, contrat groupe).
+			</p>
+
+			<p>
+				Le contrat et la pièce doivent être ouverts.
+				Le contrat doit être de type 'multi-adhésion'
+			</p>
+
+			<p>
+				Pour les versions postérieures au 20.11.2008 : les garanties obligatoires sont automatiquement ajoutées pour chaque adhésion ajoutée par NEWADH.
+			</p>
+
+			<p>
+				Après validation de l'enregistrement par la commande OK, l'automate se repositionne sur l'adhésion principale du contrat.
+			</p>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWGAR("code_garantie")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ajout d'une nouvelle garantie acquise 
+			</p>
+
+			<ul>
+				<li><b>code_garantie</b> : code de la garantie à ajouter</li>
+			</ul>
+
+			<p>
+				Le risque doit être ouvert.<br>
+				Il est indispensable de tester si la garantie existe déjà, pour ne pas l'ajouter dans ce cas.
+			</p>
+
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					...<br>
+					IG$:=?DATA("code_garantie")<br>
+					SI  GARO(IG)="NON";NEWGAR(IG)<br>
+					...
+				</div>
+			</div>
+
+			<p>
+				Cette commande n'est à utiliser que pour les garanties facultatives. Les garanties obligatoires sont automatiquement ajoutées sur les contrats.
+			</p>
+
+			<p>
+				La commande NEWGAR permet maintenant l'ajout d'un panier de garantie. <br><b>Exemple :</b><br>
+				NEWGAR("PANIER:xx") // où xx correspond au code du panier de garantie.
+			</p>
+			<p>
+				Cette nouveauté n'est utilisable qu'en formule de calcul et effectue l'ajout sur le risque en ligne lors du déclenchement de la formule. 
+				je dois modifier aux deux endroits : <br><b>Exemple :</b><br>
+				NEWGAR("code_garantie") &gt; NEWGAR("PANIER:code_garantie"")<br>
+				et<br>
+				NEWGAR("X") &gt;  NEWGAR("PANIER:code_garantie"")
+			</p>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWCLAUSE("code_clause")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ajout d'une nouvelle clause
+			</p>
+
+			<ul>
+				<li><b>code_clause</b> : code de la clause </li>
+			</ul>
+
+			<p>
+				Le contrat et la pièce doivent être ouverts.
+			</p>
+
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					NEWCLAUSE("EXCLU") <span class="bai_comment">// ajout de la clause "EXCLU"</span>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWEXT(extension)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ajout d'une extension
+			</p>
+
+			<ul>
+				<li><b>extension</b> : nom de l'extension à ajouter (sans guillemets)</li>
+			</ul>
+
+			<p>
+				Le contrat et la pièce doivent être ouverts.<br>
+				Il est obligatoire de renseigner la clé principale puis de valider par OK.
+			</p>
+
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					NEWEXT(XVTAR)<br>
+					?XVTAR("B_RISQUE"):=?ADH("B_ADHESION")<br>
+					OK
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWEXTCAL("extension")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ajout d'une extension
+			</p>
+
+			<ul>
+				<li><b>Extension</b> : nom de l'extension à ajouter (avec guillemets, donc permettant d'appeler une formule de calcul)</li>
+			</ul>
+
+			<p>
+				Le contrat et la pièce doivent être ouverts.<br>
+				Il est obligatoire de renseigner la clé principale puis de valider par OK.
+			</p>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWQIT(bordereau)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ajout d'une nouvelle quittance dans un bordereau
+			</p>
+
+			<ul>
+				<li><b>Bordereau</b> : n° du bordereau à utiliser (doit exister préalablement)</li>
+			</ul>
+
+			<p>
+				Une quittance est créée pour le bordereau passé en paramètre.<br>
+				Le n° de ligne est attribué automatiquement, à la suite des lignes déjà existantes.
+			</p>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEWQITMAN(bordereau)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ajout d'une nouvelle quittance dans un bordereau
+			</p>
+
+			<ul>
+				<li><b>Bordereau</b> : n° du bordereau à utiliser (doit exister préalablement).</li>
+			</ul>
+
+			<p>
+				Une quittance est créée pour le bordereau passé en paramètre.<br>
+				Le n° de ligne n'est pas attribué automatiquement. Cela oblige à gérer un compteur dans le script, mais permet d'accélérer le traitement de manière conséquente lorsqu'il s'agit par exemple de l'intégration d'un fichier de quittancement terme volumineux.
+			</p>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>EMETQUIT(bordereau,"datedeb","datefin")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Emission d'une quittance en tarification
+			</p>
+
+			<ul>
+				<b>bordereau</b> : n° du bordereau à utiliser (doit exister préalablement), affecté ou non.<br>
+				<b>datedeb</b> : date de début d'effet de la quittance.<br>
+				<b>findeb</b> : date de fin d'effet de la quittance.  
+			</ul>
+
+			<p>
+				Une quittance est créée pour le bordereau passé en paramètre en tenant compte de la période couverte par les dates d'effet pour l'application du prorata temporis sur la prime de base (la formule PRORATAQITCPT est appliquée si elle existe).<br>
+				Les différents montants de primes, taxes et frais sont calculés automatiquement comme lors de l'utilisation des fonction de quittancement de tarification.<br>
+				Si l'émission se fait sur une pièce comportant une date de fin, il sera émis une ristourne tenant compte des quittances déjà émises sur la période. 
+			</p>
+
+			<p>
+				Pour les versions antérieures à janvier 2013, ajout d'un paramètre optionnel dans la commande EMETQUIT qui indique que l'on veut reprendre ou non l'historique des quittances déjà émise sur la période, que le contrat soit résilié ou non.
+			</p>
+
+			<p>
+				Si on ajoute VRAI en 4ème parametre, apres les dates, l'historique est repris<br>
+				Si on ajoute FAUX, pas de reprise, meme si le contrat est résilié<br>
+				Si on ne met rien, reprise de l'historique uniquement si le contrat est résilié
+			</p>
+
+			<div class="alert alert-warning">
+				<b>Remarque</b> : la reprise ne marche bien sur que si on est sur le même produit
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEW("table")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Nouvel enregistrement dans une table 
+			</p>
+
+			<ul>
+				<li><b>table</b> : code Belair de la table concernée.</li>
+			</ul>
+
+			<p>
+				Cette instruction se contente de créer un enregistrement dans la table passée en paramètre.<br>
+				Il appartient à l'utilisateur de gérer manuellement les autres créations qui peuvent être nécessaire pour garantir la cohérence des données.<br>
+				Chaque fois que c'est possible, il est préférable d'utiliser une des instructions précédentes plutôt que NEW(). Cela assure une meilleure sécurité.
+			</p>
+
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				NEW("PROD") crée un nouvel enregistrement dans la table PROD. Ce nouvel enregistrement est vierge, et l'utilisateur doit en renseigner les principaux champs manuellement, puis valider par l'instruction OK.
+
+				<div class="bai_code">
+					…<br>
+					IP$ := ?DATA("code_produit")<br>
+					<br>
+					RECPROD(IP)<br>
+					SI (RESULT  0) ; &gt;SUITE
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NEW("PROD")</code></h3>
+		</div>
+		<div class="panel-body">
+			<div class="bai_exemple">
+				<div class="bai_code">
+					?PROD("b_codeprod") := IP<br>
+					?PROD("b_branche":= ?DATA("branche")<br>
+					?PROD("b_libelle":="Encore un nouveau produit !"<br>
+					?PROD("b_cieprin":= ?DATA("compagnie")<br>
+					OK<br>
+					:SUITE<br>
+					…
+				</div>
+			</div>
+
+			<p>
+				Ici, RECPROD est utilisé pour tester l'existence du produit et ne le créer que si cela est nécessaire.<br>
+				D'une façon générale, il faut TOUJOURS faire un test d'existence préalable avant de créer quoique ce soit.
+			</p>
+		</div>	
+	</div>
+</div></div></body>

@@ -1,0 +1,51 @@
+<body>
+	<h2>Formules de calcul - Contrôle sur IBAN</h2>
+		<div class="panel-body">
+			<h4>Les IBAN sont structurés ainsi:</h4>
+<pre><code class="c syntaxhl"><span class="CodeRay">PP + KK + aaaaaaaaaa
+PP = code pays (exemple FR)
+KK = clé de contrôle IBAN (pour les IBAN français, la clé est = 76 dans la quasi-totalité des cas)</span></code></pre>
+	<h4>Le calcul de KK se fait ainsi: </h4>
+<ul><li>On remplace dans l'IBAN le code KK par 00</li>
+<li>L'algorithme de calcul normalisé est appliqué sur cette chaine (transformation lettres en chiffres, module97, etc...) et rend un code numérique sur 2 positions</li>
+<li>Ce code est alors comparé avec le KK de l'IBAN d'origine (positions 3 et 4) : l'iBAN est correct en cas d'égalité</li></ul>
+<h4>Pourquoi le code KK pour les IBAN français est-il toujours égal à 76 ?</h4>
+<p>Historiquement, les IBAN ont été convertis à partir des anciens RIB qui étaient constitués ainsi: </p>
+<pre><code class="c syntaxhl"><span class="CodeRay">Code banque : BBBBB
+Code guichet : GGGGG
+Numéro de compte : NNNNNNNNNNN (11 positions)
+Clé RIB : RR
+L'IBAN devient FRKK BBBB BGGG GGNN NNNN NNNN NRR
+Le contrôle de la clé IBAN se fait donc sur FR00 BBBB BGGG GGNN NNNN NNNN NRR</span></code></pre>
+
+<p>Comme la clé RIB ajoutée à l'IBAN est calculée selon le même principe de contrôle normalisé, le contrôle global doit donner le même résultat, soit '76' (à part quelques exceptions)</p>
+	<h2>Fonctions de calcul de gestion des IBAN:</h2>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>IBANVALIDECLE(iban)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Vérifie la conformité d'un IBAN : rend VRAI / FAUX
+			</p>
+		</div>		</div>
+			<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>IBANCALCULCLE(iban)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Rend la clé IBAN (le calcul est fait en mettant '00' en positions 3 et 4 pour respecter l'algorithme)
+			</p>
+		</div>		</div>
+			<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>IBANFROMRIB(rib)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Calcule un IBAN à partir d'un RIB français.<br>le RIB doit être passé ainsi : BBBBBGGGGGNNNNNNNNNNNRR (banque+guichet+compte+clé rib)
+			</p>
+		</div>		</div>
+</div></body>

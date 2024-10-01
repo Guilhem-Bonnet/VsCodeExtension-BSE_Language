@@ -1,0 +1,97 @@
+<body>
+
+<h2>Langage de scripts</h2>
+<br>
+<h3>Types de fichiers</h3>
+<br>
+<p>Les fichiers ont pour extension : ".bs", par défaut, peu importe leur type.
+<br><br>On reconnaît deux types de fichiers :</p>
+
+<ul>
+<li>Un script : un fichier de script contenant les programmes.</li>
+<li>Une bibliothèque : un fichier des sous-programmes/fonctions qui peuvent être utilisés dans les autres scripts.</li>
+</ul>
+<br>
+<h3>Structure du script</h3>
+<br>
+<p>Chaque script peut avoir des sections "[nom de section]" destinées à différents buts.
+<br>Un script sans aucune section est traité comme un programme/bibliothèque seulement.</p>
+<br>
+<table class="table table-bordered"> 
+ <tbody> 
+  <tr> 
+   <td><b>Section</b></td> 
+   <td><b>Designation</b></td> 
+  </tr> 
+  <tr> 
+   <td>Script</td> 
+   <td>Le programme même</td>
+  </tr> 
+  <tr> 
+   <td>Description</td> 
+   <td>La description du script</td>
+  </tr>
+ </tbody> 
+</table>
+<br>
+<h3>Structure du programme</h3>
+<br>
+<p>Le programme contient la partie principale du code (homologue de la fonction main() en C/C++), suivie éventuellement par les sous-programmes.
+<br><br>Au contraire, une bibliothèque ne doit contenir que des sous-programmes.</p>
+<br><br>
+<pre>Print("Hello, World!")</pre>
+<p>ou en utilisant un sous-programme :</p>
+
+<pre>
+Hello()
+
+FUNCTION Hello
+  Print("Hello, World!")
+RETURN</pre>
+<br>
+<p>Exécutez ce script dans l'environnement <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Outils, BSEDev" name="BSEDev%20-%20l'environnement%20de%20d%C3%A9veloppement%20des%20scripts/tests">BSEDev</a> ou depuis la ligne de commande avec <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Outils, BSEExec" name="BSEExec%20-%20l'outil%20d'ex%C3%A9cution%20des%20scripts%20%C3%A0%20partir%20de%20ligne%20de%20commande">BSEExec</a> :</p>
+
+<pre>BSEExec.exe /D /:I:BSEExec_Hello.bs</pre>
+<br>
+<h3>Variables</h3>
+<br>
+<h3>Sous-programmes</h3>
+<br>
+<h3>Bibliothèques</h3>
+<br>
+<h4>Structure</h4>
+<br>
+<p>Une bibliothèque doit commencer par la déclaration "LIBRARY", suivi du nom correspondant à celui du fichier script.
+<br>Cette déclaration suivie par les sous-routines.</p>
+<br>
+<pre>
+LIBRARY MyLib 
+// Le fichier est 'MyLib.bs' !
+
+FUNCTION Hello
+  Print("Hello, World!")
+RETURN</pre>
+<br><br>
+<h4>Utiliser dans les scripts</h4>
+<br>
+<p>Afin d'utiliser les fonctions d'une bibliothèque, le programme doit demander de les utiliser avec l'instruction "USES".
+<br>"USES" doit toujours être en tête du programme.</p>
+
+<pre>USES MyLib 
+
+Hello()</pre>
+<br>
+<p>Il est possible d'utiliser plusieurs bibliothèques en même temps.</p>
+
+<pre>USES TiersLib, ContratLib 
+...</pre>
+
+ou
+
+<pre>USES TiersLib
+USES ContratLib 
+...</pre>
+
+<br><br>
+
+</body>

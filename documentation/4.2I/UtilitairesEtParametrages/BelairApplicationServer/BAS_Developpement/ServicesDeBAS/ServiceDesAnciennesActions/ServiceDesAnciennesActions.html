@@ -1,0 +1,80 @@
+<body>
+
+<h2>Service des anciennes actions (par Baiimp)</h2>
+<br>
+<h3>Vue d'ensemble</h3>
+
+<p>Le service "IBasLegacyActionService" permet de lancer les scripts d'action BSI par l'automate Baiimp.
+<br>L'implémentation technique est spécifiée dans le ticket <i>#14862.</i></p>
+
+<h3>Configuration</h3>
+
+<p>La configuration de service doit être spécifiée dans le fichier de configuration de l'application :
+</p><ul><li>la section <i>AppServer.LegacyAction</i>.</li></ul>
+<br>Par défaut le service n'est pas actif.
+<br>Lors du démarrage, le service lance une ou plusieurs (paramètres "MaxProcessCount") instances de Baiimp.exe qui vont servir les requêtes.
+<br>
+<br>
+<div class="alert alert-info" role="alert"><p><b>RECOMMANDATION :</b>
+<br><br>Il est recommandé d'utiliser le compte d'utilisateur Belair spécifique aux interactions initiales avec Baiimp (démarrage et mise en attente).
+<br>
+<br><b>Notez que :</b> 
+<br>L'appel d'une action peut utiliser un autre nom d'utilisateur selon <a class="doc-link" categories="Utilitaires et paramétrages, BAS Belair Application Server, Développement , Services de BAS, Service d'authentification BAS" name="Service%20d'authentification%20BAS"><b><i>l'authentification</i></b></a>.</p></div>
+
+<h4>Exemple de configuration</h4>
+
+<pre>[AppServer]
+Host=localhost
+Port=8080
+Endpoint=soap
+[AppServer.LegacyAction]
+Active=true
+ActionTimeoutSec=30
+Login=BAS_USER
+MaxProcessCount=3</pre>
+<br>
+<h3>API d'accès</h3>
+<br>
+<h4>Accéder au service</h4>
+
+<p>Nous allons utiliser la classe "connecteur" correspondante définie dans BasClient.php.
+<br>Voir aussi <a class="doc-link" categories="Utilitaires et paramétrages, BAS Belair Application Server, Développement, Connexion et accès aux services" name="La%20connexion%20et%20l'acc%C3%A8s%20au%20services%20BAS">La connexion et l'accès au services BAS</a>.</p>
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="inline-delimiter">&lt;?php</span>
+  <span class="local-variable">$legacyActionClient</span> = <span class="keyword">new</span> <span class="constant">BasLegacyActionClient</span>(<span class="local-variable">$BASE_URL</span>, <span class="predefined">array</span>(<span class="string"><span class="delimiter">"</span><span class="content">trace</span><span class="delimiter">"</span></span> =&gt; <span class="predefined-constant">true</span>, <span class="string"><span class="delimiter">"</span><span class="content">exceptions</span><span class="delimiter">"</span></span> =&gt; <span class="predefined-constant">true</span>)); 
+<span class="inline-delimiter">?&gt;</span>
+</span></code></pre>
+
+<br>
+<h4>RunAction</h4>
+
+<p>La fonction déclenche l'exécution d'une action choisie.</p>
+
+<pre>BasLegacyActionResult     RunAction(BasSecurityContext sc, string name, string params)</pre>
+
+<ul>
+<li>"sc" : le contexte de sécurité obtenu précédemment par IBasAuthService::OpenSession() ;</li>
+<li>"name" : le nom de l'action (correspond à un script BSI) ;</li>
+<li>"params" : les paramètres d'entrés en XML.</li>
+</ul>
+
+<br>
+<p>La fonction renvoie comme résultat un objet dont les propriétés sont :</p>
+<ul>
+<li><strong>Data</strong> (string) - le retour d'action en XML compatible au format existant.</li>
+</ul>
+
+<p>La fonction peut déclencher une exception.</p>
+
+<br>
+<h4>Exemples</h4>
+
+<p>Voir des exemples dans "dev\BAS\ClientExample\PHP\BasLegacyActionServiceTest.php".</p>
+
+<br>
+<br>
+<br>
+
+
+
+</body>

@@ -1,0 +1,257 @@
+<body>
+	<h2>Gestion des Evènements</h2>
+
+	<h3>Objectif</h3>
+
+	<p>
+		Permettre le déclenchement d'actions automatiques suite à la création d'un Tiers, d'un Contrat, d'une Quittance et ou d'un Sinistre, tel que l'envoi d'un courrier, la mise en rappel dans l'agenda ou un message d'alerte à l'attention des utilisateurs.<br>
+		<b>Exemple :</b><br>
+		</p><div class="bai_exemple">
+			Après affectation d'une quittance comptant, ouverture de la lettre Word "envoi avis d'échéance".
+		</div>
+	
+
+	<hr>
+
+	<h3>Fonctionnalités</h3>
+
+	<p>
+		Plusieurs niveaux permettent la mise en place de ces actions.
+	</p>
+
+	<hr>
+
+	<h3>Travaux préalables</h3>
+
+	<p>
+		La gestion de textes doit avoir été mise en place afin de pourvoir utiliser la fonction COURRIER
+	</p>
+	<br>
+	<p>
+		<img src="images/situations_dattente.jpg" class="img-responsive"><br>
+		Les situations d'attente sur contrat doivent avoir été créées afin de pouvoir utiliser la fonction COPYSITATT
+	</p>
+	<br>
+	<p>
+		<img src="images/modeles_de_fiche.jpg" class="img-responsive"><br>
+		Les fiches modèles d'agenda doivent également avoir été créées afin de pouvoir utiliser la fonction AGENDA
+	</p>
+
+	<hr>
+
+	<h3>Préparation</h3>
+
+	<p>
+		<img src="images/gestion_des_evenements.jpg" class="img-responsive"><br>
+		Ouvrir le classeur sur lequel on souhaite déclencher une action et choisir l'option : Avant et/ou Après.
+	</p>
+
+	<p>
+		Dès lors on accède à l'écran "Formule de calcul" où l'on va se servir du dictionnaire pour aller chercher les champs et les fonctions qui exécuteront les actions voulues.
+	</p>
+
+	<hr>
+
+	<h3>Exemples</h3>
+
+	<h4>Contrat | Création | Après </h4>
+
+	<div class="bai_exemple">
+		<p>
+			Formule permettant de déclencher  des courriers dès la fermeture de la saisie de l'affaire nouvelle ou du projet, en fonction du type d'écran et ou du produit sélectionné pour la création de cette affaire :
+		</p>
+
+		<div class="bai_code">
+			COPYSITATT("B", "C")<br>
+			COPYSITATT("C", "C")<br>
+			SI ?PROD("b_branche")  "A1" ET ?PROD("b_branche")  "A3";&gt;AUTOMOTO<br>
+			<br>
+			IA$:=?PIEC("B_CODEPROD")<br>
+			IC$:=?PIEC("B_ORIPIECE")<br>
+			<br>
+			SI IC"1";&gt;PASNOUV<br>
+			SI IA="200_AUTO"; COURRIER(3,49) <span class="bai_comment">// Lettre : C.V. AGF (véhicule individuel)</span><br>
+			SI IA="190_AUTO"; COURRIER(3,43) <span class="bai_comment">// Lettre : C.V. GAN (véhicule individuel)</span><br>
+			SI IC="1";COURRIER(3,19) <span class="bai_comment">// Lettre : Demande de pièces</span><br>
+			=VRAI<br>
+			<br>
+			:PASNOUV<br>
+			SI IC="8";COURRIER(3,8) <span class="bai_comment">// Lettre : Envoi du projet</span><br>
+			=VRAI<br>
+			<br>
+			:AUTOMOTO<br>
+			COPYSITATT("A", "C")<br>
+			COURRIER(3,11) <span class="bai_comment">// Lettre : Contrat envoyé pour régularisation</span><br>
+			=VRAI
+		</div>
+
+		<p>
+			Explications : Si le type d'écran est différent de A1 et de A3 alors on édite la lettre "Contrat envoyé pour régularisation"<br>
+			Si, par contre, le type d'écran est égal à A1 ou A3 et que l'origine de la pièce soit égale à "1 : Affaire nouvelle", alors on édite la carte verte liée au produit + 1 courrier réclamant des pièces (Ex. : "B" pour : Copie de la carte grise, et "C" pour celle du permis de conduire, etc.….)
+			et dernier cas, si le type d'écran est égal à A1 ou A3 et que l'origine de la pièce soit égale à "8 : Projet", alors on lance la lettre "Envoi de Projet".
+		</p>
+	</div>
+
+	<h4>Contrat | Création | Après</h4>
+
+	<div class="bai_exemple">
+		<p>
+			Formule permettant de déclencher  le "Gestionnaire" du contrat  : Champ B_GESTIONN de la Table CONT (dans le sous-onglet "Gestion" de l'écran "Administratif"), dès la fermeture de la saisie de l'affaire nouvelle et ce, en fonction de la première lettre du Tiers concerné par ce contrat. 
+		</p>
+
+		<div class="bai_code">
+			IA$:=EXT(?TIERS("B_RSOCIALE"),1,1)<br>
+			SI IA&gt;="A" ET IAALAIN<br>
+			:ALAIN<br>
+			?CONT("B_GESTIONN"):="ALAIN"<br>
+			=VRAI<br>
+			SI IA&gt;="H" ET IAMARTINE<br>
+			:MARTINE<br>
+			?CONT("B_GESTIONN"):="MARTINE"<br>
+			=VRAI<br>
+			SI IA&gt;="N" ET IAJULIEN<br>
+			:JULIEN<br>
+			?CONT("B_GESTIONN"):="JULIEN"<br>
+		</div>
+	</div>
+
+	<h4>Contrat | Nouvelle pièce | Avant</h4>
+
+	<div class="bai_exemple">
+		<p>
+			Formule permettant d'empêcher la création d'une nouvelle pièce sur un contrat, par rapport à telle ou telle situation de ce dernier . 
+		</p>
+
+		<div class="bai_code">
+			SI ?PIEC("B_SITPIECE")="4";&gt;PASP<br>
+			=VRAI<br>
+			:PASP<br>
+			ALERTE("NOUVELLE PIECE INTERDITE - CONTRAT AU CONTENTIEUX")<br>
+			=FAUX
+		</div>
+
+		<p>
+			Explications : Dès que l'utilisateur cliquera sur le [ + ]  de "pièces successives", la gestion d'une nouvelle pièce s'affichera si la situation est différente de "4" ou, affichera un message d'alerte, lorsque la situation de pièce sera égale à "4"
+		</p>
+	</div>
+
+	<h4>Quittance | Affectation | Après</h4>
+
+	<div class="bai_exemple">
+		<p>
+			Formule permettant de déclencher l'avis déchéance dès l'affectation d'une quittance Comptant.
+		</p>
+
+		<div class="bai_code">
+			?QUIT("b_sitcli"):="A" and ?QUIT("B_NATURE") "T";COURRIER(6,13) <span class="bai_comment">// Lettre : Avis d'échéance</span>
+		</div>
+	</div>
+
+	<h4>Quittance | Affectation | Après</h4>
+
+	<div class="bai_exemple">
+		<p>
+			Autre formule permettant de mettre la situation Cie à "B" sur un produit déterminé, dès l'affectation de la quittance de façon à pouvoir reverser celle-ci, même si elle n'est pas soldée.
+		</p>
+
+		<div class="bai_code">
+			IA$:=?PIEC("B_CODEPROD")<br>
+			SI IA="276_AUTO";?QUIT("B_SITCIE"):="B"<br>
+			=VRAI
+		</div>
+	</div>
+
+	<h4>Quittance | Encaissement | Après</h4>
+
+	<div class="bai_exemple">
+		<p>
+			Formule permettant de déclencher une fiche agenda liée au Superviseur dès lors que l'encaissement d'une quittance est égale à "C" Chèque en coffre.
+		</p>
+
+		<div class="bai_code">
+			SI ?KENC("B_TYPE")="C";&gt;FICHE<br>
+			:FICHE<br>
+			AGENDA("CHEQUE", "Q", "SUPERVISEUR")
+		</div>
+
+		<p>
+			N.B. : Lors de la création du modèle de la fiche agenda "CHEQUE", prévoir une formule de calcul qui reprenne la date d'encaissement du chèque de manière à ce que ce soit cette date qui soit la date de rappel.
+		</p>
+	</div>
+
+	<h4>Quittance | Encaissement | Après</h4>
+
+	<div class="bai_exemple">
+		<p>
+			Formule permettant de déclencher l'édition d'une carte verte après encaissement sur une quittance, en fonction de la réponse à la question faite par l'utilisateur, ainsi que par rapport au code produit du contrat sur lequel la quittance à été saisie.
+		</p>
+
+		<div class="bai_code">
+			IA$ := SAISIE("Souhaitez-vous éditer une carte verte ? OUI/NON")<br>
+			IA$ := EXT(IA,1,1)<br>
+			SI IA="n";=VRAI<br>
+			SI IA="N";=VRAI<br>
+			IB$ := ?PIEC("B_CODEPROD")<br>
+			<br>
+			SI IB"200_AUTO";&gt;PASAGF<br>
+			<br>
+			COURRIER(3,50) <span class="bai_comment">// Lettre : C.V. AGF LA LILLOISE (vehicule individuel)</span><br>
+			<br>
+			:PASAGF<br>
+			<br>
+			SI IB"190_AUTO";&gt;PASGAN<br>
+			<br>
+			COURRIER(3,43) <span class="bai_comment">// Lettre : C.V. GAN (vehicule individuel)</span><br>
+			<br>
+			:PASGAN<br>
+			=VRAI
+		</div>
+
+		<p>
+			Explication : Si à la question :"Souhaitez-vous éditer une carte verte ? OUI/NON" vous répondez OUI ou O et que le produit liée à la quittance corresponde à "200_AUTO" ou à "190_AUTO" alors Belair lancera la fusion avec la gestion de textes correspondant
+		</p>
+	</div>
+
+	<h4>Tiers | Création | Après</h4>
+
+	<div class="bai_exemple">
+		<p>
+			Formule permettant d'alerter l'utilisateur sur le choix qu'il a fait lors de la création de ce dernier.
+		</p>
+
+		<div class="bai_code">
+			SI ?TIERS("B_NATTIERS")="P";&gt;ATTENT<br>
+			:ATTENT<br>
+			ALERTE("Etes-vous sûr que le tiers créé est une Personne Physique ?")
+		</div>
+	</div>
+
+	<h4>Tiers | Accès | Avant</h4>
+
+	<div class="bai_exemple">
+		<p>
+			Formule permettant de bloquer l'accès à un dossier client autre que le superviseur si un de ses contrats est en contentieux.
+		</p>
+
+		<div class="bai_code">
+			IA := ?TIERS("B_NUMTIERS")<br>
+			IB := 0<br>
+			<br>
+			SQL:NEW(AQW)<br>
+			*SELECT P.B_PIECE FROM [PIEC] P, [CONT] C<br>
+			*WHERE P.B_CONTRAT=C.B_CONTRAT<br>
+			*AND C.B_NTIERS=:IA<br>
+			*AND P.B_SITPIECE="4"<br>
+			SQL:OPEN(AQW)<br>
+			SI RESULT=0;&gt;APAS<br>
+			IB := 1<br>
+			:APAS<br>
+			SQL:CLOSE(AQW)<br>
+			SQL:FREE(AQW)<br>
+			<br>
+			SI IB=1 ET USER"SUPERVISEUR";ALERTE(RETOUR_CHARIOT+" Client en CONTENTIEUX",5)<br>
+			SI IB=1 ET USER"SUPERVISEUR";=FAUX;=VRAI
+		</div>
+	</div>
+
+</body>

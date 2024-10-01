@@ -1,0 +1,151 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tiers_Create</code></h3>
+		</div>
+
+<p>création d'un tiers</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>typtiers (<code>CHAR(1)</code>, obligatoire) : type de tiers à créer</li>
+		<li>nature (<code>CHAR(1)</code>, nature de tiers à Créer (P pour personne physique ou M pour pereonne morale)</li>
+		<li>numtiers (integer, optionnel) : pour forcer le numéro de dossier à créer</li>
+		<li>numdpp (integer, optionnel) : pour créer un dossier Tiers à partir d'un DPP déjà existant</li>
+		<li>data : flux XML contenant les données à mettre à jour</li>
+	</ul>
+
+
+	<p>Exemple pour création tiers personne physique<br></p><pre><code class="XML syntaxhl"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;tiers&gt;</span>
+ <span class="nt">&lt;input&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+   <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"TIERS"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"typtiers"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"nature"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>P<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"titre"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>M<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"rsociale"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>BEL AIR INFORMATIQUE<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"adr1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>1  Avenue de l'Atlantique<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"adr2"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Immeuble Fuji-Yama<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"codp"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>91940<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"ville"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Les Ulis<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"codepays"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FR<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"pays"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FRANCE<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"ntel"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>0164463940<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"numemail"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>support@belair-info.fr<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"adrinsee"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/object&gt;</span>
+   <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPP"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"nom"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Roche<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"prenom"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Bruno<span class="nt">&lt;/param&gt;</span>
+   <span class="nt">&lt;/object&gt;</span>
+   <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"XTLOG"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"site"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>ESPCLI<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"login"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>bruno.roche<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"password"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>5220F481AF2D99CA4180444ED5444444<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"role"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>C<span class="nt">&lt;/param&gt;</span>
+   <span class="nt">&lt;/object&gt;</span>
+   <span class="nt">&lt;adresse_insee&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Object"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"BurDist"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>DENAZE<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodeBis"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span> <span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodePays"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FR<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodePostal"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>53400<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CompAdr"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"INSEElocalite"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"INSEEvoie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span> <span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"LibelleVoie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Du parc<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Localite"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>DENAZE<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"NumVoie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span> <span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pays"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FRANCE<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/adresse_insee&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+ <span class="nt">&lt;/input&gt;</span>
+<span class="nt">&lt;/tiers&gt;</span>
+</code></pre>
+
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>typtiers : existence du type (table TYPTIERS) =&gt; Error("type de tiers 'X' inconnu")</li>
+	</ul>
+
+
+	<ul>
+	<li>nature 
+	<ul>
+	<li> = 'P' ou 'M' =&gt; Error("nature 'X' incorrecte")</li>
+		<li>contrôle de cohérence avec TYPTIERS.B_TYPE_PERS ("M" personnes morales seulement / "P" personnes physiques / "Q" quelconque)</li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li>numtiers : si renseigné, vérifier que le tiers n'existe pas déjà : Error("tiers N. xxxxx déjà existant")</li>
+	</ul>
+
+
+	<ul>
+	<li>numdpp (si renseigné)
+	<ul>
+	<li>vérification que l'enregistrement DPP existe : Error("DPP xxxxxxx inexistant")</li>
+		<li>vérification que dpp.b_numtiers = 0 : Error("DPP xxxxxxxx déjà relié au dossier yyyyyyyy")</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>création des entités Tiers, DPP et DPM (selon le cas)</li>
+		<li>Lecture des différents objets contenus dans le flux d'entrée
+	<ul>
+	<li><span style="color:red;">SI la clé primaire de l'entité concernée ne commence pas par "numtiers", l'objet est ignoré (sauf DPP)</span></li>
+		<li>la champ <em>numtiers</em> dans &lt;objet&gt; est optionnel car il est forcé à la valeur <em>numtiers</em> passé en paramètre</li>
+		<li>Pour les extensions multiples
+	<ul>
+	<li>si le champ <em>ordreext</em> est n'est pas indiqué dans &lt;objet&gt;, c'est une création et ce champ sera auto incrémenté</li>
+	</ul>
+	</li>
+	</ul>
+	</li>
+		<li><strong>Adresse au format INSEE</strong> : si la balise <em>adresse_insee</em> est présente, l'adresse sera formatée au format INSEE selon les champs contenus dans cette balise</li>
+	</ul>
+
+
+	<a name="Remarques"></a>
+<h3>Remarques<a href="#Remarques" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Si tiers Personne Morale, l'objet "DPP" éventuel est ignoré</li>
+		<li>Si tiers Personne Physique
+	<ul>
+	<li>l'objet "DPM" éventuel est ignoré</li>
+		<li>DPP.Nom est obligatoire pour une création de tiers avec création de DPP</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;tiers_create&gt;</span>
+  <span class="nt">&lt;numtiers&gt;</span>xxxxx<span class="nt">&lt;/numtiers&gt;</span>
+  <span class="nt">&lt;numdpp&gt;</span>yyyyy<span class="nt">&lt;/numdpp&gt;</span><span class="c">&lt;!-- NULL si nature ="M"  --&gt;</span>
+  <span class="nt">&lt;rsociale&gt;</span>AAAAAAAAAAAA<span class="nt">&lt;/rsociale&gt;</span>
+<span class="nt">&lt;/tiers_create&gt;</span>
+</code></pre>
+</div></body>

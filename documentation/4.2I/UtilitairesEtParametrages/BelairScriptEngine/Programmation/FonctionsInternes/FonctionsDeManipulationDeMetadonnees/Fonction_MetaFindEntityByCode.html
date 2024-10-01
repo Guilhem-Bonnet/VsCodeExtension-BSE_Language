@@ -1,0 +1,61 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:FindEntityByCode(code)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie une entité selon son code.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>code</code> : code de l'entité.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>L'objet de type "TMetaTable" ou descendants.</li>
+			<li>"Null" si l'entité n'est pas trouvée.</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>local entity
+entity := Meta:FindEntityByCode("Adh")
+Print("Entity ADH")
+Print("---")
+Print(Obj:DumpVar(entity))</pre>
+			
+			<p>Résultat :</p>
+			<pre>Entity ADH
+---
+Caption (UnicodeString): Adhésion
+Changed (Boolean): False
+Code (UnicodeString): ADH
+ComponentName (UnicodeString): 
+Domain (UnicodeString): Tiers / Contrat / Sinistres
+FieldDefs (UnicodeString): 
+Fields (Unknown): unknown
+Group (UnicodeString): Contrats
+HistoryOptions (Unknown): unknown
+Indexes (Unknown): unknown
+IsComplement (Boolean): False
+IsDataDictionnaryItem (Boolean): False
+IsMaster (Boolean): True
+Locked (Boolean): False
+LockedByOwner (Boolean): False
+Model (Unknown): unknown
+Name (UnicodeString): ADHDEI
+OldName (UnicodeString): 
+Owner (Unknown): unknown
+Relations (Unknown): unknown
+TableType (Unknown): unknown
+Traced (Boolean): False
+UsesNameSuffix (Boolean): True</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

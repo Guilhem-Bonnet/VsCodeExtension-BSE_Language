@@ -1,0 +1,162 @@
+<body>
+	<h2>Commandes : lignes précédées de *</h2>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>SELECT</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Sélection des champs utilisés dans la requête, les champs doivent être séparés par une virgule.<br>
+			</p>
+
+			<div class="alert alert-warning">
+				<b>Remarque :</b> Toujours associé à la commande
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>FROM [</b><i>table</i><b>]</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Sélection de la table dont sont issus les champs, le nom de la table doit être indiqué entre crochets <b>[</b><i>table</i><b>]</b>
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					* SELECT b_numtiers, b_rsociale FROM [TIERS]
+				</div>
+				Sélectionne les champs issus de la table TIERS donnant le numéro de tiers et le nom-prénom
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>AS</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet de renommer un champ.
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					* SELECT b_numtiers AS numero FROM [TIERS]
+				</div>
+				Les valeurs sélectionnées sont stockées sous le nom 'numero'
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>UPDATE [</b><i>table</i><b>]</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Sélection de la table dans laquelle on souhaite modifier des valeurs
+			</p>
+
+			<div class="alert alert-warning">
+				<b>Remarque :</b> Toujours associé à la commande
+			</div>	
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>SET</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet d'associer une nouvelle valeur à un champ
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					* UPDATE [POLI]
+					* SET b_cietaxes = 1
+				</div>
+				Attribue la valeur 1 au champ b_cietaxes de la table POLI
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>WHERE</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet d'imposer une condition à la sélection
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					* SELECT b_numtiers FROM [TIERS]
+					* WHERE b_rsociale = "MARTIN Pierre"
+				</div>
+				Sélectionne le numéro de tiers de MARTIN Pierre, ou les numéros, si il existe plusieurs MARTIN Pierre saisis en portefeuille
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>AND</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet de joindre plusieurs condition WHERE
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					* SELECT b_numtiers, b_rsociale FROM [TIERS]
+					* WHERE b_rsociale = "MARTIN Pierre" AND b_codp = "78000"
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>DISTINCT</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet de ne pas sélectionner des doublons
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					* SELECT DISTINCT b_codp, b_ville FROM [TIERS]
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><b>ORDER BY</b></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet de classer selon un champ par ordre croissant de la valeur de ce champ (ordre
+				alphabétique si champ alpha)
+			</p>
+
+			
+			<div class="bai_exemple">
+				<div class="bai_code">
+					* SELECT DISTINCT b_codp, b_ville FROM [TIERS]
+					* ORDER BY b_codp
+				</div>
+			</div>
+		</div>	
+	</div>
+</body>

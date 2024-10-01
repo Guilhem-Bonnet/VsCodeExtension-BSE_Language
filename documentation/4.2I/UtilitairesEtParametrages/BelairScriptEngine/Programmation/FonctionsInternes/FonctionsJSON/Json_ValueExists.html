@@ -1,0 +1,66 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:ValueExists(doc, JSONPath)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>cette cherche la valeur spécifiée par la requête JSONPath : la valeur courante devient la valeur trouvée ou la premiere valeur de la collection trouvée.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			<li><code>JSONPath</code> : la requête JSONPath</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>La valeur booléenne True/False en fonction du résultat de la recherche.
+		</p><div class="alert alert-warning" role="alert">
+		Si la requête ne trouve rien, le JSONObject racine deviendra la valeur courante.
+		</div>
+		
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "Cars")
+  Json:NewArray(doc, "Renault")
+    Json:NewObject(doc)
+      Json:NewValue(doc, "Model", "zoe")
+      Json:NewValue(doc, "Price", 25700.999)
+      Json:NewValue(doc, "Currency", "EUR")
+    Json:EndObject(doc)
+  Json:EndArray(doc)
+Json:EndObject(doc)
+Json:Close(doc)                
+if Json:ValueExists(doc, "Cars.renault[0].Currency") then
+ print(Json:GetCurrentPath(doc))                    
+if Json:ValueExists(doc, "Cars.renault[0].Model") then
+ print(Json:GetCurrentPath(doc))                   
+if not Json:ValueExists(doc, "Test") then
+ print("Root JSONObject")   
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+Cars.Renault[0].Currency
+Cars.Renault[0].Model
+Root JSONObject
+</pre>
+	</div>
+</div>
+</body>

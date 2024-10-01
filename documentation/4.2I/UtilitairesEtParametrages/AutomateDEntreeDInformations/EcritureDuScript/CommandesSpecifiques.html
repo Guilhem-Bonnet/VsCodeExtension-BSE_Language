@@ -1,0 +1,403 @@
+<body>
+	<h2>Commandes spécifiques à l'automate</h2>
+
+	<p>
+		Recherche d'enregistrement sur fichier :
+	</p>
+
+	<p>
+		Pour assurer la cohérence des accès aux données, le langage de l'automate Belair propose des fonctions spécialisées. Non seulement elles accèdent à la table objet de la recherche, mais elles positionnent également des tables liées auxquelles on a alors accès sans recherche complémentaire.
+	</p>
+
+	<p>
+		Pour chacune des instructions décrites ci-après, l'instruction <b>RESULT</b> permet de connaître le résultat de la recherche. S'il est différent de 0, on est correctement positionné sur la table.
+	</p>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RECPROD(<i>'code_produit'</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Cette instruction recherche un produit donné dans la table PROD
+			</p>
+
+			<ul>
+				<li><i>code_produit</i> : chaîne de caractères à mettre entre guillemets</li>
+			</ul>
+		</div>	
+	</div>
+
+
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RECTIERS(num_tiers)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Cette instruction recherche un tiers donné dans la table TIERS
+			</p>
+			<ul>
+				<li><i>num_tiers</i> : entier</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RECPIECE(num _contrat,num_piece)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Cette instruction recherche un contrat et une pièce donnés dans les tables CONT et PIEC
+			</p>
+			<ul>
+				<li><i>num_contrat</i> : entier</li>
+				<li><i>num_piece</i> : entier</li>
+			</ul>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RECBORD(num_bordereau)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Cette instruction recherche un bordereau donné dans la table QBOR
+			</p>
+			<ul>
+				<li><i>num_bordereau</i> : entier</li>
+			</ul>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RECSIN(num_sin)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Cette instruction recherche un sinistre donné dans la table SIN
+			</p>
+			<ul>
+				<li><i>num_sin</i> : entier</li>
+			</ul>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RECALP(table,champ,valeur)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Cette instruction recherche un champ donné d'une table dans la table ALP (table des accès alpha)<br>
+				Possible si celui-ci est paramétré pour être accessible en recherche alphabétique
+			</p>
+
+			<p>
+				La recherche peut être filtrée par une condition écrite à la suite (lignes précédées de '&gt;=' ou de '*=')<br>
+				</p><ul>
+					<li><i>table</i> : nom de la table contenant le champ</li>
+					<li><i>champ</i> : champ testé</li>
+					<li><i>valeur</i> : valeur de test entourée de guillemets s'il s'agit d'une chaîne de caractères</li>
+				</ul>
+			
+
+			<b>Exemple 1 :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					RECALP(POLI,b_police,?DATA('num_police'))<br>
+					SI RESULT0;&gt;POLICE_TROUVEE<br>
+					PRINT('La police : '+?DATA('num_police')+' n'a pas été trouvée')<br>
+					FIN<br>
+					:POLICE_TROUVEE<br>
+					<span class="bai_comment">// Suite du traitement...</span>
+				</div>
+			</div>
+
+			<b>Exemple 2 (avec filtre sur produit) :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					RECALP(POLI,b_police,?DATA('num_police'))<br>
+					*=?PIEC('b_produit')='AUTO1'<br>
+					SI RESULT0;&gt;POLICE_TROUVEE<br>
+					PRINT('La police : '+?DATA('num_police')+' n'a pas été trouvée')<br>
+					FIN<br>
+					:POLICE_TROUVEE<br>
+					<span class="bai_comment">// Suite du traitement...</span>
+				</div>
+			</div>
+
+			<div class="alert alert-warning">
+				<b>Remarque :</b> La fonction RECALP est à éviter si l'on peut utiliser une des autres fonctions qui précèdent.
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RECSQL(table)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				sélection SQL
+			</p>
+			<p>
+				</p><ul>
+					<li><i>table</i> : nom de la table contenant le champ</li>
+				</ul>
+			
+			<p>
+				Les conditions doivent être écrites à la suite, précédées de '&gt;' ou de '*' et en respectant la syntaxe SQL, plus les contraintes suivantes:<br>
+				Une telle instruction doit être suivie par le texte de la requête SQL correspondante, obéissant à la règle suivante :
+				</p><ul>
+					<li>Les champs de la clause SELECT doivent composer la clef primaire de la table à scruter.</li>
+				</ul>
+			
+
+			<b>Exemple 1 : recherche d'un tiers dont le code est lu dans les données d'entrée courantes.</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					IA := ?DATA('numero_de_tiers')<br>
+					RECSQL(TIERS)<br>
+					*SELECT b_numtiers FROM [TIERS]<br>
+					*WHERE b_numtiers = :IA<br>
+					SI RESULT  0 ; &gt;LE_TIERS_EXISTE<br>
+					<span class="bai_comment">// Créer le nouveau tiers…</span><br>
+					….<br>
+					:LE_TIERS_EXISTE<br>
+					<span class="bai_comment">// On est positionné sur le tiers concerné, qu'il soit nouveau ou pas</span><br>
+					<span class="bai_comment">// On peut mettre à jour les données sur le tiers</span><br>
+					….<br>
+				</div>
+
+				<p>
+					La fonction RESULT renvoie le nombre d'enregistrements trouvés.
+				</p>
+
+				<p>
+					On peut également faire des jointures dans l'instruction RECSQL, à condition que la table principale soit scrutée conformément à la première règle ci avant énoncée (clef primaire).
+				</p>
+			</div>
+
+			<b>Exemple 2 : Recherche d'un membre de la famille dans un dossier</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					<p>
+						IA := ?DATA(num_tiers) <span class="bai_comment">\\ n. dossier</span><br>
+						IB$ := ?DATA(nom) <span class="bai_comment">\\ nom</span><br>
+						IC$ := ?DATA(prenom) <span class="bai_comment">\\ prénom</span>
+					</p>
+
+					<p>
+						RECSQL(TIERS) <span class="bai_comment">\\ recherche du tiers</span><br>
+						*SELECT b_numtiers FROM [TIERS]<br>
+						*WHERE b_numtiers = :IA 
+					</p>
+
+					<p>
+						SI (RESULT = 0) ; FIN <span class="bai_comment">\\ le tiers doit exister</span><br>
+						SI (?TIERS('b_nattiers')) 'P'; FIN <span class="bai_comment">\\ et doit être de type 'personne physique'</span>
+					</p>
+
+					<p>
+						RECSQL(FAM)<br>
+						*SELECT FAM.b_numtiers, FAM.b_numdpp FROM [FAM] FAM, [DPP] DPP<br>
+						*WHERE (DPP.b_nom = :IB) AND (DPP.b_prenom = :IC) <span class="bai_comment">\\ nom + prénom</span><br>
+						*AND (FAM.b_numdpp = DPP.b_numdpp) <span class="bai_comment">\\ jointure FAM avec DPP</span><br>
+						*AND (FAM.b_numtiers = :IA) <span class="bai_comment">\\ pour le dossier</span>
+					</p>
+
+					<p>
+						SI RESULT = 0 ; NEWFAM <span class="bai_comment">\\ s'il n'existe pas, création</span>
+					</p>
+
+					<p>
+						<span class="bai_comment">\\ Mise à jour des informations de FAM et DPP</span><br>
+						?FAM('b_parente') := ?DATA('lien_parente') <span class="bai_comment">\\ lien de parenté</span><br>
+						?DPP('b_nom') := IB<br>
+						?DPP('b_prenom') := IC<br>
+						<span class="bai_comment">\\ etc.... : autres infos sur DPP</span><br>
+						OK <span class="bai_comment">\\ validation FAM + DPP</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:xxxx(nom_req)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet de construire à volonté et utiliser une requête SQL quelqconque pour accéder aux données de Belair.<br>
+				Il n'est pas possible d'accéder à des données extérieures à Belair par ce moyen.<br>
+				</p><ul>
+					<li><i>nom_req</i> : chaîne de caractères sans guillemets correspondant au nom donné à la requête SQL</li>
+				</ul>
+				Il s'agit de l'identifiant que l'on donne à la requête. Ce peut être un texte quelconque sans espace ni tabulations, ni caractères spéciaux.
+			
+			<p>
+				Cinq étapes sont à respecter :
+				</p><ol>
+					<li>
+						Créer la requête
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><code>SQL:NEW(nom_req)</code></h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									Syntaxe :
+								</p>
+								<div class="bai_code">
+									SQL:NEW(nom_req)<br>
+									*1ère ligne de la requête<br>
+									*2ème ligne de la requête<br>
+									*etc...
+								</div>
+								<p>
+									Aucune ligne vide ne doit se trouver insérée dans le bloc décrit ci-dessus.
+								</p>
+							</div>	
+						</div>
+					</li>
+
+					<li>
+						Ouvrir la requête
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><code>SQL:OPEN(nom_req)</code></h3>
+							</div>
+						</div>
+					</li>
+
+					<li>
+						Exploiter les informations
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><code><b>SQL:NEXT(</b><i>nom_req</i><b>)</b></code></h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									Après l'ouverture de la requête, l'instruction RESULT renvoie une valeur  0 si le résultat n'est pas vide.<br>
+									Si la requête a retourné plusieurs enregistrements, on est positionné sur le premier après SQL:OPEN(nom_req).<br>
+									On passe au suivant par :<br>
+									<b>SQL:NEXT(</b><i>nom_req</i><b>)</b>
+								</p>
+
+								<p>
+									Après cette instruction, il faut de nouveau utiliser RESULT pour savoir si l'on a atteint la fin des informations retournées.<br>
+									RESULT vaut 0 quand il n'y a plus d'informations à lire.
+								</p>
+
+								<p>
+									Le contenu d'un champ retourné par la requête peut être lu de la même façon que pour n'importe quelle table.<br>
+									Le nom de table à utiliser pour cela est la concaténation de 'SQL' et de l'identifiant de la requête.
+								</p>
+
+								<b>Par exemple :</b>
+								<div class="bai_exemple">
+									<div class="bai_code">
+										IA := ?SQLTOTO('b_code')
+									</div>
+									<p>
+										Affecte à IA la valeur du champ 'b_code' figurant dans la requête créée par SQL:NEW(TOTO).
+									</p>
+								</div>
+								<p>
+									Les champs des requêtes SQL sont en lecture seule.
+								</p>
+							</div>	
+						</div>
+					</li>
+
+					<li>
+						Fermer la requête
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><code>SQL:CLOSE(nom_req)</code></h3>
+							</div>
+							<div class="panel-body">
+								Cette instruction ferme la requête sans la détruire. Elle pourra à nouveau être ouverte si nécessaire.
+							</div>	
+						</div>
+					</li>
+
+					<li>
+						Libérer la requête
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><code>SQL:FREE(nom_req)</code></h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									Cette instruction détruit la requête et libère les ressources qui lui avaient été allouée.
+								</p>
+
+								<p>
+									Il est très important de veiller à libérer correctement chaque requête. Sinon, on peut provoquer un blocage du programme par manque de ressources.
+									Faire particulièrement attention quand on utilise des débranchements : il ne doit pas y avoir de possibilité de passer à l'enregistrement suivant sans avoir fermé et libéré toutes les requêtes.
+								</p>
+
+								<p>
+									Exemple de requête SQL : ce script écrit dans la fenêtre de suivi la liste des polices de chaque contrat en entrée.
+								</p>
+
+								<div class="bai_exemple">
+									<div class="bai_code">
+										IA := ?DATA('num_contrat') <span class="bai_comment">// lire le n° de contrat dans les données en entrée</span><br>
+										<br>
+										SQL:NEW(POLICES)<br>
+										*SELECT POLI.b_police FROM [POLI] POLI, [CONT] CONT<br>
+										*WHERE POLI.b_contrat = CONT.b_contrat <span class="bai_comment">// jointure entre CONT et POLI</span><br>
+										*AND POLI.b_piece = CONT.b_derpiece <span class="bai_comment">// suite jointure entre CONT et POLI</span><br>
+										*AND CONT.b_contrat = :IA <span class="bai_comment">// filtre : n° de contrat passé comme paramètre</span><br>
+										SQL:OPEN(POLICES)<br>
+										<br>
+										ECRAN('====== Polices du contrat : '+ IA+' ======')<br>
+										:BOUCLE<br>
+										SI (RESULT = 0) ; &gt;SUITE<br>
+										ECRAN('Police : ' + ?SQLPOLICES('b_police'))<br>
+										SQL:NEXT(POLICES)<br>
+										<br>
+										&gt;BOUCLE<br>
+										<br>
+										:SUITE<br>
+										SQL:CLOSE(POLICES)<br>
+										SQL:FREE(POLICES)<br>
+										FIN
+									</div>
+								</div>
+							</div>	
+						</div>
+					</li>
+				</ol>
+			
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>EMAIL(destinataire, modele, sujet, pièces jointes, compte utilisateur pour les paramètres smtp, priorité, période d'envoi)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+</p><pre><code class="c syntaxhl"><span class="CodeRay">EMAIL(destinataire, modele, sujet, pièces jointes, compte utilisateur pour les paramètres smtp, priorité, période d'envoi)</span></code></pre>			
+<p>Les paramètres smtp, pièces jointes, priorité et période d'envoi sont optionnels.<br></p>
+<ul><li>Destinataire : Adresse email du/des destinataire(s) du mail
+</li><li>Modele : Fichier HTML contenant le corps du mail
+</li><li>Sujet : Sujet du message
+</li><li>Pièces jointes : Il est maintenant possible d'ajouter plusieurs pièces jointes à un mail généré par la commande EMAIL.<br>Les différentes pièces jointes doivent être séparées par des retours chariot (utiliser pour cela la constante RETOUR_CHARIOT)
+</li><li>Compte Utilisateur pour les paramètres smtp : Compte Utilisateur qui envoie ce message.
+</li><li>Priorité : Est un entier, de 0 à 1000.<br>La valeur 1000 indique un mail extrêmement prioritaire, 0 le moins prioritaire. La valeur par défaut est 10.
+</li><li>Période d'envoi : Est une chaîne, au format "HH:MM-HH:MM".<br>Par exemple, si on souhaite qu'un mail ne parte pas pendant la nuit, on indiquera : "8:00-20:00".	
+			<div class="alert alert-warning">
+				<b>Remarque :</b> l'email n'est pas envoyé, un enregistrement est créé dans la table des emails en attente (EMAILSOR) pour être traité par l'agent de messagerie.
+			</div>
+
+		</li></ul></div>
+</div></body>

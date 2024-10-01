@@ -1,0 +1,83 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Compagnie_Create</code></h3>
+		</div>
+
+<p>Création d'une compagnie</p>
+
+	<p>entités concernés : cie, dpm et tiers</p>
+
+
+	<a name="Liaison-entre-cie-et-tiers"></a>
+<h2>Liaison entre cie et tiers<a href="#Liaison-entre-cie-et-tiers" class="wiki-anchor"></a></h2>
+
+
+	<p>Historiquement dans Belair, une cie x pouvait être associé à un tiers y (champ cie.b_tiers)<br>Concrètement, il y a toujours égalité entre cie.b_ncie (numéro de compagnie) et cie.b_tiers (tiers asccoéié) car c'est plus paratique</p>
+
+
+	<a name="type-de-tiers-Compagnie"></a>
+<h2>type de tiers 'Compagnie'<a href="#type-de-tiers-Compagnie" class="wiki-anchor"></a></h2>
+
+
+	<p>Le type de tiers 'compagnie' est spécifié dans la base (il peut être distinct d'un client à l'autre pour des raisons historiques)</p>
+
+
+	<p>Pour le trouver :</p>
+
+
+<pre><code class="sql syntaxhl"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">applic</span> <span class="k">where</span> <span class="n">reference</span> <span class="o">=</span> <span class="s1">'TYPETIERSCIE'</span>
+</code></pre>
+
+	<a name="parametres"></a>
+<h3>parametres<a href="#parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>numero (integer, optionnel) : pour forcer le numéro de la compagnie à créer</li>
+		<li>data : flux XML contenant les données</li>
+	</ul>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;cie&gt;</span>
+  <span class="nt">&lt;input&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"TIERS"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CIE"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPM"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/input&gt;</span>
+<span class="nt">&lt;/cie&gt;</span>
+</code></pre>
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>si <code>numero</code> est forcé, vérifier dans tiers et cie que les enregistrements n'existent pas</li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Rechercher le type de tiers 'compagnie' dans applic : TypeTiersCie (voir SQL ci-dessus)</li>
+		<li>Création du tiers et de la Cie</li>
+		<li>Utilisation de <code>FullCie_UpDate(Cie, XmlInput)</code> pour mettre à jour les entités contenues dans le flux 'cie/data/objects'</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;cie&gt;</span>
+  <span class="nt">&lt;numero&gt;</span>xxxxx<span class="nt">&lt;/numero&gt;</span>
+  <span class="nt">&lt;nomcie&gt;</span>aaaaaaaa<span class="nt">&lt;/nomcie&gt;</span>
+<span class="nt">&lt;/cie&gt;</span>
+</code></pre>
+</div></body>

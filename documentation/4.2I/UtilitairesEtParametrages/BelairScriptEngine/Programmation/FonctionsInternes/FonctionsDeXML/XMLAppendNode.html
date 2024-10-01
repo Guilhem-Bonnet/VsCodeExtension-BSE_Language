@@ -1,0 +1,48 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:AppendNode(doc, name, value)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction ajoute un nœud enfant sans changer le nœud courant.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul><li><code>doc</code> : le document XML.</li>
+				<li><code>name</code> : le nom du noeud.</li>
+				<li><code>value</code> : la valeur du noeud (optionnel).</li></ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>Aucun.</p>
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				</p><pre>local doc
+doc := XML:New()
+XML:StartNode(doc, "cars")
+  Print(XML:GetNodeName(doc))
+  XML:AppendNode(doc, "toyota", "hybrid")
+  Print(XML:GetNodeName(doc))
+XML:EndNode(doc)
+Print(XML:PrettyFormat(doc))</pre>
+<p>Résultat :</p>
+<pre><code class="xml syntaxhl"><span class="CodeRay">cars
+cars
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;cars&gt;</span>
+  <span class="tag">&lt;toyota&gt;</span>hybrid<span class="tag">&lt;/toyota&gt;</span>
+<span class="tag">&lt;/cars&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

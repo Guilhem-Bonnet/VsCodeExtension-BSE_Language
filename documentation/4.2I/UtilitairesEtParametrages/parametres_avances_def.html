@@ -1,0 +1,158 @@
+<body>
+
+<h2>Outils &gt; Paramètres &gt; Paramètres Avancés</h2>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Démarrage</code></h3></div>
+<p><img src="images/params_avances_01.png" class="img-responsive"></p>
+<ul><li><u>Autoriser la création automatique d'invités</u></li>
+<p>Le blocage est l'option par défaut. On entre un nom d'utilisateur inconnu, il a été ajouté dans les paramètres généraux.</p>
+<li><u>Vérifier les soldes comptables au 1er démarrage</u></li>
+<p>Ouverture d'une application pour la 1ère fois de la journée, 
+si dans les Paramètres avancés de l'application il est coché "Vérifier les soldes comptables au 1er démarrage", 
+la compta est vérifiée.</p>
+<li><u>Mise à jour des volumes au 1er démarrage</u></li>
+<p>Si dans les Paramètres avancés de l'application il est coché "Mise à jour des volumes au 1er démarrage", les Volumes seront vérifiés</p>
+</ul>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Adresses</code></h3></div>
+<p><img src="images/params_avances_02.png" class="img-responsive"></p>
+<ul><li><u>Saisie des adresses selon la norme INSEE</u></li>
+<p>Avant toute exécution, il faut s’assurer que la base BELAIR dispose de:
+</p><ul><li>la table de code INSEECODEB</li>
+<li>la table de code INSEECODEV</li>
+<li>Deux script BSE situés dans le dossier : C:\Belair4\APPXXX\BASScripts\Std</li>
+<ul><li>Normalisation adresses.bs</li>
+<li>Remplacement b_adrN par b_adresseN dans les modeles de lettre.bs</li></ul></ul>
+<p>FAIRE UNE SAUVEGARDE BELAIR</p>
+<p>Execution</p>
+<ul><li>Ouvrir BSEDEV.exe</li>
+<li>Régler les paramètres : menu Run / Paramètres : cocher "Log on to Belair" et indiquer User : SUPERVISEUR ainsi que son mdp dans Password</li>
+<li>Ouvrir le fichier C:\Belair4\APPXXX\BASScripts\Std\Normalisation adresses.bs puis executer avec F9</li>
+<li>Un fichier .csv va lister les adresses migrées et celles à corriger</li>
+<li>Ouvrir le fichier C:\Belair4\APPXXX\BASScripts\Std\Remplacement_b_adrN_par_b_adresseN_dans_les_modeles_de_lettre.bs puis executer avec F9</li></ul>
+
+<li><u>Gestion des codes pays selon la norme ISO 3166</u></li>
+<p>Les codes de pays peuvent être représentés par un code à deux lettres (alpha-2) recommandé pour l'usage général, 
+un code à trois lettres (alpha-3) associé plus étroitement au nom de pays, et un code à trois chiffres (numeric-3), 
+utile lorsque les codes doivent être compris dans des pays n'utilisant pas l'alphabet latin.</p>
+<li><u>Alimentation automatique du fichier des communes</u></li>
+<p>Le fait de saisir un code postal et une commune en portefeuille alimente automatiquement le fichier des communes. Option accessible dans les paramètres généraux pour avoir le choix au sujet de cette mise à jour. (Positionnée a "Vrai" au début pour garder la gestion existante)</p>
+</ul>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Contrats</code></h3></div>
+<p><img src="images/params_avances_03.png" class="img-responsive"></p>
+<ul><li><u>Mise sur l'onglet "administratif" en création de contrat</u></li>
+<p></p><ul><li>Activé : lors de la création d'un nouveau contrat, l'écran restera sur l'onglet Administratif</li>
+<p></p><li>Désactivé : lors de la création d'un nouveau contrat, l'écran passera sur l'onglet Technique</li></ul><br>
+<li><u>Appel automatique du fichier des véhicules</u></li>
+<p>L'appel automatique des catalogues de véhicules se fait systèmatiquement à la création d'un nouveau contrat</p>
+<li><u>Utilisation du catalogue des oblets de type "vehiculier"</u></li>
+<p>Définition</p>
+<li><u>Proposer l'effacement des projets non quittancés</u></li>
+<p>Permet à l'utilisateur de supprimer un projet saisi en portefeuille dès lors que celui-ci n'a pas été quittancé.</p>
+</ul>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Sinistres</code></h3></div>
+<p><img src="images/params_avances_04.png" class="img-responsive"></p>
+<ul><li><u>Blocage sur date de survenance sinistre</u></li>
+<ul><li>Vérifier si la date de survenance est supérieure à la date d'ouverture</li>
+<li>Vérifier que le contrat est en cours</li>
+<li>Vérifier que le risque est couvert (date e/s du risque).</li>
+<li>Si le contrôle n'est pas coché, il y aura un message d'alerte, et une validation à faire pour pouvoir continuer.</li>
+<li>Si le contrôle est coché, il ne sera pas possible de créer un sinistre dont la date de survenance correspond aux cas cités.</li></ul>
+<li><u>Vérification du solde des comptes sur la clôture d'un sinistre</u></li>
+<p>Définition</p>
+<li><u>Contrôle sur les garanties sinistrées, leurs règlements et leurs évaluations : Cette option va déclencher la cohérence entre les règlements et les évaluations.</u></li>
+<ul><li>Lors de la saisie des évaluations, si les évaluations sont inférieures aux règlements, alors il n'est pas possible de les enregistrer une erreur s'affiche:
+<pre>Evaluation inferieure au règlement ne peut pas être enregistré</pre>
+</li><li>Lors de la clôture d'un sinistre, si les évaluations ne correspondent pas aux règlements, alors une alerte s'affiche:
+<p>Attention, avant clôture du sinistre les évaluations des garanties sinistrées ne correspondent pas aux totaux des règlements effectuées.<br>Voulez-vous que le programme corrige automatiquement toutes les évaluations ?'</p>
+</li><li>Lors de la saisie des garanties sinistrées, si une garantie n'a pas d'évaluation, un message s'affiche:
+<p>Attention, il est obligatoire de définir l'évaluation compagnie pour chaque garantie sinistrée</p>
+</li><li>Lors de la saisie d'un règlement, si les évaluations ne sont pas suffisantes, un message s'affiche:
+<p>Evaluation insuffisante, le règlement ne peut pas être enregistré</p></li></ul>
+<li><u>Limiter au SUPERVISEUR l'effacement des sinistres dans la période de conservation</u></li>
+<p>Permet au SUPERVISEUR uniquement l'effacement des sinistres dans la période de conservation</p>
+</ul>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Courrier</code></h3></div>
+<p><img src="images/params_avances_05.png" class="img-responsive"></p>
+<ul><li><u>Impression directe des courriers en mode "mailing"</u></li>
+<p>Tout courrier édité sort en impression directe si cette option est cochée.</p>
+<li><u>Bloquer le titre des courriers lors de l'affichage</u></li>
+<p>Définition</p>
+</ul>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>GRC</code></h3></div>
+<p><img src="images/params_avances_06.png" class="img-responsive"></p>
+<ul><li><u>Utilisation de l'agent de messagerie intégré</u></li>
+<p>L'agent de messagerie intégré est un module de gestion automatique des Emails entrants et sortants</p>
+<li><u>Accès à la base Novaxel</u></li>
+<p>Définition</p>
+<li><u>Archivage sur dossier en cours : ne pas demander la valeur de recherche</u></li>
+<p>Définition</p>
+</ul>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Transactions</code></h3></div>
+<p><img src="images/params_avances_07.png" class="img-responsive"></p>
+<ul><li><u>Ne pas comptabiliser les transactions de prélèvement et de rejet</u></li>
+<p>Permet de ne pas comptabiliser chaque mouvement comptable mais de globaliser ensuite ces opérations comptables en traitant transaction par transaction</p>
+<li><u>Comptabiliser les transactions de prélèvement SEPA (SDD)</u></li>
+<p>Définition</p>
+</ul>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Options</code></h3></div>
+<p><img src="images/params_avances_08.png" class="img-responsive"></p>
+<ul><li><u>Déduction de la commission lors d'un reversement partiel (acompte, prélèvement)</u></li>
+<p>Définition</p>
+<li><u>Impression de l'intitulé de cabinet pour les entités secondaires</u></li>
+<p>Définition</p>
+<li><u>Ouvrir le gestionnaires de messagerie par clic-gauche</u></li>
+<p><img src="images/clicgaucheactif.png" class="img-responsive"></p>
+<p>le clic gauche doit ouvrir le gestionnaire de messagerie</p>
+<p><img src="images/clicgauche.png" class="img-responsive"><img src="images/clicgauchemessagerie.png" class="img-responsive"></p>
+<p><img src="images/clicgauchenonactif.png" class="img-responsive"></p>
+<p> le clic gauche ouvre l'ensemble des post-it (comportement par défaut)</p>
+<p><img src="images/clicgauche.png" class="img-responsive"><img src="images/clicgauchepostit.png" class="img-responsive"></p>
+
+<li><u>Reversement des acomptes sur les compagnies suiveuses</u></li>
+<p>Si cette option est activée, les acomptes sur quittance sont reversés aux compagnies au prorata de leur participation.</p>
+<li><u>Saisie commentaires au format RTF</u></li>
+<p>Depuis la fiche client, menu Fichier &gt; Commentaires</p>
+<p><img src="images/rtf_1.png" class="img-responsive"> <img src="images/rtf_2.png" class="img-responsive"></p>
+<li><u>Sauvegarder le répertoire "images"</u></li>
+<p>Si cette option est activée : lors d’une sauvegarde le répertoire ...APPxxx\IMAGES (et les sous répertoires éventuels) sera sauvegardé</p>
+<li><u>Tarification comptant</u> : saisie des frais selon bordereau modèle</li>
+<p>Définition</p>
+</ul>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading"><h3 class="panel-title"><code>Calcul</code></h3></div>
+<p><img src="images/4.2g_avances_calcul.png" class="img-responsive"></p>
+<ul><li><u>Vérifications de  champs vides :</u></li>
+<p>Une nouvelle option est prévue pour pouvoir vérifier si un champ est vide : Outils | Paramètres | Paramètres généraux - onglet Avancés : option "Vérifications de champs vides".</p>
+<li><u>Arrondi historique :</u></li>
+<ul><li>Option activée : on ajoute toujours la valeur de 0.000001, ce qui rend tout arrondi à plus de 5 décimales faux. </li>
+<li>Option désactivée : cette valeur de 0.000001 n'est plus ajoutée, les résultats sont justes. </li></ul>
+<li><u>Transformation en Zéro des formules de calcul numérique rendant un résultat vide:</u></li>
+<p>Permet de contrôler le comportement des formules de calcul. </p>
+<ul><li>Option activée : les résultats intermédiaires sans valeur (Null) sont transformés en ZERO</li>
+<li>Option désactivée : si un résultat intermédiaire est Null, la formule finale rend Null</li></ul>
+</ul></div>
+</body>

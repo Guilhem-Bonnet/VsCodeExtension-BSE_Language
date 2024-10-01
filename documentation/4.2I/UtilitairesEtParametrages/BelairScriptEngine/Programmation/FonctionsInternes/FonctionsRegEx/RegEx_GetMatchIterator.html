@@ -1,0 +1,56 @@
+<body>
+<!-- titre page -->
+<h1 class="h1">Expressions régulières</h1>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>RegEx:GetMatchIterator(<i>regExObject, expression</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			La fonction parcourt toutes les correspondances de la regex dans une chaine.
+		</p>
+		<p>
+			<b>Paramètre :</b>
+			<br><br>
+			<code>regExObject</code> : Un objet de type 'RegEx'<br>
+			<code>expression</code> : Une expression régulière (string)
+		</p>
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<pre><span class="bai_code">
+local regExObject, 
+
+regExObject := RegEx:New("Some people, when confronted with a problem, think I know, I'll use regular expressions. Now they have two problems.")
+if (RegEx:GetMatchIterator(regExObject,  ", (.)")) then
+  DisplayResult(regExObject) 
+return 0
+
+function DisplayResult(regExObj)
+local i, j, subMatch
+  i := 0
+  while i  0 then
+    begin
+      j := 0
+      subMatch := RegEx:GetSubMatch(regExObj, i)
+      while j </span></pre>
+				</div>	
+			
+			<p>
+				<b>Résultat :</b>
+				</p><div class="bai_code">
+					<pre>
+Match index 0 → , w
+  • Sub Match index 0 → w
+Match index 1 → , t
+  • Sub Match index 0 → t
+Match index 2 → , I
+  • Sub Match index 0 → I
+Script result:
+0</pre>
+				</div>
+			
+		</div>
+	</div>
+</body>

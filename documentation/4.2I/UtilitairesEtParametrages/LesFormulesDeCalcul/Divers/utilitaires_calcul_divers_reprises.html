@@ -1,0 +1,138 @@
+<body>
+	<h2>Formules de calcul - Reprises</h2>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>COMPTEUR("<i>A</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Reprise d'un compteur automatique dans une chaine de calcul
+				<br><br>
+				<b>Exemple d'affectation automatique d'un numéro de classement aux clients, selon le code PORTEFEUILLE :</b>
+				</p><div class="bai_exemple">
+					Table PORTEFEUILLE :<br>
+					ALAIN<br>
+					MICHEL<br>
+					SOPHIE
+				</div>
+
+				<b>Création de 3 compteurs automatiques dans Outils | Paramètres | Compteurs automatiques :</b>
+				<div class="bai_exemple">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<table class="table">
+								<tr>
+									<td>NUM/ALAIN</td>
+									<td>AL/000/001</td>
+								</tr>
+								<tr>
+									<td>NUM/MICHEL</td>
+									<td>MI/200/101</td>
+								</tr>
+								<tr>
+									<td>NUM/SOPHIE</td>
+									<td>SO/999/001</td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-md-6 col-sm-12">
+						</div>
+					</div>
+
+					Formule associée au champ <span class="bai_code">?TIERS("b_referenc") : =COMPTEUR("NUM/"+?TIERS("b_portef""))</span><br>
+					Le système lit l'information "Portefeuille", recherche le compteur NUM/ALAIN, NUM/MICHEL ou NUM/SOPHIE et rend la valeur de ce compteur.<br>
+					Le compteur est ensuite incrémenté.
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>INDICE("<i>A</i>", "<i>D</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Reprise de la valeur d'un indice à une date déterminée
+				<br><br>
+				<b>Paramètres :</b><br><br>
+				<code>"A"</code> : nom de l'indice<br><br>
+				<code>"D"</code> : champ date<br>
+				<br>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">INDICE("IDA",?SIN("b_datesurv"))</span> = rend la valeur de l'indice <code>IDA</code> renseigné à la date de survenance du sinistre.
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>ZONIER</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Reprise d'une zone de tarification<br><br>
+				La recherche de la zone se fait en 3 étapes :
+				</p><ol>
+					<li>
+						Recherche si un zonier existe sur le produit. Si oui, recherche logique selon le code postal (ex: 91440 puis 9144, 914, 91, 9)
+					</li>
+					<li>
+						Si aucun zonier spécifique au produit, le système recherche si un zonier existe sur la compagnie. Si oui, recherche logique selon le code postal (ex: 91440 puis 9144, 914, 91, 9)
+					</li>
+					<li>
+						Si pas de zonier sur la Cie, recherche du code générique attribué dans le fichier des communes.
+					</li>
+				</ol>
+				Pour un contrat auto, si l'information <code>RVEH("B_GARAGE")</code>, lieu de garage habituel, est renseignée par une valeur débutant par une donnée numérique, il sera considéré qu'il s'agit d'un code postal et celui-ci sera pris en priorité dans la recherche effectuée par la commande ZONIER.
+
+			
+		</div>
+	</div>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>SITE</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Si la gestion des sites est mise en place, permet de récupérer le code "site" du poste de travail.
+			</p>
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>REQPAR("<i>A</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Valeur du paramètre A de la requête.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>REQVAL("<i>A</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Dernière valeur de la zone d'édition A de l'état.
+			</p>
+		</div>
+	</div>
+
+</body>

@@ -1,0 +1,125 @@
+<body>
+
+<h2>Service d'authentification BAS</h2>
+
+<p>Le service IBasAuthService a pour buts :</p>
+<ul>
+<li>Tester la methode Echo ;</li> 
+<li>Se connecter et ouvrir la session ;</li>
+<li>Fermer la session ;</li>
+<li>Récupérer les informations de serveurs et d'applications.</li>
+</ul>
+<br>
+<p>Voir aussi <a class="doc-link" categories="Utilitaires et paramétrages, BAS Belair Application Server, Développement, Connexion et accès aux services" name="La%20connexion%20et%20l'acc%C3%A8s%20au%20services%20BAS">La connexion et l'accès au services BAS</a>.</p>
+<br>
+<h3>API d'accès</h3>
+
+<h4>CheckSession()</h4>
+
+<p>Vérifie si la session est active et, si non, génère une exception avec <a class="doc-link" categories="Utilitaires et paramétrages, BAS Belair Application Server, Développement, Connexion et accès aux services" name="La%20connexion%20et%20l'acc%C3%A8s%20au%20services%20BAS">le code spécifique</a> (voir en bas de page).</p>
+
+<pre>void CheckSession(BasSecurityContext sc)</pre>
+
+<p>Paramètres :</p>
+<ul><li>sc : l'objet contexte de sécurité obtenu par l'appel de "OpenSession()".</li></ul>
+<br>
+<h4>CloseSession()</h4>
+
+<p>Ferme la session, préalablement ouverte par OpenSession().</p>
+
+<pre>void CloseSession(BasSecurityContext sc)</pre>
+
+<p>Paramètres :</p>
+
+<ul>
+<li>sc : l'objet contexte de sécurité.</li>
+</ul>
+<br>
+<h4>Echo()</h4>
+
+<p>Renvoie le message.</p>
+
+<pre>string Echo(string message)</pre>
+
+<p>Paramètres :</p>
+
+<ul>
+<li>message : le message à retourner.</li>
+</ul>
+
+<p>Résultat :</p>
+
+<ul>
+<li>Le message retourné.</li>
+</ul>
+<br>
+<h4>GetAppInfo()</h4>
+
+<p>Renvoie les informations sur l'application.</p>
+
+<pre>BasAppInfo GetAppInfo(BasSecurityContext sc)</pre>
+
+<p>Paramètres :</p>
+
+<ul>
+<li>message : le message à retourner.</li>
+</ul>
+
+<p>Résultat :</p>
+
+<ul>
+<li>L'objet "BasAppInfo" dont la structure est la suivante : 
+<ul> 
+<li>string ConfFileName : le chemin et le nom de ficher de configuration ;</li> 
+<li>string Name : le nom de l'application, i.e. "DEI" pour celle de développement ;</li> 
+<li>string Title : l'intitulé de l'application.</li> </ul> </li>
+</ul>
+<br>
+<h4>GetSysInfo()</h4>
+
+<p>Renvoie les informations système.</p>
+
+<pre>BasSysInfo GetSysInfo()</pre>
+
+<p>Résultat :</p>
+
+<ul>
+<li>L'objet "BasSysInfo" dont la structure est la suivante :
+<ul>
+<li>string ApplicationName : le nom de l'application, i.e. "DEI" pour celle de développement ;</li>
+<li>string OSVersionName : la version du système d'exploitation, i.e. "Windows 10 64 bits ..." ;</li>
+<li>BasVersionInfo VersionInfo : l'objet contenant l'information de la version BAS : <ul>
+<li>int Major : un numéro majeur ;</li>
+<li>int Minor : un numéro mineur ;</li> 
+<li>char Release : une lettre de rélease entre 'A' et 'Z' ;</li>
+<li>int Revision : un numéro de la révision ;</li> 
+<li>string Version : une chaîne version complète i.e. "4.1B.123456".</li> </ul> </li>
+</ul></li>
+</ul>
+<br>
+<h4>OpenSession()</h4>
+
+<p>Ouvre une session BAS pour un utilisateur spécifié, ou bien génère une exception avec <a class="doc-link" categories="Utilitaires et paramétrages, BAS Belair Application Server, Développement, Connexion et accès aux services" name="La%20connexion%20et%20l'acc%C3%A8s%20au%20services%20BAS">le code spécifique</a> (voir en bas de page).
+<br>La session ouverte sera fermée dans 20 minutes en cas d'inactivité.</p>
+
+<pre>BasSecurityContext OpenSession(string logon, string password)</pre>
+
+<p>Paramètres :</p>
+
+<ul>
+<li>logon : le nom de connexion.</li>
+<li>password : le mot de passe.</li>
+</ul>
+
+<p>Résultat :</p>
+
+<ul>
+<li>L'objet "BasSecurityContext" à conserver et à utiliser pour tous les appels de BAS.</li>
+</ul>
+
+<br>
+<br>
+
+
+
+</body>

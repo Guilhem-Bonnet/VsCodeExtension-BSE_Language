@@ -1,0 +1,93 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:GetNodeDate(doc, default)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie le texte du nœud courant converti en type date et temps.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>default</code> : la valeur par défaut.</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>La valeur de type date et temps (TDateTime) convertie à partir du texte du nœud courant.
+			<br>Si le texte est vide ou absent alors : la valeur par défaut est retournée.
+			<br>
+			<br>Génère une erreur si la conversion n'est pas possible.
+			</p>
+			<br>
+			<p><b>Les valeurs/formats acceptées/és :</b></p>
+			<ul><li>Format ISO :
+<ul><li>yyyy-mm-dd ;</li>
+<li>yyyy-mm-dd hh:mm ;</li>
+<li>yyyy-mm-dd hh:mm:ss ;</li>
+<li>yyyy-mm-dd hh:mm:ss.zzz ;</li>
+<li>yyyy-mm-ddThh:mm:ss.zzz.</li></ul></li></ul>
+			<p>Les valeurs ne sont pas sensitives à la casse de caractères.</p>
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">items</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item1</span><span class="delimiter">"</span></span>, EncodeDateTime(<span class="integer">2017</span>, <span class="integer">11</span>, <span class="integer">9</span>, <span class="integer">14</span>, <span class="integer">35</span>, <span class="integer">46</span>))
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item21</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">2017-11-09</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item22</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">2017-11-09T14:35</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item23</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">2017-11-09T14:35:46</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item24</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">2017-11-09T14:35:46.123</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item3</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc)
+XML:First(doc)
+XML:FirstChild(doc)
+Print(XML:GetNodeDate(doc))
+XML:Next(doc)
+Print(XML:GetNodeDate(doc))
+XML:Next(doc)
+Print(XML:GetNodeDate(doc))
+XML:Next(doc)
+Print(XML:GetNodeDate(doc))
+XML:Next(doc)
+Print(XML:GetNodeDate(doc))
+XML:Next(doc)
+Print(XML:GetNodeDate(doc, EncodeDate(<span class="integer">2017</span>, <span class="integer">11</span>, <span class="integer">9</span>)))
+XML:First(doc)
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">09/11/2017 14:35:46
+09/11/2017
+09/11/2017 14:35:00
+09/11/2017 14:35:46
+09/11/2017 14:35:46
+09/11/2017
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;items&gt;</span>
+  <span class="tag">&lt;item1&gt;</span>2017-11-09T14:35:46.000<span class="tag">&lt;/item1&gt;</span>
+  <span class="tag">&lt;item21&gt;</span>2017-11-09<span class="tag">&lt;/item21&gt;</span>
+  <span class="tag">&lt;item22&gt;</span>2017-11-09T14:35<span class="tag">&lt;/item22&gt;</span>
+  <span class="tag">&lt;item23&gt;</span>2017-11-09T14:35:46<span class="tag">&lt;/item23&gt;</span>
+  <span class="tag">&lt;item24&gt;</span>2017-11-09T14:35:46.123<span class="tag">&lt;/item24&gt;</span>
+  <span class="tag">&lt;item3</span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/items&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

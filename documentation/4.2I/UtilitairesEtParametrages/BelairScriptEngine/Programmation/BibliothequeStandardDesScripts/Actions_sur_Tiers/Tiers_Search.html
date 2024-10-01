@@ -1,0 +1,72 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tiers_Search</code></h3>
+		</div>
+
+<p>Recherche alphabétique d'un TIERS</p>
+
+	<a name="param%C3%A8tres"></a>
+<h3>paramètres<a href="#param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>reference (string, optionnel) : référence à rechercher</li>
+		<li>dppname (string, optionnel) : nom DPP à rechercher (clause b_nom = 'xxx')</li>
+	</ul>
+
+
+	<p>referene est obligatoire SAUF si dppname est passé en parametre</p>
+
+
+	<ul>
+	<li>typetiers (char(1), optionnel) : filtre sur UN type de tiers</li>
+		<li>codp (string, optionnel) : filtre sur codepostal</li>
+		<li>datenais : filtre sur date de naissance  du DPP</li>
+	</ul>
+
+
+	<ul>
+	<li>detailorigine (booléen, optionnel) : information sur la table et le champ concerné</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;searchresult</span> <span class="na">reference=</span><span class="s">"VALL"</span> <span class="na">target=</span><span class="s">"TIERS"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"SearchResult"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"codp"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>78100<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Entity"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>TIERS<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"FieldName"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>B_RSOCIALE<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1010"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"OrigineValue"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>VALLOIRE Jean<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"rsociale"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>VALLOIRE Jean<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"ville"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>ST-GERMAIN EN LAYE<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"SearchResult"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"codp"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Entity"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>TIERS<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"FieldName"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>B_RSOCIALE<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1011"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"OrigineValue"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>VALLOIRE Catherine<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"rsociale"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>VALLOIRE Catherine<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"ville"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"SearchResult"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"codp"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>91470<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Entity"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>DPP<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"FieldName"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>B_NOMPRE<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1017"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"OrigineValue"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>VALLOIRE Jean<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"rsociale"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>PASCHEUX UNITED<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"ville"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>LES MOLIERES<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/searchresult&gt;</span>
+</code></pre>
+</div></body>

@@ -1,0 +1,81 @@
+<body>
+
+<h2>Traitements externes : ordonner le traitement</h2>
+<br>
+<h3>PHP</h3>
+<br>
+<p>Importer le WSDL et utiliser le service "IBasScheduler".
+<br><br>(à suivre).</p>
+<br>
+<h3>Delphi</h3>
+<br>
+<div class="alert alert-info" role="alert"><p><b>Notez que :</b>
+<br>
+<br>Il est nécessaire d'être connecté avec son propre login/mot de passe. Si on se trouve dans l'application Belair, c'est déjà le cas. 
+<br>Sinon il faut initialiser le service d'authentification à la main dans le code.</p></div>
+<br>
+<p>La séquence est la suivante :</p>
+
+<ul>
+<li>Créer les paramètres et les initialiser ;</li>
+<li>Si nécessaire, programmer la date et l'heure de démarrage (sinon, le travail démarrera instantanément) ;</li>
+<li>Appeler une fonction "BasScheduleExternalProcessing", qui crée le travail (job) sur le serveur BAS ;</li>
+<li>Éventuellement, afficher l'écran de statut de travaux d'utilisateur courant.</li>
+</ul>
+
+<br>
+<h4>Exemple de démarrage immédiat</h4>
+
+<pre>
+var
+  Params: TBasParams;
+...
+  Params := TBasParams.Create;
+  try
+    Params.SetLength(4); // 4 paramètres à communiquer le traitement
+    BasSetParam(Params, 0, 'Param1', basParamBool).BoolVal := true;
+    BasSetParam(Params, 1, 'Param2', basParamInt).IntVal := 12345;
+    BasSetParam(Params, 2, 'Param3', basParamDateTime).DateVal.AsDate := DateDebutMois;
+    BasSetParam(Params, 3, 'Param4', basParamString).StrVal := CodeDevise;
+    // Démarrer le traitement immédiatement
+    BasScheduleExternalProcessing('TMyProcessing', 'My processing', Params);
+  finally
+    Params.Free;
+  end;</pre>
+
+<br>
+<h4>Exemple de programmation de date/temps de démarrage</h4>
+
+<pre>
+var
+  Job: TBasJobInfo;
+...
+  Job := TBasJobInfo.Create;
+  try
+    // 
+    Job.Name := 'My processing';
+    Job.JobType := basJobTypeDebug;
+    Job.Schedule.ScheduleType := basScheduleTypeOneTime;
+    Job.Schedule.StartAt.AsDate := IncHour(Now, 2); // Démarrer d'ici dans 2 heures
+    // Les paramètres sont incorporées dans TBasJobInfo
+    Job.Params.SetLength(4); // 4 paramètres à communiquer le traitement
+    BasSetParam(Job.Params, 0, 'Param1', basParamBool).BoolVal := true;
+    BasSetParam(Job.Params, 1, 'Param2', basParamInt).IntVal := 12345;
+    BasSetParam(Job.Params, 2, 'Param3', basParamDateTime).DateVal.AsDate := DateDebutMois;
+    BasSetParam(Job.Params, 3, 'Param4', basParamString).StrVal := CodeDevise;
+    // Démarrer le traitement programmé
+    BasScheduleExternalProcessing('TMyProcessing', Job);
+  finally
+    Job.Free;
+  end;</pre>
+
+<br>
+<h4>Afficher l'écran de statut de travaux</h4>
+
+<pre>BaiAppServerAsyncView.GetView.ShowState;</pre>
+
+<br>
+<br>
+
+
+</body>

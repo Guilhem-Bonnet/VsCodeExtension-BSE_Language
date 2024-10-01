@@ -1,0 +1,45 @@
+<body>
+<h2>Type FileDescriptor</h2>
+
+<p>
+<i>FileDescriptor</i> est un type d'objet utilisé pour les manipulations de fichiers texte.
+</p>
+
+
+<h3>Propriétés du type FileDescriptor</h3>
+
+<p>
+	<code>CSVSeparator</code> (string) : le caractère de séparation des valeurs dans un fichier CSV. ";" est par défaut.<br>
+	<code>Encoding</code> (string) : l'encodage de fichier ouvert pour lecture ou l'écriture.<br>
+	<code>EOF</code> (bool) : indique si le fin de fichier est atteint lors de la lecture par <code>ReadLine()</code>, etc...<br>
+	<code>Path</code> (string) : le nom de fichier avec le chemin éventuel<br>
+</p>
+
+<h3>Exemple</h3>
+<div>
+<pre>
+local f1
+f1 := File:Create("test.txt")
+File:WriteLine(f1, "First line")
+File:WriteLine(f1, "Second line")
+File:Close(f1)
+f1 := File:OpenRead("test.txt")
+Print(DumpVar(f1))
+while not f1.EOF begin
+  Print(File:ReadLine(f1))
+end
+</pre>
+</div>
+<h3>Résultat</h3>
+<div>
+<pre>
+Object (FileDescriptor):
+  CSVSeparator (UnicodeString): ;
+  Encoding (UnicodeString): UTF8
+  EOF (Boolean): False
+  Path (UnicodeString): test.txt
+First line
+Second line
+</pre>
+</div>
+</body>

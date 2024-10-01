@@ -1,0 +1,49 @@
+<body>
+
+
+<h3>Fonctions de manipulation des chaînes de caractères (strings)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>StrPos</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie l'index de la première occurrence d'une sous-chaîne dans une chaîne.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. La sous-chaîne à trouver.</li>
+				<li>2. La chaîne.</li>
+				<li>3. La position de départ (optionnel, 1 par défaut).</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>La position de la sous-chaîne trouvée, 0 sinon.
+			</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">Print(StrPos(<span class="string"><span class="delimiter">"</span><span class="content">CD</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">ABCDEFGHCDADE</span><span class="delimiter">"</span></span>))
+Print(StrPos(<span class="string"><span class="delimiter">"</span><span class="content">CDD</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">ABCDEFGHCDADE</span><span class="delimiter">"</span></span>))
+Print(StrPos(<span class="string"><span class="delimiter">"</span><span class="content">CD</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">ABCDEFGHCDADE</span><span class="delimiter">"</span></span>, <span class="integer">8</span>))
+Print(StrPos(<span class="string"><span class="delimiter">"</span><span class="content">CD</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">ABCDEFGHCDADE</span><span class="delimiter">"</span></span>, <span class="integer">10</span>))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">3
+0
+9
+0
+</span></code></pre>
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

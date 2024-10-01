@@ -1,0 +1,156 @@
+<body>
+<h2>Modélisation des écrans : la boite à outils</h2>
+
+	La fonction <span class="menu">Outils | Boite à outils</span>  <kbd>[F12]</kbd>  permet d'afficher la Boite à outils, contenant tous les objets pouvant être ajoutés sur l'écran<br>
+	elle contient la liste de tous les champs des tables disponibles pour l'écran et différents objets graphiques
+
+<br><br>
+	
+<h3>Ajout d'un champ à partir de la boite à outils</h3>
+
+<p><img src="images/baidata_toolbox_tables.png" class="img-responsive"></p>
+
+	Sélectionnez la table concernée dans la liste déroulante, puis positionnez-vous sur le champ que vous souhaitez ajouter.<br>
+	Glissez le champ sur l'écran et lachez le à l'endroit où vous voulez placer ce champ: 
+	un objet associé au champ est alors créé selon le type de champ (zone de saisie, case à cocher, liste déroulante, ....), 
+	ainsi qu'un texte contenant le libellé du champ.
+
+<br><br>
+
+<h3>Eléments graphiques et contrôles 'parent'</h3>
+
+	La boite à outils contient également différents objets permettant d'organiser votre écran.<br>
+	Pour ajouter un élément, sélectionnez le et cliquez ensuite sur l'écran à l'endroit où vous voulez créer cet élement.<br><br>
+
+<h4>Dossier à onglets</h4>
+	Un dossier à onglets permet de créer différentes pages , appelées <b>onglets</b>:  chaque onglet peut contenir des contrôles.
+	<p><img src="images/baidata_tool_dossieronglet.png" class="img-responsive"></p>
+	<p>Fonctions spécifiques du menu contextuel:</p>
+	<ul>
+		<li><span class="menu">Pages</span> : gestion des pages</li>
+	</ul>
+	<br><br>
+
+<h4>Panneau</h4>
+	Un panneau est un cadre rectangulaire pouvant ensuite contenir différents contrôles.	
+	<p><img src="images/baidata_tool_panneau.png" class="img-responsive"></p>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Autosize</code> : la largeur et la hauteur s'adaptent pour que tous les enfants soient visibles .</li>
+		<li><code>bevelwidth BorderStyle BaiStd3D</code> : réglage du relief et des bordures</li>
+	</ul>
+	<br><br>
+
+<h4>Boite</h4>
+	Une boite est un cadre rectangulaire pouvant ensuite contenir différents objets, ayant un encadrement et un titre.
+		<p><img src="images/baidata_tool_boite.png" class="img-responsive"></p>
+	<ul>
+		<li><code>BaiStd3D</code> : réglage du relief et des bordures</li>
+		<li><code>Caption</code> : titre</li>
+	</ul>
+	<br><br>
+
+<h4>Graphique</h4>
+	Un graphique est un rectangle contenant un élément purement visuel (ligne, encadrement, etc...) qui ne peut pas contenir d'autres objets.
+	<p><img src="images/baidata_tool_graphique.png" class="img-responsive"></p>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Shape</code> : choix du type de graphique</li>
+	</ul>
+	<br><br>
+	
+<h4>Panneau défilant</h4>
+	Un panneau défilant est un cadre rectangulaire pouvant contenir différents objets, acoompagné d'une barre de défilement verticale.<br>
+	Vous pouvez donc positionner des objets en dehors des dismensions du panneau et faire défiler le contenu du panneau grâce aux barres de défilement.<br><br>
+	<p><img src="images/baidata_tool_scrollbox.png" class="img-responsive"></p>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Autosize</code> : la largeur et la hauteur s'adaptent pour que tous les enfants soient visibles .</li>
+		<li><code>bevelwidth BorderStyle Ctl3D</code> : réglage du relief et des bordures</li>
+	</ul>
+	<br><br>
+
+<h4>Texte</h4>
+
+	Simple texte de longueur fixe ou variable pouvant être sur plusieurs lignes.<br>
+	<p><img src="images/baidata_tool_texte.png" class="img-responsive"></p>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Autosize</code> : dismensionnement automatique en fonction du texte et de la fonte</li>
+		<li><code>Caption</code> : texte affiché</li>
+		<li><code>Wordwrap</code> : retour à la ligne (incompatible avec <code>Autosize</code>)</li>
+	</ul>
+	<br><br>
+
+<h4>Image</h4>
+	Image (ICO, BMP, JPEG)
+	<p><img src="images/baidata_tool_image.png" class="img-responsive"></p>
+	<p>Fonctions spécifiques du menu contextuel:</p>
+	<ul>
+		<li><span class="menu">Image</span> : sélection du fichier image</li>
+	</ul>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Autosize</code> : dismensionnement automatique en fonction de la taille de l'image</li>
+		<li><code>Transparent</code> : Fond transparent (dépend du firmat de l'image)</li>
+	</ul>
+	<br><br>
+
+<h4>Panneau déroulant</h4>
+	Un panneau déroulant est un cadre rectangulaire pouvant contenir des objets, surmontée d'un titre et pouvant être ouvert ou refermé en cliquant sur le titre.
+	<p><img src="images/baidata_tool_panneauderoulant.png" class="img-responsive"></p>
+	<p>Fonctions spécifiques du menu contextuel:</p>
+	<ul>
+		<li><span class="menu">N. icone si ouvert</span> : choix de l'icone lorsque le panneau est ouvert (correspond à la propriété <code>ImageExpanded</code>)</li>
+		<li><span class="menu">N. icone si fermé</span> : choix de l'icone lorsque le panneau est fermé (correspond à la propriété <code>ImageCollapsed</code>)</li>
+	</ul>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Bevelwidth BorderWidth</code> : réglage de l'encadrement</li>
+		<li><code>Caption</code> : titre</li>
+		<li><code>Collapsed</code> : ouvert / fermé</li>
+		<li><code>Placement</code> : mode d'ouverture (vers le bas ou vers la droite)</li>
+	</ul>
+	<br><br>
+
+<h4>Ligne de titre</h4>
+	Ligne horizontale de longueur fixe accompagnée d'un texte pouvant être cadré à gauche, au centre ou à droite
+	<p><img src="images/baidata_tool_lignetitre.png" class="img-responsive"></p>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Alignment</code> : titre cadré à gauche, à droite ou centré sur la ligne</li>
+		<li><code>Caption</code> : titre</li>
+	</ul>
+	<br><br>
+
+<h4>Groupe de panneaux déroulants</h4>
+	Un groupe de panneaux déroulants est un cadre de dismensions fixes contenant des panneaux (ou bandeaux) pouvant chacun être ouverts ou refermés.<br>
+	Chaque panneau peut contenir des objets.
+	<p><img src="images/baidata_tool_groupepanneaux.png" class="img-responsive"></p>
+	<p>Fonctions spécifiques du menu contextuel:</p>
+	<ul>
+		<li><span class="menu">Ajouter bandeau</span> : création d'un nouveau bandeau</li>
+	</ul>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Beveled</code> : bandeaux avec encadrement</li>
+		<li><code>BevelWidth BorderStyle BorderWidth</code> : réglage de l'encadrement</li>
+		<li><code>ButtonFont</code> : choix de la fonte des titres des bandeaux</li>
+	</ul>
+	<br><br>
+
+<h4>Bouton</h4>
+	Un bouton avec un texte pemettant de déclencher un traitement via la formule de calcul qui lui est associe.
+	<p><img src="images/baidata_tool_bouton.png" class="img-responsive"></p>
+	<p>Fonctions spécifiques du menu contextuel:</p>
+	<ul>
+		<li><span class="menu">Formule</span> : sélection de la formule de calcul associée</li>
+	</ul>
+	<p>Propriétés particulières:</p>
+	<ul>
+		<li><code>Caption</code> : titre du bouton</li>
+	</ul>
+	<br><br>
+<br>
+
+</body>

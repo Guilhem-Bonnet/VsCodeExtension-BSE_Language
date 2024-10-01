@@ -1,0 +1,60 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Query_GetParamList</code></h3>
+		</div>
+
+	<p>Récupération de la liste des paramètres d'une requête</p>
+
+
+	<p>Cette fonction rend la liste des paramètres utilisés par une requête de Belair</p>
+
+
+	<a name="param%C3%A8tres"></a>
+<h3>Paramètres<a href="#param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>QueryName (string, obligatoire) : Nom de la requête</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML<br></p><pre><code class="xml syntaxhl"><span class="nt">&lt;query_params</span> <span class="na">name=</span><span class="s">"Nom_de_la_requete"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;query_param</span> <span class="na">name=</span><span class="s">"Nom_du_parametre"</span> <span class="na">type=</span><span class="s">"type_param"</span> <span class="na">listkind=</span><span class="s">"CIE/PROD/TAB"</span> <span class="na">tablecode=</span><span class="s">"tabcode"</span><span class="nt">&gt;</span>Libellé<span class="nt">&lt;/Query_Param&gt;</span>
+    .....
+<span class="nt">&lt;/query_params&gt;</span>
+</code></pre>
+
+
+	<a name="Fonctionnement"></a>
+<h3>Fonctionnement<a href="#Fonctionnement" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>La liste des noms des parametres est obtenue par le SQL suivant (forcer 'name' en majuscule)<br><pre><code class="sql syntaxhl"><span class="k">select</span> <span class="n">B_PARAMS</span> <span class="k">from</span> <span class="p">[</span><span class="n">retat</span><span class="p">]</span> <span class="k">where</span> <span class="n">b_etat</span> <span class="o">=</span> <span class="p">:</span><span class="n">name</span> <span class="k">and</span> <span class="n">b_element</span> <span class="k">like</span> <span class="s1">'%SQL%'</span>
+</code></pre><br>Le champ B_PARAMS est un champ MEMO listant les parametres associés</li>
+		<li>le SQL suivant donne les caracteristiques d'un parametre<br><pre><code class="sql syntaxhl"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="p">[</span><span class="n">PARAM</span><span class="p">]</span> <span class="k">where</span> <span class="n">codeparam</span> <span class="o">=</span> <span class="p">:</span><span class="n">codeparam</span>
+</code></pre></li>
+		<li>Champs : 
+	<ul>
+	<li>CODEPARAM : nom du parametre =&gt; attribut "name" de la balise Query_Param</li>
+		<li>LIBELLE : libellé de la question =&gt; contenu de la balise Query_Param </li>
+		<li>TYPE : type de données, selon la norme Belair (A,M,L,W, etc...) =&gt; attribut type de la balise Query_Param </li>
+	</ul>
+	</li>
+		<li>Cas particuliers
+	<ul>
+	<li>pour le type de données 'W' :<br>Le code de la liste des réponses possibles est indiqué dans le libellé, entre crochets<br>Ajouter attribut listkind="TAB" (table de codes) et attribut tablecode="code" (nom de la table de codes)</li>
+		<li>pour le type de données 'L' : si le libellé contient "[CIE]" <br>Ajouter attribut listkind="CIE" (liste des compagnies)</li>
+		<li>pour le type de données 'M' : si le libellé contient "[PROD]" <br>Ajouter attribut listkind="PROD" (liste des produits)</li>
+	</ul></li>
+	</ul>
+
+
+	<p>Enlever dans le libellé ce qui est entre crochets</p>
+	</div></body>

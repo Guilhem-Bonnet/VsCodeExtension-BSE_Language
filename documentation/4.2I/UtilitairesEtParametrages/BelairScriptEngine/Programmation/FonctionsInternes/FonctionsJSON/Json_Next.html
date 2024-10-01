@@ -1,0 +1,61 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:Next(doc, keyname)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>La fonction rend courante la valeur suivant la valeur courante actuelle.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			<li><code>keyname</code> : soit un numéro d'index de tableau, soit un nom de clé (optionnel)</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Une valeur booléenne True/False. False si la valeur courante est la dernière
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "object")
+  Json:NewValue(doc, "varInt", 12)
+  Json:NewValue(doc, "varString", "Test")
+  Json:NewValue(doc, "varBool", True)
+  Json:NewValue(doc, "varDate", Now())
+  Json:NewValue(doc, "varNull", NULL)
+Json:EndObject(doc)
+Json:Close(doc)  
+Json:ValueExist(doc, "object")
+Json:Recurse(doc)           
+print(Json:GetCurrentPath(doc))
+Json:Next(doc, "varBool")
+while Json:Next(doc)
+ print(Json:GetCurrentPath(doc))
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+object.varInt
+object.varDate
+object.varNull
+</pre>
+	</div>
+</div>
+</body>

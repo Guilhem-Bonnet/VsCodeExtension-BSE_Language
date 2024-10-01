@@ -1,0 +1,86 @@
+<body>
+	<h2>Variables locales</h2>
+	
+	<p>
+		Contrairement aux variables temporaires, les variables locales sont spécifiques au script ou à la formule de calcul dans laquelle elles ont été créées (non globales).
+	</p>
+	
+	<!-- Fonction LOCAL -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LOCAL <i>format nomvar</i></code>  <b></b><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Déclaration de la variable locale.
+			</p>
+			<p> 
+				<b>Paramètres :</b>
+				<br><br>
+				<code>LOCAL</code> : commande permettant d'indiquer que l'on va déclarer une variable locale
+				<br><br>
+				<code>format</code> :  il est nécessaire préalablement à leur utilisation pour stocker une valeur de les déclarer en définissant leur format.
+				</p><ul>
+					<li>LOCALA (ou LOCAL$) permet de déclarer une variable au format alphabétique..</li>
+					<li>LOCALN (ou LOCAL) permet de déclarer une variable au format numérique</li>
+					<li>LOCALX permet de déclarer une variable au format booléen</li>
+					<li>LOCALD permet de déclarer une variable au format date</li>
+				</ul><br>
+				<code>nomvar</code> : nom donné par l'utilisateur à la variable (ne doit contenir que des lettres et des chiffres, sans caractères spéciaux, ni espaces)
+			
+		</div>	
+	</div>
+	<br>
+
+	<!-- Fonction !nomvar -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>!nomvar</code>  <b></b><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>	
+				Utilisation de la valeur d'une variable locale.
+				<br><br>
+				Le nom donné à la variable doit être précédé d'un '!' (point d'exclamation)<br>
+				Son utilisation est la même que pour une variable locale, si ce n'est qu'il n'est pas nécessaire de redéfinir le format de la variable lors de l'attribution d'une valeur.
+			</p>
+			<p> 
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<div class="bai_code">
+						LOCALA TEST<span class="bai_comment"> // déclaration variable TEST au format alphabétique</span><br>
+						!TEST:= "variable" <span class="bai_comment">// attribution valeur</span><br>
+						IA$:=!TEST + " locale" <span class="bai_comment">// utilisation de la variable dans une formule</span><br>
+						=IA
+					</div>
+				</div>	
+			
+		</div>	
+	</div>
+	
+	<p>
+		Les variables locales à un calcul (à un script) ne sont visibles qu'au sein de cette formule 
+		<br><br>
+		Il est possible également de créer des variables <b>globales</b> à une session de calcul
+		<br><br>
+		Une session de calcul se définit comme un environnement de calcul homogène et indépendant dans lequel sont exécutées les formules.
+		<br><br>
+		Il y a une session de calcul par défaut à l'application mais par exemple, chaque table a sa propre session de calcul
+		<br><br>
+		Idem pour les scripts automate, chaque script a sa propre session 
+		<br><br>
+		Les variables IA -&gt; IZ sont propres à une session et sont "<b>globales</b>" puisqu'elles sont exploitables dans les formules de calcul intégrées dans une formule ou un script.
+		<br><br>
+		Les variables locales, déclarées par l'instruction "<b>local</b>" dans une formule ou un script, ne sont pas visibles des autres formules et sont détruites à la fin du script (ou de la formule de calcul) 
+		<br><br>
+		On peut donc créer des variables <b>globales</b> à une session, qui sont conservées en mémoire, qui peuvent ainsi être initialisées dans une formule ou un script et exploitées dans une autre formule 
+		<br><br>
+	</p>
+
+	<b><u>Syntaxe :</u></b><br><br> <i>global variable (ou global$, globalD, globalX, globalN)</i><br>
+	Ensuite, même syntaxe que pour les variables locales : <i>!variable</i><br>
+	<br>
+	<div class="alert alert-warning" role="alert">
+	<b>Remarque :</b> Si on crée une variable globale dans un calcul ou un script qui appelle une formule ou la même variable est déclarée locale (même nom), ce sera la variable locale qui sera manipulée dans le calcul et non pas la variable globale de la session.
+	</div>
+</body>

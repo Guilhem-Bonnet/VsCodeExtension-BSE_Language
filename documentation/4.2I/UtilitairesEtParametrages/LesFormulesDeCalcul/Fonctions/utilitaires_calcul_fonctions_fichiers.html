@@ -1,0 +1,213 @@
+<body>
+	<h3>Fonctions de gestion de fichiers</h3>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>BASE64DECODE(<i>chaine</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Décode et retourne une chaine codée en base64.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>BASE64ENCODE(<i>chaine</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				retourne une chaine encodée en base64.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>OPEN(<i>"command"</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Cette fonction permet d'ouvrir un fichier (programme, document, ...) 
+</p><p></p><ul><li>Elle réplique le comportement qu'a Windows, lorsqu'on fait Win + R
+<b><br>Exemple :</b>
+<pre><code class="c syntaxhl"><span class="CodeRay">Open("https://docs.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-shellexecutew")
+ou
+Open("C:\Users\dimitri\Documents\BelAir\Belair.log")       
+</span></code></pre>
+			
+		</li></ul></div>
+		</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FICHIER_COPIER(<i>source,destination</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Copie le fichier "source" vers le chemin "destination".
+				<br>Retour: 1 si l'opération s'est correctement déroulée et 0 en cas d'erreur.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FICHIER_DEPLACER(<i>source,destination</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Déplace le fichier "source" vers "destination".
+				<br>Retour: 1 si l'opération s'est correctement déroulée et 0 en cas d'erreur.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FICHER_EXISTE(<i>fichier</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Renvoie 0 si le fichier n'existe pas ou 1 s'il existe.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FICHIER_IMPRIMER(<i>fichier</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Imprime "fichier".
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FICHIER_RENOMMER(<i>source,nouveau nom</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Renomme "fichier" avec le "nouveau nom".
+				<br>Retour: 1 si l'opération s'est correctement déroulée et 0 en cas d'erreur.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FICHIER_SUPPRIMER(<i>fichier</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Supprime "fichier".
+				<br>Retour: 1 si l'opération s'est correctement déroulée et 0 en cas d'erreur.
+			</p>
+		</div>
+	</div>
+
+	<div class="alert alert-info" role="info">
+		Pour toutes ces fonctions, les chemins relatifs Belair ([APPLIC], [SCANNER,] etc...) sont automatiquement trnasformés en leur équivalent Windows.<br>
+	</div>
+
+	<div class="alert alert-danger" role="alert">
+		<b>Attention</b> : <br>
+		les fonctions FICHIER_RENOMMER et FICHIER_DEPLACER ne marchent que sur le même disque.<br>
+		Dans le cas contraire, utiliser FICHIER_COPIER puis FICHIER_SUPPRIMER.
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LITFICHIER(<i>fichier</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Met le contenu du fichier dans une chaine alphabétique.
+			</p>
+			<b>Exemple d'utilisation :</b><br>
+				<div class="bai_exemple">
+					<span class="bai_code">
+						IA$ := litfichier("c:\tmp\a.txt")<br>
+						ID := nblignes(IA)<br>
+						IB := 0<br>
+						IC := 0<br>
+						IE := 0<br>
+						:loop1<br>
+						si IC &gt;= ID;&gt;cont1<br>
+						IB$ := extline(IA, IC)<br>
+						IB := IB<br>
+						IC := IC + 1<br>
+						IE := IE + IB<br>
+						&gt;loop1<br>
+						:cont1<br>
+						print(IE)<br>
+				</span>
+				</div>	
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LITFICHIER64(<i>fichier</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Code en BASE64 et retourne le contenu du fichier <i>fichier</i>.
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NBLIGNES(<i>chaine</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne le nombre de lignes contenues dans <i>chaine</i>.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>EXTLINE(<i>chaine, index</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne la ligne <i>index</i> contenue dans <i>chaine</i>.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>PATHEXPAND(<i>filename</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Transforme un chemin d'accès 'Belair' en son équivalent Windows.
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>filename</code> : chemin d'accès vers le répertoire ou le fichier
+			</p>		
+			<p>
+				<b>Exemples :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+					PATHEXPAND("[ARCHIVES]\201811\") =&gt; D:\belair42\APPDEI\ARCHIVES\201811\<br>
+					PATHEXPAND("[ARCHIVES]\201901\") =&gt; D:\belair42\APPDEI\ARCHIVES\201901\<br>
+					PATHEXPAND("[SCANNER]\201903") =&gt; D:\belair42\APPDEI\SCANNER\201903<br>
+					PATHEXPAND("[SCANNER]\201903\doc1234578.PDF") =&gt; D:\belair42\APPDEI\SCANNER\201903\doc1234578.PDF<br>
+				</span>
+				</div>	
+			
+		</div>
+	</div>
+	
+</body>

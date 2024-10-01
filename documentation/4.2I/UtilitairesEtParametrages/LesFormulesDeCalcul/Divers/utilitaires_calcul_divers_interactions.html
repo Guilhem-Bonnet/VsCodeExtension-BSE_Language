@@ -1,0 +1,226 @@
+<body>
+	<h2>Formules de calcul - Interactions avec l'utilisateur</h2>
+
+<div class="alert alert-primary">
+Les fonctions de cette page permettent d'afficher un message (temporaire ou à confirmer), de saisir une valeur, de choisir un valeur dans un menu ou de choisir une action en réponse à un message.
+</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>ALERTE("<i>message</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affiche le message pendant 3.5 secondes.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>ALERTE("<i>message</i>", "<i>durée</i>")</code>
+				
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affiche le message pendant xx secondes correspondant à "durée".
+			</p>
+		</div>
+	</div>
+	
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>SAISIE("<i>question</i>")</code>
+				
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affiche le message en attendant une réponse de l'utilisateur devant être stockée dans une variable et pouvant être utilisée dans une formule de calcul.<br>
+				<br>
+				<b>Exemple :</b>
+				</p><div class="bai_exemple">
+					<div class="bai_code">
+						IA$:= SAISIE("Voulez-vous continuer (O/N)")<br>
+						SI IA = "O";&gt;CONTINU<br>
+						SI IA = "N";=""<br :continu>
+					</div>
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>MENU("<i>titre</i>","<i>texte de saisie</i>","<i>codes</i>","<i>valeurs</i>")</code>
+				
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Création d'un menu déroulant permettant de récupérer un "code" devant être stockée dans une variable.
+				<br><br>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>"titre"</code> : titre de la fenêtre qui s'ouvre pour la saisie.<br><br>
+				<code>"texte"</code> : intitulé de la saisie demandée.<br><br>
+				<code>"codes"</code> : les différents codes doivent être séparés par le signe  ;  (point-virgule). <br>
+				C'est le code qui sera stocké dans la variable.<br><br>
+				<code>"valeurs"</code> : les différentes valeurs doivent être séparées par le signe  ;  (point-virgule). <br>
+				Ce sont les valeurs qui seront proposées à l'affichage dans le menu déroulant.<br><br>
+				<br>
+				A chaque "valeur" doit correspondre un "code" donné.<br>
+				<br>
+				Si on ajoute un point-virgule au début ou à la fin, cela permet d'avoir un choix de réponde "à vide".<br>
+				<br>
+				<b>Exemple de formule :</b>
+				</p><div class="bai_exemple">
+					<span class="bai_code">IA$:= MENU("connexe","Deuxième prénom ?","A;B;C;","Jean;René;Pierre;") =IA</span>
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>CATALOGUE("<i>catalogue</i>","<i>sous-catalogue</i>")</code>
+				
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Déclenche l'ouverture du catalogue de risques indiqué en paramètres.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>SHOWMESSAGE(<i>message</i>)</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affiche un message à l'utilisateur dans une simple boite de dialogue (bouton "OK")
+				<br><br>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>message</code> : Le message à afficher<br>
+				<br>
+				<b>Exemple</b>
+				</p><div class="bai_exemple">
+					<span class="bai_code">ShowMessage("Voici un simple message")</span>
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>MESSAGEDLG(<i>message</i>,<i>boutons</i>,<i>TypeDialogue</i>)</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affiche un message à l'utilisateur dans une boite de dialogue et demande un choix (liste de boutons).<br>
+				le nom du bouton sélectionné est rendu par la formule (en MAJUSCULE).
+				<br><br>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>message</code> : Le message à afficher<br>
+				<code>boutons</code> : Liste des boutons, séparés par un ";" (voir liste ci-dessous)<br>
+				<code>TypeDialogue</code> : Type de la boite de dialogue; choix parmi "Information" / "Confirmation" / "Warning" / "Error" (optionnel, par défaut "Information")<br>
+				L'icone correspondant au type de dialogue sera affiché dans la fenetre.
+				<br><br>
+				<b>Exemples</b>
+				</p><div class="bai_exemple">
+					<span class="bai_code">IA$ := MessageDlg("Voici la nouvelle fonction MessageDLG", "Close", "Information")<br>
+print("Voici la nouvelle fonction MessageDLG ?" + IA)<br>
+<br>
+IA$ := MessageDlg("Voulez-vous vraiment tester MessageDLG ?", "Yes;No", "Confirmation")<br>
+print("Voulez-vous vraiment tester MessageDLG ?" + IA)<br>
+<br>
+IA$ := MessageDlg("Vous avez cassé la fonction MessageDLG !!!", "Abort", "Error")<br>
+print("Vous avez cassé la fonction MessageDLG !!!" + IA)<br>
+<br>
+IA$ := MessageDlg("Attention voici la nouvelle fonction MessageDLG", "OK", "Warning")<br>
+print("Attention voici la nouvelle fonction MessageDLG" + IA)<br>
+<br>
+IA$ := MessageDlg("Voici tous les boutons possibles", "Yes; No; OK; Cancel; Abort; Retry; Ignore; All; NoToAll; YesToAll; Close")<br>
+print("Vous avez cliqué sur " + IA)</span>
+				</div>
+			
+			<p>
+			Liste des boutons
+				</p><table class="table">
+				  <thead>
+					<tr>
+					  <th scope="col">Nom</th>
+					  <th scope="col" class="text-center">Libellé affiché</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <th scope="row">Yes</th>
+					  <td class="text-center">Oui</td>
+					</tr>
+					<tr>
+					  <th scope="row">No</th>
+					  <td class="text-center">Non</td>
+					</tr>
+					<tr>
+					  <th scope="row">OK</th>
+					  <td class="text-center">OK</td>
+					</tr>
+					<tr>
+					  <th scope="row">Cancel</th>
+					  <td class="text-center">Annuler</td>
+					</tr>
+					<tr>
+					  <th scope="row">Abort</th>
+					  <td class="text-center">Abandonner</td>
+					</tr>
+					<tr>
+					  <th scope="row">Retry</th>
+					  <td class="text-center">Re-essayer</td>
+					</tr>
+					<tr>
+					  <th scope="row">Ignore</th>
+					  <td class="text-center">Ignorer</td>
+					</tr>
+					<tr>
+					  <th scope="row">All</th>
+					  <td class="text-center">Tous</td>
+					</tr>
+					<tr>
+					  <th scope="row">NoToAll</th>
+					  <td class="text-center">Non pour tous</td>
+					</tr>
+					<tr>
+					  <th scope="row">YesToAll</th>
+					  <td class="text-center">Oui pour tous</td>
+					</tr>
+					<tr>
+					  <th scope="row">Close</th>
+					  <td class="text-center">Fermer</td>
+					</tr>
+				  </tbody>
+				</table>
+			
+		</div>
+	</div>
+
+
+
+
+</body>

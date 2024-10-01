@@ -1,0 +1,53 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:open(string)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>La fonction crée un objet de type 'document JSON' à partir du JSON spécifié dans une chaîne de caractères.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>string</code> : la chaîne de caractères contenant le JSON</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Un objet de type 'document JSON'
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc, varTest
+varTest := "{""object"":{""varInt"":12,""varString"":""Test"",""varBool"":true,""varDate"":""2019-09-16T17:44:51.624+02:00"",""varNull"":null}}" 
+doc := Json:Open(varTest)
+return Json:PrettyFormat(doc)
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre style="color:#000000;background:#ffffff;"><span style="color:#696969; ">{</span>
+<span style="color:#696969; ">  "object": {</span>
+<span style="color:#696969; ">    "varInt": 12,</span>
+<span style="color:#696969; ">    "varString": "Test",</span>
+<span style="color:#696969; ">    "varBool": true,</span>
+<span style="color:#696969; ">    "varDate": "2019-09-16T17:44:51.624+02:00",</span>
+<span style="color:#696969; ">    "varNull": null</span>
+<span style="color:#696969; ">  }</span>
+}
+</pre>
+<!--Created using ToHtml.com on 2019-09-19 15:21:31 UTC -->
+	</div>
+</div>
+</body>

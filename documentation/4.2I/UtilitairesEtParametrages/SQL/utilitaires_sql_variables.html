@@ -1,0 +1,41 @@
+<body>
+	<h2>Lignes variables *$=</h2>
+
+	<p>
+		Il est possible de stocker dans une variable alphabétique une ligne de commande SQL qui sera interprétée lors de son exécution.
+	</p>
+
+	<div class="bai_exemple">
+		<div class="bai_code">
+			<p>
+				IA$:=""<br>
+				SI  ?RDPP("B_NOM")="MARTIN";IA$:="Where  b_numtiers=1000"<br>
+				<br>
+				SQL:NEW(TEST)<br>
+				*SELECT  *  FROM  [RIB]<br>
+				*$=IA<br>
+				SQL:OPEN(TEST)
+			</p>
+		</div>
+
+		<p>
+			Suivant la valeur contenue dans ?RDPP("B_NOM"), le SQL prendra l'une des 2 formes suivantes lors de son éxécution.
+		</p>
+
+		<div class="bai_code">
+			<p>
+				SELECT  *  FROM  [RIB]
+			</p>
+		</div>
+
+		<p>
+			ou 
+		</p>
+		<div class="bai_code">
+			<p>
+				SELECT  *  FROM  [RIB]
+				WHERE  B_NUMTIERS=1000
+			</p>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,625 @@
+<body>
+	<h2>Fonctions avancées de lecture</h2>
+
+	<h3>Création d'un fichier à partir d'un flux binaire</h3>
+
+	<p>
+		La valeur d'un nœuds est toujours une zone texte, (une suite de caractères affichables). Un fichier (une photo, un fichier pdf, etc...) est un ensemble d'octets pouvant contenir des caractères non affichables en tant que tels et qui ne peuvent donc pas être traité comme une chaine de caractères
+	</p>
+
+	<p>
+		(En informatique, base64 est un codage de l'information utilisant 64 caractères, choisis pour être disponibles sur la majorité des systèmes. Il est principalement utilisé pour la transmission de messages (courrier électronique et messages de forum Usenet). Il est défini en tant que codage MIME.
+	</p>
+
+	<p>
+		La valeur d'un nœuds XML peut donc ainsi contenir, sous forme de "texte" l'intgralit d'un fichier, codé selon cette norme.
+	</p>
+
+	<p>
+		L'automate d'import permet de manipuler ce type de données avec différentes fonctions :
+	</p>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SAVEFILE(donnees_base64, nom_fichier)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Création d'un fichier à partir d'un flux codé en base64
+			</p>
+			<ul>
+				<li><b>donneesbase64</b> : contenu du fichier, encodé selon la norme base64</li>
+				<li><b>nomfichier</b> : nom du fichier à créer</li>
+			</ul>
+			<b>Exemple</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					....<br>
+					&lt;fichier_joint&gt;<br>
+					&lt; nom&gt;formulaire.pdf&lt;/nom&gt;<br>
+					&lt;contenu&gt;(contenu du fichier)&lt;/contenu&gt;<br>
+					&lt;/fichier_joint&gt;<br>
+					XML:OPEN("fichier_joint")<br>
+					SAVEFILE(?DATA("contenu"), "C:\windows\temp\" + ?DATA("nom") )
+				</div>
+				<p>
+					Décodage en base 64 de la valeur du noeud "contenu" et création du fichier "formulaires.pdf" dans le répertoire "C:\windows\temp"
+				</p>
+			</div>
+			<div class="alert alert-warning">
+				<b>Remarque:</b> La commande AJOUTEPJEVTDATA( donnees_base64, nom_fichier) est donc la même chose que:
+				
+				<div class="bai_code">
+					SAVEFILE(donnees_base64, nom_fichier) + AJOUTEPJEVTFILE(nom_fichier, FAUX)
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>AJOUTEPJEVTDATA(donnees_base64, nom_fichier)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Selon le même principe, ajout d'une pièce jointe dans un évènement de la GRC (un enregistrement de la table "CHRO" doit être en ligne)
+			</p>
+
+			<p>
+				Le fichier est automatiquement créé dans l'arborescence de la GRC de l'application
+			</p>
+
+			<p>
+				AJOUTEPJEVTFILE(nom_fichier, copie)
+			</p>
+
+			<p>
+				Ajout d'un fichier comme pièce jointe de l'évènement GRC en cours (un enregistrement de la table "CHRO" doit être en ligne)
+			</p>
+
+			<ul>
+				<li>
+					<b>nom_fichier</b> : fichier à ajouter en pice jointe
+				</li>
+				<li>
+					<b>copie</b> : mode copie (VRAI ou FAUX)
+					<ul>
+						<li><b>VRAI</b> : le fichier d'origine est conservé, une copie est faite dans l'arborescence de la GRC de l'application</li>
+						<li><b>FAUX</b> : le fichier d'origine est déplacé dans l'arborescence de la GRC de l'application</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<h3>Alimentation automatique des champs des tables Belair</h3>
+
+	<p>
+		Prenons l'exemple d'un automate destiné à créer dans Belair des dossiers de sociétés clientes à partir d'une source XML ainsi formatée
+	</p>
+
+	<div class="bai_exemple">
+		<div class="bai_code">
+			&lt;clients&gt;<br>
+			<div class="bai_tab">
+				&lt;client dossier="123456"&gt;<br>
+				<div class="bai_tab">
+					&lt;nom&gt;BOUCHERIE SANZOT&lt;/nom&gt;<br>
+					&lt;adresse&gt;15 rue du pré vert&lt;/adresse&gt;<br>
+					&lt;complement_adresse/&gt;<br>
+					&lt;code_postal&gt;91940&lt;/codepostal&gt;<br>
+					&lt;ville&gt;LES ULIS&lt;/ville&gt;<br>
+					&lt;portefeuille&gt;SANTE&lt;/portefeuille&gt;<br>
+					&lt;rib_banque&gt;12345&lt;/banque&gt;<br>
+					&lt;rib_guichet&gt;98765&lt;/guichet&gt;<br>
+					&lt;rib_compte&gt;1234567890123&lt;/compte&gt;<br>
+					&lt;rib_clerib&gt;01&lt;/clerib&gt;<br>
+				</div>
+				&lt;/client&gt;<br>
+				&lt;client dossier="123457"&gt;<br>
+				<div class="bai_tab">
+					...<br>
+				</div>
+				&lt;/client&gt;<br>
+				...<br>
+			</div>
+			&lt;/clients&gt;
+		</div>
+
+		<p>
+			Le script se présenterait ainsi :
+		</p>
+
+		<div class="bai_code">
+			IA := ?DATA("$dossier") <span class="bai_comment">// n, de dossier à crer</span><br>
+			RECTIERS(IA)<br>
+			SI RESULT = 0 ; NEWTIERS("1","M", IA) <span class="bai_comment">// creation si dossier inexistant</span><br>
+			?TIERS("B_RSOCIALE") := ?DATA("nom")<br>
+			?TIERS("B_ADR1") := ?DATA("adresse")<br>
+			?TIERS("B_ADR2") := ?DATA("complement_adresse")<br>
+			?TIERS("B_CODP") := ?DATA("code_postal")<br>
+			?TIERS("B_VILLE") := ?DATA("adresse")<br>
+			CLI("B_PORTEF") := ?DATA("portefeuille")<br>
+			RIB("B_CODEBANK") := ?DATA("rib_banque")<br>
+			RIB("B_GUICHET") := ?DATA("rib_guichet")<br>
+			RIB("B_NCOMPTE") := ?DATA("rib_compte")<br>
+			RIB("B_CLERIB") := ?DATA("rib_clerib")<br>
+			OK<br>
+			FIN
+		</div>
+	</div>
+
+	<p>
+		Cela devient vite fastidieux. L'automate d'import contient une commande exploitant les possibilités du XML et facilite l'écriture des scripts d'import, pour des fichiers / flux XML prévus à un usage "Belair"
+	</p>
+
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:DISPATCH(table)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Cette fonction affecte les valeurs de tous les champs "texte" d'un nœuds, lorsque le champ cible correspondant dans Belair peut être trouvé dans la table "table" ou dans une table spécifique au nœuds
+			</p>
+
+			<p>
+				Pour être exploités par cette fonction, les nœuds "texte" contenant les valeurs doivent suivre une des 3 règles suivantes:
+			</p>
+
+			<ul>
+				<li>
+					<div class="bai_code">&lt;champ&gt;valeur&lt;/champ&gt;</div>
+					<p>
+						le nom du champ dans la table cible doit être le nom du nœuds lui-même
+					</p>
+					<b>Exemple :</b>
+					<div class="bai_exemple">
+						<div class="bai_code">
+							&lt;B_RSOCIALE&gt;BOUCHERIE SANZOT&lt;/B_TIERS&gt;
+						</div>
+					</div>
+				</li>
+
+				<li>
+					<div class="bai_code">&lt;noeud champ="champ"&gt;valeur&lt;/champ&gt;</div>
+					<p>
+						Le nom du champ dans la table cible est l'attribut "champ"
+					</p>
+					<b>Exemple :</b>
+					<div class="bai_exemple">
+						<div class="bai_code">
+							&lt;nom champ="B_RSOCIALE"&gt;BOUCHERIE SANZOT&lt;/nom&gt;
+						</div>
+					</div>
+				</li>
+
+				<li>
+					<div class="bai_code">&lt;noeud table="table" champ="champ"&gt;valeur&lt;/champ&gt;</div>
+					<p>
+						Le nom du champ dans la table cible est l'attribut "champ". La table est spécifiée dans l'attribut "table" du nœuds, elle peut être diffrente de la table par défaut spécifié en paramtre de la commande XML:DISPATCH
+					</p>
+					<b>Exemple :</b>
+					<div class="bai_exemple">
+						<div class="bai_code">
+							&lt;nom table=TIERS" champ="B_RSOCIALE"&gt; BOUCHERIE SANZOT &lt;/nom&gt;
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="bai_exemple">
+
+		<p>
+			Modifions donc le fichier XML de départ:
+		</p>
+
+		<div class="bai_code">
+			&lt;clients&gt;<br>
+			<div class="bai_tab">
+				&lt;client dossier="123456"&gt;<br>
+				<div class="bai_tab">
+					&lt;nom champ="B_RSOCIALE"&gt;BOUCHERIE SANZOT&lt;/nom&gt;<br>
+					&lt;adresse champ="B_ADR1"&gt;15 rue du pré vert&lt;/adresse&gt;<br>
+					&lt;complement_adresse champ="B_ADR2"/&gt;<br>
+					&lt;code_postal champ="B_CODP"&gt;91940&lt;/codepostal&gt;<br>
+					&lt;ville champ="B_VILLE"&gt;LES ULIS&lt;/ville&gt;<br>
+					&lt;portefeuille table="CLI" champ="B_PORTEF"&gt;SANTE&lt;/portefeuille&gt;<br>
+					&lt;rib_banque table="RIB" champ=B_CODEBANK"&gt;12345&lt;/banque&gt;<br>
+					&lt;rib_guichet table="RIB" champ=B_GUICHET"&gt;98765&lt;/guichet&gt;<br>
+					&lt;rib_compte table="RIB" champ=B_NCOMPTE"&gt;1234567890123&lt;/compte&gt;<br>
+					&lt;rib_clerib table="RIB" champ=B_CLERIB"&gt;01&lt;/clerib&gt;<br>
+				</div>
+				&lt;/client&gt;<br>
+				&lt;client dossier="123457"&gt;<br>
+				<div class="bai_tab">
+					...<br>
+				</div>
+				&lt;/client&gt;<br>
+				...<br>
+			</div>
+			&lt;/clients&gt;
+		</div>
+
+		<p>
+			Notre script devient alors :
+		</p>
+
+		<div class="bai_code">
+			IA := ?DATA("$dossier") <span class="bai_comment">// n, de dossier à créer</span><br>
+			RECTIERS(IA)<br>
+			SI RESULT = 0 ; NEWTIERS("1","M", IA) <span class="bai_comment">// cration si dossier inexistant</span><br>
+			XML:DISPATCH(TIERS)<br>
+			OK
+		</div>
+	</div>
+
+	<h3>Imbrication dynamique d'un flux XML au sein d'un script</h3>
+
+	<b>
+		XML:OPENSOURCE(donnees)
+	</b>
+
+	<b>
+		XML:CLOSESOURCE
+	</b>
+
+	<b>Exemple d'utilisation :</b>
+
+	<div class="bai_exemple">
+
+		<p>
+			Supposons un site internet disposant de l'URL suivante, un script php donnant les informations d'un dossier tel que dans l'exemple précédent http://monsiteinternet.com/detaildudossier.php&amp;dossier=dossier (dossier tant un numro de dossier a consulter) le rsultat de cette requte "get:http" serait le flux suivant pour dossier= 123456
+		</p>
+
+		<div class="bai_code">
+			&lt;resultat&gt;<br>
+			<div class="bai_tab">
+				&lt;client dossier="123456"&gt;<br>
+				<div class="bai_tab">
+					&lt;nom champ="B_RSOCIALE"&gt;BOUCHERIE SANZOT&lt;/nom&gt;<br>
+					&lt;adresse champ="B_ADR1"&gt;15 rue du pré vert&lt;/adresse&gt;<br>
+					&lt;complement_adresse champ="B_ADR2"/&gt;<br>
+					&lt;code_postal champ="B_CODP"&gt;91940&lt;/codepostal&gt;<br>
+					&lt;ville champ="B_VILLE"&gt;LES ULIS&lt;/ville&gt;<br>
+					&lt;portefeuille table="CLI" champ="B_PORTEF"&gt;SANTE&lt;/portefeuille&gt;<br>
+					&lt;rib_banque table="RIB" champ=B_CODEBANK"&gt;12345&lt;/banque&gt;<br>
+					&lt;rib_guichet table="RIB" champ=B_GUICHET"&gt;98765&lt;/guichet&gt;<br>
+					&lt;rib_compte table="RIB" champ=B_NCOMPTE"&gt;1234567890123&lt;/compte&gt;<br>
+					&lt;rib_clerib table="RIB" champ=B_CLERIB"&gt;01&lt;/clerib&gt;<br>
+				</div>
+				&lt;/client&gt;<br>
+			</div>
+			&lt;/resultat&gt;
+		</div>
+
+		<p>
+			Supposons maintenant un fichier reçu par ailleurs, contenant des numros de dossier, sous la forme suivante:
+		</p>
+
+		<div class="bai_code">
+			&lt;dossiers&gt;<br>
+			<div class="bai_tab">
+				&lt;dossier&gt;123456&lt;/dossier&gt;<br>
+				&lt;dossier&gt;123457&lt;/dossier&gt;<br>
+				&lt;dossier&gt;123890&lt;/dossier&gt;<br>
+			</div>
+			&lt;dossiers&gt;
+		</div>
+
+		<p>
+			Le but du script à écrire étant de récupérer les numéros de dossier du fichier, d'aller lire les infos du dossier sur le site internet et de créer les dossiers correspondants, comme dans l'exemple précédent:
+		</p>
+
+		<p>
+			Il faut donc :
+			</p><ul>
+				<li>lire chaque N. De dossier</li>
+				<li>aller chercher les données du dossier et les traiter</li>
+				<li>passer au suivant</li>
+			</ul>
+		
+
+		<p>
+			Voici le script:
+		</p>
+
+		<div class="bai_code">
+			<span class="bai_comment">// script lancé pour chaque élément "dossier" du fichier, la valeur du nœud contient le N°</span><br>
+			IB$ := "http://monsiteinternet.com/detaildudossier.php&amp;dossier=" + ?DATA("")<br>
+			XML:OPENSOURCE(IB) <span class="bai_comment">// on va chercher les données, on ouvre un niveau supérieur</span><br>
+			IA := ?DATA("$dossier") <span class="bai_comment">// n, de dossier créé</span><br>
+			RECTIERS(IA)<br>
+			SI RESULT = 0 ; NEWTIERS("1","M", IA) <span class="bai_comment">// création si dossier inexistant</span><br>
+			XML:DISPATCH(TIERS)<br>
+			OK<br>
+			XML:CLOSESOURCE <span class="bai_comment">// ON REFERME pour revenir au niveau de gestion prcdent</span><br>
+			FIN
+		</div>
+	</div>
+
+	<p>
+		Les possibilités offertes par XML:OPENSOURCE sont multiples
+	</p>
+
+	<p><b>Exemple 1 :</b></p>
+	<div class="bai_exemple">
+		<p>
+			Script basé sur une requte SQL sur la base BELAIR donnant des numros de dossier à mettre a jour a partir d'un site internet, comme dans l'exemple précédent.<br>
+			Script, en mode "SGBD", base "Belair" :<br>
+			<b>données</b> = <span class="bai_code">SQL : SELECT B_TIERS FROM [CLI] WHERE B_PORTEF IS NULL</span>
+		</p>
+
+		<b>Script :</b>
+		<div class="bai_code">
+			IA := ?DATA("B_TIERS")<br>
+			IB$ := "http://monsiteinternet.com/detaildudossier.php&amp;dossier=" + ?DATA("B_TIERS")<br>
+			XML:OPENSOURCE(IB) <span class="bai_comment">// on va chercher les données, on ouvre un niveau supérieur</span><br>
+			IA := ?DATA("$dossier") <span class="bai_comment">// n, de dossier à crer</span><br>
+			RECTIERS(IA)<br>
+			SI RESULT = 1 ; XML:DISPATCH(TIERS)<br>
+			OK<br>
+			XML:CLOSESOURCE <span class="bai_comment">// ON REFERME pour revenir au niveau de gestion précédent</span><br>
+			FIN
+		</div>
+	</div>
+
+	<p><b>Exemple 2 :</b></p>
+	<div class="bai_exemple">
+		<p>
+			Script lisant un fichier texte, dont chaque ligne contient le nom d'un fichier du rpertoire C:\windows\temp", contenant chacun des données au format XML, à mettre à jour dans Belair tel que dans l'exemple ci-dessus<br>
+			Script, en mode "fichier texte" :<br>
+			<b>Structure</b> : Nomfichier,A
+		</p>
+
+		<b>Script :</b>
+		<div class="bai_code">
+			IB$ := "file:C:\windows\temp\" + DATA("nomfichier")<br>
+			XML:OPENSOURCE(IB) <span class="bai_comment">// on va chercher les données, on ouvre un niveau supérieur</span><br>
+			IA := ?DATA("$dossier") <span class="bai_comment">// n, de dossier à creer/modifier</span><br>
+			RECTIERS(IA)<br>
+			SI RESULT = 0 ; NEWTIERS("1","M", IA) <span class="bai_comment">// creation si dossier inexistant</span><br>
+			XML:DISPATCH(TIERS)<br>
+			OK<br>
+			XML:CLOSESOURCE <span class="bai_comment">// ON REFERME pour revenir au niveau de gestion précédent</span><br>
+			FIN
+		</div>
+	</div>
+
+	<h3>Principe de fonctionnement des scripts utilisés par Baiwebcom</h3>
+
+	<p>
+		<b>Xml envoyé par le client internet :</b>
+	</p>
+
+	<div class="bai_code">
+		&lt;actions&gt;<br>
+		<div class="bai_tab">
+			&lt;action&gt;<br>
+			<div class="bai_tab">
+				&lt;encoding&gt;UTF8&lt;/encoding&gt;<br>
+				&lt;Base&gt;id&lt;/base&gt;<br>
+				&lt;nom&gt;NOMACTION&lt;/nom&gt;<br>
+				&lt;data&gt;"contenu envoye en data a l'automate"&lt;/data&gt;<br>
+			</div>
+			&lt;/action&gt;<br>
+		</div>
+		&lt;/actions&gt;<br>
+	</div>
+
+	<p>
+		<span class="bai_code">&lt;Base&gt;</span> permet de sélectionner un "TBWCbase"
+	</p>
+
+	<p>
+		Si la base est "fermée" , le statut de la réponse sera "ERROR" et error="base fermée"
+		</p><ul>
+			<li>&lt;action&gt; permet d'ouvrir un TBWCAutomate et le script associé.</li>
+			<li>&lt;data&gt; le contenu est envoyé tel quel en flux d'entrée au script, prêt à l'emploi.</li>
+			<li>&lt;encoding&gt; code demandé du contenu du data</li>
+		</ul>
+	
+
+	<p>
+		<b>Flux envoyé par le TBWCClient a l'automate</b>
+	</p>
+
+	<div class="bai_code">
+		EXECUTE=<br>
+		&lt;action name="NOMACTION"&gt;<br>
+		<div class="bai_tab">
+			&lt;encoding&gt;UTF8&lt;/encoding&gt;<br>
+			&lt;script&gt;nom script&lt;/script&gt;<br>
+			&lt;data&gt;data a traiter&lt;/data&gt;<br>
+		</div>
+		&lt;/action&gt;
+	</div>
+
+	<ul>
+		<li><b>script</b> : le script est ouvert si besoin</li>
+		<li><b>name</b> : le script rcupre le nom de l'action, qui peut être exploité dans le script lui mme (plus besoin des signets)</li>
+		<li><b>data</b> : le data que le script va exploiter</li>
+		<li><b>encoding</b> : une variable "locale" du script, pouvant être utilisé dans une commande XMLCODE()</li>
+	</ul>
+
+	<p>
+		<b>Flux récupéré par le TBWCClient de l'automate (par socket)</b>
+	</p>
+
+	<div class="bai_code">
+		&lt;=?xml = ............. encoding="code"&gt;<br>
+		&lt;resultat action=actionname&gt;<br>
+		<div class="bai_tab">
+			&lt;statut&gt;statut&lt;/statut&gt; <span class="bai_comment">// (OK ou ERROR)</span><br>
+			&lt;error&gt;message d'erreur&lt;/error&gt;<br>
+			&lt;data&gt;<br>
+			<div class="bai_tab">
+				... <span class="bai_comment">// concaténation du contenu renvoyé par l'automate a chaque DATA= …</span><br>
+			</div>
+			&lt;/data&gt;<br>
+		</div>
+		&lt;/resultat&gt;<br>
+		[#BCOMFIN#]
+	</div>
+
+	<p>
+		Le marque de fin [#BCOMFIN#] sera supprimé et envoyé par BaiWebCom au au client.
+	</p>
+
+	<h3>Commandes spécifiques</h3>
+
+	<p>
+		Commandes spécifiques de constitution du flux de réponse, utilisables dans l'automate
+	</p>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>PRINTXML(chaine)</code></h3>
+		</div>
+		<div class="panel-body">
+			Ajout d'une chaine dans le flux de réponse
+			Exemple : PRINTXML("&lt;datedujour&gt;"+JOUR+"&lt;/datedujour&gt;")
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XMLESC(chaine)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Transforme une chaine quelconque en format compatible XML. Certains caractres spéciaux ne peuvent être insérés dans un fichier XML, car interprétés par le moteur XML; ce sont les caractres "&lt;", "&gt;" , le guillemet, l'apostrophe et le "&amp;"
+			</p>
+
+			<b>Exemple :</b> supposons undossier avec ?TIERS("B_ADR1") = "17, ALLEE DE L'HORLOGE"
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					PRINTXML("&lt;adresse&gt;"+?TIERS("B_ADR1")+"&lt;/adresse&gt;") <span class="bai_comment">// provoquera une erreur</span><br>
+					PRINTXML("&lt;adresse&gt;"+XMLESC(?TIERS("B_ADR1"))+"&lt;/adresse&gt;") <span class="bai_comment">// correct</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XMLDATA(element, source, attributs)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Constitution d'un nœuds element, contenant tout le contenu d'une source de données
+			</p>
+			<ul>
+				<li><b>element</b> : nom de l'element à créer</li>
+				<li><b>source</b> : nom de la source de données à lire (table ou requte SQL)</li>
+				<li><b>attributs</b> : liste des champs à mettre en attribut de l'element, spars par des virgules</li>
+			</ul>
+
+			<p>
+				<b>Exemple :</b>
+			</p>
+
+			<div class="bai_exemple">
+				<p>
+					un script doit restituer les données administratives d'un dossier avec les elements suivants
+				</p>
+
+				<div class="bai_code">
+					&lt;dossier numero="xxxxx"&gt;<br>
+					<div class="bai_tab">
+						&lt;identification&gt;elements adresse&lt;/identification&gt;<br>
+						&lt;famille&gt;<br>
+						<div class="bai_tab">
+							&lt;personnes&gt;<br>
+							<div class="bai_tab">
+								&lt;personne parente="X"&gt;&lt;/personne&gt;<br>
+								&lt;personne parente="X"&gt;&lt;/personne&gt;<br>
+								...<br>
+							</div>
+							&lt;/personnes&gt;<br>
+						</div>
+						&lt;/famille&gt;<br>
+						&lt;rib&gt;elements du RIB&lt;/rib&gt;<br>
+					</div>
+					&lt;/dossier&gt;
+				</div>
+
+				<p>
+					Bien sur, PRINTXML permet de constituer manuellement la réponse, mais XMLDATA est bien plus performant car il compose un élément avec tous les champs d'une source (table ou requte SQL) et pour chaque enregistrement
+				</p>
+
+				<b>Script :</b>
+
+				<div class="bai_code">
+					IA := ?DATA("dossier")<br>
+					SI IA = 0 ;FIN<br>
+					PRINTXML("&lt;dossier numero="+GUILLEMET+IA+ GUILLEMET+"&gt;")<br>
+					<br>
+					<span class="bai_comment">// ---- element "identification"</span><br>
+					SQL:NEW(tiers)<br>
+					*SELECT B_TITRE, B_RSOCIALE, B_ADR1, B_ADR2, B_ADR3, B_CODP, B_VILLE<br>
+					*FROM [TIERS] WHERE B_NUMTIERS = :IA<br>
+					<br>
+					SQL:OPEN(tiers)<br>
+					SI RESULT = 0 ; IZ$ := "&lt;identification/&gt;" ; IZ$ := XMLDATA("identification","sqltiers")<br>
+					SQL:FREE(tiers)<br>
+					PRINTXML(IZ)<br>
+					<br>
+					<span class="bai_comment">// ---- element "famille" (peut etre vide si personne morale)</span><br>
+					<br>
+					SQL:NEW(cc)<br>
+					*SELECT<br>
+					*F.B_PARENTE, D.B_TITRE, D.B_NOM, D.B_PRENOM, D.B_SEXE, D.B_DATENAIS<br>
+					*FROM [FAM] F<br>
+					*JOIN [DPP] D ON (D.B_NUMDPP=F.B_NUMDPP)<br>
+					*WHERE B_NUMTIERS = :IA<br>
+					<br>
+					SQL:OPEN(cc)<br>
+					SI RESULT = 0 ; IZ$ := "&lt;famille/&gt;" ; IZ$ := "&lt;famille&gt;&lt;personnes&gt;" + <br>XMLDATA("personne","sqlcc","B_PARENTE") + "&lt;personnes/&gt;&lt;famille/&gt;"<br>
+					SQL:FREE(cc)<br>
+					PRINTXML(IZ)<br>
+					<br>
+					<span class="bai_comment">// ---- element "rib"</span><br>
+					<br>
+					SQL:NEW(cc)<br>
+					*SELECT * FROM [RIB] WHERE B_NUMTIERS = :IA<br>
+					SQL:OPEN(cc)<br>
+					SI RESULT = 0 ; IZ$ := "&lt;rib/&gt;" ; IZ$ := XMLDATA("rib","sqltcc")<br>
+					SQL:FREE(cc)<br>
+					PRINTXML(IZ)<br>
+					<br>
+					<span class="bai_comment">//---- fin</span><br>
+					<br>
+					PRINTXML("&lt;/dossier&gt;")<br>
+					FIN
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>PRINTXMLFILE(fichier)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Codage du contenu d'un fichier en base64 et insertion du résultat dans le flux de réponse:
+			</p>
+
+			<b>Exemple :</b>
+			<div class="bai_code">
+				IA$ := "[CHEMIN]\images\logo.jpeg"<br>
+				PRINTXML("&lt;logo&gt;")<br>
+				PRINTXML("&lt;filename&gt;"+XMLESC(IA)+"&lt;/filename&gt;")<br>
+				PRINTXML("&lt;bin&gt;")<br>
+				PRINTXMLFILE(IA)<br>
+				PRINTXML("&lt;/bin&gt;")<br>
+				PRINTXML("&lt;/logo&gt;")<br>
+			</div>
+		</div>
+	</div>
+</body>

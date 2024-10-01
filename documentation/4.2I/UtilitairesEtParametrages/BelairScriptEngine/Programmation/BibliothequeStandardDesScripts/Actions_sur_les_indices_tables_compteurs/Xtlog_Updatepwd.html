@@ -1,0 +1,47 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Xtlog_Updatepwd</code></h3>
+		</div>
+
+	<p>Mise à jour du mot de passe d'un login de connexion à une plate forme Bel Air. <br>Cette fonction peut être utilisée dans un système de réinitialisation de mot de passe (mot de passe perdu, ....)</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (entier, obligatoire) : dossier dans Belair (xtlog.b_numtiers)</li>
+		<li>ordreext (entier, obligatoire) : numéro d'ordre dans le dossier dans Belair (xtlog.b_ordreext)</li>
+		<li>newpassword (string, obligatoire) : nouveau mot de passe (en MD5)</li>
+	</ul>
+
+
+le parametre <code>dossier</code> peut être obtenu de 2 manieres
+	<ul>
+	<li>par l'action Xtlog_login : attribut <code>dossier</code> du noeud <code>tiers</code></li>
+		<li>par l'action Xtlog_search : parametre <code>numtiers</code> du noeud <code>xtlog</code></li>
+	</ul>
+
+
+le parametre <code>ordreext</code> peut être obtenu de 2 manieres
+	<ul>
+	<li>par l'action Xtlog_login : noeud <code>tiers/ordreext</code> (ajout le 25/09/2019)</li>
+		<li>par l'action Xtlog_search : parametre <code>ordreext</code> du noeud <code>xtlog</code></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>vide</p>
+
+
+	<ul>
+	<li>si succès, message dans log "mise à jour effectuée" </li>
+		<li>si échec (enregistrement xtlog non trouvé, message dans logError "echec de la mise à jour"</li>
+	</ul>
+</div></body>

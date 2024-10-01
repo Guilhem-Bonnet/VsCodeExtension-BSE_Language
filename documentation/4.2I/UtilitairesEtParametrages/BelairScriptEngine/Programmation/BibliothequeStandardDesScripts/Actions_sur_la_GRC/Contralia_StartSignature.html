@@ -1,0 +1,53 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+				<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Contralia_StartSignature</code></h3>
+		</div>
+
+<p>Cette action permet de déclencher l'ouverture d'un circuit de signature à partir d'un site internet (ou autre application tiers)</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>civilite : Titre du signataire</li>
+		<li>lastName  : Nom de famille du signataire</li>
+		<li>firstName :  Prenom</li>
+		<li>email : Email</li>
+		<li>phone : Numéro de téléphone </li>
+		<li>numTiers : Numero du tiers</li>
+		<li>entite : Entité juridique (entité du parametrage contralia) </li>
+		<li>files (optionnel) : Liste des fichiers (présents sur le serveur) à ajouter à l'évènement, séparés par un ';'</li>
+		<li>filesbase64 (optionnel) : flux XML des fichiers à uploader et à ajouter à l'évenement créé</li>
+		<li>titre (optionnel) : Titre de l'evenement créé</li>
+		<li>nature (optionnel): Nature de l'evenement créé</li>
+		<li>eventid (optionnel) numéro de l'évenement déjà existant</li>
+	</ul>
+
+
+	<p>Flux XML <strong>filesbase64</strong><br></p><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;files&gt;</span>
+  <span class="nt">&lt;file</span> <span class="na">filetype=</span><span class="s">"pdf"</span> <span class="na">filename=</span><span class="s">"ATTESTATION MA.pdf"</span><span class="nt">&gt;</span>JVBERi0xLjQKJcfsj6IKNSAwIG9iago8PC9MZW5ndGggNiAwIFIvRmlsdGVyIC9GbGF0ZURlY29k
+ZT4+CnN0cmVhbQp4nCtUMNAzNFIwAEEYIzmXq1DB0MDMyBTMNTSBsvQMDAyMzY3NDU1BSvSDzBVc
+8rkCgRAA1icNnGVuZHN0cmVhbQplbmRvYmoKNiAwIG9iago1NgplbmRvYmoKNCAwIG9iago8PC9U
+eXBlL1BhZ2UvTWVkaWFCb3ggWzAgMCAxMjc1IDE3NTVdCi9QYXJlbnQgMyAwIFIKL1Jlc291cmNl
+czw8L1Byb2NTZXRbL1BERiAvSW1hZ2VDXQovWE9iamVjdCA4IDAgUgo+PgovQ29udGVudHMgNSAw
+IFIKPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFsKNCAwIFIKXSAvQ291
+<span class="nt">&lt;/file&gt;</span>
+  <span class="nt">&lt;file</span> <span class="na">filetype=</span><span class="s">"pdf"</span> <span class="na">filename=</span><span class="s">"BELAIR - sauvegardes.pdf"</span><span class="nt">&gt;</span>JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTGVuZ3RoIDMgMCBSL0ZpbHRlci9GbGF0ZURl
+Y29kZT4+CnN0cmVhbQp4nI1TS2vDMAy+51foXIgryXZsQzA0fcB2KwR2GDtt7WDQjfayvz/JaTaa
+jlICsizJ+j49gobguzoCAormkzcM0ZGJcNpVTzP4HHzynd6rrq88OtOAjyZB/wbzDQEh9PvnFinb
+FhmtHi7X5Fr0+aV/rNZ9tZ1msWzcdZYWm9x/DA+2QOWTB0QkrCwFCbehkZfsg7A97WA/08yGU0R7
+dQ5YjGgseLImDGAM3IyUaxo4u4GzUlbZiDFkUaJWc1nGTTBqkpB0QpKnYOdUmj4JmByLM4GEUfQO
+u+zGiEHS/cDMUap0SNKXCfBSsVa4xo0ohJlbovHGZCczEuL/bcHFOKyAkPXGg5V6CVineec0iGUO
+5H5HbyGdh4Gca2mAzbVuEHpZBrmG0olYXJzDaEi40EtX7EsNXBVV6/JapSQhGksUD7mSt2CQ1yY0
+<span class="nt">&lt;/file&gt;</span>
+<span class="nt">&lt;/files&gt;</span>
+</code></pre>
+
+
+	<p><strong>Remarque sur eventid</strong><br>SI passé en paramètre, la signature concerne les PJ déjà associées à un evenement existant dans CHRO (les parametres <em>files</em> et <em>filesbase64</em> sont ignorés)</p>
+</div></body>

@@ -1,0 +1,52 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:GetLinks(Relation, LinkNumber)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie un link (lien) de relation, selon son numéro dans la liste.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Relation</code> : la relation.</li>
+				<li><code>LinkNumber</code> : le numéro de link (lien).</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>
+L'objet de type "TRelationLink".</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local entity, relation, link
+entity := Meta:GetEntityByCode(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>)
+relation := Meta:GetRelations(entity, <span class="integer">0</span>)
+link := Meta:GetLinks(relation, <span class="integer">0</span>)
+Print(Obj:DumpVar(link))
+</span></code></pre>
+			
+			<p>Résultat :</p>
+			<pre>AttrName (UnicodeString): B_ADHESION
+AttrName2 (UnicodeString): B_ADHESION
+Changed (Boolean): True
+IsComplement (Boolean): False
+IsDataDictionnaryItem (Boolean): False
+IsMaster (Boolean): True
+Locked (Boolean): False
+LockedByOwner (Boolean): False
+Model (Unknown): unknown
+Name (UnicodeString): B_ADHESION=B_ADHESION
+OldName (UnicodeString): 
+Owner (Unknown): unknown
+Relation (Unknown): unknown</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,55 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tiers_Details</code></h3>
+		</div>
+
+<p>Détails d'un tiers</p>
+
+
+	<a name="parametres"></a>
+<h3>parametres<a href="#parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Dossier (int, obligatoire) : numéro de tiers</li>
+		<li>Composition (booléan, optionnel) : si True, liste des membres de famille OU correspondants</li>
+		<li>ListeEntites (string, optionnel) : liste des entités annexes à ajouter, séparées par une virgule (exemple, CLI, SAL, MANDAT, etc...)</li>
+		<li>Extensions (booléen, Optionnel, False par défaut) : Si True, contenu des extensions</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML variable en fonction des paramètres passés</p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;tiers</span> <span class="na">caption=</span><span class="s">"Tiers"</span> <span class="na">numtiers=</span><span class="s">"1000"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"TIERS"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;adresse_insee&gt;</span>...<span class="nt">&lt;/adresse_insee&gt;</span>
+  <span class="nt">&lt;cli</span> <span class="na">caption=</span><span class="s">"Clients"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/cli&gt;</span>
+  <span class="nt">&lt;xtedi</span> <span class="na">caption=</span><span class="s">"Références Cies"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;objects/&gt;</span>
+  <span class="nt">&lt;/xtedi&gt;</span>
+  <span class="nt">&lt;xtlog</span> <span class="na">caption=</span><span class="s">"Logins externes"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"XTLOG"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"XTLOG"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/xtlog&gt;</span>
+  <span class="nt">&lt;familymembers</span> <span class="na">caption=</span><span class="s">"Membres de la famille"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;familymember&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Fam"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPP"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;/familymember&gt;</span>
+    <span class="nt">&lt;familymember&gt;</span>...<span class="nt">&lt;/familymember&gt;</span>
+    <span class="nt">&lt;familymember&gt;</span>...<span class="nt">&lt;/familymember&gt;</span>
+    <span class="nt">&lt;familymember&gt;</span>...<span class="nt">&lt;/familymember&gt;</span>
+    <span class="nt">&lt;familymember&gt;</span>...<span class="nt">&lt;/familymember&gt;</span>
+  <span class="nt">&lt;/familymembers&gt;</span>
+<span class="nt">&lt;/tiers&gt;</span>
+</code></pre>
+</div></body>

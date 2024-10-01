@@ -1,0 +1,173 @@
+<body>
+<!-- titre page -->
+<h1 class="h1">BasMonitoring</h1>
+
+<!-- presentation page -->
+<div class="alert alert-primary">
+	<b>BasMonitoring.exe</b> est un utilitaire permettent de contrôler le bon fonctionnement d'un ou plusieurs serveurs BAS.<br>
+	Cet utilitaire peut-être exploité avec un interface utilisateur mais peut également être utilisé en ligne de commande (par exemple via une tâche planifiée.
+</div>
+
+
+<!-- Rubrique -->
+<section class="my-4">
+	<!-- Titre rubrique -->
+	<h2 class="h2">Configuration</h2>
+
+	<div class="alert alert-info" role="alert">
+	Le fichier de configuration du Basmonitoring est le fichier <i>Basmonitoring.conf</i> qui doit être au même endroit que le programme Basmonitoring.exe
+	</div>
+
+	<p>
+		Un double-clic sur le programme "Basmonitoring.exe" ouvre l'utilitaire en mode interface Windows:<br>
+		<button type="button" class="btn btn-outline-secondary"><i class="fas fa-wrench fa-2x"></i><br>Paramétrage</button> pour ouvrir la fenêtre de paramétrage.
+	</p>
+
+	<!-- Chapitre  -->
+	<div class="row">
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Ajouter / Supprimer un serveur à contrôler</h3>
+
+				<!-- paragraphe -->
+				<p>
+					L'onglet <button type="button" class="btn btn-secondary btn-sm">Récapitulatif</button> indique la liste des serveurs BAS contrôlés (un serveur par application).
+				</p>
+				<p>
+					L'onglet <button type="button" class="btn btn-secondary btn-sm">Ajouter</button> permet d'ajouter un serveur BAS (même fonctionnalité que dans <i>Basadmin</i>)
+				</p>
+				<p>
+					L'onglet <button type="button" class="btn btn-secondary btn-sm">Supprimer</button> permet d'enlever un serveur BAS (même fonctionnalité que dans <i>Basadmin</i>)
+				</p>
+
+		</div>
+	</div>
+</section>
+
+<section class="my-4">
+	<!-- Titre rubrique -->
+	<h2 class="h2">Contrôle du bon fonctionnement des serveurs BAS</h2>
+
+	<!-- Chapitre  -->
+	<div class="row">
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Contrôle via l'interface utilisateur</h3>
+
+			<p>
+				Un double-clic sur le programme "Basmonitoring.exe" ouvre l'utilitaire en mode interface Windows:<br>
+				<button type="button" class="btn btn-outline-secondary"><i class="fas fa-cog fa-2x"></i><br>Monitor</button> pour lancer le contrôle:<br>
+				Un test de connexion à chaque serveur contrôle est effectué et le résultat est affiché sous forme de tableau.
+			</p>
+		</div>
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Contrôle en ligne de commande</h3>
+
+			<p>
+				Exemples de commande (<i>C:\Belair</i> - répertoire d'installation des progammes Belair sur le poste):
+				</p><ul>
+					<li>Contrôle de tous les serveurs déclarés:<br><code>C:\Belair\BasMonitoring.exe -silent</code></li>
+					<li>Contrôle de tous les serveurs déclarés, à l'exception de "base2":<br><code>C:\Belair\BasMonitoring.exe -silent -E "base2"</code></li>
+					<li>Affichage de l'aide:<br><code>C:\Belair\BasMonitoring.exe -silent -help</code></li>
+					<li>Contrôle de tous les serveurs déclarés en mode avancé:<br><code>C:\Belair\BasMonitoring.exe -silent -Settings "C:\Belair\BasMonitoring\AdvancedMonitoring.conf"</code></li>
+				</ul>
+			
+			<div class="alert alert-success" role="alert">
+				<i class="fas fa-thumbs-up mr-2"></i>Le résultat du monitoring lancé en ligne de commande est un flux XML, pouvant ainsi être récupéré dans un outil de contrôle appelant cet utilitaire.
+			</div>
+			
+		</div>
+	</div>
+</section>
+
+<section class="my-4">
+	<!-- Titre rubrique -->
+	<h2 class="h2">Monitoring avancé</h2>
+
+	<div class="alert alert-info" role="alert">
+	Ce chapitre donne un exemple de mise en place d'un système avancé de monitoring, avec envoi de mail d'alerte en cas de coupure de service et/ou redémarrage automatique du service.
+	</div>
+
+	<!-- Chapitre  -->
+	<div class="row">
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Fichier de configuration avancé</h3>
+
+			<p>
+				Le Basmonitoring peut être lancé en mode avancé en spécifiant dans la commande -Settings <i>fichier_de_config</i>.
+			</p>
+			<h4>Listes des paramètres</h4>
+			<table class="table">
+			  <thead>
+				<tr>
+				  <th scope="col">Nom</th>
+				  <th scope="col" class="text-left">Explication</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <th scope="row">SendEmail</th><td class="text-left">Envoi des mails d'alerte (True/False)</td>
+				</tr>
+				<tr>
+				  <th scope="row">EmailFrom</th><td class="text-left">Expediteur</td>
+				</tr>
+				<tr>
+				  <th scope="row">EmailTO</th><td class="text-left">Destinataire(s) de l’email (séparés par des ",")</td>
+				</tr>
+				<tr>
+				  <th scope="row">SMTPServer</th><td class="text-left">Adresse du serveur smtp</td>
+				</tr>
+				<tr>
+				  <th scope="row">Login</th><td class="text-left">Login pour se connecter au serveur smtp</td>
+				</tr>
+				<tr>
+				  <th scope="row">Password</th><td class="text-left">Mot de passe pour se connecter au serveur smtp</td>
+				</tr>
+				<tr>
+				  <th scope="row">Attempt</th><td class="text-left">Nombre de tentatives avant l’envoi de l’email et/ou le redémarrage du bas</td>
+				</tr>
+				<tr>
+				  <th scope="row">Restart</th><td class="text-left">Si l’on souhaite ou non redémarrer les services bas en cas de coupure</td>
+				</tr>
+				<tr>
+				  <th scope="row">SaveLogsPath</th><td class="text-left">Dossier où l’on sauvegarde les fichiers log en cas de redémarrage</td>
+				</tr>
+				<tr>
+				  <th scope="row">GetLogPath</th><td class="text-left">Emplacement des logs à sauvegarder</td>
+				</tr>
+				<tr>
+				  <th scope="row">Start et end</th><td class="text-left">Plage horaire du fonctionnement du monitoring (Format HH:MM)</td>
+				</tr>
+			  </tbody>
+			</table>			
+			<p>
+				Exemple de fichier de configuration:
+			</p>
+			<div class="bai_exemple">
+					<pre><span class="bai_code">SendEmail=true
+EmailFrom=sendersysteme@belair-info.fr
+EmailTO=destinataire1@belair-info.fr,destinataire2@belair-info.fr
+SMTPServer=ssl0.ovh.net
+SMTPPort=587
+Login=sendersysteme@belair-info.fr
+Password=xxxxxxxxxxxxxxxxxxxxx
+Attempt=3
+Restart=false
+SaveLogsPath=c:\tmp
+GetLogPath=c:\belair
+Start=10:00
+End=11:00</span></pre>
+			</div>				
+		</div>
+	</div>
+</section>
+
+<div class="alert alert-warning" role="alert">
+<i class="fas fa-exclamation-triangle fa-2x mr-2"></i>Le monitoring est mis en veille pendant chaque mise à jour de version de Belair.
+</div>
+
+
+</body>

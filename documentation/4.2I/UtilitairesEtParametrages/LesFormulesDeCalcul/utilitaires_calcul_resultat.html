@@ -1,0 +1,47 @@
+<body>
+	<h2>Rendre le résultat</h2>
+
+	<!-- Fonction =valeur -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>=valeur</code><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				<i>valeur</i> doit être du même type (ou format) que la formule
+				<br>Cette instruction interrompt le déroulement de la formule et rend valeur comme résultat.
+				<br>Toutes les formules doivent contenir au moins une instruction de ce type ; sinon, la formule rendra un résultat vide.
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>valeur</code> : Valeur rendue par la formule
+				<br>
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<div class="bai_code">
+						=1000<br>
+						=?TIERS("b_age") + 10
+					</div>
+				</div>
+			
+			<p>
+				<b><u>Cas particulier pour les formules booléennes (condition de saisie, vérification de valeur saisie) :</u></b><br><br>
+				Les formules booléennes doivent rendre un résultat égal à VRAI ou FAUX.<br>Pour rendre VRAI, mettre une instruction =VRAI<br>Pour rendre FAUX, mettre une instruction =FAUX<br><br>
+				Le résultat peut également être celui d'une condition.<br>
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					L'instruction suivante affecte comme résultat d'une formule booléenne VRAI pour toutes les personnes physiques dont le titre est "MME" :
+					<br><br>
+					<div class="bai_code">
+						=?TIERS("b_titre") = "MME"
+					</div>
+				</div>
+				
+		</div>
+	</div>
+</body>

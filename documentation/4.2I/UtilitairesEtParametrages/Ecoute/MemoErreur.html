@@ -1,0 +1,50 @@
+<body>
+	<h2>Envoi de mémo en cas d'erreur (uniquement sur les bases en Interbase ou FireBird)</h2>
+
+	<p>
+		Il est possible de demander à Ecoute.EXE d'envoyer un mémo automatiquement à utilisateur donné, sur une base donnée, en cas d'erreur.<br>
+		Pour cela, il faut paramétrer une section [memo] dans le fichier config.ini utilisé par Ecoute.EXE
+	</p>
+
+	<h3>Section [memo] du fichier INI</h3>
+
+	<b>Voici un exemple de section [memo], suivi d'un descriptif de chaque clé :</b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			[Memo]<br>
+			Destinataire=SUPERVISEUR<br>
+			Base=C:\BELAIR3\APPDEV\APPDEV.IDB<br>
+			User=BELAIR<br>
+			Password=belair<br>
+		</div>
+
+		<ul>
+			<li>
+				<b>Destinataire</b> : cette clé permet de préciser le destinataire du mémo. Il faut de préférence choisir un destinataire qui est régulièrement connecté, sous peine de voir s'accumuler les messages si par exemple c'est la composante de traitement de fichier qui est en erreur, avec un automate d'import déjà utilisé ailleurs
+			</li>
+
+			<li>
+				<b>Base</b> : indique le chemin de la base où on doit ajouter le mémo. La base doit être une base Interbase, et le chemin doit être au format interbase : serveur:chemin.
+			</li>
+
+			<li>
+				<b>User</b> : code utilisateur pour se connecter à la base BELAIR. Généralement, le user BELAIR est un utilisateur déclaré et ayant le droit d'ajouter des mémos à la base.
+			</li>
+
+			<li>
+				<b>Password</b> : mot de passe pour l'utilisateur précisé.
+			</li>
+		</ul>
+
+		<p>
+		On peut voir dans l'exemple que chaque erreur survenue déclenchera l'envoi d'un mémo à l'utilisateur SUPERVISEUR, dans la base interbase APPDEV.IDB de l'ordinateur qui exécute Ecoute.EXE (pas de serveur précisé).
+		</p>
+
+		<p>
+			Ci-dessous, une copie d'écran d'un mémo envoyé suite à une erreur de tarif, détectée par le script :
+		</p>
+
+		<img src="images/ecoute07.jpg">
+	</div>
+
+</body>

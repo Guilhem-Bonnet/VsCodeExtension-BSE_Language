@@ -1,0 +1,34 @@
+<body>
+<!-- titre page -->
+<h1 class="h1">Expressions régulières</h1>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>RegEx:New(<i>chaine</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			La fonction crée un objet de type 'RegEx' et le renvoie.
+		</p>
+		<p>
+			<b>Paramètre :</b>
+			<br><br>
+			<code>chaine</code> : Un objet de type 'RegEx'<br>
+			<code>expression</code> : la chaîne cible (string)
+		</p>
+
+		<p><b>Résultat</b>: Un objet de type 'RegEx'</p>
+
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<pre><span class="bai_code">
+local regExObject, regExObject2 
+regExObject := RegEx:New("Some people, when confronted with a problem, think I know, I'll use regular expressions. Now they have two problems.")
+regExObject2 := RegEx:New()
+return 0 </span></pre>
+				</div>	
+			
+		</div>
+	</div>
+</body>

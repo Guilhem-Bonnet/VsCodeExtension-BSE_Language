@@ -1,0 +1,57 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:PrettyFormat(doc)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction formate le texte de document XML en format pouvant être interprété par l'homme.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			</p><ul><li>Le texte (string) contenant l'XML formaté.</li>
+			</ul>
+			
+			
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">car</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">manufacturer</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Toyota</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">on_stock</span><span class="delimiter">"</span></span>, <span class="predefined-constant">true</span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">last_seen_at</span><span class="delimiter">"</span></span>, EncodeDateTime(<span class="integer">2017</span>, <span class="integer">11</span>, <span class="integer">9</span>, <span class="integer">12</span>, <span class="integer">15</span>, <span class="integer">35</span>))
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">weight</span><span class="delimiter">"</span></span>, <span class="integer">123</span><span class="float">4</span><span class="float">.5678</span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">count</span><span class="delimiter">"</span></span>, <span class="integer">4321</span>)
+XML:EndNode(doc)
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;car&gt;</span>
+  <span class="tag">&lt;manufacturer&gt;</span>Toyota<span class="tag">&lt;/manufacturer&gt;</span>
+  <span class="tag">&lt;on_stock&gt;</span>true<span class="tag">&lt;/on_stock&gt;</span>
+  <span class="tag">&lt;last_seen_at&gt;</span>2017-11-09T12:15:35.000<span class="tag">&lt;/last_seen_at&gt;</span>
+  <span class="tag">&lt;weight&gt;</span>1.23456780000000E+0003<span class="tag">&lt;/weight&gt;</span>
+  <span class="tag">&lt;count&gt;</span>4321<span class="tag">&lt;/count&gt;</span>
+<span class="tag">&lt;/car&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

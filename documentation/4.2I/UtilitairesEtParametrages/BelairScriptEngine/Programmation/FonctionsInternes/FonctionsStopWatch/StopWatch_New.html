@@ -1,0 +1,48 @@
+<body>
+
+<h3>Fonctions de StopWatch</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>StopWatch:New()</code>
+	</h3></div>
+	<div class="panel-body">
+	<p>La fonction créée un objet de type 'BaiStopWatch' et le renvoie.</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li>Aucun</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Un objet de type 'BaiStopWatch'
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+			
+</p><div class="bai_exemple"><pre><span class="n">local</span> <span class="n">mockStopWatch</span>
+<span class="n">mockStopWatch</span> <span class="o">:=</span> <span class="n">StopWatch</span><span class="o">:</span><span class="n">New</span><span class="p">()</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">mockStopWatch</span> <span class="o">&lt;&gt;</span> <span class="nb">NULL</span><span class="p">)</span> <span class="n">then</span>
+  <span class="n">Print</span><span class="p">(</span><span class="s">"BaiStopWatch was Created"</span><span class="p">)</span>
+<span class="k">else</span>
+  <span class="n">Error</span><span class="p">(</span><span class="s">"BaiStopWatch not Created"</span><span class="p">)</span>
+<span class="k">return</span> <span class="mi">0</span>  
+</pre></div>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<div class="bai_exemple"><pre><span class="n">BaiStopWatch</span> <span class="n">was</span> <span class="n">Created</span>
+<span class="n">Script</span> <span class="n">result</span><span class="o">:</span>
+<span class="mi">0</span>
+</pre>
+	</div>
+</div>
+</div></body>

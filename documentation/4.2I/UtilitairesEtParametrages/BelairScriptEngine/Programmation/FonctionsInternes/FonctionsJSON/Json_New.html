@@ -1,0 +1,56 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:New()</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>La fonction crée un objet de type 'document JSON' et le renvoie
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li>Aucun</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Un objet de type 'document JSON'
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "colors")
+  Json:NewValue(doc, "color1", "Red")
+  Json:NewValue(doc, "color2", "Green")
+  Json:NewValue(doc, "color3", "Blue")
+Json:EndObject(doc)
+Json:Close(doc)            
+return Json:PrettyFormat(doc)
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre style="color:#000000;background:#ffffff;"><span style="color:#696969; ">{</span>
+<span style="color:#696969; ">  "colors": {</span>
+<span style="color:#696969; ">    "color1": "Red",</span>
+<span style="color:#696969; ">    "color2": "Green",</span>
+<span style="color:#696969; ">    "color3": "Blue" </span>
+<span style="color:#696969; ">  }</span>
+}
+</pre>
+<!--Created using ToHtml.com on 2019-09-19 15:01:32 UTC -->
+	</div>
+</div>
+</body>

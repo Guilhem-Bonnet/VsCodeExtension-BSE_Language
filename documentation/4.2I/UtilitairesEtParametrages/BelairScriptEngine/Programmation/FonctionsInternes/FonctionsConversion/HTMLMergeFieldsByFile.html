@@ -1,0 +1,53 @@
+<body>
+
+
+<h3>Fonctions de HTML</h3>
+
+	<!-- Fonction DATEALP -->
+			<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTML:MergeFieldsByFile(html, ObjBSE)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction exécute la fusion d'un document HTML puis retourne le résultat.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul><li><code>Html</code> : Un chaine qui représente le chemin vers le fichier HTML.</li>
+				<li><code>ObjBSE </code>: Un objet qui représente le champs a fusionner</li></ul>
+			
+			<br>
+			<p>Note: Le fichier dois être encodé en Unicode (UTF8 ou UTF16)</p>
+			<br>
+			<p><b>Résultat :</b>
+			<br></p><li>Le chemin vers un fichier temporaire html</li>
+			<br>
+			<p>Si le programme retourne une erreur, celle ci sera retournée par la fonction.</p>
+<br>
+<h4> Exemple :</h4>
+<pre>
+local f1, obj, htmlText, htmlFile
+
+htmlText := "&lt;HTML&gt;&lt;BODY&gt;&lt;P&gt;Test Merge by File &lt;SPAN style=""mso-no-proof: yes""&gt;Field1&lt;/SPAN&gt;&lt;SPAN style=""mso-no-proof: yes""&gt;Field2&lt;/SPAN&gt;&lt;/P&gt;&lt;/BODY&gt;&lt;/HTML&gt;" 
+f1 := File:Create("Test.html", "utf16")
+File:WriteLine(f1, htmlText)
+File:Close(f1)
+
+Obj := Obj:New()
+Obj:SetProp(obj, "Field1", "Unit")
+Obj:SetProp(obj, "Field2", "Test") 
+
+htmlFile :=  HTML:MergeFieldsByFile("Test.html", obj)
+
+return htmlFile
+
+</pre>			
+<br>
+			<p><b>Résultat :</b>
+			</p><pre>Script result:
+C:\Users\test\Documents\BelAir\16393651270399.html</pre>
+		</div>
+	</div>
+	<br>
+</body>

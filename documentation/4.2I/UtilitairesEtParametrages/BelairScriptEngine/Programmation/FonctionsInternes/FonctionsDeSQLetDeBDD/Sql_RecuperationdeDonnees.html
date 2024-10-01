@@ -1,0 +1,238 @@
+<body>
+
+
+<h3>SQL : fonctions de récupération de données</h3>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:New(clauseSQL)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction crée un objet de type ensemble de données à partir d'une clause SQL de type "SELECT...."</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>clauseSQL</code> : la clause SQL de type 'SELECT ...'</li></ul>
+			
+
+			<div class="alert alert-warning" role="alert">
+				<b>Important :</b>
+				<br>Les paramètres variables de la clauseSQL doivent être passés sous forme de paramètres, et non directement dans le texte de la clause SQL.<br>
+			</div>
+
+			<div class="alert alert-danger" role="alert">
+				<b>Syntaxe incorrecte :</b><br>
+				<div class="bai_code">
+					local numtiers, Query<br>
+					numtiers := 1000<br>
+					Query := Sql:New("select * from [cont] where b_ntiers = "+Tostr(numtiers))
+				</div>
+			</div>
+
+			<div class="alert alert-info" role="alert">
+				<b>Syntaxe correcte :</b>
+				<br>
+				<div class="bai_code">
+				local numtiers, Query<br>
+				numtiers := 1000<br>
+				Query := Sql:New("select * from [cont] where b_ntiers = :numtiers")
+				</div>
+			</div>
+			<p>
+				<b><br>Résultat :</b>
+				</p><ul><li>1. L'objet SQL.</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Open(Query)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction ouvre un objet SQL créé par <code>Sql:New</code>se positionne sur le 1er enregistrement et rend le nombre d'enregistrements trouvés</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Query</code> : l'objet SQL</li></ul>
+			
+			<p>
+				<b><br>Résultat :</b>
+				</p><ul><li>le nombre d'enregistrement(s) trouvé(s).</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:First(Query)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction se positionne sur le 1er enregistrement de l'objet SQL</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Query</code> : l'objet SQL</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Last(Query)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction se positionne sur le dernier enregistrement de l'objet SQL</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Query</code> : l'objet SQL</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Next(Query)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction se positionne sur l'enregistrement suivant de l'objet SQL</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Query</code> : l'objet SQL</li></ul>
+			
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Prev(Query)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction se positionne sur l'enregistrement précédent de l'objet SQL</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Query</code> : l'objet SQL</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Eof(Query)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction rend True si aucun enregistrement n'est disponible ("End Of File")</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Query</code> : l'objet SQL</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Close(Query)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction ferme l'ensemble de données de l'objet SQL</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Query</code> : l'objet SQL</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Free(Query)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction détruit l'objet SQL</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Query</code> : l'objet SQL</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:ExecResult(ClauseSql)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Cette fonction permet de récupérer simplement la valeur d'un champ de la base de données par une instruction SQL</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>ClauseSql</code> : la clause SQL de type 'SELECT....'</li></ul>
+			
+			<div class="alert alert-warning" role="alert">
+			<p>Même si la clause SQL retourne plusieurs champs d'un ou plusieurs enregistrements, seul le 1er champ du 1er enregistrement est retourné
+			</p></div>
+			<p>Exemple<br>
+			</p><div class="bai_code">
+			Print(Sql:ExecResult("select b_tabval from [tab] where b_tabcode = 'TITRE' and b_tabref = 'MME'"))
+			</div>
+						
+			<p>Résultat<br>
+			</p><pre>Madame
+			</pre>
+						
+		</div>
+	</div>
+
+
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Newid(entite,[champ)])</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Cette fonction permet de récupérer la prochaine valeur d'un champ auto-incrémenté.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+					<li><code>entite</code> : nom de l'entité</li>
+					<li><code>champ</code> : nom du champ (optionnel si la clé primaire de l'entité ne contient qu'un champ)</li>
+				</ul>
+			
+			<div class="alert alert-warning" role="alert">
+				<p>Cette fonction est indispensable si vous créez des enregistrements dans une entité.
+				<br>
+				Elle doit être utilisée pour chaque ajout d'enregistrement (Obj:New(entite) ou INSERT INTO.</p>
+				
+			</div>
+			<p>Exemple<br>
+				</p><div class="bai_code">
+					local contratid<br>
+					contratid := SQL:NewId("cont")
+				</div>
+						
+		</div>
+	
+||||||| .r24644
+=======
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:Newid(entite,[champ)])</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Cette fonction permet de récupérer la prochaine valeur d'un champ auto-incrémenté.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+					<li><code>entite</code> : nom de l'entité</li>
+					<li><code>champ</code> : nom du champ (optionnel si la clé primaire de l'entité ne contient qu'un champ)</li>
+				</ul>
+			
+			<div class="alert alert-warning" role="alert">
+				<p>Cette fonction est indispensable si vous créez des enregistrements dans une entité.
+				<br>
+				Elle doit être utilisée pour chaque ajout d'enregistrement (Obj:New(entite) ou INSERT INTO.</p>
+			</div>
+			<p>Exemple<br>
+				</p><div class="bai_code">
+					local contratid<br>
+					contratid := SQL:NewId("cont")
+				</div>
+						
+		</div>
+	</div>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; .r24684
+	
+</body>

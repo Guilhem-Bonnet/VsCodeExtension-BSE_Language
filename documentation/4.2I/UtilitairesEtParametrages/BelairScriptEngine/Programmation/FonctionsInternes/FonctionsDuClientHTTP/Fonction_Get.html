@@ -1,0 +1,39 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:Get</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			Appelle une URL avec la méthode Get.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. objet HTTP</li>
+				<li>2. chaîne, url à appeler</li></ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			</p><ul>Le résultat renvoyé par le serveur.</ul>
+			<ul>En cas d'erreur, le résultat est vide.</ul>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				</p><ul>Code :</ul>
+				<div class="bai_exemple"><pre>local h, r
+h := HTTP:New()
+r := HTTP:Get(h, "http://www.perdu.com")
+print(r)
+				</pre></div>	
+			
+			
+				<ul>Résultat :</ul>
+<pre>&lt;html&gt;&lt;head&gt;&lt;title&gt;Vous Etes Perdu ?&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Perdu sur l'Internet ?&lt;/h1&gt;&lt;h2&gt;Pas de panique, on va vous aider&lt;/h2&gt;&lt;strong&gt;&lt;pre&gt;    * &lt;----- vous &amp;ecirc;tes ici&lt;/pre&gt;&lt;/strong&gt;&lt;/body&gt;&lt;/html&gt;
+</pre></div>
+</div></body>

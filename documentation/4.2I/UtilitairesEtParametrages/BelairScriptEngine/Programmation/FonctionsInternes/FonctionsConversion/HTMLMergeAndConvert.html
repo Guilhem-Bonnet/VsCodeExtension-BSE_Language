@@ -1,0 +1,52 @@
+<body>
+
+
+<h3>Fonctions de HTML</h3>
+
+	<!-- Fonction DATEALP -->
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTML:MergeAndConvert(html, ObjBSE, headerfile, footerfile, options)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction permet de fusionner une chaine qui représente le contenu d'un HTML, le convertir en PDF puis retourne le résultat.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul><li><code>Html</code> : Une chaine qui représente le contenu d'un HTML.</li>
+				<li><code>ObjBSE </code>: Un objet qui représente le champs a fusionner</li>
+				<li><code>Headerfile </code> : Chemin vers un fichier HTML représentant l'entête (optionnel, string).</li>
+				<li><code>Footerfile </code> : Chemin vers un fichier HTML représentant le pied de page (optionnel, string).</li>
+				<li><code>Options  </code> : Options pour l'Edition du PDF (optionnel, string).</li></ul>
+			
+			<br>
+			<p>Note: Le fichier dois être encodé en Unicode (UTF8 ou UTF16)</p>
+			<br>
+			<p><b>Résultat :</b>
+			<br></p><li>Le chemin vers le fichier PDF</li>
+			<br>
+			<p>Si le programme retourne une erreur, celle ci sera retournée par la fonction.</p>
+		<br>
+<h4> Exemple :</h4>
+<pre>
+local f1, obj, htmlText, pdfFile
+htmlText := "<p>Test Convert HTML TO PDF</p>"
+f1 := File:Create("Test.html", "utf16")
+File:WriteLine(f1, htmlText)
+File:Close(f1)
+Obj := Obj:New()
+Obj:SetProp(obj, "Field1", "Unit")
+Obj:SetProp(obj, "Field2", "Test")
+pdfFile :=  HTML:MergeAndConvert("Test.html", obj)
+return pdfFile
+</pre>			
+<br>
+			<p><b>Résultat :</b>
+			</p><pre>Script result:
+C:\Users\test\Documents\BelAir\16592462253930.pdf</pre>
+		</div>
+		</div>
+	
+	<br>
+</body>

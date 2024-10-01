@@ -1,0 +1,133 @@
+<body>
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Automate(script, [data])</code>
+	</h3></div>
+	<p></p>
+	<div class="alert alert-warning" role="alert">
+	Cette fonction nécessite l'installation du service <b>BAiimpPool</b>
+	</div>
+
+	<div class="panel-body">
+	<p>La fonction exécute en mode synchrone un script automate et récupère le résultat du script après son exécution.</p>
+	
+	<br>Note: Attention si vous voulez transmettre des informations de l'automate vers le BSE, il faut utiliser la fonction print() dans votre script automate.
+	</div>
+
+		<p>
+			<b>Paramètres :</b>
+			<br>
+			</p><ul>
+				<li><code>script</code> : script à exécuter (lignes de commande séparées par un retour à la ligne)</li>
+				<li><code>data</code> (optionnel): Flux XML contenant les données à transmettre à l'automate.</li>
+			</ul>
+		
+		
+
+		<p>
+			<b>Résultat :</b>
+			<br>
+			</p><ol>
+			<li>Un objet</li>
+			</ol>
+
+		<div class="alert alert-info" role="alert">
+		Description des propriétés de l'objet
+		</div>
+			<ul>
+				<li>BSC : Cette propriété représente le BSC sous la forme historique.</li>
+				<li>Exception : Cette propriété est un Boolean qui indique si une erreur a eu lieu dans le script.</li>
+				<li>EndAt :  Cette propriété est la date de fin d'exécution du script automate.</li>
+				<li>Error : Cette propriété reprend le message d'erreur remonté par le script. (Vide si « Exception » est à faux)</li>
+				<li>NbLinesRead : Cette propriété indique le nombre de ligne lues dans le script</li>
+				<li>Result : Cette propriété reprend toutes les informations retournées par le script (instructions <code>Print(message)</code>.</li>
+				<li>StartAt : Cette propriété est la date de début d'exécution du script automate.</li>
+			</ul>
+		
+
+
+
+<h3>Exemples</h3>
+
+
+<div>
+	<div class="alert alert-info" role="alert">
+		Exemple 1 : sans données ni erreur
+	</div>
+<b>code</b>
+<pre><code class="c syntaxhl"><span class="n">local</span> <span class="n">script</span><span class="p">,</span> <span class="n">resultFromAutomate</span>
+<span class="n">script</span> <span class="o">:=</span> <span class="s">"rectiers(1009)"</span> <span class="o">+</span> <span class="n">CRLF</span> <span class="o">+</span> <span class="s">"newcon(""BAI_F1"")"</span> <span class="o">+</span> <span class="n">CRLF</span> <span class="o">+</span> <span class="s">"print(?cont(""b_contrat""))"</span> <span class="o">+</span> <span class="n">CRLF</span> <span class="o">+</span> <span class="s">"print(?cont(""b_ntiers""))"</span> 
+<span class="n">resultFromAutomate</span> <span class="o">:=</span> <span class="n">Automate</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">DumpVar</span><span class="p">(</span><span class="n">resultFromAutomate</span><span class="p">)</span>
+</code></pre>
+<b>Résultat</b>
+<pre>
+Object (Object):
+  Bsc (UnicodeString): **** Début de traitement : 2020-04-10_15-12-13 **** 
+217
+1009
+**** Fin : 2020-04-10_15-12-13 ****  Nombre des lignes lus : 1
+  Exception(Boolean): False
+  EndAt (UnicodeString): 10/04/2020 15:12:13
+  Error (UnicodeString): 
+  NbLinesRead (Integer): 1
+  Result (UnicodeString): 217
+1009
+  StartAt (UnicodeString): 10/04/2020 15:12:13
+</pre>
+</div>
+
+<div>
+	<div class="alert alert-info" role="alert">
+		Exemple 2 : sans données mais avec erreur
+	</div>
+	<b>code</b>
+<pre><code class="c syntaxhl"><span class="n">local</span> <span class="n">script</span><span class="p">,</span> <span class="n">resultFromAutomate</span>
+<span class="n">script</span> <span class="o">:=</span> <span class="s">"print(""Exemple Test"")"</span> <span class="o">+</span> <span class="n">CRLF</span> <span class="o">+</span> <span class="s">"ErrorExemple2(1009)"</span> 
+<span class="n">resultFromAutomate</span> <span class="o">:=</span> <span class="n">Automate</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">DumpVar</span><span class="p">(</span><span class="n">resultFromAutomate</span><span class="p">)</span>
+</code></pre>
+	<b>Résultat</b>
+<pre>
+Object (Object):
+  Bsc (UnicodeString): **** Début de traitement : 2020-04-10_16-30-55 **** 
+Exemple Test
+**** Fin : 2020-04-10_16-30-55 ****  Nombre des lignes lus : 0
+  Exception(Boolean): True
+  EndAt (UnicodeString): 10/04/2020 16:30:55
+  Error (UnicodeString): (ligne 1 : "ErrorExemple2(1009)") Instruction inconnue.
+  NbLinesRead (Integer): 0
+  Result (UnicodeString): Exemple Test
+  StartAt (UnicodeString): 10/04/2020 16:30:55
+</pre>
+
+</div>
+
+<div>
+	<div class="alert alert-info" role="alert">
+		Exemple 3 avec données
+	</div>
+<b>code</b>
+<pre><code class="c syntaxhl"><span class="n">local</span> <span class="n">script</span><span class="p">,</span> <span class="n">resultFromAutomate</span><span class="p">,</span> <span class="n">s</span>
+<span class="n">s</span> <span class="o">:=</span> <span class="s">"&lt;xml&gt;&lt;enreg&gt;&lt;val1&gt;Data&lt;/val1&gt;&lt;val2&gt;Unit&lt;/val2&gt;&lt;/enreg&gt;&lt;enreg&gt;&lt;val1&gt;Test&lt;/val1&gt;&lt;/enreg&gt;&lt;/xml&gt;"</span>              
+<span class="n">script</span> <span class="o">:=</span> <span class="s">"print(?data(""val1""))"</span> <span class="o">+</span> <span class="n">CRLF</span> <span class="o">+</span> <span class="s">"print(?data(""val2""))"</span> 
+<span class="n">resultFromAutomate</span> <span class="o">:=</span> <span class="n">Automate</span><span class="p">(</span><span class="n">script</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">DumpVar</span><span class="p">(</span><span class="n">resultFromAutomate</span><span class="p">)</span>
+</code></pre>
+	<b>Résultat</b>
+<pre>
+Object (Object):
+  Bsc (UnicodeString): **** Début de traitement : 2020-04-10_17-06-53 **** 
+Data
+Unit
+**** Fin : 2020-04-10_17-06-53 ****  Nombre des lignes lus : 2
+  Exception(Boolean): False
+  EndAt (UnicodeString): 10/04/2020 17:06:53
+  Error (UnicodeString): 
+  NbLinesRead (Integer): 2
+  Result (UnicodeString): Data
+Unit
+  StartAt (UnicodeString): 10/04/2020 17:06:53
+</pre>
+</div>
+</div></body>

@@ -1,0 +1,107 @@
+<body>
+	<h2>Information d'une table :</h2>
+
+	
+	<!-- Fonction ?TABLE -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>?TABLE(<i>"information"</i>)</code> <span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				<i>TABLE</i> : Code de la table BELAIR contenant l'information (exemple TIERS, CONT, etc...)
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>information</code> :  Valeur alphabétique donnant le nom du champ
+				<br>
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<div class="bai_code">?TIERS("b_rsociale") champ b_rsociale de la table TIERS</div>
+				</div>
+			
+		</div>
+	</div>
+
+	<!-- Fonction ? -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>?(<i>"information"</i>)</code> <span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet d'accéder à un champ de la table en cours (la table de l'information que l'on calcule ou que l'on vérifie)
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>information</code> :  Valeur alphabétique donnant le nom du champ (constante entre " ", référence à un calcul alphabétique, etc...)
+			</p>
+		</div>
+	</div>
+
+	<!-- Fonction CHAMP et CHAMPOLD -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>CHAMP et CHAMPOLD (accessible uniquement dans les formules de vérification de saisie)</code> <span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<i>CHAMP :</i> Valeur du champ venant d'être saisie <br>
+			<i>CHAMPOLD :</i> Ancienne valeur du champ avant sa nouvelle saisie
+		</div>
+	</div>
+
+	<!-- Fonction Manipulation d'une information de table par les variables -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Manipulation d'une information de table par les variables</code> <span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Le nom de la table est remplacé par une variable ;
+			</p>
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					IB$ := "B_RISQUE"
+					<br>
+					?RVEH(IB) := IZ
+					<span class="bai_comment">// équivalent de ?RVEH("B_RISQUE")</span>	
+				</div>
+			</div>
+			<p>
+				Le nom du champ est remplacé par une variable ;
+			</p>
+			<p>
+				<b>Exemple :</b>
+				</p><div class="bai_exemple">
+					<div class="bai_code">
+						IA$ := "RVEH"
+						<br>
+						?$IA("B_RISQUE") := IZ
+						<span class="bai_comment">// équivalent de ?RVEH("B_RISQUE")</span>	
+					</div>
+				</div>
+			
+			<p>
+				Le nom du champ et celui de la table sont remplacés par des variables ;
+			</p>
+			<p>
+				<b>Exemple :</b>
+				</p><div class="bai_exemple">
+					<div class="bai_code">
+						IA$ := "RVEH"
+						<br>
+						IB$ := "B_RISQUE"
+						<br>
+						?$IA(IB) := IZ
+						<span class="bai_comment">// équivalent de ?RVEH("B_RISQUE")</span>	
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</body>

@@ -1,0 +1,50 @@
+<body>
+
+
+<h3>Fonctions de manipulation des chaînes de caractères (strings)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>StrReplace</code>
+		</h3></div>
+		<div class="panel-body">
+		<p>Remplace les occurrences d'une sous-chaîne au sein d'une chaîne.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. Le texte.</li>
+				<li>2. La sous-chaîne à trouver.</li>
+				<li>3. La sous-chaîne à remplacer.</li>
+				<li>4. Les options (optionnel, séparés par un espace) :
+				<ul><li>"all" : remplace toutes les occurrences. En l'absence de cet indicateur, seule la première occurrence de la sous-chaîne cible est remplacée.</li>
+				<li>"igcase" : trouve les occurrences de la sous-chaîne sans tenir compte de la casse. En l'absence de cet indicateur, seules les correspondances respectant la casse sont prises en compte.</li></ul></li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>Le texte remplacé.
+			</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">Print(StrReplace(<span class="string"><span class="delimiter">"</span><span class="content">AbCDEFaBGHTY</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Ab</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Zzz</span><span class="delimiter">"</span></span>))
+Print(StrReplace(<span class="string"><span class="delimiter">"</span><span class="content">AbCDEFaBGHTY</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Ab</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Zzz</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">all</span><span class="delimiter">"</span></span>))
+Print(StrReplace(<span class="string"><span class="delimiter">"</span><span class="content">AbCDEFaBGHTY</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">ab</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Zzz</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">all igcase</span><span class="delimiter">"</span></span>))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">ZzzCDEFaBGHTY
+ZzzCDEFaBGHTY
+ZzzCDEFZzzGHTY
+</span></code></pre>
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

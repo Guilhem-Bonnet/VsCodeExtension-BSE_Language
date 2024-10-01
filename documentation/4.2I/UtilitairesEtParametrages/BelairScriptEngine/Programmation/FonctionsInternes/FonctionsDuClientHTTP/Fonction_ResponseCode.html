@@ -1,0 +1,38 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:ResponseCode</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			Appelle une URL.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. objet HTTP</li></ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			</p><p>Renvoie le dernier code http reçu.</p>
+			<p>-1 est renvoyé si aucun appel n'a eu lieu, ou si le dernier a échoué, par exemple si l'url n'existe pas.</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				</p><p>Code :</p>
+				<div class="bai_exemple"><pre>local h, r
+h := HTTP:New()
+r := HTTP:Get(h, "http://www.perdu.com")
+print(HTTP:ResponseCode(h))
+				</pre></div>	
+			
+			
+				<p>Résultat :</p>
+<pre>200
+</pre></div>
+</div></body>

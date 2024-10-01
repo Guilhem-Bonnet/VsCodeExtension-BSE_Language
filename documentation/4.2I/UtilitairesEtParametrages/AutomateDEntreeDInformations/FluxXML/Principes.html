@@ -1,0 +1,130 @@
+<body>
+	<h2>Principes généraux du XML</h2>
+
+	<h3>Composants et syntaxe d'un document XML</h3>
+	<p>
+		<i>(référence : <a href="http://fr.wikipedia.org/wiki/Xml#Composants_et_syntaxe_d.27un_document_XML">http://fr.wikipedia.org/wiki/Xml#Composants_et_syntaxe_d.27un_document_XML</a>)</i>
+	</p>
+
+	<p>
+		Le modèle sous-jacent de XML est un modèle d'arbre. Un document XML peut donc être vu comme la linéarisation d'un arbre.
+	</p>
+
+	<p>
+		Les composants principaux de ce modèle sont les nœuds, qui peuvent être de différents types, identifiables dans l'exemple artificiel suivant:
+	</p>
+
+	<div class="bai_exemple">
+		<div class="bai_code">
+			&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>
+			&lt;!-- Commentaire --&gt;<br>
+			&lt;élément-document xmlns="http://exemple.org/" xml:lang=";fr"&gt;<br>
+			&lt;élément&gt;Texte&lt;/élément&gt;<br>
+			&lt;élément&gt;élément répété&lt;/élément&gt;<br>
+			&lt;élément&gt;<br>
+			&lt;élément&gt;Hiérarchie récursive&lt;/élément&gt;<br>
+			&lt;/élément&gt;<br>
+			&lt;élément&gt;Texte avec&lt;élément&gt;un élément&lt;/élément&gt;inclus&lt;/élément&gt;<br>
+			&lt;élément/&gt;&lt;!-- élément vide --&gt;<br>
+			&lt;élément attribut="valeur"&gt;&lt;/élément&gt;<br>
+			&lt;/élément-document&gt;
+		</div>
+	</div>
+
+	<h3>Le nœud document</h3>
+	<p>
+		Dans le modèle XDM, un document contient un unique nœud de type document. Pour être bien formé, un document XML doit avoir un et un seul nœud de type élément fils du nœud document, parfois désigné par « élément racine ».
+	</p>
+
+	<p>
+		Le nœud document peut éventuellement avoir des enfants de type commentaire, instruction de traitement ou texte. Un document XML est un arbre dont la racine est un nœud document. Un arbre dont la racine n'est pas nœud document est appelé un fragment XML.
+	</p>
+
+	<h3>Les éléments &lt;élément/&gt;</h3>
+	<p>
+		L'élément a un nom, précisément qualifié au sein d'un espace de noms (&lt;espace:élément/&gt;), et peut porter tous les types de nœuds: attributs, texte, éléments…
+	</p>
+
+	<p>
+		Le fait qu'un élément puisse avoir des enfants texte et des enfants éléments a beaucoup de conséquences pour en faire un format de données très souple (comparé par exemple à une table relationnelle). La qualification des noms contribue aussi à la précision sémantique des contenus balisés.
+	</p>
+
+	<p>
+		Un exemple de notice bibliographique permettra de mieux montrer le potentiel de ce format, il utilise le vocabulaire Dublin Core.
+	</p>
+
+	<div class="bai_exemple">
+		<div class="bai_code">
+			&lt;ex:collection<br>
+			<br>
+			&lt;dc:title&gt;[[Astérix le Gaulois]]&lt;/dc:title&gt;<br>
+			<br>
+			&lt;ex:livre&gt;<br>
+			<br>
+			&lt;dc:title&gt;[[Astérix chez les Belges]]&lt;/dc:title&gt;<br>
+			&lt;dc:creator&gt;[[René Goscinny]]&lt;/dc:creator&gt;<br>
+			&lt;dc:creator&gt;[[Albert Uderzo]]&lt;/dc:creator&gt;<br>
+			&lt;dc:type&gt;Text&lt;/dc:type&gt;<br>
+			&lt;dc:description&gt;<br>
+			&lt;b&gt;Astérix chez les Belges&lt;/b&gt; est un album de &lt;a href="http://fr.wikipedia.org/wiki/Bande_dessinée"&gt;bande dessinée&lt;/a&gt; de la série Astérix le Gaulois créée par René Goscinny et Albert Uderzo.&lt;br&gt;<br>
+			Cet album publié en 1979 est le dernier de la série écrit par René Goscinny.<br>
+			&lt;/dc:description&gt;<br>
+			&lt;/ex:livre&gt;<br>
+			&lt;/ex:collection&gt;<br>
+		</div>
+	</div>
+
+	<ul>
+		<li>
+			<b>Répétable</b> : Une même propriété peut être répétée. L'exemple montre comment indiquer qu'un livre a plusieurs auteurs (dc:creator). Dans un format tabulaire, avec un nombre de colonnes défini, ce n'est pas impossible, mais moins spécifié.
+		</li>
+		<li>
+			<b>Ordonné</b> : L'ordre des éléments est conservé. Quel que soit le langage employé, un outil XML doit permettre de distinguer le premier auteur du second (exemple : en XPath, /ex:collection/ex:livre/dc:creator[1] = "[[René Goscinny]]", /ex:collection/ex:livre/dc:creator[2] = "[[Albert Uderzo]]").
+		</li>
+		<li>
+			<b>Hiérarchique</b> : Les éléments XML sont imbricables. Ceci rend ce format particulièrement adapté à représenter des arbres. Ici, on s'est limité à 2 niveaux (/ex:collection/ex:livre), une collection avec un titre (Astérix le Gaulois), et un exemple d'ouvrage de cette collection (Astérix chez les Belges). XML permet une récursivité complète. Par exemple, un livre, ou une thèse, peut être formaté très économiquement avec un élément &lt;section&gt;. La partie 2.3.5 correspondra à une structure d'imbrication XML /section[2]/section[3]/section[5].
+		</li>
+		<li>
+			<b>Mélangeable</b> : Enfin, ce qui fait qu'XML est plus qu'un format de données, c'est la possibilité de mélanger du texte et des éléments. L'exemple montre comment le texte de la description (dc:description) est enrichi avec des balises XHTML (du gras &lt;b&gt; et un lien &lt;a&gt;).
+		</li>
+	</ul>
+
+	<h3>Le texte</h3>
+	<p>
+		Un nœud texte n'a pas d'enfants, il est toujours contenu dans un élément. Par défaut, il sera traité comme de l'Unicode en UTF-8 ou UTF-16. XML permet de spécifier d'autres encodages dans le prologue (ex. : &lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;). Ce simple choix a déjà apporté une énorme simplification aux problèmes d'encodages que l'on rencontre encore en informatique.
+	</p>
+
+	<p>
+		Le traitement des espaces et sauts de lignes en XML[XML 4] peut apporter quelques surprises. Sous sa forme texte, un fichier XML sera probablement indenté par son auteur. La recommandation n'oblige pas un processeur XML à conserver ces espaces non significatifs, sauf instructions particulières (exemple : bloc préformaté &lt;pre&gt;). Il en résulte que le texte XML proposé à un processeur peut ne pas revenir à l'identique après traitement, ce qui cause des désagréments dans certaines applications.
+	</p>
+
+	<h3>Les attributs, &lt;élément attribut="valeur"/&gt;</h3>
+	<p>
+		Un attribut est un nom et une valeur, la valeur peut être vide &lt;element attribut=""/&gt;, mais pas nulle &lt;element attribut&gt; (cette écriture était permise en SGML, on la rencontre encore parfois à propos d'HTML, mais elle n'est pas acceptée en XML). Un nom d'attribut a les mêmes possibilités de qualification qu'un nom d'élément.
+	</p>
+
+	<p>
+		La valeur est un texte sans élément (ni autres nœuds). Un attribut est toujours porté par un élément. Un attribut est unique. La répétition d'un attribut de même nom sur le même élément provoquera une erreur du processeur XML. L'ordre des attributs n'est pas significatif, et peut ne pas être conservé dans certains traitements. &lt;element attribut1="valeur1" attribut2="valeur2"/&gt; et &lt;element attribut2="valeur2" attribut1="valeur1"/&gt; sont équivalents pour un processeur XML, même s'ils sont écrits différemment.
+	</p>
+
+	<h3>Les commentaires &lt;!-- --&gt;</h3>
+	<p>
+		En XML, les commentaires[XML 5] sont délimités par &lt;!-- et --&gt;. Le contenu d'un commentaire ne sera pas interprété.
+	</p>
+
+	<div class="bai_code">
+		<p>
+			&lt;!-- Cet &lt;élément&gt; est mal formé mais cela est autorisé dans un commentaire --&gt;.
+		</p>
+	</div>
+
+	<p>
+		La chaîne de caractères « -- », pour des raisons de compatibilité avec SGML, ne peut apparaître dans le contenu du commentaire.
+	</p>
+
+	<h3>Le prologue</h3>
+	<p>
+		En XML, le prologue est constitué de la déclaration XML &lt;?xml version="1.0"?&gt;, et de la déclaration de type de document (DOCTYPE). La déclaration XML est obligatoire à partir de la version 1.1. La déclaration DOCTYPE avait une grande importance en SGML. Elle attache le document traité par un processeur à son schéma ( DTD, Document Type Definition, « Définition de Type de Document »), afin de le valider, et d'interpréter certains raccourcis (les entités). Désormais, il existe plusieurs langages de validation, et parfois plusieurs manières de les attacher. La déclaration DOCTYPE n'a plus la même importance
+	</p>
+
+</body>

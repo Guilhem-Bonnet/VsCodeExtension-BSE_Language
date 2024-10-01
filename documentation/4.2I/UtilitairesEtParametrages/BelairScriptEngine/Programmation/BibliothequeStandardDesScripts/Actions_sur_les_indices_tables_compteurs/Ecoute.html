@@ -1,0 +1,140 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Ecoute</code></h3>
+		</div>
+
+	<p>Cette action BSE réplique le fonctionnement du module ecoute.exe</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Filename (string, obligatoire) : nom du fichier de configuration (fichier .XML)</li>
+		<li>Returnlog (booléen, optionnel) : si True, le contenu du fichier log géré par l'action est retournée dans un format XML; si False, l'action retourne 'OK'</li>
+	</ul>
+
+
+	<a name="Contenu-du-fichier-de-configuration"></a>
+<h3>Contenu du fichier de configuration<a href="#Contenu-du-fichier-de-configuration" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;ecoute&gt;</span>
+    <span class="nt">&lt;header&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename =</span> <span class="s">"EcouteParams"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"adddatetime"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"backuppath"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>c:\temp\ecoute\backup<span class="nt">&lt;/param&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"errorpath"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>c:\temp\ecoute\error<span class="nt">&lt;/param&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"logfilename"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>c:\temp\ecoute\exoute.log<span class="nt">&lt;/param&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"belairpath"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>d:\belair42<span class="nt">&lt;/param&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"errordest"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>MICHEL<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>      
+    <span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;scripts&gt;</span>
+        <span class="nt">&lt;objects&gt;</span>
+            <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"EcouteScript"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"path"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>c:\temp\ecoute\input<span class="nt">&lt;/param&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"filter"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>*.txt<span class="nt">&lt;/param&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"bsi"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>___test_quiet_output.BSI<span class="nt">&lt;/param&gt;</span>
+             <span class="nt">&lt;/object&gt;</span>
+            <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"EcouteScript"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"path"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>c:\temp\ecoute\input<span class="nt">&lt;/param&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"filter"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>*.log<span class="nt">&lt;/param&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"bsi"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>lecture_fichierlog.bsi<span class="nt">&lt;/param&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"backuppath"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>c:\temp\ecoute\logbackup<span class="nt">&lt;/param&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"errorpath"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>c:\temp\ecoute\logerror<span class="nt">&lt;/param&gt;</span>
+             <span class="nt">&lt;/object&gt;</span>
+            <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"EcouteScript"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"path"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>c:\temp\ecoute\input<span class="nt">&lt;/param&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"filter"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>*.csv<span class="nt">&lt;/param&gt;</span>
+              <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"bsi"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>script_error.BSI<span class="nt">&lt;/param&gt;</span>
+             <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;/objects&gt;</span>
+    <span class="nt">&lt;/scripts&gt;</span>
+<span class="nt">&lt;/ecoute&gt;</span>
+</code></pre>
+
+	<ul>
+	<li><strong>balise <code>header</code></strong> : paramètres généraux de fonctionnement
+	<ul>
+	<li>logfilename : nom du fichier log</li>
+		<li>adddatetime : si true, fichier log horodaté</li>
+		<li>backuppath : répertoire d'archivage par défaut des fichiers traités avec succès</li>
+		<li>errorpath : répertoire d'archivage des fichiers ayant provoqué une erreur</li>
+		<li>belairpath : répertoire des exécutables de belair (pour pouvoir lancer baiimp.exe)</li>
+		<li>errordest : utilisateur recevant les messages en cas d'erreur (post-it). Par défaut, <code>SUPERVISEUR</code></li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li><strong>balise <code>scripts</code></strong> : tableau de paramétrage des scripts
+	<ul>
+	<li>path" : répertoire des fichiers à lire</li>
+		<li>filter : nom des fichiers à lire dans le répertoire cible</li>
+		<li>bsi : nom du script BSI</li>
+		<li>backuppath (optionnel) : répertoire spécifique d'archivage des fichiers traités avec succès par ce script</li>
+		<li>errorpath (optionnel) : répertoire spécifique d'archivage des fichiers ayant provoqué une erreur par ce script</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Utilisation-par-un-client-SOAP-Php"></a>
+<h3>Utilisation par un client SOAP (Php)<a href="#Utilisation-par-un-client-SOAP-Php" class="wiki-anchor"></a></h3>
+
+
+	<p>Cette action peut être lancée par un client SOAP comme toutes les autres actions BSE<br><span style="color:red;">attention au timeout!</span></p>
+
+
+	<a name="Utilisation-dans-Belair"></a>
+<h3>Utilisation dans Belair.<a href="#Utilisation-dans-Belair" class="wiki-anchor"></a></h3>
+
+
+	<p>Vous pouvez lancer le script <code>Ecoute</code> à partir du Bureau de Belair.</p>
+
+
+	<ul>
+	<li>Fonction <code>Bureautique | Lancement de Script BSE</code></li>
+		<li>Sélectionner le fichier <code>Bureau_Ecoute.BSL</code></li>
+		<li>Filename : sélectionner le fichier de configuration (fichier XML)</li>
+		<li>Returnlog  :Vrai ou Faux selon le type de retour souhaité</li>
+		<li>Bouton <code>Lancer</code></li>
+	</ul>
+
+
+	<a name="Utilisation-en-ligne-de-commande-ou-dans-un-plannificateur-de-t%C3%A2ches"></a>
+<h3>Utilisation en ligne de commande (ou dans un plannificateur de tâches)<a href="#Utilisation-en-ligne-de-commande-ou-dans-un-plannificateur-de-t%C3%A2ches" class="wiki-anchor"></a></h3>
+
+
+	<p>Le script peut être lancé par le module <code>BasClientCmd.exe</code><br>Au préalable, un fichier de paramétrage doit être créé:</p>
+
+
+	<ul>
+	<li>Fonction <code>Bureautique | Lancement de Script BSE</code></li>
+		<li>Sélectionner le fichier <code>Bureau_Ecoute.BSL</code></li>
+		<li>Filename : sélectionner le fichier de configuration (fichier XML)</li>
+		<li>Returnlog  :Vrai ou Faux selon le type de retour souhaité</li>
+		<li>Bouton <code>Extraction</code> pour enregistrer le fichier de paramétrage : exemple D:Belair42\APPDEI\BasScripts\BSL\ecoute.XML</li>
+	</ul>
+
+
+	<p>la ligne de commande a exécuter (ou à mettre dans un planificateur de tâches) est alors :</p>
+
+
+<pre>
+D:\Belair42\BasClientCmd.exe /iD:Belair42\APPDEI\BasScripts\BSL\ecoute.XML</pre>
+
+	<a name="Remarque"></a>
+<h3>Remarque<a href="#Remarque" class="wiki-anchor"></a></h3>
+
+
+IL y a donc 2 fichiers XML
+	<ul>
+	<li>le fichier de configuration d'écoute : format complexe, tableau d'objets</li>
+		<li>et pour un lancement externe, le fichier de paramétrage de BasClientCmd</li>
+	</ul>
+</div></body>

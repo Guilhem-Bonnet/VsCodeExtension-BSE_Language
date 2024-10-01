@@ -1,0 +1,72 @@
+<body>
+	<h2>Les produits</h2>
+
+	<p>
+		L'exportation et l'importation d'un produit permettent de passer d'une application BELAIR à une autre, le descriptif du produit, ses garanties, ses couvertures, les indices utilisés par le produit, le détail de la tarification, les formules utilisées par la tarification (même celles appelées indirectement).
+	</p>
+
+	<p>
+		Ne sont par exportés : les tables de codes utilisées dans les formules, les taux de TVA, les champs, les tables de valeurs des champs.<br>
+		Concernant les tables de codes, on trouve dans l'état récapitulatif lancé à la fin de l'export, la liste des tables utilisées dans chacune des formules exportées. Il convient alors d'effectuer un export de tables de codes.
+	</p>
+
+	<p>
+		Les opérations suivantes s'effectuent à partir de :<br><br>
+		<img src="images/gestion_contrats_produits.jpg" class="img-responsive">
+	</p>
+
+	
+	<br>
+	<p>
+		<b><u>Exportation</u></b>
+		<br><br>
+		Onglet : <img src="images/produits_distribues.jpg"><br><br>
+		Sélectionner le produit à exporter.<br><br>
+		<img src="images/exporter_produit.jpg"><br><br>
+		Le nom du fichier est donné : PROD_xxxxx.XML
+		</p><ul>
+			<li>PROD = "produit"</li>
+			<li>xxxxx = le nom du produit</li>
+			<li>XML = suffixe obligatoire pour l'exportation</li>
+		</ul>
+		<br>
+		Demander ensuite <img src="images/enregistrer_fichier.jpg">
+		<br><br>
+		La fenêtre "Export d'un produit vers un fichier" s'ouvre :
+		<ul>
+			<li>
+				"Nom du produit" : c'est le nom du produit sélectionné qui s'affiche implicitement mais il est possible à ce moment d'en choisir un autre. Quoiqu'il en soit l'exportation n'est possible que produit par produit.
+			</li>
+			<li>
+				"Nom du fichier" : le chemin peut être modifié. Le nom du produit également MAIS le suffixe en XML doit être conservé.
+			</li>
+		</ul>
+		Valider par <img src="images/ok2.jpg">
+		<br><br>
+		Un rapport d'exportation s'affiche avec possibilité de l'imprimer.
+		<br><br>
+		Un fichier est alors créé : PROD_xxxxx.XML
+	
+
+	
+	<br>
+	<p>
+		<b><u>Importation</u></b>
+		<br><br>
+		<img src="images/importer_produit.jpg"><br><br>
+		Aller chercher le fichier à importer (en suffixe .XML) dans le répertoire où il est stocké OU taper le "Nom" du fichier et <img src="images/ouvrir_fichier.jpg">
+		<br><br>
+		La fenêtre "Import d'un produit" s'ouvre :
+		</p><ul>
+			<li>"Nom du fichier" : le nom du fichier à importer s'affiche tel qu'on a été le rechercher plus haut</li>
+		</ul>
+		Valider par <img src="images/ok2.jpg">
+		<br><br>
+		La fenêtre "Paramétrage des compagnies" s'ouvre :<br>
+		Le numéro de la compagnie principale du produit à importer s'affiche et il appartient à l'utilisateur d'indiquer le code de la compagnie principale que devra prendre le produit dans l'application d'arrivée (si le code est différent).
+	
+
+	<p>
+		Un message de confirmation s'affiche si on constate des doublons dans les tables avant d'effectuer l'importation. Si on confirme l'importation, les valeurs en double seront écrasées par l'import, sauf pour les compagnies qui elles, seront conservées.
+	</p>
+</body>

@@ -1,0 +1,177 @@
+<body>
+
+
+<h3>Fonctions de type de valeurs et introspection</h3>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Coalesce(var1,var2,  [ ,...99 ])</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Cette fonction réplique la fonction SQL COALESCE(v1,v2,[...])<br>
+			Elle rend la 1ere valeur non nulle de la collection passée en paramètre.<br>
+			SI toutes les valeurs de la collection sont nulles, la fonction renvoie Null()</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>var1, var2, var3,...</code> : la collection de valeurs (minimum 2, maximum 99).</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>montant := coalesce(quit.taxe, 0) 
+lieudit := substring(coalesce(tiers.adr3,""),1, 10)
+</pre>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Obj : DumpVar(objet) (synonyme de VarDump)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie les types et les valeurs des propriétés d'un objet, sous forme de chaîne de caractères séparée par CRLF.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>objet</code> objet à analyser.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>La chaîne de caractères contenant le dump.
+			<br>
+			</p><div class="alert alert-info" role="alert">  <p> <b>Notez que :</b>
+			<br>
+			<br>La valeur "Unknown" correspond en général à un autre objet, que vous pouvez récupérer dans une variable, que vous pouvez ensuite explorer par un autre dump.</p> </div> 
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>local entity
+entity := Meta:GetEntityByCode("Adh")
+Print("---")
+Print(Obj:DumpVar(entity))</pre>
+			
+			<p>Résultat :</p>
+			<pre>Entity ADH
+---
+Caption (UnicodeString): Adhésion
+Changed (Boolean): False
+Code (UnicodeString): ADH
+ComponentName (UnicodeString): 
+Domain (UnicodeString): Tiers / Contrat / Sinistres
+FieldDefs (UnicodeString): 
+Fields (Unknown): unknown
+Group (UnicodeString): Contrats
+HistoryOptions (Unknown): unknown
+Indexes (Unknown): unknown
+IsComplement (Boolean): False
+IsDataDictionnaryItem (Boolean): False
+IsMaster (Boolean): True
+Locked (Boolean): False
+LockedByOwner (Boolean): False
+Model (Unknown): unknown
+Name (UnicodeString): ADHDEI
+OldName (UnicodeString): 
+Owner (Unknown): unknown
+Relations (Unknown): unknown
+TableType (Unknown): unknown
+Traced (Boolean): False
+UsesNameSuffix (Boolean): True</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>VarIsBool(variable)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie True si la variable est de type booléen, False sinon.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>variable</code> : la variable.</li></ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>VarIsDate(variable)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie True si la variable est de type DateTime, False sinon.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>variable</code> : la variable.</li></ul>
+			
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>VarIsFloat(variable)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie True si la variable est de type 'Float', False sinon.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>variable</code> : la variable.</li></ul>
+			
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>VarIsInt(variable)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie True si la variable est de type Entier, False sinon.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>variable</code> : la variable.</li></ul>
+			
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>VarIsNum(variable)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie True si la variable est de type Numérique (extended), False sinon.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>variable</code> : la variable.</li></ul>
+			
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>VarIsString(variable)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie True si la variable est de type chaine (string), False sinon.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>variable</code> : la variable.</li></ul>
+			
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>VarTypeName(objet)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie le type de l'objet.</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>objet</code> : l'objet.</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>local entity
+entity := Meta:GetEntityByCode("Adh")
+Print(Varypename(entity))
+</pre>
+			
+			<p>Résultat :</p>
+			<pre>ADH</pre>
+		</div>
+	</div>
+</body>

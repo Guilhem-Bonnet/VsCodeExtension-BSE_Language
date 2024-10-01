@@ -1,0 +1,36 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>User_Details</code></h3>
+		</div>
+
+	<p>User_Details</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>username (string, optionnel) : code utilisateur (UTIL.B_UTIL)<br>si absent, récupérer les parametres de l'utilisateur connecté (fonction interne <code>username</code>)</li>
+	</ul>
+
+
+	<ul>
+	<li>profilcrm (true/false), optionnel : <br>Si true, il faut trouver quel est le profil CRM_xxxx associé à l'utilisateur et ajouter la balise &lt;profilcrm&gt;CRM_XXXXXX&lt;/profilcrm&gt; (c.f. <a class="issue tracker-2 status-5 priority-6 priority-high2 closed" title="Evolution: Ajout des profils utilisateur du CRM (Terminé)" href="http://redmine4.belair.local/issues/13609">#13609</a> )</li>
+	</ul>
+
+
+	<a name="retour"></a>
+<h3>retour<a href="#retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;UTIL&gt;</span>
+  <span class="nt">&lt;B_UTIL&gt;</span>PIERRE<span class="nt">&lt;/B_UTIL&gt;</span>
+  <span class="nt">&lt;B_INTITULE&gt;</span>Pierre BERVEGLIERI<span class="nt">&lt;/B_INTITULE&gt;</span>
+  ...
+  <span class="c">&lt;!-- tous les champs de la table UTILS --&gt;</span>
+<span class="nt">&lt;/UTIL&gt;</span>
+</code></pre>
+	</div></body>

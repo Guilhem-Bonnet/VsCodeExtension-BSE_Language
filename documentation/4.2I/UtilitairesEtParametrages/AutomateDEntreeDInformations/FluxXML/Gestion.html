@@ -1,0 +1,475 @@
+<body>
+	<h2>La gestion des flux XML par l'automate d'import Baiimp</h2>
+
+	<h3>Description de la source de données</h3>
+
+	<p>
+		Le type de données "XML" doit être défini dans l'onglet description
+	</p>
+
+	<p>
+		La source de données peut être de 2 types: un fichier physique ou un flux de données obtenue par un "serveur internet" (en pratique, la réponse d'une requête "get:http...")
+	</p>
+
+	<p>
+		Dans l'onglet description, une liste déroulante permet de choisir la soure de données:
+	</p>
+
+	<ul>
+		<li>
+			Pour sélectionner un fichier, choisir la ligne "&lt;fichier&gt;" puis sélectionner le fichier associé.
+		</li>
+
+		<li>
+			Pour sélectionner une source "get:http", créer au préalable une formule de calcul autonome dont le nom commence par "URL" et dont le résultat donne l'URL (le lien) qui fournira les données à traiter, par exemple, formule de calcul "URL_MASOURCE" :
+			<div class="bai_exemple">
+				<div class="bai_code">
+					="http://monserveur.internet.com/monlien.php"
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<p>
+		Il y a une particularité pour les scripts automate utilisables dans baiwebcom, qui sera évoquée dans le chapitre correspondant
+	</p>
+
+	<h3>Fonctionnement de l'automate, en mode XML</h3>
+
+	<ol>
+		<li>L'automate ouvre le flux et ouvre le "nœud racine" (la balise principale, le nœud de niveau 1)</li>
+		<li>Le script est exécuté pour chaque élément enfant du "nœud racine", donc pour tous les éléments de niveau 2</li>
+	</ol>
+
+	<b>Exemple:</b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			&lt;donnees&gt;<br>
+			<div class="bai_tab">
+				&lt;element record="1"&gt;A&lt;/element&gt;<br>
+				&lt;element record="2"&gt;B&lt;/element&gt;<br>
+				&lt;element record="3"&gt;C&lt;/element&gt;<br>
+				&lt;element record="4"&gt;D&lt;/element&gt;<br>
+				&lt;element record="5"&gt;E&lt;e/lement&gt;<br>
+			</div>
+			&lt;/donnees&gt;
+		</div>
+	</div>
+
+	<p>
+		Le script sera ici excut 5 fois, comme , pour comparer, il le ferait pour un fichier csv de 5 lignes
+	</p>
+
+	<p>
+		Le fonctionnement suppose donc que tous les éléments de niveau 2 soient de même nature, puisque le même scénario (script) est exécuté pour chaque élément.
+	</p>
+
+	<h3>Identification des nœuds et navigation dans l'arborescence</h3>
+
+	<p>
+		Le schéma XML n'impose pas que tous les éléments enfants du "nœud racine" soient de même nature.
+	</p>
+
+	<b>Exemple :</b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			&lt;donnees&gt;<br>
+			<div class="bai_tab">
+				&lt;parametres&gt;<br>
+				<div class="bai_tab">
+					&lt;datetraitement&gt;01/05/2011&lt;/datetraitement&gt;<br>
+					&lt;nature&gt;test de lecture&lt;/nature&gt;<br>
+				</div>
+				&lt;/parametres&gt;<br>
+				&lt;element record="1"&gt;A&lt;/element&gt;<br>
+				&lt;element record="2"&gt;B&lt;/element&gt;<br>
+				&lt;element record="3"&gt;C&lt;/element&gt;<br>
+				&lt;element record="4"&gt;D&lt;/element&gt;<br>
+				&lt;element record="5"&gt;E&lt;e/lement&gt;<br>
+			</div>
+			&lt;/donnees&gt;
+		</div>
+	</div>
+
+	<p>
+		Dans cet exemple, le 1er nœud enfant &lt;parametres&gt; est d'une nature différente des nœuds suivants et il est donc indispensable de pouvoir identifier le nœud en cours de traitement.
+	</p>
+
+	<div class="bai_code">
+		<p>
+			XML:BALISE
+		</p>
+	</div>
+
+	<p>
+		Cette commande donne le nom de la balise (le nœud) en cours.
+	</p>
+
+	<b>Exemple de script:</b>
+
+	<div class="bai_exemple">
+		<div class="bai_code">
+			PRINT(XML:BALISE)<br>
+			FIN
+		</div>
+
+		<p>
+			Dans cet exemple, le script affichera :
+		</p>
+
+		<div class="bai_code">
+			--- debut de traitement ---<br>
+			parametres<br>
+			element<br>
+			element<br>
+			element<br>
+			element<br>
+			element<br>
+			--- fin de traitement ---
+		</div>
+
+		<p>
+			L'exemple ci-dessus, même s'il est compatible au format XML ne respecte pas vraiment l'esprit du XML. Ce document étant constitué d'une suite de paramtres , puis d'une suite d'éléments, il devrait être structuré ainsi :
+		</p>
+
+		<div class="bai_code">
+			&lt;donnees&gt;<br>
+			<div class="bai_tab">
+				&lt;parametres&gt;<br>
+				<div class="bai_tab">
+					&lt;datetraitement&gt;01/05/2011&lt;/datetraitement&gt;<br>
+					&lt;nature&gt;test de lecture&lt;/nature&gt;<br>
+				</div>
+				&lt;/parametres&gt;<br>
+				&lt;elements&gt;<br>
+				<div class="bai_tab">
+					&lt;element record="1"&gt;A&lt;/element&gt;<br>
+					&lt;element record="2"&gt;B&lt;/element&gt;<br>
+					&lt;element record="3"&gt;C&lt;/element&gt;<br>
+					&lt;element record="4"&gt;D&lt;/element&gt;<br>
+					&lt;element record="5"&gt;E&lt;e/lement&gt;<br>
+				</div>
+				&lt;/elements&gt;<br>
+			</div>
+			&lt;/donnees&gt;
+		</div>
+
+		<p>
+			Dans cet exemple, Le noeud racine ne contient que 2 enfants et le script précédent affichera :
+		</p>
+
+		<div class="bai_code">
+			--- debut de traitement ---<br>
+			parametres<br>
+			elements<br>
+			--- fin de traitement ---
+		</div>
+
+		<p>
+			Ce qui ne nous satisfait donc pas, le script devant traiter successivement tous les éléments contenus dans le nœud "&lt;elements&gt;"
+		</p>
+	</div>
+
+	<p>
+		3 commandes permettent de naviguer dans l'arborescence (les enfants) d'un nœud
+	</p>
+
+	<ul>
+		<li>
+			<b>XML:OPEN(balise)</b> : Ouvrir le 1er nœud enfant "balise"<br>
+			RESULT = 1 si trouvé, 0 , sinon
+		</li>
+		<li>
+			<b>XML:NEXT(balise)</b> : Ouvrir l'enfant "balise" suivant<br>
+			RESULT = 1 si trouvé, 0 , sinon
+		</li>
+		<li>
+			<b>XML:CLOSE(balise)</b> : Fermer et revenir au niveau précédent
+		</li>
+	</ul>
+
+	<div class="bai_exemple">
+		<p>
+			Compliquons donc un peu le script
+		</p>
+		<div class="bai_code">
+			PRINT(XML:BALISE)<br>
+			SI IA = "elements" ;&gt;ELEMENTS<br>
+			FIN<br>
+			<br>
+			:ELEMENTS<br>
+			XML:OPEN("element")<br>
+			<br>
+			:ELEMENTS_BOUCLE<br>
+			SI RESULT = 0 ;&gt;ELEMENTS_FIN<br>
+			<br>
+			PRINT(XML:BALISE)<br>
+			XML:NEXT("element")<br>
+			<br>
+			&gt;ELEMENTS_BOUCLE<br>
+			:ELEMENTS_FIN<br>
+			<br>
+			XML:CLOSE("element")<br>
+			PRINT(XML:BALISE)<br>
+			FIN
+		</div>
+
+		<p>
+			Résultat:
+		</p>
+		<div class="bai_code">
+			--- debut de traitement ---<br>
+			parametres<br>
+			elements<br>
+			element<br>
+			element<br>
+			element<br>
+			element<br>
+			element<br>
+			elements<br>
+			--- fin de traitement ---
+		</div>
+	</div>
+
+	<h3>Lecture de la valeur d'un nœud texte enfant</h3>
+
+	<p>
+		Rappel: un nœud "texte" est structuré ainsi : &lt;nom&gt;valeur&lt;/nom&gt;
+	</p>
+
+	<ul>
+		<li><b>?DATA("nom")</b> : donne la valeur du nœud "nom" , enfant du nœud en cours</li>
+	</ul>
+
+	Exemple:
+	<div class="bai_exemple">
+		<div class="bai_code">
+			PRINT(XML:BALISE)<br>
+			SI XML:BALISE = "parametres" ;&gt;PARAMETRES<br>
+			FIN<br>
+			<br>
+			:PARAMETRES<br>
+			PRINT(?DATA("nature")+ ", date du traitement = " + ?DATA("datetraitement"))<br>
+			<br>
+			FIN
+		</div>
+
+		Résultat :
+
+		<div class="bai_code">
+			--- debut de traitement ---<br>
+			parametres<br>
+			test de lecture, date du traitement = 01/05/2011<br>
+			elements<br>
+			--- fin de traitement ---
+		</div>
+	</div>
+
+	<div class="alert alert-warning">
+		<p>
+			<b>Remarque :</b> Il est possible d'accéder directement à la valeur d'un nœud de l'arborescence du nœud enfant, sans ouvrir tous les niveaux
+		</p>
+	</div>
+
+	<b>Exemple :</b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			....<br>
+			&lt;contrat&gt;<br>
+			<div class="bai_tab">
+				&lt;souscripteur&gt;<br>
+				<div class="bai_tab">
+					&lt;nom&gt;DUPONT&lt;/nom&gt;<br>
+					&lt;prenom&gt;Marcel&lt;/prenom&gt;<br>
+					.....<br>
+				</div>
+				&lt;/souscripteur&gt;<br>
+				&lt;assures&gt;<br>
+				<div class="bai_tab">
+					....<br>
+				</div>
+				&lt;assures&gt;<br>
+			</div>
+			&lt;/contrat&gt;<br>
+		</div>
+
+		<p>
+			<span class="bai_code">?DATA("souscripteur.nom")</span> : valeur du "nom" du "souscripteur" du noeud "contrat"
+		</p>
+	</div>
+
+	<h3>Lecture d'un attribut de noeud</h3>
+
+	<p>
+		Rappel: un nœud peut contenir des attributs, de la manire suivante:
+	</p>
+
+	<div class="bai_code">
+		<p>
+			&lt;nom attribut1="att1" attribut2="att2"&gt;valeur&lt;/nom&gt;
+		</p>
+	</div>
+
+	<p>
+		le noeud "nom" contient ici 2 attributs "attribut1" et "attribut2" et une "valeur"
+	</p>
+
+	<ul>
+		<li><b>?DATA("$attribut")</b> : donne la valeur de l'attribut "attribut" du nœud en cours</li>
+	</ul>
+
+
+	<h3>Lecture de la valeur d'un nœud</h3>
+
+	<p>
+		Rappel: un nœud "texte" est structuré ainsi : &lt;nom&gt;valeur&lt;/nom&gt;
+	</p>
+
+	<p>
+		Nous avons vu comment récupérer directement la valeur d'un nœud enfant, mais comment récupérer la valeur du nom en cours ?
+	</p>
+
+	<ul>
+		<li>?DATA("") : donne la valeur du nœud en cours</li>
+	</ul>
+
+	<div class="bai_exemple">
+		<p>
+			Dans notre exemple, chaque nœud "element" contient un attribut "record" et une valeur (A, B, C, etc...)
+		</p>
+
+		<p>
+			Voici donc le script finalisé
+		</p>
+
+		<div class="bai_code">
+			PRINT(XML:BALISE)<br>
+			SI XML:BALISE = "parametres" ;&gt;PARAMETRES<br>
+			SI IA = "elements" ;&gt;ELEMENTS<br>
+			FIN<br>
+			<br>
+			:PARAMETRES<br>
+			PRINT(?DATA("nature")+ ", date du traitement = " + ?DATA("datetraitement"))<br>
+			FIN<br>
+			<br>
+			:ELEMENTS<br>
+			XML:OPEN("element")<br>
+			<br>
+			:ELEMENTS_BOUCLE<br>
+			SI RESULT = 0 ;&gt;ELEMENTS_FIN<br>
+			<br>
+			PRINT("- "+ XML:BALISE + " " + ?DATA("$record") + " = " + ?DATA(""))<br>
+			XML:NEXT("element")<br>
+			<br>
+			&gt;ELEMENTS_BOUCLE<br>
+			:ELEMENTS_FIN<br>
+			<br>
+			XML:CLOSE("element")<br>
+			PRINT(XML:BALISE)<br>
+			FIN
+		</div>
+
+		<p>Résultat:</p>
+
+		<div class="bai_code">
+			--- debut de traitement ---<br>
+			parametres<br>
+			test de lecture, date du traitement = 01/05/2011<br>
+			elements<br>
+			- element 1 = A<br>
+			- element 2 = B<br>
+			- element 3 = C<br>
+			- element 4 = D<br>
+			- element 5 = E<br>
+			elements<br>
+			--- fin de traitement ---
+		</div>
+	</div>
+
+	<h3>Lecture filtrée des nœuds XML</h3>
+
+	<p>
+		Il est possible d'accéder à des nœuds XML à l'aide de filtre, pour tester la valeur d'un attribut.
+	</p>
+
+	<ul>
+		<li><b>Filtre avec XML:OPEN</b>
+			<p>
+				Lors de la lecture de la valeur d'un nœud, par une instruction XML:OPEN, il est possible de sélectionner seulement certains nœuds
+			</p>
+
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				<p>
+					Soit le XML suivant
+				</p>
+
+				<div class="bai_code">
+					&lt;clients&gt;<br>
+					<div class="bai_tab">
+						&lt;client&gt;<br>
+						<div class="bai_tab">
+							&lt;contrat type="voiture" police="P1"&gt;<br>
+							<div class="bai_tab">
+								&lt;souscripteur&gt;<br>
+								<div class="bai_tab">
+									testA<br>
+								</div>
+								&lt;/souscripteur&gt;<br>
+							</div>
+							&lt;/contrat&gt;<br>
+							&lt;contrat type="camion" police="P2"&gt;<br>
+							<div class="bai_tab">
+								&lt;souscripteur&gt;<br>
+								<div class="bai_tab">
+									testB<br>
+								</div>
+								&lt;/souscripteur&gt;<br>
+							</div>
+							&lt;/contrat&gt;<br>
+							&lt;contrat type="voiture" police="P3"&gt;<br>
+							<div class="bai_tab">
+								&lt;souscripteur&gt;<br>
+								<div class="bai_tab">
+									testC<br>
+								</div>
+								&lt;/souscripteur&gt;<br>
+							</div>
+							&lt;/contrat&gt;<br>
+						</div>
+						&lt;/client&gt;<br>
+					</div>
+					&lt;/clients&gt;
+				</div>
+
+				<p>
+					Voici un script qui permet de parcourir les contrats de type voiture
+				</p>
+
+				<div class="bai_code">
+					xml:open("contrat(type=voiture)")<br>
+					:boucle<br>
+					si result=0;&gt;suite<br>
+					print(?data("souscripteur"))<br>
+					xml:next("contrat(type=voiture)")<br>
+					&gt;boucle<br>
+					:suite<br>
+					xml:close("contrat(type=voiture)")
+				</div>
+			</div>
+		</li>
+		<li><b>Filtre avec ?DATA</b>
+			<p>
+				Le filtre peut être utilisé aussi avec la fonction ?DATA, pour localiser un contrat d'une police donnée.
+			</p>
+
+			<div class="bai_code">
+				print(?data("contrat(police=P1).souscripteur"))
+			</div>
+
+			<p>
+				A noter que si la valeur n'existe pas, un champ vide est retourné.
+			</p>
+		</li>
+	</ul>
+</body>

@@ -1,0 +1,36 @@
+<body>
+	<h2>Formules de calcul - Commandes de déclenchement d'une action BSE</h2>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>BASRUNACTION(<i>ActionName,Paramlist</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>Nouvelle fonction permettant d'exécuter une action BSE à partir d'une formule de calcul.</p>
+<pre><code class="c syntaxhl"><span class="CodeRay">IA$ := BASRunAction(ActionName,Paramlist)
+
+ActionName (string) : nom de l'action
+Paramlist (string) : liste des variables à passer en paramètre, séparées par des virgules.
+
+Les paramètres doivent être définis dans une variable Locale avec le même nom que la variable attendue par le script.</span></code></pre>
+<p>Cette action est synchrone, elle bloque donc l'utilisation de Belair durant son exécution.</p><br>
+	<h4>Nouvelle gestion des erreurs pour les erreurs remontées par le bas</h4>
+<p>L'utilisation de la fonction BASRUNACTION provoquait une interruption du traitement de la formule de calcul en cas d'erreur <br>(BASinactif, script inexistant, exception déclenchée dans le script BSE, ...)</p>
+<ul><li>Maintenant l'erreur retourne un contexte (E.HelpContext)</li>
+<li>Il permet de connaitre le type d'erreur</li>
+<p>Voici la liste des codes :</p>
+</ul><pre>      GeneralError        =  1,
+      UnexpectedError     =  2,
+      InsufficientRights  = 10,
+      SessionNotExists    = 20,
+      SessionLimitReached = 25,
+      NotAuthenticated    = 30,
+      BSEError            = 40,
+      LegacyActionError   = 50,
+      LicenceError        = 60,
+      BasSchedulerError   = 70</pre>
+
+Exemple:<br>
+<pre><code class="c syntaxhl"><span class="CodeRay">Error (BasError): Votre serveur d'application n'est pas démarré</span></code></pre>
+		</div>
+		</div>
+</body>

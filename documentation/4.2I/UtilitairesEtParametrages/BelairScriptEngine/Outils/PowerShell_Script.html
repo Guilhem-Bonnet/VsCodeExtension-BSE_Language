@@ -1,0 +1,55 @@
+<body>
+<h3>Lancement de processus Bse vers Powershell</h3>
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Ps:Exec</code>
+		</h3></div>
+		<div class="panel-body">
+<p>La fonction exécute une commande PowerShell puis retourne le résultat.</p><br>
+<p><b><u>Paramètres d'entrée :</u></b></p>
+<ul><li>Commande PowerShell</li></ul><br>
+<p><b><u>Résultat :</u></b></p>
+<p>#le texte de la valeur trouvée<br>Si la commande retourne une erreur. Le message d'erreur sera retourné par la fonction.</p>
+<p><b><u>Exemples :</u></b></p>
+<pre><code class="c syntaxhl"><span class="CodeRay">Local result1, result2
+result1 := Ps:Exec("for ($i = 0; $i -lt 10; $i++) { Write-Host -NoNewline $i; }")
+result2 := Ps:Exec("Get-Date -Format 'dd/MM/yyyy'")     
+print("Result 1 --&gt;%s", result1)
+print("Result 2 --&gt;%s", result2)                        
+return 0 </span></code></pre>
+<p><b><u>Résultat :</u></b></p>
+<pre><code class="c syntaxhl"><span class="CodeRay">Result 1 --&gt;0123456789
+Result 2 --&gt;21/02/2020return 0 </span></code></pre></div>
+</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Ps:ExecScript</code>
+		</h3></div>
+		<div class="panel-body">
+<p>La fonction exécute un script PowerShell puis retourne le résultat.</p><br>
+<p><b><u>Paramètres d'entrée :</u></b></p>
+<ul><li>1. Le chemin vers le script PowerShell</li>
+<li>2. Une chaîne a transmettre au script PowerShell (optionnel) en STDIN.</li></ul><br>
+<p><b><u>Résultat :</u></b></p>
+<p>#le texte de la valeur trouvée<br>Si le Script retourne une erreur. Le message d'erreur sera retourné par la fonction.</p>
+<p><b><u>Exemples :</u></b></p>
+<p><u>Script BSE :</u></p>
+<pre><code class="c syntaxhl"><span class="CodeRay">local output, input                                                
+input := "Test" 
+output := Ps:ExecScript("test.ps1", input)
+return output</span></code></pre>
+<p><u>Script PowerShell :</u></p>
+<pre><code class="c syntaxhl"><span class="CodeRay">$InputPipe = [Console]::OpenStandardInput(4096)
+$Encoding = New-Object System.Text.UTF7Encoding
+$InputStream = New-Object System.Byte[] 4096
+$NbByteRead = $InputPipe.Read($InputStream, 0, 4096)
+$ResultFromInputPipe = $Encoding.GetString($InputStream, 0, $NbByteRead)
+
+$Result = 'Unit {0}× Ø &gt;fá¥╗╔╩╦╠­­éà'  -f $ResultFromInputPipe
+return $Result</span></code></pre>
+<p><b><u>Résultat :</u></b></p>
+<pre><code class="c syntaxhl"><span class="CodeRay">Script result:
+Unit Test× Ø &gt;fá¥╗╔╩╦╠­­éà</span></code></pre></div>
+</div>
+</body>

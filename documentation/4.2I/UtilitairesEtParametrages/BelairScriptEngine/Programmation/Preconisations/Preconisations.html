@@ -1,0 +1,215 @@
+<body>
+
+<h2>Préconisations</h2>
+<br>
+<h3>Indentation</h3>
+<br>
+<p>L'indentation doit respecter la logique de la majorité des languages de programmation :</p>
+
+<pre>if condition then
+begin
+  code
+end
+</pre>
+
+<pre>while condition
+begin
+  code
+end
+</pre>
+
+<p>etc.
+<br><br>Il est également recommandé d'indenter en fonction du flux XML renvoyé, quand cela est possible.</p>
+
+<pre>local doc
+doc := XML:New()
+XML:StartNode(doc, "tiers")
+  XML:AppendNode(doc, "b_numtiers", tiers.Num)
+  XML:AppendNode(doc, "b_numdpp", tiers.NumDPP)
+XML:EndNode(doc)
+return doc </pre>
+<br>
+<h3>Résultat des actions</h3>
+<br>
+<h4>Retour d'actions</h4>
+<br>
+<ul>
+<li><u>Suppression</u> :
+<br>Une action de suppression qui ne supprime aucun enregistrement, car ces derniers sont inexistants, doit renvoyer une valeur 0. Elle ne doit pas générer d'exception pour cas précis.</li>
+<li><u>Mise à jour</u> :
+<br>Une action de suppression qui ne modifie aucun enregistrement, car ces derniers sont inexistants, doit renvoyer une valeur 0. Elle ne doit pas générer d'exception pour cas précis.</li>
+<li><u>Ajout</u> :
+<br>L'envoi du nombre d'enregistrements créés n'est pas nécessaire. En cas de nom création, une exception doit survenir.</li>
+<li><u>Sélection</u> :
+<br>L'envoi du nombre d'enregistrements créés n'est pas nécessaire.</li>
+</ul>
+<br>
+<div class="alert alert-info" role="alert">
+<p><strong>A savoir que :</strong>
+<br>
+<br></p><ul><li>Si le retour est un flux XML, alors ajoutez une balise &lt;result&gt;. Selon le XML renvoyé, formatez-le de manière à avoir un flux cohérent.</li>
+<li>Si le retour est vide, il est conseillé de ne pas renvoyer un flux XML, mais uniquement la valeur 0.</li></ul></div>
+<br>
+<h3>Cahier des charges</h3>
+<br>
+<p>Le cahier des charges de chaque action doit comporter :</p>
+
+<ul>
+<li>les données en entrée, avec le champ des possibles pour les noeuds qui ne correspondent pas à un champ du modèle ;</li>
+<li>les données attendues en sortie, dans le cas où il n'y a pas d'exception ;
+<br><br>
+<div class="alert alert-info" role="alert">
+<p><strong>A noter que :</strong>
+<br>
+<br></p><ul>
+<li>Dans le cas de la suppression d'un élément inexistant, aucune exception n'est renvoyée. L'appelant peut, par exemple, tester &lt;result&gt;.</li>
+<li>L'envoi d'une balise &lt;result&gt; n'empêche bien évidemment pas de renvoyer des informations complémentaires sur la raison d'un échec, à des fins de déboguage.</li></ul></div></li>
+
+<li>les cas d'exceptions possibles gérés par le script (exemple : paramètre attendu manquant).</li>
+</ul>
+<br>
+<h4>Choix entre une propriété ou un setter/getter pour un objet</h4>
+<br>
+<p>Pour un objet qui fait référence à une entité de la base de données, si la valeur :</p>
+
+<ul>
+<li>est un champ calculé qui n'existe pas physiquement, mais qui est défini dans le modèle (metadata.xml), alors c'est une propritété ;</li>
+<li>n'est pas définie dans le modèle, alors : définir un setter/getter.
+<br>
+<br><b>Exemple :</b>
+<br><br>
+<ul>
+<li>tiers.nattiers est un champ calculé : c'est donc une propriété.</li>
+<li>dpp.age est un champ calculé : c'est donc une propriété.</li>
+<li>dpp.GetIsAdult est un getter, car il ne fait référence à aucun champ du modèle.</li>
+</ul></li>
+</ul>
+<br>
+<h4>Variables</h4>
+<br>
+<p><strong>Généralités</strong></p>
+
+<p>Les variables globales sont interdites.
+<br>Il est interdit d'utiliser les variables IA-IZ, XA-XZ (afin par exemple de faciliter la lecture des requêtes avec paramètres).</p>
+
+<br>
+<h4>Choix de la casse</h4>
+<br>
+<p><u>Procédures/Fonctions intégrées au language</u> :</p>
+
+<p>Utiliser les minuscules.
+<br>Exemple : "begin", "end", "uses", "local", "function", etc.</p>
+<br>
+<p><u>Procédures/Fonctions utilisateur</u> :</p>
+
+<p>Utiliser le CamelCase.
+<br>Exemple : "function GetAge(tiers)".</p>
+
+<p>Dans le cas d'une procédure qui s'applique à un objet, et dans le contexte actuel d'absence d'entité, nommer :
+Objet_FonctionDeLObjet.
+<br>Exemple : "Tiers_GetIban".</p>
+<br>
+<p><u>Variables</u> :</p>
+
+<p>Utiliser le camelCase.
+<br>Exemple : "ageDuTiers".</p>
+<br>
+<p><u>Objets</u> :</p>
+
+<p>Un object est une variable de type pointeur.
+<br>Utiliser le même camelCase.
+<br>exemple : "tiers".</p>
+<br>
+<h3>SQL Injection</h3>
+<br>
+<div class="alert alert-danger" role="alert">  <p><b>Attention :</b>
+<br>
+<br>Il est interdit d'exécuter une requête SQL de cette manière :
+<br>SQL:New("select * from [tiers] where b_rsociale = " + Nom).</p> </div>
+<br>
+<p>Dans le cas d'un SQL dynamique, voici un exemple :</p>
+
+<pre>Local SQL, name, birthday, firstCondition
+firstCondition := True
+birthday := GetExtParam("DateNaissance")
+name := GetExtParam("Nom")
+SQL := "select b_numdpp from [dpp]" 
+if not(IsNull(birthday)) then
+begin
+  // should be a function actually
+  if firstCondition then
+  begin
+    SQL := SQL + "where " 
+    firstCondition := False
+  end
+  else
+    SQL := SQL + " and " 
+
+  SQL := SQL + "b_datenaiss = :birthday" 
+end
+if not(IsNull(name)) then
+begin
+  // should be a function actually
+  if firstCondition then
+  begin
+    SQL := SQL + "where" 
+    firstCondition := False
+  end
+  else
+    SQL := SQL + " and " 
+  SQL := SQL + "b_nom = :name" 
+end
+SQL:New(SQL)
+[...]</pre>
+<br>
+<h3>Fonctions ou actions</h3>
+
+<br>
+<div class="alert alert-danger" role="alert">  <p><b>Attention :</b>
+<br>
+<br>Il est interdit d'appeler une action dans une autre action.</p> </div>
+
+<p>
+<br>Si l'action A a besoin de l'action B, alors factoriser de la manière suivante :</p>
+
+<ul>
+<li>1. Déplacer le code de A dans une fonction d'une librairie.</li>
+<li>2. Modifier l'action de A pour utiliser cette fonction.</li>
+<li>3. Utiliser cette même fonction dans l'action B.</li>
+</ul>
+<br>
+<h3>Tests unitaires</h3>
+<br>
+<p>Il convient de lancer l'ensemble des tests unitaires avant de commiter.
+<br><br>
+</p><div class="alert alert-danger" role="alert">  <p><b>Attention :</b>
+<br>
+<br>Les tests unitaires peuvent modifier la base. Il ne faut pas les lancer sur une base utilisée à d'autres fins.</p> </div>
+<br>
+<h3>Tests d'intégration</h3>
+<br>
+<p>Les tests d'intégration ne sont pas du ressort de l'équipe de développement BSE.</p>
+<br>
+<h3>Arboresence et nommage des fichiers</h3>
+<br>
+<p>L'arborescence est la suivante :
+<br>
+<br>\- StdTests : contient les tests.
+<br>\- Std : contient les actions.
+<br>\- Libs : contient les librairies.
+<br>
+<br>Les unités sont sur 3 niveaux :</p>
+
+<ul>
+<li>1er : actions visibles de l'extérieur.
+<br>Convention de nommage : <i>ObjetMetier + Action</i>. Exemple : Tiers_Create.</li>
+<li>2ème : librairies concernant un objet métier.
+<br>Convention de nommage : <i>ObjetMetier_Manager + Action</i>. Exemple : TiersManager_CreateTiers.</li>
+<li>3ème : librairies concernant une entité.
+<br>Convention de nommage : <i>Entite + Action</i>. Exemples : Tiers_Create ; DPP_Create ; DPM_Create.</li>
+</ul>
+
+<br>
+<br>
+
+</body>

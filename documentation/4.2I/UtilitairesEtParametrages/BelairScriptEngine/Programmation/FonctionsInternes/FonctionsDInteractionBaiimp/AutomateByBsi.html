@@ -1,0 +1,141 @@
+<body>
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>AutomateByBsi(filename, [data])</code>
+	</h3></div>
+	<p></p>
+	<div class="alert alert-warning" role="alert">
+	Cette fonction nécessite l'installation du service <b>BAiimpPool</b>
+	</div>
+
+	<div class="panel-body">
+	<p>La fonction exécute en mode synchrone le script automate contenu dans un fichier (.BSI) et récupère le résultat du script après son exécution.</p>
+
+	</div>
+
+	<p>
+		<b>Paramètres :</b>
+		<br>
+		</p><ul>
+			<li><code>filename</code> : nom du fichier .BSI à exécuter</li>
+			<li><code>data</code> (optionnel): Flux XML contenant les données à transmettre à l'automate.</li>
+		</ul>
+	
+
+	<p>
+		<b>Résultat :</b>
+		<br>
+		</p><ol>
+		<li>Un objet</li>
+		</ol>
+
+	<div class="alert alert-info" role="alert">
+	Description des propriétés de l'objet
+	</div>
+		<ul>
+			<li>BSC : Cette propriété représente le BSC sous la forme historique.</li>
+			<li>Exception : Cette propriété est un Boolean qui indique si une erreur a eu lieu dans le script.</li>
+			<li>EndAt :  Cette propriété est la date de fin d'exécution du script automate.</li>
+			<li>Error : Cette propriété reprend le message d'erreur remonté par le script. (Vide si « Exception » est à faux)</li>
+			<li>NbLinesRead : Cette propriété indique le nombre de ligne lues dans le script</li>
+			<li>Result : Cette propriété reprend toutes les informations retournées par le script (instructions <code>Print(message)</code>.</li>
+			<li>StartAt : Cette propriété est la date de début d'exécution du script automate.</li>
+		</ul>
+	
+
+	<div class="alert alert-info" role="alert">
+	Normalisation de la locaisation des scripts exploités par la fonction <code>AutomateByBsi</code>.<br>
+	Comme pour les scripts BSE, les scripts BSI sont recherchés dans l'ordre dans les répertoires suivants:
+	<ol>
+		<li>...\APPxxx\BSIScripts\Custom</li>
+		<li>...\APPxxx\BSIScripts\Std</li>
+	</ol>
+	</div>
+
+
+	<h3>Exemple</h3>
+
+<b>code</b>
+<pre><code class="c syntaxhl"><span class="n">local</span> <span class="n">result</span><span class="p">,</span> <span class="n">scriptfile</span><span class="p">,</span> <span class="n">data</span>
+<span class="n">scriptfile</span> <span class="o">:=</span> <span class="s">"tiers_detail_test.BSI"</span> 
+<span class="n">data</span> <span class="o">:=</span> <span class="s">"&lt;xml&gt;&lt;data&gt;&lt;dossier&gt;1009&lt;/dossier&gt;&lt;/data&gt;&lt;/xml&gt;"</span> 
+<span class="n">result</span> <span class="o">:=</span> <span class="n">automateByBsi</span><span class="p">(</span><span class="n">scriptfile</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">Dumpvar</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre>
+
+<b>résultat</b>
+
+<pre><code class="xml syntaxhl">Object (Object):
+  Bsc (UnicodeString): **** Début de traitement : 2020-06-12_15-40-38 (script D:\belair42\APPDEI\BSIScripts\Std\tiers_detail_test.BSI)  **** 
+<span class="nt">&lt;tiers</span> <span class="na">dossier=</span><span class="s">"1009"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;adresse&gt;&lt;B_NUMTIERS&gt;</span>1009<span class="nt">&lt;/B_NUMTIERS&gt;&lt;B_TYPTIERS&gt;</span>1T<span class="nt">&lt;/B_TYPTIERS&gt;&lt;B_NUMDPP&gt;</span>0<span class="nt">&lt;/B_NUMDPP&gt;</span>
+<span class="nt">&lt;B_TITRE&gt;</span>ETS<span class="nt">&lt;/B_TITRE&gt;&lt;B_RSOCIALE&gt;</span>USINE<span class="nt">&lt;/B_RSOCIALE&gt;&lt;B_REFERENC&gt;</span>TOTO<span class="nt">&lt;/B_REFERENC&gt;</span>
+<span class="nt">&lt;B_CONNEXE&gt;</span>SATIN<span class="nt">&lt;/B_CONNEXE&gt;&lt;B_REFEXT/&gt;&lt;B_ADR1&gt;</span> 15        RUE       <span class="nt">&lt;/B_ADR1&gt;</span>
+<span class="nt">&lt;B_ADR2&gt;</span>VICTOR HUGO<span class="nt">&lt;/B_ADR2&gt;&lt;B_ADR3/&gt;&lt;B_CODP&gt;</span>92150<span class="nt">&lt;/B_CODP&gt;&lt;B_VILLE&gt;</span>SURESNES<span class="nt">&lt;/B_VILLE&gt;</span>
+<span class="nt">&lt;B_CODEPAYS/&gt;&lt;B_PAYS/&gt;&lt;B_NTEL&gt;</span>010101010<span class="nt">&lt;/B_NTEL&gt;&lt;B_NFAX/&gt;</span>
+<span class="nt">&lt;B_NUMEMAIL&gt;</span>externe2@belair-info.fr<span class="nt">&lt;/B_NUMEMAIL&gt;&lt;B_EXT&gt;</span>XTADW
+XTLOG
+XTPES
+<span class="nt">&lt;/B_EXT&gt;&lt;B_IMAGES/&gt;&lt;B_GOMMETTE/&gt;&lt;B_OLE/&gt;&lt;B_DATDERMO&gt;</span>9/30/2019 9:35:32 AM<span class="nt">&lt;/B_DATDERMO&gt;</span>
+<span class="nt">&lt;B_MODIFPAR&gt;</span>SUPERVISEUR<span class="nt">&lt;/B_MODIFPAR&gt;&lt;B_NBPERCHA/&gt;</span>
+<span class="nt">&lt;B_ADRINSEE&gt;</span>T<span class="nt">&lt;/B_ADRINSEE&gt;&lt;B_GRCOK&gt;</span>T<span class="nt">&lt;/B_GRCOK&gt;&lt;B_NONEPUR&gt;</span>F<span class="nt">&lt;/B_NONEPUR&gt;&lt;/adresse&gt;</span>
+<span class="nt">&lt;AdresseInsee&gt;</span>
+<span class="nt">&lt;SaisieInsee&gt;</span>T<span class="nt">&lt;/SaisieInsee&gt;</span>
+<span class="nt">&lt;NumVoie&gt;</span>15   <span class="nt">&lt;/NumVoie&gt;</span>
+<span class="nt">&lt;CodeBis&gt;</span>   <span class="nt">&lt;/CodeBis&gt;</span>
+<span class="nt">&lt;NatVoie&gt;</span>RUE <span class="nt">&lt;/NatVoie&gt;</span>
+<span class="nt">&lt;LibelleVoie&gt;</span>VICTOR HUGO<span class="nt">&lt;/LibelleVoie&gt;</span>
+<span class="nt">&lt;INSEEvoie&gt;</span>     <span class="nt">&lt;/INSEEvoie&gt;</span>
+<span class="nt">&lt;CompAdr/&gt;</span>
+<span class="nt">&lt;Localite&gt;</span>SURESNES<span class="nt">&lt;/Localite&gt;</span>
+<span class="nt">&lt;INSEElocalite/&gt;</span>
+<span class="nt">&lt;CodePostal&gt;</span>92150<span class="nt">&lt;/CodePostal&gt;</span>
+<span class="nt">&lt;BurDist&gt;</span>SURESNES<span class="nt">&lt;/BurDist&gt;</span>
+<span class="nt">&lt;CodePays/&gt;</span>
+<span class="nt">&lt;Pays/&gt;</span>
+<span class="nt">&lt;Adresse1&gt;</span>15      RUE VICTOR HUGO<span class="nt">&lt;/Adresse1&gt;</span>
+<span class="nt">&lt;Adresse2/&gt;</span>
+<span class="nt">&lt;Adresse3/&gt;</span>
+<span class="nt">&lt;/AdresseInsee&gt;</span>
+<span class="nt">&lt;/tiers&gt;</span>
+**** Fin : 2020-06-12_15-40-38 ****  Nombre des lignes lus : 2
+
+  EndAt (UnicodeString): 12/06/2020 15:40:38
+  Error (UnicodeString): 
+  Exception (Boolean): False
+  NbLinesRead (Integer): 2
+  Result (UnicodeString): <span class="nt">&lt;tiers</span> <span class="na">dossier=</span><span class="s">"1009"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;adresse&gt;&lt;B_NUMTIERS&gt;</span>1009<span class="nt">&lt;/B_NUMTIERS&gt;&lt;B_TYPTIERS&gt;</span>1T<span class="nt">&lt;/B_TYPTIERS&gt;&lt;B_NUMDPP&gt;</span>0<span class="nt">&lt;/B_NUMDPP&gt;</span>
+<span class="nt">&lt;B_TITRE&gt;</span>ETS<span class="nt">&lt;/B_TITRE&gt;&lt;B_RSOCIALE&gt;</span>USINE<span class="nt">&lt;/B_RSOCIALE&gt;&lt;B_REFERENC&gt;</span>TOTO<span class="nt">&lt;/B_REFERENC&gt;</span>
+<span class="nt">&lt;B_CONNEXE&gt;</span>SATIN<span class="nt">&lt;/B_CONNEXE&gt;&lt;B_REFEXT/&gt;&lt;B_ADR1&gt;</span> 15        RUE       <span class="nt">&lt;/B_ADR1&gt;&lt;B_ADR2&gt;</span>VICTOR HUGO<span class="nt">&lt;/B_ADR2&gt;&lt;B_ADR3/&gt;</span>
+<span class="nt">&lt;B_CODP&gt;</span>92150<span class="nt">&lt;/B_CODP&gt;&lt;B_VILLE&gt;</span>SURESNES<span class="nt">&lt;/B_VILLE&gt;&lt;B_CODEPAYS/&gt;&lt;B_PAYS/&gt;</span>
+<span class="nt">&lt;B_NTEL&gt;</span>010101010<span class="nt">&lt;/B_NTEL&gt;&lt;B_NFAX/&gt;&lt;B_NUMEMAIL&gt;</span>externe2@belair-info.fr<span class="nt">&lt;/B_NUMEMAIL&gt;&lt;B_EXT&gt;</span>XTADW
+XTLOG
+XTPES
+<span class="nt">&lt;/B_EXT&gt;&lt;B_IMAGES/&gt;</span>
+<span class="nt">&lt;B_GOMMETTE/&gt;&lt;B_OLE/&gt;&lt;B_DATDERMO&gt;</span>9/30/2019 9:35:32 AM<span class="nt">&lt;/B_DATDERMO&gt;</span>
+<span class="nt">&lt;B_MODIFPAR&gt;</span>SUPERVISEUR<span class="nt">&lt;/B_MODIFPAR&gt;&lt;B_NBPERCHA/&gt;</span>
+<span class="nt">&lt;B_ADRINSEE&gt;</span>T<span class="nt">&lt;/B_ADRINSEE&gt;&lt;B_GRCOK&gt;</span>T<span class="nt">&lt;/B_GRCOK&gt;&lt;B_NONEPUR&gt;</span>F<span class="nt">&lt;/B_NONEPUR&gt;&lt;/adresse&gt;</span>
+<span class="nt">&lt;AdresseInsee&gt;</span>
+<span class="nt">&lt;SaisieInsee&gt;</span>T<span class="nt">&lt;/SaisieInsee&gt;</span>
+<span class="nt">&lt;NumVoie&gt;</span>15   <span class="nt">&lt;/NumVoie&gt;</span>
+<span class="nt">&lt;CodeBis&gt;</span>   <span class="nt">&lt;/CodeBis&gt;</span>
+<span class="nt">&lt;NatVoie&gt;</span>RUE <span class="nt">&lt;/NatVoie&gt;</span>
+<span class="nt">&lt;LibelleVoie&gt;</span>VICTOR HUGO<span class="nt">&lt;/LibelleVoie&gt;</span>
+<span class="nt">&lt;INSEEvoie&gt;</span>     <span class="nt">&lt;/INSEEvoie&gt;</span>
+<span class="nt">&lt;CompAdr/&gt;</span>
+<span class="nt">&lt;Localite&gt;</span>SURESNES<span class="nt">&lt;/Localite&gt;</span>
+<span class="nt">&lt;INSEElocalite/&gt;</span>
+<span class="nt">&lt;CodePostal&gt;</span>92150<span class="nt">&lt;/CodePostal&gt;</span>
+<span class="nt">&lt;BurDist&gt;</span>SURESNES<span class="nt">&lt;/BurDist&gt;</span>
+<span class="nt">&lt;CodePays/&gt;</span>
+<span class="nt">&lt;Pays/&gt;</span>
+<span class="nt">&lt;Adresse1&gt;</span>15      RUE VICTOR HUGO<span class="nt">&lt;/Adresse1&gt;</span>
+<span class="nt">&lt;Adresse2/&gt;</span>
+<span class="nt">&lt;Adresse3/&gt;</span>
+<span class="nt">&lt;/AdresseInsee&gt;</span>
+<span class="nt">&lt;/tiers&gt;</span>
+  StartAt (UnicodeString): 12/06/2020 15:40:38
+</code></pre>
+</div></body>

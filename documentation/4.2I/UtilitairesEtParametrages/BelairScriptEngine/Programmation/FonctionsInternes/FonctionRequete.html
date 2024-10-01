@@ -1,0 +1,27 @@
+<body>
+
+<h3>Fonctions Requête</h3>
+<br>
+<h3>Paramètres</h3>
+
+<ul><li>Nom de la requête : string (Obligatoire)
+    </li><li>La liste des paramètres et leur valeur : string (Facultatif)
+     <ul><li>Format -NomDuParamétres :LaValeur ….</li></ul></li></ul>
+<h3>Explication du nouveau comportement</h3>
+<p>Avec ce nouveau comportement il n’y a plus de fenêtre de saisie pour les paramètres.
+Le seul moyen de définir les valeurs pour la requête est le deuxième paramètre de la fonction.
+Si un état doit sortir alors le fichier sera save en PDF dans le dossier de travail.
+Pour récupère le chemin utilisé la fonction PDFFILE.</p>
+<h3>Exemples :</h3>
+<pre>Requete("DS01", "-CDPFIN:01290")
+Print(PDFFILE)
+
+Requete("DS01")
+Print(PDFFILE)
+
+Requete("DS01", "")
+Print(PDFFILE)
+
+FIN</pre>
+<br>
+</body>

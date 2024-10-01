@@ -1,0 +1,73 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Societe_ListItems</code></h3>
+		</div>
+
+<p>Liste des entités comptables (sociétés) avec informations sur le tiers associé en portefeuille</p>
+
+	<a name="Param%C3%A8tres"></a>
+<h2>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h2>
+
+
+La liste peut être filtrée si un des 3 paramètres suivants est indiqué : 
+	<ul>
+	<li>entite=nnn  : N. entite (optionnel)</li>
+		<li>orias="aaa" : N. Orias (optionnel)</li>
+		<li>siren="aaa" : N. Siren (optionnel)</li>
+		<li>adresse (booléen, optionnel, Default=False) : avec détail adresse</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h2>Retour<a href="#Retour" class="wiki-anchor"></a></h2>
+
+
+	<p>Flux XML<br></p><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;societe-rows&gt;</span>
+  <span class="nt">&lt;societe&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"KCO"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Arrondi"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Avec_tva"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Balance"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2021-01-27T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Codek"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Date"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2021-08-03T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Devise"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>EUR<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Entite"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Epur"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"1994-12-31T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Libk"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Comptabilité Modèle n. 1 Bel Air<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Orias"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Password"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Resultat"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"38"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Siren"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>357465454546541<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;adresse_insee&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Object"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Adr1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span> 1         AVE       <span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Adr2"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>de l'Atlantique<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Adr3"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>SILIC 907<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Adresse1"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span> 1         AVE       <span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Adresse2"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>de l'Atlantique<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Adresse3"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>SILIC 907<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"BurDist"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>LES ULIS<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodeBis"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodePays"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FR<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodePostal"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>91940<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CompAdr"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"INSEElocalite"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"INSEEvoie"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"LibelleVoie"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Localite"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>LES ULIS<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"NatVoie"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"NumVoie"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pays"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FRANCE<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"SaisieInsee"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;/adresse_insee&gt;</span>
+  <span class="nt">&lt;/societe&gt;</span>
+...
+<span class="nt">&lt;/societe-rows&gt;</span>
+</code></pre>
+</div></body>

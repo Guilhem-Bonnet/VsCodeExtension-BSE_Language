@@ -1,0 +1,187 @@
+<body>
+<h2>BASAdmin : console d'administration du BAS</h2>
+
+<div class="alert alert-info" role="alert">
+BasAdmin est la console graphique d'administration du BAS
+</div>
+<p>Cet utilitaire permet d'effectuer les opérations suivantes<br>
+</p><div>
+<ul>
+	<li>Installation / désinstallation du service Bas (BasDaemon)</li>
+	<li>Démarrage / Arrêt / Redémarrage du service</li>
+	<li>Installation d'une base Belair</li>
+	<li>Désinstallation d'une base Belair</li>
+	</ul>
+<ul>
+</ul></div>
+<div>
+<ul>
+	<li>Installation / désinstallation du service complémentaire BaiimpPool (BaiimpPool)</li>
+	<li>Démarrage / Arrêt / Redémarrage du service</li>
+	<li>Installation d'une base Belair</li>
+	<li>Désinstallation d'une base Belair<br></li>
+</ul>
+</div>
+<div>
+<ul>
+	<li>Installation / désinstallation du service complémentaire BaiGelDesAvoirs</li>
+	<li>Configuration du service BaiGelDesAvoirs</li>
+</ul>
+</div>
+
+<div class="alert alert-info" role="alert">
+Installation et démarrage
+</div>
+<p>BasAdmin.exe est installé dans le répertoire d'installation des programmes Belair (uniquement en mode <b>serveur</b> ou <b>mono-poste</b>)</p>
+<p>BasAdmin.exe doit être exécuté sur la machine hébergeant le serveur BAS, <b>en mode administrateur</b></p>
+
+<div class="alert alert-info" role="alert">
+Fonctions d'administration BasDaemon
+</div>
+<p>
+L'onglet BasDeamon présente les fonctions de configuration du service BasDeamon.
+</p>
+
+<p>
+<img src="images/basadmin42e_admin.png" class="img-responsive"><br>
+</p>
+<p>
+Sélectionnez le fichier de paramétrage du service Bas (fichier <b>BasDaemon.conf</b> qui se trouve normalement dans le même répertoire).<br>
+Vous pouvez ensuite installer, désinstaller le service; le démarrer, l'arrêter et le relancer.
+</p>
+<div class="alert alert-info" role="alert">
+Installation d'une base Belair
+</div>
+<p>
+<img src="images/basadmin_installapplic.png" class="img-responsive"><br>
+L'onglet <b>Installer une base</b> permet d'ajouter une base Belair dans la liste des applications servies par BAS sur la machine<br>
+</p><ul>
+	<li>Sélectionnez le fichier de configuration de la base Belair (fichier Appxxx.conf)</li>
+	<li>Choisissez le port associé à cette base
+	<div class="alert alert-warning" role="alert">
+	Le même port ne peut pas être associé à deux applications Belair
+	</div>
+	</li>
+	<li>Cliquez sur <b>Enregistrer</b></li>
+</ul>
+
+
+<div class="alert alert-info" role="alert">
+Désinstallation d'une base Belair
+</div>
+<p>
+<img src="images/basadmin_uninstallapplic.png" class="img-responsive"><br>
+L'onglet <b>Desinstaller une base</b> permet d'enlever une base Belair de la liste des applications servies par BAS sur la machine<br>
+</p><ul>
+	<li>Sélectionnez dans la liste l'application à désinstaller</li>
+	<li>Cliquez sur <b>Supprimer</b></li>
+</ul>
+
+
+
+<div class="alert alert-info" role="alert">
+Démarrer / Arrêter / Relancer le service
+</div>
+<p>
+3 boutons permettent de démarrer, d'arrêter et de relancer le service Basdeamon<br>
+<img src="images/basadminstartstop.png" class="img-responsive"><br>
+</p>
+
+<div class="alert alert-info" role="alert">
+Fonctions d'administration BaiimpPool
+</div>
+<p>
+L'onglet BaiimpPool présente les fonctions de configuration du service BaiimpPool.
+</p>
+
+<p>
+<img src="images/basadminbaiimppool.png" class="img-responsive"><br>
+</p>
+<p>
+Sélectionnez le fichier de paramétrage du service BaiimpPool (fichier <b>baiimpService.conf</b> qui se trouve normalement dans le même répertoire).<br>
+Vous pouvez ensuite installer, désinstaller le service; le démarrer, l'arrêter et le relancer.
+</p>
+<div class="alert alert-info" role="alert">
+Installation d'une base Belair
+</div>
+<p>
+<img src="images/basadmin_installapplic.png" class="img-responsive"><br>
+L'onglet <b>Installer une base</b> permet d'ajouter une base Belair dans la liste des applications servies par BaiimpPool sur la machine<br>
+</p><ul>
+	<li>Sélectionnez le fichier de configuration de la base Belair (fichier Appxxx.conf)</li>
+	<li>Saisissez les paramètres de l'utilisateur Belair utilisé (nom et mot de passe)</li>
+	<li>Saisissez le nombre d'instance de l'automate (Baiimp.exe) à activer sur cette base</li>
+	<li>Cliquez sur <b>Enregistrer</b></li>
+</ul>
+
+
+<div class="alert alert-info" role="alert">
+Désinstallation d'une base Belair
+</div>
+<p>
+<img src="images/basadmin_uninstallapplic.png" class="img-responsive"><br>
+L'onglet <b>Desinstaller une base</b> permet d'enlever une base Belair de la liste des applications servies par BaiimpPool sur la machine<br>
+</p><ul>
+	<li>Sélectionnez dans la liste l'application à désinstaller</li>
+	<li>Cliquez sur <b>Supprimer</b></li>
+</ul>
+
+
+
+<div class="alert alert-info" role="alert">
+Démarrer / Arrêter / Relancer le service
+</div>
+<p>
+3 boutons permettent de démarrer, d'arrêter et de relancer le service BaiimpPool<br>
+<img src="images/basadminstartstop.png" class="img-responsive"><br>
+</p>
+
+<div class="alert alert-info" role="alert">
+Fonctions d'administration BaiGelDesAvoirs
+</div>
+<p>
+L'onglet BaiGelDesAvoirs présente les fonctions de configuration du service BaiGelDesAvoirs.
+</p>
+<img src="images/basadmin_gel_admin.png" class="img-responsive"><br>
+
+<p>
+Onglet Configuration<br>
+L'algorithme de comparaison entre une entité belair (personne morale, personne physique) et les entrées du registre du gel des avoirs se base sur un poids, affecté à chaque critère pouvant être pris en compte.<br>
+Le poids total (le niveau de pertinence) d'une recherche est donc un résultat mathématique combinant les poids des critères correspondant entre l'entité dans Belair et l'entrée dans le registre.
+</p><div class="alert alert-danger" role="alert">
+La modification de ces poids peut donc changer le résultat des recherches préalablement faites.
+</div>
+
+<p>
+Chacun des onglets ci-dessous permet de modifier le poids de chaque critère pour chaque entité.<br>
+<img src="images/basadmin_gel_general.png" class="img-responsive"><br>
+<img src="images/basadmin_gel_dpp.png" class="img-responsive"><br>
+<img src="images/basadmin_gel_dpm.png" class="img-responsive"><br>
+<img src="images/basadmin_gel_commun.png" class="img-responsive"><br>
+<img src="images/basadmin_gel_navire.png" class="img-responsive"><br>
+</p>
+
+<p>Le dernier onglet fixe le <strong>seuil minimum d'alerte</strong>.<br>
+Le critère principal de la comparaison se fait sur le nom indiqué dans le registre, comparé aux différentes informations compatibles dans Belair (nom, raison sociale, alias...).<br>
+Un algorithme de similitarité orthographique donne un coefficient (entre 0 et 1).<br>
+Si le résultat de l'algorithme est inférieur au seuil mimimal d'alerte paramétré, l'entrée de registre est dans l'évaluation de la pertinence de la comparaison.<br>
+<img src="images/basadmin_gel_algo.png" class="img-responsive"><br>
+</p>
+<p>
+</p><p><strong>Enregistrement de la configuration du service BaiGelDesAvoirs:</strong></p>
+<img src="images/basadmin_gel_enregistrer.png" class="img-responsive"><br>
+<div class="alert alert-waring" role="alert">
+Le service doit être redémarré pour que les modifications soient prises en compte.
+</div>
+
+<div class="alert alert-info" role="alert">
+Démarrer / Arrêter / Relancer le service
+</div>
+<p>
+3 boutons permettent de démarrer, d'arrêter et de relancer le service BaiGelDesAvoirs<br>
+<img src="images/basadminstartstop.png" class="img-responsive"><br>
+</p>
+
+
+
+</body>

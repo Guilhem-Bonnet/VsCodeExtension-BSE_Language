@@ -1,0 +1,78 @@
+<body>
+	<h2>Variables temporaires</h2>
+	
+	<br>
+
+	<p>
+		Les variables temporaires permettent de stocker des calculs intermédiaires, dans le but de simplifier les formules de calculs
+	</p>
+
+	<!-- Fonction I code type -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>I<i>Code type</i> := <i>valeur</i></code>  <b></b><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affectation d'une valeur à une variable temporaire.
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>Code</code> : Lettre 'A' à 'Z', c'est l'identifiant de la variable temporaire (vous disposez donc en permanence de 26 variables)<br><br>
+				<code>Type</code> : Type de variable
+				</p><ul>
+					<li>$ : variable alphabétique</li>
+					<li>N : variable numérique (non obligatoire)</li>
+					<li>X : variable booléenne</li>
+					<li>D : variable 'date'</li>
+				</ul>
+				<p>L'absence d'indicateur de 'Type' fera que la variable sera considérée par défaut comme numérique</p>
+				<code>Valeur</code> : Valeur à affecter (doit être du même type que la variable)
+				<br>
+			
+			<p>
+				<b>Exemple :</b>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						IAD:=?CONT("b_fincours") - 30 <span class="bai_comment">// date = 30 jours avant la fin de période en cours</span>
+					</span>
+				</div>	
+			
+			<p>
+				</p><div class="alert alert-danger" role="alert"><b>Attention</b> : Une variable temporaire garde sa valeur, tant qu'une autre valeur ne lui est pas affectée. Ceci permet notamment de passer une valeur stockée dans une variable temporaire d'une formule de calcul à une autre.</div>
+			
+		</div>
+	</div>	
+
+	<!-- Fonction I code -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>I<i>Code</i></code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Utilisation de la valeur d'une variable temporaire.
+			</p>
+			<p> 
+				<b>Paramètres :</b>
+				<br><br>
+				<code>Code</code> : code la variable à récupérer (lettre 'A' à 'Z')
+				<br><br>
+				Le 'Type' de variable n'est plus à préciser car elle contient maintenant une valeur de format défini.</p>
+			
+			<p>
+				<b>Exemple :</b>
+				</p><div class="bai_exemple">
+					<div class="bai_code">
+						&gt;IAD:=?CONT("b_fincours") - 30<br>
+						SI IA // la formule doit être ici de format alphabétique car il s'agit du format du résultat ="alerte
+					</div>
+				</div>	
+				<div class="alert alert-danger" role="alert">
+					<b>Attention</b> : Les variables sont GLOBALES et accessibles par tous les traitements déclenchés par script automate ou formule de calcul.<br>Les variables ne sont PAS REINITIALISEES à chaque utilisation dans un script ou une formule de calcul.
+				</div>
+			
+		</div>	
+	</div>
+</body>

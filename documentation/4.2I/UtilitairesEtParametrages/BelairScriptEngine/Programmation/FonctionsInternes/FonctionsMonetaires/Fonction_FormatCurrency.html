@@ -1,0 +1,76 @@
+<body>
+
+
+<h3>Fonctions monétaires</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FormatCurrency</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Formate une valeur de type monétaire.
+			<br>La spécification de format correspond à un <a href="http://docwiki.embarcadero.com/Libraries/Tokyo/fr/System.SysUtils.FormatFloat" target="__BLANK">formatage en Delphi</a>.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. La chaîne de format.</li>
+				<li>2. La valeur.</li></ul>
+			
+			
+			<p>
+			<b><br>Résultat :</b>
+			<br>La chaîne formatée.
+			</p>
+			
+			<p>
+			<br><b>Spécificateurs de formatage</b>
+			</p>
+			
+			<table class="table table-bordered"> 
+ <tbody> 
+  <tr> 
+   <td>Spécificateur</td> 
+   <td>Affichage</td> 
+  </tr> 
+  <tr> 
+   <td>0</td> 
+   <td>Emplacement d'un chiffre. Si la valeur en cours de formatage a un chiffre à la position où "0" apparaît dans la chaîne de formatage, alors ce chiffre est copié dans la chaîne de sortie. Sinon, un "0" est inclus à cette position dans la chaîne en sortie.</td>
+  </tr> 
+  <tr> 
+   <td>#</td> 
+   <td>Emplacement d'un chiffre. Si la valeur en cours de formatage a un chiffre à la position où "#" apparaît dans la chaîne de formatage, alors ce chiffre est copié dans la chaîne de sortie. Sinon, rien n'est inclus à cette position dans la chaîne en sortie.</td>
+  </tr> 
+  <tr> 
+   <td> </td> 
+   <td>Séparateur décimal. Le premier caractère point "." dans la chaîne de format détermine l'emplacement du séparateur décimal dans la valeur formatée ; les caractères "." supplémentaires sont ignorés.</td>
+  </tr>
+  <tr>
+  <td>,</td>
+  <td>Séparateur des milliers. Si la chaîne de format contient un ou plusieurs caractères ",", un séparateur des milliers sera inséré entre chaque groupe de trois chiffres situés à gauche de la virgule. L'emplacement et le nombre de caractères "," dans la chaîne de format n'affectent en rien la sortie ; la présence de ce caractère indique simplement que les milliers doivent être séparés.</td>
+  </tr>
+  <tr>
+  <td>;</td>
+  <td>Sépare les sections des nombres positifs, négatifs et nuls dans la chaîne de format.</td>
+  </tr>
+ </tbody> 
+</table> 
+			
+			<p>
+				<b><br>Exemples :</b><br>
+
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">Print(FormatCurrency(<span class="string"><span class="delimiter">"</span><span class="content">### ##0.00 RUR</span><span class="delimiter">"</span></span>, <span class="integer">1234</span><span class="float">5</span><span class="float">.6711</span>))
+Print(FormatCurrency(<span class="string"><span class="delimiter">"</span><span class="content">### ##0.00 $$$</span><span class="delimiter">"</span></span>, <span class="integer">1234</span><span class="float">5</span><span class="float">.6789</span>))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">12 345,67 RUR
+12 345,68 $$$
+</span></code></pre>
+				
+			
+		</div>
+	</div>
+</body>

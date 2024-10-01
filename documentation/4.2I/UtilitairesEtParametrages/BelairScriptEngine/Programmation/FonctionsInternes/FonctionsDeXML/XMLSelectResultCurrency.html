@@ -1,0 +1,55 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:SelectResultCurrency(doc, Xpath, default)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction sélectionne le nœud comme <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de XML" name="Fonctions%20de%20XML%20:%20XML:SelectResult">XML:SelectResult</a>, puis le convertie en type monétaire comme <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de XML" name="Fonctions%20de%20XML%20:%20XML:GetNodeCurrency">XML:GetNodeCurrency</a>.
+			</p>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>Xpath</code> : la requête XPath.</li>
+				<li><code>default</code> : la valeur par défaut, si la requête ne trouve rien (optionnel).</li>
+				</ul>
+					
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">items</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item1</span><span class="delimiter">"</span></span>, <span class="integer">12345</span><span class="float">6</span><span class="float">.78</span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item2</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">123456.78</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item3</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc)
+Print(XML:SelectResultCurrency(doc, <span class="string"><span class="delimiter">"</span><span class="content">/items/item1</span><span class="delimiter">"</span></span>))
+Print(XML:SelectResultCurrency(doc, <span class="string"><span class="delimiter">"</span><span class="content">/items/item2</span><span class="delimiter">"</span></span>))
+Print(XML:SelectResultCurrency(doc, <span class="string"><span class="delimiter">"</span><span class="content">/items/item3</span><span class="delimiter">"</span></span>, <span class="integer">87654</span><span class="float">3</span><span class="float">.21</span>))
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">123456,78
+123456,78
+876543,21
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;items&gt;</span>
+  <span class="tag">&lt;item1&gt;</span>1.23456780000000E+0005<span class="tag">&lt;/item1&gt;</span>
+  <span class="tag">&lt;item2&gt;</span>123456.78<span class="tag">&lt;/item2&gt;</span>
+  <span class="tag">&lt;item3</span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/items&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

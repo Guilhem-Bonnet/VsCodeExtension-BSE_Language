@@ -1,0 +1,117 @@
+<body>
+	<h2>Fonctions liées aux utilisateurs</h2>
+	<div class="panel panel-info">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>USERNAME</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				USERNAME ou USERCODE<br>Nom de l'utilisateur abrégé.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>USER</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Nom complet de l'utilisateur.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>USERGRPE</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				"Liste des groupes auxquels l'utilisateur appartient, séparés par un ";"
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>GROUPE("<i>chaîne</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Précision : "Cette fonction est dépréciée et maintenue pour maintenir la compatibilité ascendante, elle ne fonctionne que si les codes des groupes sont sur un 1 caractère"
+<br>Exemple : GROUPE("ABC") rend vrai si l'utilisateur appartient au groupe A, B ou C
+			</p>
+		</div>
+	</div>
+	
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>GRPE("<i>groupes</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				<i>(remplace la fonction GROUPE)</i> : Retourne la valeur vrai si l'utilisateur appartient à un des groupes de la liste passée en paramètre<br>
+<br>Parametres : </p><li>groupes : alphabétique, obligatoire : liste des codes de groupe, séparés par une virgule</li>
+<br>Exemple:
+<pre>
+IXX := GRPE("ADMINS,DIRECTION")
+</pre>
+			
+		</div>
+	</div>
+
+<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>USERCELLTEL(username)</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Numéro de portable de l'utilisateur "username" ou de l'utilisateur courant si non spécifié
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>USERWORKTEL(utilisateur)</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Numéro de téléphone de l'utilisateur "username" ou de l'utilisateur courant si non spécifié
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>USEREMAIL(utilisateur)</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Adresse email de l'utilisateur "username" ou de l'utilisateur courant si non spécifié
+			</p>
+		</div>
+	</div>
+
+
+
+
+</div></body>

@@ -1,0 +1,33 @@
+<body>
+	<h2>Variables liées aux encaissements</h2>
+	
+	<ul>
+		<li><code>SRA</code> : Somme restant à affecter</li>
+		<br>
+		<li><code>ENC_MON</code> : Montant encaissé / affecté</li>
+		<br>
+		<li><code>ENC_REF</code> : Référence du paiement</li>
+		<br>
+		<li><code>ENC_DAT</code> : Date du paiement</li>
+		<br>
+		<li><code>ENC_EFF</code> : Date d'effet d'encaissement</li>
+		<br>
+		<li><code>ENC_DEV</code> : Devise de l'encaissement en cours</li>
+		<br>
+		<li><code>ENC_TYP</code> : Type d'encaissement utilisé</li>
+		<br>
+		<li><code>ENC_TIE</code> : Tiers Payeur</li>
+		<br>
+		<li><code>ENC_ENTITE</code> : Permet de récupérer l'entité comptable en cours, lors d'une opération comptable</li>
+	</ul>
+	<br>
+	<p>
+		<b>Exemple :</b>
+		</p><div class="bai_exemple">
+			<span class="bai_code">
+				DEVSOM(ENC_MON,ENC_DEV,"EUR")
+			</span>
+			traduira le montant de l'encaissement effectué en euros.			
+		</div>
+	
+</body>

@@ -1,0 +1,87 @@
+<body>
+
+
+<h3>Fonctions de manipulation des objets</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Obj:New</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction crée une instance d'entité sans l'enregistrer dans la BDD. Afin de l'enregistrer : utilisez la fonction <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de manipulation des objets" name="Fonctions%20de%20manipulation%20des%20objets%20:%20Obj:Save">Obj:Save()</a>.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. Le type d'entité.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>Un objet métier ayant toutes les propriétés (champs) de l'entité non initialisées.
+			</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local adh, adh2
+adh := Obj:New(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>)
+adh.Contrat := <span class="integer">1</span>
+adh.Piece := <span class="integer">3</span>
+adh.Adhesion := <span class="integer">3</span>
+adh.Entree := EncodeDate(<span class="integer">2010</span>, <span class="integer">5</span>, <span class="integer">10</span>)
+adh.Sortie := Null()
+adh.Risklie := True
+adh.Prime := <span class="integer">12345</span><span class="float">6</span><span class="float">.78</span>
+adh.Prime1 := <span class="string"><span class="delimiter">"</span><span class="content">EUR</span><span class="delimiter">"</span></span> 
+adh.Tiers := <span class="integer">1000</span>
+Print(<span class="string"><span class="delimiter">"</span><span class="content">Adhésions créé</span><span class="delimiter">"</span></span>)
+Print(<span class="string"><span class="delimiter">"</span><span class="content">--------------</span><span class="delimiter">"</span></span>)
+Print(DumpVar(adh))
+Obj:Save(adh)
+adh2 := Obj:GetByKey(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>, adh.Contrat, adh.Piece, adh.Adhesion)
+Print(<span class="string"><span class="delimiter">"</span><span class="content">Adhésions récupéré</span><span class="delimiter">"</span></span>)
+Print(<span class="string"><span class="delimiter">"</span><span class="content">--------------</span><span class="delimiter">"</span></span>)
+Print(DumpVar(adh2))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre>
+Adhésions créé
+--------------
+Adhesion (Integer): 3
+Contrat (Integer): 1
+Entree (Date): unknown
+Motif (Empty): unknown
+Panier (Empty): unknown
+Piece (Integer): 3
+Prime (Double): 123456,78
+Prime1 (UnicodeString): EUR
+Risklie (Boolean): True
+Sortie (Empty): unknown
+Tiers (Integer): 1000
+
+Adhésions récupéré
+--------------
+Adhesion (Integer): 3
+Contrat (Integer): 1
+Entree (Date): unknown
+Motif (Null): unknown
+Panier (Null): unknown
+Piece (Integer): 3
+Prime (Double): 123456,78
+Prime1 (String): EUR
+Risklie (Boolean): True
+Sortie (Null): unknown
+Tiers (Integer): 1000
+</pre>
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

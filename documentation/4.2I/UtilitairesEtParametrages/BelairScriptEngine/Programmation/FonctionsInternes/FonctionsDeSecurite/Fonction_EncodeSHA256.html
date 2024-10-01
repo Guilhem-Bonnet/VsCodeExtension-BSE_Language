@@ -1,0 +1,38 @@
+<body>
+
+
+<h3>Fonctions de sécurité</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>EncodeSHA256(chaine)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie la valeur du texte, encodée en SHA-256.<br>
+			</p>
+			<div class="alert alert-info" role="alert">
+						   L'algorithme utilisée est SHA 2 512 tronqué avec des chaines de retour sur 256 bits:<br>
+						   Le vrai algorithme SHA2 512 retourne une chaîne sur 512 bits et non 256 bits. Cependant le 512 peut être attaqué alors que la version tronquée à 256 n'est pas attaquable, car il faut trouver la partie de la chaîne qui est tronquée avant de pouvoir attaquer.
+			</div>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>chaine</code> : la chaîne de caractères.</li></ul>
+				<br>
+			
+			
+			<p><b>Résultat :</b>
+			<br>La valeur encodée SHA-256.</p>
+			<br>
+			
+			<p>
+				<b>Exemples :</b><br>
+</p><pre>Print(EncodeSHA256("Test string"))</pre>				
+			
+			<p>Résultat :</p>
+			<pre>db6adcd8518774b49b6def2e9d148c7c90af660228f734abb56342b2a3934b44</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,51 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Xtlog_Login</code></h3>
+		</div>
+
+	<p>Connexion d'un utilisateur externe à une plate forme externe (extranet, etc...)<br>Cet utilisateur doit être associé à un dossier Tiers de Belair</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>login (string, obligatoire) : login utilisateur</li>
+		<li>password (string, obligatoire) : mot de passe</li>
+		<li>domain (string, obligatoire) : domaine concerné (ex. 'ECF', 'CMI', 'INTRANET'...)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux Xml:</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;tiers</span> <span class="na">dossier=</span><span class="s">"1000"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;role&gt;</span>C<span class="nt">&lt;/role&gt;</span>
+  <span class="nt">&lt;rsociale&gt;</span>MARTIN Pierre<span class="nt">&lt;/rsociale&gt;</span>
+  <span class="nt">&lt;portef/&gt;</span>
+  <span class="nt">&lt;email/&gt;</span>
+<span class="nt">&lt;/tiers&gt;</span>
+</code></pre>
+
+	<p>En cas d'erreur, i.e. nombre de résultat(s)  1 :</p>
+
+
+	<ul>
+	<li>retour vide : <br><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;tiers/&gt;</span>
+</code></pre></li>
+	</ul>
+
+
+	<ul>
+	<li>et message dans le logError "login ou password incorrect"</li>
+	</ul>
+</div></body>

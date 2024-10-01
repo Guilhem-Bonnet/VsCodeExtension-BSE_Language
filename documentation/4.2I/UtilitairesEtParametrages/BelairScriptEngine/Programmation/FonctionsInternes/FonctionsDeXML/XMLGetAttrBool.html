@@ -1,0 +1,59 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:GetAttrBool(doc, name, default)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie la valeur d'attribut du nœud courant, convertie en type booléen.
+			<br>Si l'attribut n'existe pas, et si la valeur par défaut n'est pas spécifiée : alors, une erreur est générée.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>name</code> : le nom d'attribut.</li>
+				<li><code>default</code> : la valeur par défaut (optionnel).</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>La valeur (booléenne).
+			</p>
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+			</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">order</span><span class="delimiter">"</span></span>)
+  XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">completed</span><span class="delimiter">"</span></span>, <span class="predefined-constant">true</span>)
+  <span class="keyword">if</span> XML:GetAttrBool(doc, <span class="string"><span class="delimiter">"</span><span class="content">completed</span><span class="delimiter">"</span></span>) then
+    Print(<span class="string"><span class="delimiter">"</span><span class="content">Completed</span><span class="delimiter">"</span></span>)
+  <span class="keyword">else</span>
+    Print(<span class="string"><span class="delimiter">"</span><span class="content">Not yet</span><span class="delimiter">"</span></span>)
+  Print(XML:GetAttrBool(doc, <span class="string"><span class="delimiter">"</span><span class="content">modified</span><span class="delimiter">"</span></span>, <span class="predefined-constant">false</span>))
+XML:EndNode(doc)
+Print(XML:ToString(doc))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">Completed
+False
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;order</span> <span class="attribute-name">completed</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+</span></code></pre>
+
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

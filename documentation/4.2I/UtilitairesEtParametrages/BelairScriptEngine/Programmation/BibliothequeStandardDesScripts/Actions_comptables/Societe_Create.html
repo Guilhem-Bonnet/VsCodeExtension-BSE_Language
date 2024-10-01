@@ -1,0 +1,44 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Societe_Create</code></h3>
+		</div>
+
+<p>Création d'une ligne dans KCO</p>
+
+
+	<p><ins>Paramètres :</ins></p>
+
+
+	<ul>
+	<li>data : flux XML suivant<br><pre><code class="xml syntaxhl"><span class="nt">&lt;data&gt;</span>
+<span class="nt">&lt;entite&gt;</span>1<span class="nt">&lt;/entite&gt;</span>
+<span class="nt">&lt;codek&gt;</span>1<span class="nt">&lt;/codek&gt;</span>
+<span class="nt">&lt;libk&gt;</span>Comptabilité Modèle n. 1 Bel Air<span class="nt">&lt;/libk&gt;</span>
+<span class="nt">&lt;siren&gt;</span>357465454546541<span class="nt">&lt;/siren&gt;</span>
+<span class="nt">&lt;orias&gt;</span>123456789<span class="nt">&lt;/orias&gt;</span>
+<span class="nt">&lt;tiers&gt;</span>50<span class="nt">&lt;/tiers&gt;</span>
+<span class="nt">&lt;/data&gt;</span>
+</code></pre></li>
+	</ul>
+
+
+	<p><ins>Consignes concernant les paramètres :</ins></p>
+
+
+	<ul>
+	<li>si codek est indéfini, codek doit être déterminé automatiquement par l'action Societe_ListKcoItems (avec summary=true) pour récupérer le 1er code non utilisé (balise &lt;firstavailable&gt; ) </li>
+		<li>l'action doit elle même déterminer le n. de l'entité créée et le retourner dans le résultat de l'action : donné par le SQL 'SELECT MAX from [KCO]'</li>
+		<li>tiers : n. de tiers associé (ou 0)</li>
+	</ul>
+
+
+	<p><ins>Consignes concernant le retour :</ins></p>
+
+
+	<ul>
+	<li><code>entite</code>, <code>codek</code> et <code>numéro du tiers</code> doivent être retournés en cas de succès</li>
+		<li>le formatage de la réponse en cas de problème doit être respecté (ex. action User_Update)</li>
+	</ul>
+</div></body>

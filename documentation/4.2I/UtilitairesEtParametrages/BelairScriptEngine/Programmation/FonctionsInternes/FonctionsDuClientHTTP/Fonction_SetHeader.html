@@ -1,0 +1,49 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:SetHeader</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			Défini la valeur d'un champ header pour la prochaine requête.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. objet HTTP</li>
+				<li>2. chaîne, nom du champ</li>				
+				<li>3. chaîne, valeur du champ</li></ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			<br>Aucun.</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				</p><p>Note :</p>
+				<p>Dans cet exemple, on utilise httpbin.org, un site qui permet de vérifier la demande qui lui a été faite.</p>
+				<p>Le site retourne en json le détail de la requête qui lui a été passée.</p>
+				<p></p>
+				<p>Code :</p>
+				<div class="bai_exemple"><pre>local Http, Body, ContentType, Json
+Http := HTTP:New()
+HTTP:SetHeader(Http, "toto", "titi")
+Body := HTTP:GET(Http, "https://httpbin.org/get")
+Assert(HTTP:ResponseCode(Http) = 200)
+json := JSON:Open(Body)
+print(JSON:SelectResult(json, "headers.toto")))
+				</pre></div>	
+			
+			
+			<p>Résultat :</p>
+			
+			<pre>titi</pre>
+		</div>
+	</div>
+	<br><br>
+</body>

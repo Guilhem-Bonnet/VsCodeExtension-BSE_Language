@@ -1,0 +1,67 @@
+<body>
+<!-- titre page -->
+<h1 class="h1">Expressions régulières</h1>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>RegEx:Search(<i>regExObject, expression</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			La fonction tente de faire correspondre une expression régulière à n'importe quelle partie d'une séquence de caractères
+		</p>
+		<p>
+			<b>Paramètres :</b>
+			<br><br>
+			<code>regExObject</code> : Un objet de type 'RegEx'<br>
+			<code>expression</code> : Une expression régulière (string)
+		</p>
+
+		<p><b>Résultat</b>: Une variable de type boolean (True - Il y a au moins un match; False sinon)
+		</p>
+
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<pre><span class="bai_code">
+local regExObject, 
+
+regExObject := RegEx:New("Some people, when confronted with a problem, think I know, I'll use regular expressions. Now they have two problems.")
+if (RegEx:Search(regExObject,  "(\w{7,})")) then
+  DisplayResult(regExObject)
+if (not RegEx:Search(regExObject,  "(\w{12,})")) then
+  print("Regex (\w{12,}) not found") 
+return 0 
+
+function DisplayResult(regExObj)
+local i, j, subMatch
+  i := 0
+  while i  0 then
+    begin
+      j := 0
+      subMatch := RegEx:GetSubMatch(regExObj, i)
+      while j </span></pre>
+				</div>	
+			
+			<p>
+				<b>Résultat :</b>
+				</p><div class="bai_code">
+					<pre>
+Match index 0 → "confronted" 
+  • Sub Match index 0 → confronted
+Match index 1 → "problem" 
+  • Sub Match index 0 → problem
+Match index 2 → "regular" 
+  • Sub Match index 0 → regular
+Match index 3 → "expressions" 
+  • Sub Match index 0 → expressions
+Match index 4 → "problems" 
+  • Sub Match index 0 → problems
+Regex (Some Test)(.*) not found
+Script result:
+0</pre>
+				</div>
+			
+		</div>
+	</div>
+</body>

@@ -1,0 +1,75 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:GetNodeInt(doc, default)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie le texte du nœud courant converti en type numérique entier (32 bits).
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>default</code> : la valeur par défaut.</li>
+				</ul>
+			<br>
+			<p><b>Résultat :</b>
+			<br>La valeur de type numérique entier (integer) convertie à partir du texte du nœud courant.
+			<br>Si le texte est vide ou absent alors la valeur par défaut est retournée.
+			<br>
+			<br>Génère une erreur si la conversion n'est pas possible.
+			</p>
+			<br>
+			<p><b>Les valeurs/formats acceptées/és :</b></p>
+			<ul><li>Format fixe.</li>
+			<li>Valeurs entre -2 147 483 648 à 2 147 483 647.</li></ul>
+			
+			<p>Les valeurs de virgule flottante passées comme des arguments seront coupées.</p>
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">items</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item1</span><span class="delimiter">"</span></span>, <span class="integer">12345678</span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item2</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">12345678</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item3</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc)
+XML:First(doc)
+XML:FirstChild(doc)
+Print(XML:GetNodeInt(doc))
+XML:Next(doc)
+Print(XML:GetNodeInt(doc))
+XML:Next(doc)
+Print(XML:GetNodeInt(doc, <span class="integer">87654321</span>))
+Print(XML:GetNodeInt(doc, <span class="integer">876</span><span class="float">5</span><span class="float">.4321</span>))
+XML:First(doc)
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">12345678
+12345678
+87654321
+8765
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;items&gt;</span>
+  <span class="tag">&lt;item1&gt;</span>12345678<span class="tag">&lt;/item1&gt;</span>
+  <span class="tag">&lt;item2&gt;</span>12345678<span class="tag">&lt;/item2&gt;</span>
+  <span class="tag">&lt;item3</span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/items&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

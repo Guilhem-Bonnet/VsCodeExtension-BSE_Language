@@ -1,0 +1,394 @@
+<body>
+<a name="Services-de-configuration"></a>
+<h1>Service(s) de configuration<a href="#Services-de-configuration" class="wiki-anchor"></a></h1>
+
+
+	<ul class="toc right"><li><strong>Contenu</strong></li><li><a href="#Services-de-configuration">Service(s) de configuration</a><ul><li><a href="#Les-connexions-vers-le-SGBD-et-le-serveur-dapplications">Les connexions vers le SGBD et le serveur d'applications</a><ul><li><a href="#Options-sp%C3%A9cifiques-SGBD-OptionsXXX">Options spécifiques SGBD (Options.XXX)</a><ul><li><a href="#SQL-Server">SQL Server</a></li></ul>
+</li><li><a href="#Connexion-ODBC">Connexion ODBC</a></li></ul>
+</li><li><a href="#Exemples-de-configuration">Exemples de configuration</a><ul><li><a href="#Exemple-pour-Firebird-ancien-format">Exemple pour Firebird (ancien format)</a></li><li><a href="#Exemple-pour-Firebird-format-recommand%C3%A9">Exemple pour Firebird (format recommandé)</a></li><li><a href="#Exemple-pour-SQL-Server-instance-par-d%C3%A9faut">Exemple pour SQL Server (instance par défaut)</a></li><li><a href="#Exemple-pour-SQL-Server-instance-nomm%C3%A9e">Exemple pour SQL Server (instance nommée)</a></li><li><a href="#Exemple-pour-PostgreSQL">Exemple pour PostgreSQL</a></li><li><a href="#Exemple-pour-une-base-PostgreSQL-transf%C3%A9r%C3%A9e-de-Firebird">Exemple pour une base PostgreSQL transférée de Firebird</a></li></ul></li></ul></li></ul>
+
+
+	<p>Historiquement, BelAir utilise plusieurs sources de configuration et de paramétrage :</p>
+
+
+	<ul>
+	<li>le registre ;</li>
+		<li>les fichiers de formats INI ou texte ;</li>
+		<li>les valeurs de type "text" dans la BDD et notamment dans la table APPLIC.</li>
+	</ul>
+
+
+	<a name="Les-connexions-vers-le-SGBD-et-le-serveur-dapplications"></a>
+<h2>Les connexions vers le SGBD et le serveur d'applications<a href="#Les-connexions-vers-le-SGBD-et-le-serveur-dapplications" class="wiki-anchor"></a></h2>
+
+
+	<p>Le fichier de connexion au serveur de bases de données :</p>
+
+
+	<ul>
+	<li>se trouve dans le répertoire racine d'application ;</li>
+		<li>porte le même nom que l'application ;</li>
+		<li>a le type (extension) ".conf".</li>
+	</ul>
+
+
+	<p>Exemple : <code>c:\belair4\appdei\appdei.conf</code></p>
+
+
+	<p>Le fichier de connexion est compatible au format INI et supporte la structure suivante.</p>
+
+
+	<table border="1" cellpadding="10">
+		<tr>
+			<th>Section  </th>
+			<th>Variable    </th>
+			<th>Obligatoire ? </th>
+			<th>Désignation </th>
+			<th>Note </th>
+		</tr>
+		<tr>
+			<th style="text-align:left;" colspan="5">Database </th>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> TypeBase     </td>
+			<td> Oui            </td>
+			<td> Type de serveur BDD : <br>1 - Firebird/Interbase, <br>2 - MS SQL Server,<br>3 - Oracle, <br>4 - MySQL, <br>5 - SQLite, <br>6 - PostgreSQL, <br>20 - ODBC générique </td>
+			<td> Voir aussi la fonction GetDriverByDbType dans BaiDataAccess </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> SERVER NAME </td>
+			<td> Non </td>
+			<td> Le nom de l'hôte </td>
+			<td> Pour des raisons de compatibilité et uniquement pour le TypeBase=1 la valeur peut prendre la forme "nom_hôte:chemin_vers_fichier_BDD".Pour le serveur embarqué (embedded), le nom de l'hôte doit être laissé vide. </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> Port        </td>
+			<td> Non(*) </td>
+			<td> Numéro de port de connexion IP (valeur &gt; 0) </td>
+			<td> (*) 5432 pour PostgreSQL par défaut<br>                                                                               Pour les autres, si vide ou 0, la connexion utilise le port par défaut </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> DATABASE    </td>
+			<td> Non </td>
+			<td> Nom de la BDD ou de l'alias </td>
+			<td>  </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> OPEN MODE   </td>
+			<td> Non </td>
+			<td> Correspond au paramètre BDE (TDatabase) </td>
+			<td> Ignorée à partir de 4.x </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> USER NAME   </td>
+			<td> Non </td>
+			<td> Identifiant de l'utilisateur </td>
+			<td>  </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> PASSWORD    </td>
+			<td> Non </td>
+			<td> Mot de passe </td>
+			<td>  </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> LANGDRIVER  </td>
+			<td> Non </td>
+			<td> Correspond au paramètre BDE (TDatabase) </td>
+			<td> Ignorée à partir de 4.x.<br>Pour 3.x, la valeur pour les BDD translitérées et "ANSIINTL" sinon vide. </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> NativeBoolean </td>
+			<td> Non </td>
+			<td> 1 (true, par défaut) puis AND avec la support des booléens dans le SGBD. 0 (false) - on interprète toujours le type booléen comme le char(1) </td>
+			<td> Par exemple, ce paramètre n'a aucun effet avec Firebird mais peut générer des comportements différents avec PostgreSQL </td>
+		</tr>
+		<tr>
+			<td>          </td>
+			<td> Option.XXX  </td>
+			<td> Non </td>
+			<td> Option spécifique pour le SGBD </td>
+			<td> A partir de 4.x uniquement. Voir les options spécifiques dans le manuel UniDAC, le chapitre "Provider-specific notes" </td>
+		</tr>
+		<tr>
+			<th style="text-align:left;" colspan="5">AppServer </th>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> Host </td>
+			<td> Non </td>
+			<td> Le nom de l'hôte </td>
+			<td> 'localhost' par défaut </td>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> Port </td>
+			<td> Non </td>
+			<td> Le numéro de port </td>
+			<td> '8080' par défaut </td>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> Endpoint </td>
+			<td> Non </td>
+			<td> Le point de terminaison </td>
+			<td> '/' par défaut </td>
+		</tr>
+		<tr>
+			<th style="text-align:left;" colspan="5">AppServer.Auth </th>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> MaxSessions </td>
+			<td> Non </td>
+			<td> Nombre maximale de sessions </td>
+			<td> 100 par défaut </td>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> SessionCheckFrequency </td>
+			<td> Non </td>
+			<td> La fréquence de vérifications de sessions périmées </td>
+			<td> 60 secondes par défaut </td>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> SessionTimeout </td>
+			<td> Non </td>
+			<td> La durée maximale d'une session inactive </td>
+			<td> 1200 secondes par défaut </td>
+		</tr>
+		<tr>
+			<th style="text-align:left;" colspan="5">AppServer.Mailer </th>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> Active </td>
+			<td> Non </td>
+			<td> 'true' - mailer service est actif </td>
+			<td> 'false' par défaut </td>
+		</tr>
+		<tr>
+			<th style="text-align:left;" colspan="5">AppServer.LegacyAction </th>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> Active </td>
+			<td> Non </td>
+			<td> 'true' - LegacyAction service est actif </td>
+			<td> 'false' par défaut </td>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> ActionTimeoutSec </td>
+			<td> Non </td>
+			<td> Timeout pour la finalisation d'exécution d'une action </td>
+			<td> 30 par défaut </td>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> Login </td>
+			<td> Non </td>
+			<td> Nom d'utilisateur Belair pour la démarrage d'automate (Baiimp) et état d'attente. Le nom peut être changé au moment de le lancement d'une action </td>
+			<td> "SUPERVISEUR" par défaut </td>
+		</tr>
+		<tr>
+			<td>           </td>
+			<td> MaxProcessCount </td>
+			<td> Non </td>
+			<td> Nombre minimal des automates (Baiimp) lancés et sont prêtes à exécuter des actions </td>
+			<td> 5 par défaut </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Options-sp%C3%A9cifiques-SGBD-OptionsXXX"></a>
+<h3>Options spécifiques SGBD (Options.XXX)<a href="#Options-sp%C3%A9cifiques-SGBD-OptionsXXX" class="wiki-anchor"></a></h3>
+
+
+	<a name="SQL-Server"></a>
+<h4>SQL Server<a href="#SQL-Server" class="wiki-anchor"></a></h4>
+
+
+	<ul>
+	<li>Option.Provider=&lt;Value&gt;<br>dont &lt;Value&gt; est :
+	<ul>
+	<li>prAuto (par défaut)</li>
+		<li>prDirect (TDS directe par TCP/IP, pas de pilotes)</li>
+		<li>prSQL (pilote préinstallé Windows)</li>
+		<li>prNativeClient (SqlClient, si installé)</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Connexion-ODBC"></a>
+<h3>Connexion ODBC<a href="#Connexion-ODBC" class="wiki-anchor"></a></h3>
+
+
+	<p>La connexion ODBC est disponible à partir de la version 4.x. Il est possible d'utiliser la source de données DSN ainsi que la chaîne de connexion.</p>
+
+
+	<ul>
+	<li>créer la source de données ODBC (DSN) de type user ou system</li>
+		<li>créer le fichier de configuration</li>
+		<li>utiliser TBaiBaseConnector pour se connecter</li>
+	</ul>
+
+
+	<p>Exemple de fichier de configuration pour ODBC DSN<br></p><pre><code>
+[DATABASE]
+TypeBase=20
+DATABASE=MyExcelSource
+LANGDRIVER=ANSIINTL
+</code></pre>
+
+
+	<p>Exemple de fichier de configuration pour la chaîne de connexion<br></p><pre><code>
+[DATABASE]
+TypeBase=20
+DATABASE=Driver={Microsoft Excel Driver (*.xls)};Dbq=D:\BELAIR4\APPTEST\odbctest.xls
+OPTION.ODBC.DSNType=ntConnectionString
+</code></pre>
+
+
+	<p>Exemple de connexion<br></p><pre><code class="delphi syntaxhl"><span class="n">Db1</span> <span class="p">:=</span> <span class="n">TBaiDatabase</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="nb">nil</span><span class="p">);</span>
+<span class="k">try</span>
+  <span class="n">Conn1</span> <span class="p">:=</span> <span class="n">TBaiBaseConnector</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="nb">nil</span><span class="p">);</span>
+  <span class="k">try</span>
+    <span class="n">Db1</span><span class="p">.</span><span class="n">DatabaseName</span> <span class="p">:=</span> <span class="s">'Db1'</span><span class="p">;</span>
+    <span class="n">Conn1</span><span class="p">.</span><span class="n">AppFileName</span> <span class="p">:=</span> <span class="s">'C:\path1\myodbc.conf'</span><span class="p">;</span>
+    <span class="n">Conn1</span><span class="p">.</span><span class="n">Database</span> <span class="p">:=</span> <span class="n">Db1</span><span class="p">;</span>
+    <span class="n">Conn1</span><span class="p">.</span><span class="n">Connect</span><span class="p">;</span>
+  <span class="k">finally</span>
+    <span class="n">Conn1</span><span class="p">.</span><span class="n">Free</span><span class="p">;</span>
+  <span class="k">end</span><span class="p">;</span>
+  <span class="c1">// do work
+</span><span class="k">finally</span>
+  <span class="n">Db1</span><span class="p">.</span><span class="n">Free</span><span class="p">;</span>
+<span class="k">end</span><span class="p">;</span>
+</code></pre>
+
+
+Limitation :
+	<ul>
+	<li>La connexion ODBC fonctionne en mode "lecture seule" pour les composants de tables. Afin de modifier la source, il faut utiliser les requêtes SQL.</li>
+	</ul>
+
+
+Note :
+	<ul>
+	<li>Le composant de table (UniDAC) ne fonctionne pas correctement avec des sources Excel. Utiliser les composants de "query".</li>
+	</ul>
+
+
+	<a name="Exemples-de-configuration"></a>
+<h2>Exemples de configuration<a href="#Exemples-de-configuration" class="wiki-anchor"></a></h2>
+
+
+	<a name="Exemple-pour-Firebird-ancien-format"></a>
+<h3>Exemple pour Firebird (ancien format)<a href="#Exemple-pour-Firebird-ancien-format" class="wiki-anchor"></a></h3>
+
+
+<pre><code>
+[Database]
+TypeBase=1
+SERVER NAME=localhost:D:\BELAIR4\APPDEI\APPDEI.IDB
+OPEN MODE=READ/WRITE
+USER NAME=SYSDBA
+PASSWORD=masterkey
+</code></pre>
+
+	<a name="Exemple-pour-Firebird-format-recommand%C3%A9"></a>
+<h3>Exemple pour Firebird (format recommandé)<a href="#Exemple-pour-Firebird-format-recommand%C3%A9" class="wiki-anchor"></a></h3>
+
+
+<pre><code>
+[Database]
+TypeBase=1
+SERVER NAME=localhost
+DATABASE=D:\BELAIR4\APPDEI\APPDEI.IDB
+USER NAME=SYSDBA
+PASSWORD=masterkey
+LANGDRIVER=ANSIINTL
+</code></pre>
+
+	<a name="Exemple-pour-SQL-Server-instance-par-d%C3%A9faut"></a>
+<h3>Exemple pour SQL Server (instance par défaut)<a href="#Exemple-pour-SQL-Server-instance-par-d%C3%A9faut" class="wiki-anchor"></a></h3>
+
+
+<pre><code>
+[DATABASE]
+typebase=2
+SERVER NAME=MYSERVER
+DATABASE=appdei
+USER NAME=belair
+PASSWORD=belair
+NativeBoolean=false
+
+[AppServer]
+Host=localhost
+Port=8080
+Endpoint=soap
+
+[AppServer.Mailer]
+Active=false
+</code></pre>
+
+	<a name="Exemple-pour-SQL-Server-instance-nomm%C3%A9e"></a>
+<h3>Exemple pour SQL Server (instance nommée)<a href="#Exemple-pour-SQL-Server-instance-nomm%C3%A9e" class="wiki-anchor"></a></h3>
+
+
+<pre><code>
+[DATABASE]
+typebase=2
+SERVER NAME=MYSERVER\SQLEXPRESS
+DATABASE=appdei
+USER NAME=belair
+PASSWORD=belair
+NativeBoolean=false
+</code></pre>
+
+	<a name="Exemple-pour-PostgreSQL"></a>
+<h3>Exemple pour PostgreSQL<a href="#Exemple-pour-PostgreSQL" class="wiki-anchor"></a></h3>
+
+
+<pre><code>
+[DATABASE]
+typebase=6
+SERVER NAME=bai-xxx
+DATABASE=belair
+OPEN MODE=READ/WRITE
+USER NAME=belair
+PASSWORD=belair
+Option.Charset=Win1252
+Option.UseUnicode=false
+</code></pre>
+
+	<a name="Exemple-pour-une-base-PostgreSQL-transf%C3%A9r%C3%A9e-de-Firebird"></a>
+<h3>Exemple pour une base PostgreSQL transférée de Firebird<a href="#Exemple-pour-une-base-PostgreSQL-transf%C3%A9r%C3%A9e-de-Firebird" class="wiki-anchor"></a></h3>
+
+
+<pre><code>
+[DATABASE]
+typebase=6
+SERVER NAME=bai-xxx
+DATABASE=belair
+USER NAME=belair
+PASSWORD=belair
+; Nécessaire si la BDD a été transférée
+NativeBoolean=0
+Option.Charset=Win1252
+Option.UseUnicode=false
+</code></pre>
+</body>

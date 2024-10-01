@@ -1,0 +1,54 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:GetCurrentValueCurrency(doc)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>La fonction renvoie le texte de la valeur courante convertie en type monétaire.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Le texte de la valeur courante convertie en type monétaire (Currency)<br>
+			Génère une erreur si la conversion n'est pas possible
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc, varTest
+doc := Json:New()
+Json:NewObject(doc, "object")
+  Json:NewValue(doc, "currency", 12.12)
+Json:EndObject(doc)
+Json:Close(doc)            
+Json:ValueExists(doc, "object.currency")
+varTest := Json:GetCurrentValueCurrency(doc)
+print(varTest)
+print(VarTypeName(varTest))
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+12,12
+Currency
+</pre>
+	</div>
+</div>
+</body>

@@ -1,0 +1,621 @@
+<body>
+	<h3>Fonctions de chaînes de caractères</h3>
+
+	<br>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>GUILLEMET</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ajout d'un guillemet.
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RETOUR_CHARIOT</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Ajout d'un retour chariot (idem CHR$(13) + CHR$(10) )
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LEFT(<i>Chaîne</i>)</code> 
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Supprime les espaces en début de chaîne de caractères
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>chaine</code> : chaîne de caractères à traiter
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						LEFT(" ABCDEFGHIJ")
+					</span>
+					rend la  "ABCDEFGHIJ"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>TRIM(<i>Chaîne</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Supprime les espaces en début et en fin de chaîne de caractères
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>chaine</code> : chaîne de caractères à traiter
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						TRIM(" ABCDEFGHIJ ")
+					</span>
+					rend "ABCDEFGHIJ"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LEN$(<i>Chaîne</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Donne la longueur de la chaîne de caractères
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>chaine</code> : chaîne de caractères à traiter
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						LEN$("ABCDEFGHIJ")
+					</span>
+					rend la valeur "10"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>EXT(<i>Chaîne, début, longueur</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Extraction d'une sous-chaîne de caractères 
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>chaine</code> : chaîne de caractères à traiter
+				<br>
+				<br>
+				<code>début</code> : position du 1ere caractère à extraire
+				<br>
+				<br>
+				<code>longueur</code> : nombre de caractères à extraire à partir du 1er caractère demandé
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						EXT("ABCDEF",3,2)
+					</span>
+					rend la valeur "CD"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FIRST(<i>caractère, chaîne</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Première occurrence d'un caractère dans une chaîne de caractères 
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>caractère</code> : le caractère à rechercher
+				<br>
+				<br>
+				<code>chaine</code> : chaîne dans laquelle on recherche le caractère
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						FIRST("X", "XBCDXEFX")
+					</span>
+					rend la valeur "1"
+				</div>							
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LAST(<i>caractère, chaîne</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Dernière occurrence d'un caractère dans une chaîne de caractères 
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>caractère</code> : le caractère à rechercher
+				<br>
+				<br>
+				<code>chaîne</code> : chaîne dans laquelle on recherche le caractère
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						LAST("X", "XBCDXEFX")
+					</span>
+					rend la valeur "8"
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>MAJ(<i>Chaîne</i>)</code> 
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Mise en majuscule de la chaîne
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>chaine</code> : chaîne de caractères à traiter
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						MAJ("Bonjour")
+					</span>
+					rend "BONJOUR"
+				</div>		
+			
+		</div>
+	</div>				
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>MIN(<i>Chaîne</i>)</code> 
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Mise en minuscule de la chaîne
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>chaine</code> : chaîne de caractères à traiter
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						MAJ("BONJOUR")
+					</span>
+					rend "bonjour"
+				</div>		
+			
+		</div>
+	</div>				
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>INI(<i>Chaîne</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Mise en majuscule de l'initiale de chaque mot de la chaîne
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>chaine</code> : chaîne de caractères à traiter
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						INI("J'ai très hâte")
+					</span>
+					rend "J'ai Très Hâte"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>REPLACE(<i>S,A,B,Flags</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Fonction alphabétique de remplacement de chaine de caractères. Permet de remplacer tous les retours chariot d'une chaîne par un espace. par une autre sous-chaîne 
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>S</code> : chaîne source
+				<br><br>
+				<code>A</code> : sous-chaîne à remplacer
+				<br><br>
+				<code>B</code> : sous-chaîne remplaçant
+				<br><br>
+				<code>Flags</code> : un ensemble d'indicateurs qui définissent la façon dont REPLACE localise et remplace les occurrences de A
+			</p>
+			<p>
+				Si Flags n'inclut pas ALL, REPLACE ne remplace que la première occurrence de A dans S. Sinon, REPLACE remplace toutes les instances de A par B.
+				<br>Si le paramètre Flags inclut IGCASE, la comparaison ne tient pas compte de la casse.
+			</p>
+			<p>
+				<b>Exemples :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						IA$:=REPLACE(IB,"ti","to","ALL IGCASE")
+					</span>
+					remplace tous les occurrences de ti en ignorant maj-miniscules
+					<br>
+					<span class="bai_code">
+						IA$:=REPLACE(IB,"ti","to","ALL")
+					</span>
+					remplace tous les occurrences de "ti" mais uniquement si la casse correspond
+					<br>
+					<span class="bai_code">
+						IA$:=REPLACE(IB,"ti","to","")
+					</span>
+					remplace la première occurrence de "ti" uniquement si la casse est identique
+				</div>						
+			
+			<p>
+				<b>Utilisation :</b>
+				<br><br>
+				Remplacer CHR$(13) et/ou CHR$(10) par '' 
+				<br><br>
+				Si dans B est nul =&gt; fonction de suppression des caractères (sous-chaines)
+				<br><br>
+				Pour la supression des retours chariots <code>IB$ := REPLACE(IB,CHR$(13)+CHR$(10),"","ALL IGCASE")</code> devrait normalement suffire
+			</p>
+			<div class="alert alert-danger" role="alert">
+				<b>Attention</b> : Sous Windows, les retours chariots comportent 2 caractères CHR$(13)+CHR$(10) et 1 seul sous Unix CHR$(10) donc le traitement ci-dessus ne fonctionnera pas si le fichier à traiter vient d'une reprise de base sous Unix.
+				Il faut donc faire la supression en 2 étapres pour être certain de traiter les 2 cas :
+				<div class="bai_exemple">
+					<span class="bai_code">
+						IB$ := REPLACE(IB,CHR$(10),"","ALL IGCASE")
+						<br>
+						IB$ := REPLACE(IB,CHR$(13)," ","ALL IGCASE")
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SUPPRCARACS(<i>Source, T</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Supprime tous les caractères de T dans la source
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>source</code> : chaîne concernée par la suppression de caractères
+				<br><br>
+				<code>T</code> : caractères à supprimer
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						SUPPRCARACS("FOJFOJFOJFOJFOJ", "O")
+					</span>
+					rend "FJFJFJFJFJ"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SUPPRSPECIAL(<i>Source</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Remplace tous les caractères spéciaux par un _
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>source</code> : chaîne concernée par le remplacement de caractères
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						SUPPRSPECIAL("Bonjour !")
+					</span>
+					rend "Bonjour _"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SUPPRACCENTS(<i>Source</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Remplace tous les caractères accentués par l'équivalent sans accent
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>source</code> : chaîne concernée par le remplacement de caractères
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						SUPPRACCENTS("J'ai très hâte")
+					</span>
+					rend "J'ai tres hate"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SIMPLICHAINE(<i>Source</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Supprime les caractères accentués par l'équivalent sans accent, et supprime les caractères spéciaux
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>source</code> : chaîne concernée par le remplacement et la suppression de caractères
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						SIMPLICHAINE("J'ai très hâte !") 
+					</span>
+					rend "Jai tres hate"
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FMTALPHA(<i>chaine</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Modifie la chaîne de caractère au format de la recherche alphabétique. 
+			</p>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>chaine</code> : chaîne de caractères à traiter
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						IA$ := FMTALPHA("MARTIN Pierre")
+					</span>
+					<br>IA est alors égal à "MARTINPIERRE"
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XMLDATA(<i>nom, source</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Construit une chaîne rendant le contenu de "source" au format XML. 
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>nom</code> : le nom de la balise XML à générer
+				<br><br>
+				<code>source</code> : le nom d'une table ou d'une requête SQL dynamique.
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						SQL:NEW(TAB)<br>
+						*SELECT * FROM [TAB]<br>
+						*WHERE B_TABCODE="SITPIECE" AND B_TABREF&lt;&gt;"."<br>
+						SQL:OPEN(TAB)<br>
+						SI RESULT&lt;&gt;0;IZ$:="<situations>"+<b>XMLDATA("situations","SQLTAB")</b>+"</situations>";IZ$:="&lt;/situations"&gt;<br>
+						SQL:CLOSE(TAB)<br>
+						SQL:FREE(TAB)<br>
+					</span>
+				</div>	
+			
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LUHNDIGIT(<i>chaine</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				retourne la clé de contrôle (0 à 9) selon l'algorithme de Luhn d'une chaine numérique.
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>chaine</code> : la chaine numérique à traiter
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>ISLUHNVALID(<i>chaine</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				rend VRAI si le dernier chiffre de la chaine est bien la "clé de Luhn" des chiffres précédents de la chaine.
+				<br>Exemple : le Numéro de SIRET doit respecter cette règle.
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>chaine</code> : la chaine numérique à contrôler
+			</p>
+		</div>
+	</div>
+	
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RANDOMSTR(<i>mini,maxi</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Cette fonction rend une chaine aléatoire de caractères , d'une longueur comprise entre mini et maxi.
+				<br>(Pratique pour générer des mots de passe aléatoires)
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>mini</code> : longueur minimale de la chaine à générer
+				<br><br>
+				<code>maxi</code> : longueur maximale de la chaine à générer
+				
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						IA$ := RANDOMSTR(5,8)
+					</span>
+				</div>		
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>GETENVVAR(<i>variable</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+				Récupération de la valeur d'une variable d'environnement Windows
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>variable</code> : nom de la variable d'environnement
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						IA$ := GETENVVAR("HOMEDRIVE")
+						<br>
+						Résultat : "C:"
+					</span>
+				</div>		
+			
+			<p>
+				<b>Liste des variables d'environnement :</b>
+				<br><br>
+					</p><table class="table table-bordered">
+					<tr><th>Nom de la variable d'environnement</th><th>Valeur d'environnement</th></tr>
+					<tr><td>ALLUSERSPROFILE</td><td>Profil utilisateur générique.</td></tr>
+					<tr><td>APPDATA</td><td>Chemin du dossier des données de l'application.</td></tr>
+					<tr><td>CLIENTNAME</td><td>Nom de la machine client.</td></tr>
+					<tr><td>COMMONPROGRAMFILES</td><td>Chemin du dossier des fichiers programme communs.</td></tr>
+					<tr><td>COMPUTERNAME</td><td>Nom du code de l'ordinateur en cours d'exécution.</td></tr>
+					<tr><td>COMSPEC</td><td>Chemin du programme cmd.exe.</td></tr>
+					<tr><td>HOMEDRIVE</td><td>Désignation du lecteur d'accueil en cours, par exemple 'C:'</td></tr>
+					<tr><td>HOMEPATH</td><td>Chemin de l'emplacement en cours du stockage des documents.</td></tr>
+					<tr><td>LOGONSERVER</td><td>Spécifie un contrôleur de domaine pour l'authentification de la connexion utilisateur.</td></tr>
+					<tr><td>NUMBER_OF_PROCESSORS</td><td>Nombre de processeurs sur la machine en cours.</td></tr>
+					<tr><td>OS</td><td>Nom de base du système d'exploitation. Notez que Windows XP est spécifié sous la forme Windows_NT.</td></tr>
+					<tr><td>PATH</td><td>Le chemin du programme en cours.</td></tr>
+					<tr><td>PATHEXT</td><td>Types d'extensions des fichiers exécutables.</td></tr>
+					<tr><td>PROCESSOR_ARCHITECTURE</td><td>Type de l'architecture de la CPU. Par exemple, X86 pour les processeurs Intel Pentium.</td></tr>
+					<tr><td>PROCESSOR_IDENTIFIER</td><td>Numéro d'identificateur de la machine en cours.</td></tr>
+					<tr><td>PROCESSOR_LEVEL</td><td>Description plus détaillée de l'architecture de la CPU.</td></tr>
+					<tr><td>PROCESSOR_REVISION</td><td>Niveau de révision du processeur.</td></tr>
+					<tr><td>PROGRAMFILES</td><td>Chemin du dossier des fichiers programme.</td></tr>
+					<tr><td>SESSIONNAME</td><td>Nom de la session du système d'exploitation en cours.</td></tr>
+					<tr><td>SYSTEMDRIVE</td><td>Lecteur à partir duquel opère le système d'exploitation.</td></tr>
+					<tr><td>SYSTEMROOT</td><td>Définit le répertoire système.</td></tr>
+					<tr><td>TEMP</td><td>Chemin du dossier des fichiers temporaires.</td></tr>
+					<tr><td>TMP</td><td>Répertoire dans lequel stocker les fichiers temporaires.</td></tr>
+					<tr><td>USERDOMAIN</td><td>Spécifie le domaine de la machine en cours.</td></tr>
+					<tr><td>USERNAME</td><td>Nom de l'utilisateur en cours.</td></tr>
+					<tr><td>USERPROFILE</td><td>Chemin du dossier contenant les informations de l'utilisateur en cours.</td></tr>
+					<tr><td>WINDIR</td><td>Chemin du dossier Windows.</td></tr>
+					</table>
+			
+			<p>
+				<b>Exemple pratique:</b><br>
+				Récupération du chemin de travail de Belair
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						GETENVVAR("USERPROFILE")+"\belair"
+					</span>
+				</div>		
+			
+		</div>
+	</div>
+	
+</body>

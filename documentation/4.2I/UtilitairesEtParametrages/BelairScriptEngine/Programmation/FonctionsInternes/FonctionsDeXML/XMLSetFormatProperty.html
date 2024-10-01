@@ -1,0 +1,72 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:SetFormatProperty(doc, type, property)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction change les paramètres de formatage dépendant de "local".
+			</p>
+			<br>
+			<p><b>Paramètres d'entrée :</b></p>
+				<ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>type</code> : le nom de type (string) :
+					<ul><li>"date" ;</li>
+					<li>"float".</li>
+				</ul>
+				</li>
+				<li><code>property</code> : le nom de la propriété (string) :
+					<ul><li>"DecimalSeparator" ;</li>
+					<li>"ThousandSeparator".</li>
+					</ul>
+				</li>
+			</ul>
+			
+			<p>Les propriétés correspondent aux champs de la <a href="http://docwiki.embarcadero.com/Libraries/Tokyo/fr/System.SysUtils.TFormatSettings" target="__BLANK">structure TFormatSettings en Delphi</a>.</p>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>Aucun.</p>
+			
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc, s
+doc :=  XML:New()
+XML:SetFormat(doc, <span class="string"><span class="delimiter">"</span><span class="content">float</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content"># ##0.0000</span><span class="delimiter">"</span></span>)
+XML:SetFormatProperty(doc, <span class="string"><span class="delimiter">"</span><span class="content">float</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">DecimalSeparator</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">,</span><span class="delimiter">"</span></span>)
+XML:SetFormatProperty(doc, <span class="string"><span class="delimiter">"</span><span class="content">float</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">ThousandSeparator</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content"> </span><span class="delimiter">"</span></span>)
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>)
+  XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">qty</span><span class="delimiter">"</span></span>)
+    XML:SetNodeText(doc, <span class="integer">112</span><span class="float">3</span><span class="float">.456</span>)
+  XML:EndNode(doc)
+  XML:ClearFormat(doc, <span class="string"><span class="delimiter">"</span><span class="content">float</span><span class="delimiter">"</span></span>)
+  XML:SetFormat(doc, <span class="string"><span class="delimiter">"</span><span class="content">float</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">#0.000</span><span class="delimiter">"</span></span>)
+  XML:SetFormatProperty(doc, <span class="string"><span class="delimiter">"</span><span class="content">float</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">DecimalSeparator</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">.</span><span class="delimiter">"</span></span>)
+  XML:SetFormatProperty(doc, <span class="string"><span class="delimiter">"</span><span class="content">float</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">ThousandSeparator</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">amount</span><span class="delimiter">"</span></span>, <span class="integer">112</span><span class="float">3</span><span class="float">.456</span>)
+  XML:SetFormat(doc, <span class="string"><span class="delimiter">"</span><span class="content">date</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">dd/mm/yyyy</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">date</span><span class="delimiter">"</span></span>, EncodeDate(<span class="integer">2017</span>, <span class="integer">11</span>, <span class="integer">7</span>))
+XML:EndNode(doc)
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;values&gt;</span>
+  <span class="tag">&lt;qty&gt;</span>1 123,4560<span class="tag">&lt;/qty&gt;</span>
+  <span class="tag">&lt;amount&gt;</span>1123.456<span class="tag">&lt;/amount&gt;</span>
+  <span class="tag">&lt;date&gt;</span>07/11/2017<span class="tag">&lt;/date&gt;</span>
+<span class="tag">&lt;/values&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

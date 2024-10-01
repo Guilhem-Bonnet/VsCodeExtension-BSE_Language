@@ -1,0 +1,18 @@
+<body>
+	<h2>Formules de calcul - Commandes de déclenchement d'une URL</h2>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>URLGET(<i>http://xxxxxxxx</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>Cette fonction permet de déclencher une URL et récupere le résultat sous forme chaine.</p>
+			<p>En pratique, on peut ainsi appeler un scipt php conçu pour rendre un résultat simple, comme je le fais par exemple pour récuperer la clé d'une application</p>
+			<br>
+		<b>Exemple :</b>
+<pre><code class="c syntaxhl"><span class="CodeRay">IA$ := URLGET("https://httpbin.org/get")
+Print(IA)
+</span></code></pre>
+			<p>Pour des raisons de sécurité, à partir du <b>build 21509</b>, c'est le protocole <i>TLS 1.2</i> qui est utilisé à la place du protocole <i>TLS 1.0</i> par la fonction <b>URLGET</b> pour le https.</p>
+		</div>
+		</div>
+</body>

@@ -1,0 +1,46 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+				<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>File_Delete</code></h3>
+		</div>
+
+<p>Effacement d'un fichier archivé</p>
+
+
+	<a name="param%C3%A8tres"></a>
+<h3>paramètres<a href="#param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>id (int, obligatoire) : numéro du fichier archivé</li>
+	</ul>
+
+
+	<a name="retour"></a>
+<h3>retour<a href="#retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Réponse obtenue lorsque le fichier demandé a été trouvé et supprimé :<br></p><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;response&gt;</span>
+    <span class="nt">&lt;affectedrows&gt;</span>1<span class="nt">&lt;/affectedrows&gt;</span>
+    <span class="nt">&lt;warning&gt;&lt;/warning&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</code></pre>
+
+
+	<p>Réponse obtenue lorsque le fichier demandé est trouvé dans la base mais n'est pas trouvé dans son répertoire de stockage :<br></p><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;response&gt;</span>
+    <span class="nt">&lt;affectedrows&gt;</span>1<span class="nt">&lt;/affectedrows&gt;</span>
+    <span class="nt">&lt;warning&gt;</span>File unknown : D:\BELAIR4\APPCRM\SCANNER\201802\10580516597834.doc<span class="nt">&lt;/warning&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</code></pre>
+
+
+	<p>Réponse obtenue lorsque le fichier demandé n'est pas trouvé dans la base :<br></p><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;response&gt;</span>
+    <span class="nt">&lt;affectedrows&gt;</span>0<span class="nt">&lt;/affectedrows&gt;</span>
+    <span class="nt">&lt;warning&gt;</span>File_id 189 not found in database<span class="nt">&lt;/warning&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</code></pre>
+</div></body>

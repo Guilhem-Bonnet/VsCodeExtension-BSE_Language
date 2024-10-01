@@ -1,0 +1,51 @@
+<body>
+	<h2>Principe de fonctionnement</h2>
+
+	<p>
+		Le programme Ecoute est basé sur deux composants : l'intégration de fichier et la copie de base de données.<br>
+		Le programme Ecoute se lance depuis le répertoire d'installation de BELAIR (par défault 'C:\Belair4').
+	</p>
+
+	<div class="container-fluid no-padding">
+		<div class="col-sm-12 col-md-5 col-lg-3">
+			<img src="images/ecoute01.jpg" class="img-responsive">
+		</div>
+
+		<div class="col-sm-12 col-md-7 col-lg-9">
+			<p>
+				La première composante, intégration de fichier, permet de traiter des fichiers par un script BSI, via l'automate d'import. L'intégration de fichier peut être utilisée par exemple pour enregistrer des dossiers saisis par internet.
+			</p>
+		</div>
+		<div class="col-sm-12 col-md-7 col-lg-9">
+			<p>
+				La seconde composante, copie de base, permet de faire un backup/restore d'une base A vers une base B. La copie de base peut être utilisée par exemple pour avoir une base temporaire disponible en lecture qui ne puisse pas altérer la base de production.
+			</p>
+		</div>
+	</div>
+
+	<h3>Fichier INI</h3>
+
+	<p>
+		Le programme est paramétré grâce à un fichier INI. Le fichier INI à utiliser est paramétré lors de l'appel du programme Ecoute, à l'aide de la ligne de commande suivante :
+	</p>
+
+	<p>
+		Ecoute.EXE /ini:[chemin_vers_le_fichier_ini]
+	</p>
+
+	<b>Exemple :</b>
+	<div class="bai_exemple">
+		Ecoute.EXE /ini:c:\belair3\appdev\config.ini
+	</div>
+
+	<h3>Contenu du fichier INI</h3>
+
+	<p>
+		Le fichier INI est découpé en trois sections :
+		</p><ul>
+			<li>une section [Copie], utilisée pour la copie de la base</li>
+			<li>une section [Memo], utilisée pour envoyer des alertes à un utilisateur en cas d'erreur</li>
+			<li>une section [Ecoute], utilisée pour l'intégration de fichier.</li>
+		</ul>
+	
+</body>

@@ -1,0 +1,36 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+				<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DocHolder_AddNewFile</code></h3>
+		</div>
+
+<p>Cette fonction enregistre un nouveau fichier dans FICH et l'ajoute dans un porte-documents</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h2>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li>TargetKind (string, obligatoire): T,C,S =&gt; indique la table concernée (TIERS, CONTRAT, SINISTRE)</li>
+		<li>TargetId (integer, obligatoire): id dans la table concernée</li>
+		<li> fileType (string, obligatoire) : type du fichier d'origine, i.e. "txt", "doc", "jpg", "pdf" etc.</li>
+		<li>data (string, obligatoire) : contenu en Base64</li>
+		<li>Path (string, optionnel) : si renseigné, contient le chemin vers un sous répertoire 'cible' du porte-documents</li>
+		<li>Title (string, optionnel) : titre du fichier dans le porte-documents</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h2>Retour<a href="#Retour" class="wiki-anchor"></a></h2>
+
+
+	<p>Flux XML</p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;DocHolder_AddNewFile&gt;</span>
+    <span class="nt">&lt;id&gt;</span>id dans la table xxxx_FILES<span class="nt">&lt;/id&gt;</span>
+<span class="nt">&lt;/DocHolder_AddNewFile&gt;</span>
+</code></pre>
+</div></body>

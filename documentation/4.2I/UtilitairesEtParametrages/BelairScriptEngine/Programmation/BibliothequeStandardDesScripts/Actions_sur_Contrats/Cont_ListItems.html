@@ -1,0 +1,35 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Cont_ListItems</code></h3>
+		</div>
+
+<p>Liste des contrats d'un tiers</p>
+
+	<a name="Parametres"></a>
+<h3>Parametres:<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier(int, obligatoire) : numéro dossier</li>
+		<li>IncludeAll (boolean, Défaut=True) : Si False, liste limitée aux contrats non résiliés</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour:<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML, listant les contrats<br>Chaque noeud contient l'ensemble des champs de l'entité <code>cont</code><br>Des champs externes sont ajoutés <code>ext_entite_field</code> (quelques champs de PIEC, PROD)</p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;cont-rows&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"cont"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"cont"</span><span class="nt">&gt;</span>
+    ...
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/cont-rows&gt;</span>
+</code></pre>
+</div></body>

@@ -1,0 +1,55 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:SelectResultFloat(doc, Xpath, default)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction sélectionne le nœud comme <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de XML" name="Fonctions%20de%20XML%20:%20XML:SelectResult">XML:SelectResult</a>, puis le convertie en type numérique de virgule flottante comme <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de XML" name="Fonctions%20de%20XML%20:%20XML:GetNodeFloat">XML:GetNodeFloat</a>.
+			</p>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>Xpath</code> : la requête XPath.</li>
+				<li><code>default</code> : la valeur par défaut, si la requête ne trouve rien (optionnel).</li>
+				</ul>
+							
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">items</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item1</span><span class="delimiter">"</span></span>, <span class="integer">123</span><span class="float">4</span><span class="float">.5678</span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item2</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">1.2345678E3</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item3</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc)
+Print(XML:SelectResultFloat(doc, <span class="string"><span class="delimiter">"</span><span class="content">/items/item1</span><span class="delimiter">"</span></span>))
+Print(XML:SelectResultFloat(doc, <span class="string"><span class="delimiter">"</span><span class="content">/items/item2</span><span class="delimiter">"</span></span>))
+Print(XML:SelectResultFloat(doc, <span class="string"><span class="delimiter">"</span><span class="content">/items/item3</span><span class="delimiter">"</span></span>, <span class="integer">876</span><span class="float">5</span><span class="float">.4321</span>))
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">1234,5678
+1234,5678
+8765,4321
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;items&gt;</span>
+  <span class="tag">&lt;item1&gt;</span>1.23456780000000E+0003<span class="tag">&lt;/item1&gt;</span>
+  <span class="tag">&lt;item2&gt;</span>1.2345678E3<span class="tag">&lt;/item2&gt;</span>
+  <span class="tag">&lt;item3</span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/items&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

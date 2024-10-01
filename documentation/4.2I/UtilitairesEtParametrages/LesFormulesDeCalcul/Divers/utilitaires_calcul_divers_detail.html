@@ -1,0 +1,57 @@
+<body>
+	<h2>Détail d'une personne physique</h2>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>DETAILDPP("?","?")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne une chaîne avec les champs passés en 2ième paramètre.
+			</p>
+		</div>
+	</div>
+
+	<h2>Paramètres permettant de prendre en compte plusieurs personnes sur un contrat</h2>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>FILEFIRST("RDPP")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Se positionne sur le premier enregistrement de la table RDPP (risque personnes physiques).
+			</p>
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>FILENEXT("RDPP")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Se positionne sur l'enregistrement suivant.<br>
+				<br>
+				<b>Exemple :</b>
+				</p><div class="bai_exemple">
+					La prime doit être de 10,00 euros pour chaque assuré ayant moins de 25 ans et 15,00 euros au delà.<br> 
+					La prime totale à percevoir doit représenter le cumul des montants.<br>
+					<br>
+					<div class="bai_code">
+						IA:=0 <span class="bai_comment">// total</span><br>
+						SI FILEFIRST("RDPP")="VRAI";&gt;SUIVANT;&gt;FIN <span class="bai_comment">// lecture du 1er ; si aucun = fin</span><br>
+						:SUIVANT<br>
+						SI ?RDPP("b_age")// cumul dans IA<br>
+						SI FILENEXT("RDPP")="VRAI";&gt;SUIVANT;&gt;FIN <span class="bai_comment">// suivant ; si plus aucun = fin</span><br>
+						:FIN<br>
+						=IA <span class="bai_comment">// résultat final</span><br>
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</body>

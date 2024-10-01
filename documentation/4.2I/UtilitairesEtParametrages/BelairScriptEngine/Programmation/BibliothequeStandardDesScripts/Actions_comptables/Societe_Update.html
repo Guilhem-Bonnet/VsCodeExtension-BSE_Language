@@ -1,0 +1,39 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Societe_Update</code></h3>
+		</div>
+
+<p>Update des informations administratives d'une société (dans KCO)</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+	<ul>
+	<li>entite (integer, obligatoire) : n. de la société à modifier (n. entité juridique)</li>
+		<li>data : flux XML suivant</li>
+	</ul>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;data&gt;</span>
+  <span class="nt">&lt;libk&gt;</span>Comptabilité Modèle n. 1 Bel Air<span class="nt">&lt;/libk&gt;</span>
+  <span class="nt">&lt;devise&gt;</span>EUR<span class="nt">&lt;/devise&gt;</span>
+  <span class="nt">&lt;siren&gt;</span>357465454546541<span class="nt">&lt;/siren&gt;</span>
+  <span class="nt">&lt;orias&gt;</span>123456789<span class="nt">&lt;/orias&gt;</span>
+  <span class="nt">&lt;tiers&gt;</span>150<span class="nt">&lt;/tiers&gt;</span>
+<span class="nt">&lt;/data&gt;</span>
+</code></pre>
+
+	<p><span style="color:red;">IGNORER la balise codek si présente (on ne modifie pas une redirection vers une autre comptabilité via cette action)</span></p>
+
+
+	<a name="Controles"></a>
+<h3>Controles<a href="#Controles" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>L'entité <code>entite</code> doit exister : <br>kco := Societe_GetByEntite(entite)</li>
+	</ul>
+</div></body>

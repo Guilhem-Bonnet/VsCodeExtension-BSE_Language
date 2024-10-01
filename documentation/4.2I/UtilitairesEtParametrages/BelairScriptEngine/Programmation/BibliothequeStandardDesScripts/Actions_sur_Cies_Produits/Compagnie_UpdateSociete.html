@@ -1,0 +1,64 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Compagnie_UpdateSociete</code></h3>
+		</div>
+
+<p>Modification des paramètres d'une compagnie pour une société (entité juridique)</p>
+
+
+	<p>Entité concernée : ciek</p>
+
+
+	<a name="param%C3%A8tres"></a>
+<h3>paramètres<a href="#param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>compagnie (integer, obligatoire) : numéro de la cie</li>
+		<li>societe (integer, obligatoire) : numéro de la société</li>
+		<li>data (string, obligatoire) : flux xml</li>
+	</ul>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;data&gt;</span>
+  <span class="nt">&lt;ciek&gt;</span>
+     <span class="nt">&lt;data&gt;</span>
+       <span class="c">&lt;!-- données de l'entité ciek à créer --&gt;</span>
+     <span class="nt">&lt;/data&gt;</span>
+  <span class="nt">&lt;/ciek&gt;</span>
+<span class="nt">&lt;/data&gt;</span>
+</code></pre>
+
+	<a name="contr%C3%B4les"></a>
+<h3>contrôles<a href="#contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Vérification présence des 3 paramètres</li>
+		<li>Vérification cohérence BDD (ciek existe)</li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>alimenation de l'entité ciek à partir de la BDD</li>
+		<li>modification entité ciek à partir du flux XML</li>
+		<li>mise à jour en BDD (UPDATE)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;ciek&gt;</span>
+  <span class="nt">&lt;compagnie&gt;</span>xxxxx<span class="nt">&lt;/compagnie&gt;</span>
+  <span class="nt">&lt;societe&gt;</span>n<span class="nt">&lt;/societe&gt;</span>
+<span class="nt">&lt;/ciek&gt;</span>
+</code></pre>
+</div></body>

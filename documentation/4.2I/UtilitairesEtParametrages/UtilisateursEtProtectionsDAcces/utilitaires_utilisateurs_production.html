@@ -1,0 +1,120 @@
+<body>
+	<h2>Protection des écrans de production</h2>
+
+	<p>
+		Sélectionnez l'onglet "Production".<br>
+		Cette fonction permet d'interdire toute modification sur les écrans des tiers, des contrats, des sinistres, des quittances et porte-documents aux groupes de limitation désignés pour cette interdiction.
+	</p>
+
+	<div class="clearfix">
+		<img src="images/utilitaires_utilisateurs_production.jpg" class="pull-left gap-right" width="40%">
+		<p>
+			La colonne de gauche affiche les écrans de production protégés.
+			La colonne de droite affiche les groupes de limitation créés.
+		</p>
+
+		<p>
+			Afin de protéger un écran de production, sélectionner celui-ci, sélectionner ensuite le groupe de limitation ne devant pas pouvoir modifier cet écran et cliquer dans la petite flèche gauche pour afficher le groupe dans la colonne du milieu.<br>
+			Faire l'opération sur tous les écrans de production devant être protégés. 
+		</p>
+
+		<p>
+			En portefeuille, lorsqu'un utilisateur non autorisé effectue une modification sur un écran non modifiable par lui, les modifications apportées ne sont pas  enregistrées.<br>
+			En ce qui concerne les porte-documents, l'interdiction empêche toute suppression de dossier et de document ainsi que la possibilité de renommer un dossier.
+		</p>
+	</div>
+
+	<hr>
+
+	<h3>Protection des écrans de production, par la gestion des évènements</h3>
+
+	<p>
+		Dans la gestion des évènements (<b>Outils | Paramètres | Gestion des évènements</b>), pour chaque écran, il existe un classeur "Accès" permettant de créer un évènement  (Avant/Après). La formule de calcul permettant de créer cet évènement doit rendre VRAI ou FAUX.
+	</p>
+
+	<p><b>Exemple d'utilisation :</b></p>
+	<div class="bai_exemple">
+		Un groupe d'utilisateur ne doit pas pouvoir consulter les tiers d'un type particulier.
+		Voici la formule à utiliser en prenant comme données que le groupe = A et le type de tiers = N
+
+		<div class="bai_code">
+			SI GROUPE("A") ET ?TIERS(B_TYPTIERS")="N";=FAUX
+			=VRAI
+		</div>
+
+		Si un utilisateur fait partie du groupe A, il n'accèdera pas aux tiers de type N.
+	</div>
+
+	<p>
+		De même, il existe un évènement "Recherche alphabétique + Filtre" qui permet de filtrer l'affichage. Pour cet évènement, le type d'élément que l'on doit tester se fait grâce à la variable I1 (lettre  i  suivi du chiffre  1) qui contient une des 5 valeurs suivantes : TIERS, CONT, RISA, QUIT ou SIN.
+	</p>
+
+	<p><b>Exemple d'utilisation des deux évènements :</b></p>
+
+	<div class="bai_exemple">
+		Ouvrir l'accès à certains utilisateurs mais ne leur ouvrir que UN ou plusieurs dossiers (tiers) ou les contrats sur lesquels ils sont apporteurs.
+
+		Paramétrage :
+		<ul>
+			<li>créer un groupe d'utilisateur dans lequel on place ces utilisateurs spéciaux (exemple : Z)</li>
+			<br>
+			<li>
+				créer une table de valeurs (exemple : FILTRE) dans laquelle on met [USERNAME]:[dossier]<br>
+				ex. : si PIERRE ne doit voir que ce qui concerne les tiers 101, 1001 et 1005, la table aura la structure suivante :
+				<div class="bai_code">
+					PIERRE:101<br>
+					PIERRE:1001<br>
+					PIERRE:1005
+				</div>
+			</li>
+			<br>
+			<li>
+				créer 2 formules de calcul "alphabétiques"<br>
+				<ul>
+					<li>
+						Formule : <code><b>FILTREACCESREALIS</b></code>
+						<div class="bai_code">
+							SI GROUPE("Z") = FAUX ;="OK" <span class="bai_comment">// n'appartient pas au groupe "filtre", on rend OK</span><br>
+							=%FILTRE(USERNAME+":"+?CONT("B_REALIS")) <span class="bai_comment">//non vide pour les contrats ayant un apporteur</span><br>
+						</div>
+					</li>
+					<br>
+					<li>
+						Formule : <code><b>FILTREACCESTIERS</b></code>
+						<div class="bai_code">
+							SI GROUPE("Z") = FAUX ;="OK" <span class="bai_comment">// n'appartient pas au groupe "filtre", on rend OK</span><br>
+							=%FILTRE(USERNAME+":"+?TIERS("NUMTIERS")) <span class="bai_comment">//dossier dans la liste des dossiers autorisés pour l'utilisateur</span>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<br>
+		<p>
+			<b>Evènement : TIERS + Accès + Avant :</b>
+			</p><div class="bai_code">
+				IA$ :="FILTREACCESTIERS"<br>
+				SI IA  "";=VRAI ;=FAUX
+			</div>
+		
+		<br>
+		<p>
+			<b>Evènement : CONTRAT + Accès + Avant :</b>
+			</p><div class="bai_code">
+				IA$ :="FILTREACCESREALIS"<br>
+				SI IA "";=VRAI ;=FAUX
+			</div>
+		
+		<br>
+		<p>
+			<b>Evènement DIVERS + Recherche alphabétique + Filtre :</b>
+			</p><div class="bai_code">
+				IA$ :="OK"<br>
+				SI I1 = "TIERS" ; IA$:="FILTREACCESTIERS"<br>
+				SI (I1 = "CONT") OU (I1 = "RISA") OU (I1 = "SIN") OU (I1 = "QUIT") ;IA$ :="FILTREACCESREALIS"<br>
+				SI IA  "" ;=VRAI ;=FAUX
+			</div>
+		
+	</div>
+
+</body>

@@ -1,0 +1,99 @@
+<body>
+
+
+<h3>Fonctions de manipulation des objets</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Obj:Save</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction enregistre un objet ou un tableau des objets dans la base de donnée. Les propriétés correspondantes à une clé primaire doivent être initialisées.
+			<br>En cas d'enregistrement d'une nouvelle entité dont la clé est auto-incrément, la valeur sera initialisée automatiquement si elle est nulle.
+			<br>
+			<br>En cas d'enregistrement d'un tableau, l'opération est enveloppée dans une transaction si elle n'a pas encore été démarrée explicitement.
+			<br>
+			<br>
+			</p><div class="alert alert-danger" role="alert"><p>
+			<b>Note importante :</b>
+			<br>
+			<br>Une fois l'entité créée, les propriétés de la clé primaire ne sont plus modifiables.
+			<br><br>Pour le cas rare de modification de la clé primaire :
+			</p><ul><li>utiliser SQL en direct,
+			<br>ou</li>
+			<li>supprimer l'objet puis le recréer.</li></ul></div> 
+			
+			
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. L'objet ou le tableau des objets à enregistrer.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>Le nombre de lignes de la table correspondante affectées.
+				<br>
+				<br>Une erreur SQL peut être remontée.
+			</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				<b><br>Créer et enregistrer un seul objet
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local adh
+adh := Obj:New(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>)
+adh.Contrat := <span class="integer">1</span>
+adh.Piece := <span class="integer">3</span>
+adh.Adhesion := <span class="integer">3</span>
+adh.Entree := EncodeDate(<span class="integer">2010</span>, <span class="integer">5</span>, <span class="integer">10</span>)
+adh.Sortie := Null()
+adh.Risklie := True
+adh.Prime := <span class="integer">12345</span><span class="float">6</span><span class="float">.78</span>
+adh.Prime1 := <span class="string"><span class="delimiter">"</span><span class="content">EUR</span><span class="delimiter">"</span></span> 
+adh.Tiers := <span class="integer">1000</span>
+Print(Obj:Save(adh))
+</span></code></pre>
+
+
+</b></p><p>Résultat :</p>
+
+<pre>1 
+</pre>
+<br>
+<br><b>Mise à jour d'un objet existant</b>
+
+<pre><code class="c syntaxhl"><span class="CodeRay">local adh
+adh := Obj:GetByKey(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>)
+adh.Sortie := EncodeDate(<span class="integer">2010</span>, <span class="integer">5</span>, <span class="integer">10</span>)
+Print(DumpVar(adh))
+Print(Obj:Save(adh))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre>1 
+</pre>
+<br>
+<br><b>Mise à jour d'un tableau des objets</b>
+
+<pre><code class="c syntaxhl"><span class="CodeRay">local adhs, i
+adhs := Obj:SelectSQL(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">SELECT Adh.* FROM [Adh] Adh WHERE b_contrat = 1 AND b_piece = 3</span><span class="delimiter">"</span></span>)
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Length(adhs) begin
+  adhs[i].Sortie := Now()
+  i := i + <span class="integer">1</span>
+end
+Obj:Save(adhs)
+</span></code></pre>
+
+				
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

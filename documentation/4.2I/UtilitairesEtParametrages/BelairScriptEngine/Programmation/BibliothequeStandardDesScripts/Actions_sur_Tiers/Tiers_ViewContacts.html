@@ -1,0 +1,83 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tiers_ViewContacts</code></h3>
+		</div>
+
+	<p><span style="color:red;">cette action n'existe pas à ce jour : Utiliser <code>Tiers_Details</code> avec parametre <strong>composition=True</strong></span></p>
+
+
+	<p>Renvoie les contacts d'un tiers (correspondants ou cellule familiale).</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h2>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li>dossier (int, obligatoire) : le N° de tiers</li>
+		<li>nature(string, optionnel) : 'M' - renvoie la composition de la famille ; 'P' - renvoie la composition des correspondants</li>
+	</ul>
+
+
+	<a name="R%C3%A9sultat"></a>
+<h2>Résultat<a href="#R%C3%A9sultat" class="wiki-anchor"></a></h2>
+
+
+	<p>Un document XML</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;contacts&gt;</span>
+  <span class="nt">&lt;contact&gt;</span>
+    <span class="nt">&lt;nom&gt;</span>DOUBLAIS Christelle<span class="nt">&lt;/nom&gt;</span>
+    <span class="nt">&lt;qualite&gt;</span>Enfant de <span class="nt">&lt;/qualite&gt;</span>
+    <span class="nt">&lt;telprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;telportable</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailperso</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/contact&gt;</span>
+  <span class="nt">&lt;contact&gt;</span>
+    <span class="nt">&lt;nom&gt;</span>MARTIN Edouard<span class="nt">&lt;/nom&gt;</span>
+    <span class="nt">&lt;qualite&gt;</span>Ascendant<span class="nt">&lt;/qualite&gt;</span>
+    <span class="nt">&lt;telprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;telportable</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailperso</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/contact&gt;</span>
+  <span class="nt">&lt;contact&gt;</span>
+    <span class="nt">&lt;nom&gt;</span>MARTIN Elisabeth<span class="nt">&lt;/nom&gt;</span>
+    <span class="nt">&lt;qualite&gt;</span>Ascendant<span class="nt">&lt;/qualite&gt;</span>
+    <span class="nt">&lt;telprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;telportable</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailperso</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/contact&gt;</span>
+  <span class="nt">&lt;contact&gt;</span>
+    <span class="nt">&lt;nom&gt;</span>MARTIN Philippe<span class="nt">&lt;/nom&gt;</span>
+    <span class="nt">&lt;qualite&gt;</span>Enfant de <span class="nt">&lt;/qualite&gt;</span>
+    <span class="nt">&lt;telprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;telportable</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailperso</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/contact&gt;</span>
+  <span class="nt">&lt;contact&gt;</span>
+    <span class="nt">&lt;nom&gt;</span>MARTIN Pierre<span class="nt">&lt;/nom&gt;</span>
+    <span class="nt">&lt;qualite&gt;</span>Souscripteur<span class="nt">&lt;/qualite&gt;</span>
+    <span class="nt">&lt;telprof&gt;</span>12345<span class="nt">&lt;/telprof&gt;</span>
+    <span class="nt">&lt;telportable&gt;</span>222<span class="nt">&lt;/telportable&gt;</span>
+    <span class="nt">&lt;emailprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailperso&gt;</span>externe1@belair-info.fr<span class="nt">&lt;/emailperso&gt;</span>
+  <span class="nt">&lt;/contact&gt;</span>
+  <span class="nt">&lt;contact&gt;</span>
+    <span class="nt">&lt;nom&gt;</span>MARTIN Sophie<span class="nt">&lt;/nom&gt;</span>
+    <span class="nt">&lt;qualite&gt;</span>Conjoint(e)<span class="nt">&lt;/qualite&gt;</span>
+    <span class="nt">&lt;telprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;telportable</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailprof</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;emailperso</span> <span class="na">isnull=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/contact&gt;</span>
+<span class="nt">&lt;/contacts&gt;</span>
+</code></pre>
+</div></body>

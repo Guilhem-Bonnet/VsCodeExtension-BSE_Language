@@ -1,0 +1,327 @@
+<body>
+	<h1 class="h1">Fonctions monétaires</h1>
+
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DEVFMT(<i>N,A</i>)</code></h3>
+		</div>
+		<div class="alert alert-primary">
+				Convertit une somme N en chaine formatée selon le format de la devise "A" ("EUR", "USD", ...).
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LX(<i>montant,devise,n</i>)</code></h3>
+		</div>
+		<div class="alert alert-primary">
+				Traduction en lettres d'un "montant" exprimé en "devise" donnée, limité à "n" caractères.
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LY</code></h3>
+		</div>
+		<div class="alert alert-primary">
+				Reliquat de la traduction en lettres du montant, si 1ère ligne trop courte (doit être précédé de LX(montant,devise,n)).
+		</div>
+	</div>
+	
+	<!-- Fonction DEVVAL -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DEVVAL(<i>devise</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<div class="alert alert-primary">
+				Donne la valeur actuelle d'une devise
+		</div>
+			<p>
+				<b>Paramètre :</b>
+				<br><br>
+				<code>devise</code> : valeur alphabétique donnat le code de la devise
+			</p>
+			<p>
+				<b>Exemples :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">					
+						DEVVAL("USD")
+					</span>
+					donne la valeur actuelle du Dollar<br>
+					<span class="bai_code">
+						DEVVAL(?QUIT("b_ptotale1"))
+					</span>
+					donne la valeur actuelle de la devise liée à l'information "prime totale" de la quittance
+				</div>
+			
+		</div>
+	</div>
+	
+	<!-- Fonction DEVCON -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DEVCON(<i>devise1,devise2</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<div class="alert alert-primary">
+					Donne le ratio entre 2 devises: résultat identique à la formule <code>DEVVAL(devise1) / DEVVAL(devise2)</code>
+			</div>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>devise1</code> : valeur alphabétique donnant un code de devise
+				<br><br>
+				<code>devise2</code> : valeur alphabétique donnant un code de devise 
+			</p>
+		</div>
+	</div>
+	
+	<!-- Fonction DEVISE -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DEVISE(<i>information,devise</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<div class="alert alert-primary">
+					Permet la conversion d'une information monétaire<br>
+					Si on souhaite convertir une information, la fonction DEVISE([champ],[devise]) convertit l'info [champ] dans la devise [devise]
+			</div>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>information</code> : code de l'information à convertir <code>(exemple DPP("b_salaire"))</code>
+				<br><br>
+				<code>devise</code> : code de la devise dans laquelle l'information doit être convertie
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">					
+						IA:=QUIT("b_soldedu"),"EU")
+					</span>
+				</div>
+			
+		</div>
+	</div>
+
+	<!-- Fonction DEVSOM -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DEVSOM(<i>montant,devise1,devise2</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<div class="alert alert-primary">
+				Permet la conversion du montant, de la devise 1 en devise 2
+			</div>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				Conversion de <code>montant</code> (peut être le résultat d'un calcul) exprimé en <code>devise1</code> dans la <code>devise2</code>
+				<br><br>
+				<code>devise</code> : code de la devise dans laquelle l'information doit être convertie
+			</p>
+			<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">					
+						IA:=QUIT("b_soldedu") - CONT("b_acompte")<br>
+						= DEVSOM(IA,"FF","EU")
+					</span>
+				</div>
+			
+		</div>
+	</div>
+
+	<!-- Fonction FMT -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FMT(<i>N,X</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<div class="alert alert-primary">
+				Donne Montant "N", au format de "X"'
+			</div>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>N</code> : montant
+				<br><br>
+				<code>X</code> : doit être "0" ou "0.0" ou "0.00", etc...
+				<br><br>
+				Explications sur la syntaxe du format :
+				<br><br>
+				'0' : carctère obligatoire<br>
+				'.' : séparateur décimal<br>
+				'#' : caractère facultatif<br>
+			</p>
+			<p>
+				<b>Exemples :</b><br>
+				</p><div class="bai_exemple">
+					<ul>
+						<li>
+							Pour la valeur 12345,780 :
+							<ul>
+								<li><span class="bai_code">FMT(12345,780,'0.00')</span> rend 12345,78</li>
+								<li><span class="bai_code">FMT(12345,780,'0.###')</span> rend 12345,78</li>
+								<li><span class="bai_code">FMT(12345,780,'0.000')</span> rend 12345,780</li>
+								<li><span class="bai_code">FMT(12345,780,'# ### ##0.00')</span> rend 12 345,78</li>
+							</ul>
+						</li>
+						<br>
+						<li>
+							<span class="bai_code">FMT(?RVEH("b_crm"),'0.00')</span> donne la valeur du CRM avec 2 décimales
+						</li>
+						<br>
+						<li>
+							Dans le champ "capital mobilier" on affiche 10 000,00 EU que l'on veut traduire en gestion de textes, sans décimale et en fonction de la devise de saisie ; dans notre exemple, le résultat sera alors : 10 000 EU. Il conviendra alors de créer la formule de calcul suivante :
+							<br>
+							<div class="bai_code">					
+								IA:=?RIMM("B_CAPMOB")<br>
+								IB$:=FMT(IA,"# ###0 000")<br>
+								IC$:=IB + " " + ?RIMM("B_CAPMOB1")<br>
+								=IC
+							</div>
+						</li>	
+					</ul>	
+				</div>
+			
+		</div>
+	</div>
+	
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>CREERVIR(<i>beneficiaire, entite, date, montant, libelle, banque</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<div class="alert alert-primary">
+				Cette fonction permet de déclencher un ordre de virement SEPA
+			</div>
+
+			<h4 class="h4">Paramètre(s)</h4>
+			<table class="table table-striped">
+			  <tbody>
+				<tr>
+				  <th scope="row">beneficiaire</th>
+				  <td>Integer</td>
+				  <td>Numéro de tiers du bénéficiaire du virement</td>
+				</tr>
+				<tr>
+				  <th scope="row">entite</th>
+				  <td>Integer</td>
+				  <td>Entité juridique concernée</td>
+				</tr>
+				<tr>
+				  <th scope="row">date</th>
+				  <td>Date</td>
+				  <td>Date du virement</td>
+				</tr>
+				<tr>
+				  <th scope="row">montant</th>
+				  <td>Numrique</td>
+				  <td>Montant du virement (en EURO)</td>
+				</tr>
+				<tr>
+				  <th scope="row">libelle</th>
+				  <td>String</td>
+				  <td>Libellé du virement, qui apparaitra sur les relevés de compte</td>
+				</tr>
+				<tr>
+				  <th scope="row">banque (optionnel)</th>
+				  <td>Integer</td>
+				  <td>Si indiqué, numéro de tiers de la banque à qui sera adressé l'ordre de virement</td>
+				</tr>
+			  </tbody>
+			</table>
+
+			<h4 class="h4">Résultat</h4>
+			<p>
+				Le montant du virement
+			</p>
+
+			<h4 class="h4">Exemple</h4>
+			<p>
+				<b>Code :</b><br>
+				</p><div class="bai_exemple">
+					<pre><span class="bai_code">
+IA := CREERVIR(?SINREG("B_TIERS"), ?PIEC("B_COMPTA"), ?SINREG("B_DATE"), ?SINREG("B_DEBIT"), "Sinistre "+?SIN("B_NUMCBT"), 902)
+					</span></pre>
+				</div>	
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>VIREMENT(<i>beneficiaire, entite, date, montant, libelle, options</i>)</code>
+		</h3></div>
+		<div class="panel-body">
+			<div class="alert alert-primary">
+				Cette fonction est une évolution de la fonction CREERVIR et permet de déclencher un ordre de virement SEPA
+			</div>
+
+			<h4 class="h4">Paramètre(s)</h4>
+			<table class="table table-striped">
+			  <tbody>
+				<tr>
+				  <th scope="row">beneficiaire</th>
+				  <td>Integer</td>
+				  <td>Numéro de tiers du bénéficiaire du virement</td>
+				</tr>
+				<tr>
+				  <th scope="row">entite</th>
+				  <td>Integer</td>
+				  <td>Entité juridique concernée</td>
+				</tr>
+				<tr>
+				  <th scope="row">date</th>
+				  <td>Date</td>
+				  <td>Date du virement</td>
+				</tr>
+				<tr>
+				  <th scope="row">montant</th>
+				  <td>Numérique</td>
+				  <td>Montant du virement (en EURO)</td>
+				</tr>
+				<tr>
+				  <th scope="row">libelle</th>
+				  <td>String</td>
+				  <td>Libellé du virement, qui apparaitra sur les relevés de compte</td>
+				</tr>
+				<tr>
+				  <th scope="row">options (optionnel)</th>
+				  <td>Chaine</td>
+				  <td> liste d'options de type /nom:valeur
+					<ul>
+						<li>/banque:nnn : n. banque (correspond au paramètre "banque" de la fonction CREERVIR</li>
+						<li>/iban:nnn : n. interne de l'IBAN du bénéficiaire à utiliser pour ce virement (ignoré si l'IBAN cible n'ets pas un IBAN du bénéfiaiciaire)</li>
+						<li>/contrat:nnn : n. interne du contrat concerné (informatif)</li>
+						<li>/quittance:nnn : n. interne de la quittance concernée (informatif, alimente automatiquement le numéro de contrat concerné)</li>
+						<li>/sinistre:nnn : n. interne du sinistre concerné (informatif, alimente automatiquement le numéro de contrat concerné)</li>
+					</ul>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+
+			<h4 class="h4">Résultat</h4>
+			<p>
+				Le numéro interne du virement
+			</p>
+
+			<h4 class="h4">Exemple</h4>
+			<p>
+				<b>Code :</b><br>
+				</p><div class="bai_exemple">
+					<pre><span class="bai_code">
+IA := VIREMENT(?SINREG("B_TIERS"), ?PIEC("B_COMPTA"), ?SINREG("B_DATE"), ?SINREG("B_DEBIT"), "Sinistre "+?SIN("B_NUMCBT"), "/banque:902/iban:752/sinistre:"+?SINREG("B_SINISTRE"))
+					</span></pre>
+				</div>	
+			
+		</div>
+	</div>
+
+	
+</body>

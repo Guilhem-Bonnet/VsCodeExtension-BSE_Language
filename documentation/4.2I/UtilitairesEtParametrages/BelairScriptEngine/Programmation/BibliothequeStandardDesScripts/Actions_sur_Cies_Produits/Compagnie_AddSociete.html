@@ -1,0 +1,84 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Compagnie_AddSociete</code></h3>
+		</div>
+
+<p>Ajout des paramètres d'une compagnie pour une société (entité juridique)</p>
+
+
+	<p>Entités concernées : ciek (et ciekcourtiers)</p>
+
+
+	<a name="param%C3%A8tres"></a>
+<h3>paramètres<a href="#param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>compagnie (integer, obligatoire) : numéro de la cie</li>
+		<li>societe (integer, obligatoire) : numéro de la société</li>
+		<li>data (string, obligatoire) : flux xml donnant les propriétés de l'entité CIEK (et éventuellement des entités CIEKCOURTIERS associées)</li>
+	</ul>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;data&gt;</span>
+  <span class="nt">&lt;ciek&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CIEK"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Dmandat"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2004-10-15T00:00:00.000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Emi_a"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Emi_c"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Emi_t"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Enc_a"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Enc_c"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Enc_t"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Statut"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>C<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Typrev"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/ciek&gt;</span>
+  <span class="nt">&lt;ciekcourtiers&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CIEKCOURTIERS"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numinter"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>75000MA<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CIEKCOURTIERS"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numinter"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>69001TO<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/ciekcourtiers&gt;</span>
+<span class="nt">&lt;/data&gt;</span>
+</code></pre>
+
+	<p><span style="color:blue;">Les propriétés <em>Ncie</em> et <em>Entite</em> sont inutiles (elles sont forcées par les paramètres <em>compagnie</em> et <em>societe</em>)</span></p>
+
+
+	<a name="contr%C3%B4les"></a>
+<h3>contrôles<a href="#contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Vérification présence des 3 paramètres</li>
+		<li>Vérification cohérence BDD (cie et kco existent, ciek n'existe pas)</li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>création entité ciek et alimentation à partir du flux XML</li>
+		<li>mise à jour en BDD (inSERT)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;ciek&gt;</span>
+  <span class="nt">&lt;compagnie&gt;</span>xxxxx<span class="nt">&lt;/compagnie&gt;</span>
+  <span class="nt">&lt;societe&gt;</span>n<span class="nt">&lt;/societe&gt;</span>
+<span class="nt">&lt;/ciek&gt;</span>
+</code></pre>
+</div></body>

@@ -1,0 +1,33 @@
+<body>
+
+
+<h3>Fonctions d'historique de traitement (log)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LogWarning(code, message, arguments)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Ajoute un avertissement dans l'historique.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>code</code> : état (integer) - l'état personnalisé, i.e. le code de l'avertissement.</li>
+				<li><code>message</code> (string) - le message de l'avertissement, ou la chaîne de format, comme dans la fonction <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions d'interaction" name="Fonctions%20d'interaction%20:%20Print">Print</a>.</li>
+				<li><code>arguments</code> (optionnel) les arguments à formater.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>LogWarning(0, "Skip invoice processing")
+LogWarning(123, "Invoice %s skipped. Document state: %s", invoice.Number, invoice.State)</pre>
+			
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

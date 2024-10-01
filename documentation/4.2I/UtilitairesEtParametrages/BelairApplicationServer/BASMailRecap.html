@@ -1,0 +1,74 @@
+<body>
+<h2>Envoi de mail récapitulatif de fin de traitement BAS</h2>
+
+<div class="alert alert-info" role="alert">
+Le Service BAS doit être actif
+</div>
+<p>Depuis l'outil BasAdmin.exe</p>
+<div>
+<ul>
+	<li>Depuis l'onglet Administration BasDaemon : Pointez vers le fichier BasDaemon.conf</li>
+	<li>Depuis Installer une Base : Pointez vers le fichier de configuration Belair, Indiquez le nom du serveur, Indiquez le port de communication</li>
+	<li>Depuis l'onglet Administration BasDaemon : Cliquez sur Installation de BasDaemon puis Démarrer le service</li>
+	</ul>
+<ul>
+</ul></div>
+<p>Depuis les paramètres d'application, onglet Paramètres de messagerie</p>
+<div>
+<p>Au niveau du paramètrage SMTP, cliquez sur Configurer</p>
+<ul>
+	<li>Nom : SMTP</li>
+	<li>Email : Email du compte SMTP</li>
+	<li>Répondre à : Email du compte SMTP</li>
+	<li>Cochez Utiliser la connexion personnalidée</li>
+	<li>Serveur : Indiquez le Serveur SMTP</li>
+	<li>Port : Indiquez le port </li>
+	<li>Sécurité : Choisir le type de sécurité</li>
+	<li>Méthode d'authentification : Choisir mot de passe</li>
+	<li>Login + MDP : Indiquez vos paramètres de compte SMTP<br></li>
+</ul>
+<p>Testez les paramètres pour obtenir le message : Connexion au serveur OK
+</p></div>
+
+
+<div class="alert alert-info" role="alert">
+Catalogue BJO à renseigner
+</div>
+<div>
+<p>Accessible depuis le menu Outils / Catalogues : Sélection BJO - Paramètrage Email Récapitulatif de fin de traitement BAS</p>
+<ul>
+	<li>Ajouter le correspondant avec le +</li>
+	<li>Sous Catalogue : Indiquez JOB</li>
+	<li>Classe du job : Indiquez le nom du job</li>
+	<li>Cochez Utiliser la connexion personnalidée<br></li>
+</ul>
+<br>
+<div class="alert alert-info" role="alert">
+En pratique
+</div>
+<br>
+<p>Depuis Outils / Paramètres / Paramètres de traitement BAS :</p>
+<p>Permet de choisir une action depuis la liste déroulante (Nom de la tache) </p>
+<p>Exemple : TRBEPROCESSING</p>
+<p>Renseigner un nom au niveau du Libellé de la tache</p>
+<p>Saisir les valeurs utilisées</p>
+<p>ReceiveLogByEmail doit être à TRUE</p>
+<br>
+<p>Enregistrer le traitement au format XML (exemple TRBEPROCESSING.xml) permet l'automatisation par une ligne de commande.</p>
+<p>Depuis Powershell : changez le dossier courant vers le repertoir Belair4</p>
+<p>Lancez la commande : .\BasClientCMD.exe /IC:/Belair4/APPXXX/TRBEPROCESSING.xml</p>
+<p>Lance le traitement </p>
+<br>
+<p>Depuis Bureautique / Paramétrage BSL : </p>
+<p>Permet de choisir une action BSE</p>
+<p>Exemple : SYS_ECHO</p>
+<p>Il est possible de lancer directement l'action avec le bouton LANCER : il faudra alors renseigner les valeurs puis valider par le bouton Lancer</p>
+<p>Lance le traitement </p>
+<p>L'email est bien arrivé dans la boite de réception du destinataire</p>
+<br>
+<p>Enregistrez l'action avec le bouton Extraction (exemple : SYS_ECHO.XML) afin d'automatiser le traitement par une ligne de commande.</p>
+<p>Depuis Powershell : changez le dossier courant vers le repertoir Belair4</p>
+<p>Lancez la commande : .\BasClientCMD.exe /IC:/Belair4/APPXXX/SYS_ECHO.xml</p>
+<p>Lance le traitement </p>
+<p>L'email est bien arrivé dans la boite de réception du destinataire</p>
+</div></body>

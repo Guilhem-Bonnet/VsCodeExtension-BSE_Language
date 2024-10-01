@@ -1,0 +1,74 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:GetHeader</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			Lit la valeur d'un champ header pour la dernière requête.
+			</p>
+			<p>
+			Note: il est aussi possible d'utiliser HTTP:SetBody ou HTTP:SetBodyFile pour définir le body de la prochaine requête.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. objet HTTP</li>
+				<li>2. chaîne, nom du champ header</li></ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			</p><ul>Aucun.</ul>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+			</p><p>
+			Note:
+			</p>
+			<p>
+			Dans cet exemple, on utilise httpbin.org, un site qui permet de vérifier la demande qui lui a été faite.
+			Le site retourne en json le détail de la requête qui lui a été passée.
+			</p>
+				<p>Code :</p>
+				<div class="bai_exemple"><pre>
+local Http, Body, ContentType
+Http := HTTP:New()
+Body := HTTP:POST(Http, "https://httpbin.org/post") // raise if not 200
+Assert(HTTP:ResponseCode(Http) = 200)
+ContentType := HTTP:GetHeader(Http, "Content-Type")
+print("body")
+print(Body)
+print("type de format du body reçu")
+print(ContentType)
+				</pre></div>
+			
+			
+			<p>Résultat :</p>
+			
+			<pre>body
+{
+  "args": {},
+  "data": "", 
+  "files": {},
+  "form": {},
+  "headers": {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", 
+    "Content-Length": "0", 
+    "Content-Type": "multipart/form-data; boundary=--------031920172400988; charset=UTF-8", 
+    "Host": "httpbin.org", 
+    "User-Agent": "Mozilla/3.0 (compatible; Indy Library)", 
+    "X-Amzn-Trace-Id": "Root=1-5e739ca3-40889a82c96b98b2162943d6" 
+  }, 
+  "json": null,
+  "origin": "194.206.193.74",
+  "url": "https://httpbin.org/post"
+}</pre>
+		</div>
+	</div>
+	<br><br>
+</body>

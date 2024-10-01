@@ -1,0 +1,50 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:AddField</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			Définit la valeur d'un champ de formulaire pour la prochaine requête.
+			</p>
+			<p>
+			Note: il est aussi possible d'utiliser HTTP:SetBody ou HTTP:SetBodyFile pour définir le body de la prochaine requête.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. objet HTTP</li>
+				<li>2. chaîne, nom du champ</li>				
+				<li>3. chaîne, valeur du champ</li></ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			<br>Aucun.</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+			</p><div class="bai_exemple"><pre>
+local http, body, json
+http := HTTP:New()
+HTTP:AddField(http, "name", "spencer")
+body := HTTP:POST(http, "http://httpbin.org/post") // raise if not 200
+Assert(HTTP:ResponseCode(http) = 200)
+json := JSON:Open(body)
+print(JSON:SelectResult(json, "form.name"))
+</pre></div>
+
+
+			
+			
+			<p>Résultat :</p>
+			
+			<pre>spencer</pre>
+		</div>
+	</div>
+	<br><br>
+</body>

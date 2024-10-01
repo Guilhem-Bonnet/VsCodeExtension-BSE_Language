@@ -1,0 +1,81 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Risk_Update</code></h3>
+		</div>
+
+<p>Modifications des données d'un risque existant tables : RISA, RIMM, RVEH, RDIV, RDPP et tables d'extentions de risque</p>
+
+
+	<p><span style="color:red;">les données liées à ADH et GARAN ne sont pas modifiables par cette action</span></p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>contrat de type multi-adhésion
+	<ul>
+	<li>adhesion (int, optionnel) : numéro de l'adhésion à modifier </li>
+	</ul>
+	</li>
+		<li>pour contrat mono adhésion
+	<ul>
+	<li>contrat (int, optionnel) : numéro du contrat du risque à modifier </li>
+		<li>piece ((int, optionnel) : numéro de la pièce du risque à modifier. SI non précisé, modification du risque de la dernière pièce de <em>contrat</em></li>
+	</ul>
+	</li>
+		<li>data (string, obligatoire) : flux XML des données à modifier</li>
+	</ul>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;risk&gt;</span>
+<span class="nt">&lt;input&gt;</span>
+<span class="nt">&lt;objects&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"RISA"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Appel"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>HOME MOBILE - 44500  LA BAULE ESCOUBLAC<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Identifi"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>00001<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Images"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Memo"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1002"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Origine"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"77"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tarif"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Zone"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"rimm"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Codp"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>44500<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Typehab"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>H<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Usagehab"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>P<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Usahabit"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ville"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>LA BAULE ESCOUBLAC<span class="nt">&lt;/param&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+   <span class="nt">&lt;adresse_insee&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Object"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"BurDist"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>DENAZE<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodeBis"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span> <span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodePays"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FR<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CodePostal"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>53400<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"CompAdr"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"INSEElocalite"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"INSEEvoie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span> <span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"LibelleVoie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Du parc<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Localite"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>DENAZE<span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"NumVoie"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span> <span class="nt">&lt;/param&gt;</span>
+            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pays"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FRANCE<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/adresse_insee&gt;</span>
+<span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/input&gt;</span>
+<span class="nt">&lt;/risk&gt;</span>
+</code></pre>
+
+	<p>Le flux XML peut contenir des données à effacer liées au risque (extensions pour l'instant):<br><strong>Adresse au format INSEE</strong> : si les balises <em>rimm</em> et  <em>adresse_insee</em> est présente, l'adresse dans <em>rimm</em> sera formatée au format INSEE selon les champs contenus dans cette balise</p>
+
+
+<pre>
+Balise &lt;risk&gt;&lt;delete&gt;&lt;objects&gt;&lt;object typename="XRxxx"&gt;.....
+</pre>
+</div></body>

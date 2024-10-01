@@ -1,0 +1,26 @@
+<body>
+	<h2>Création d'une boucle</h2>
+
+	<p>
+		Permet notamment d'additionner des valeurs d'un champ répondant à des conditions identiques définies dans le SQL
+	</p>
+
+	<div class="bai_exemple">
+		<div class="bai_code">
+			SQL:NEW(TOTO) <span class="bai_comment"> // Création du SQL</span><br>
+			SQL:OPEN(TOTO) <span class="bai_comment"> // Ouverture du SQL</span><br>
+			SI RESULT = 0 ;&gt;FINTAB <span class="bai_comment"> // S'il n'y a plus de valeur répondant aux conditions du SQL, on va à la ligne contenant le label FINTAB, sinon on continue sur la ligne suivante</span><br>
+			:BOUCLE <span class="bai_comment"> // Déclaration du label BOUCLE</span><br>
+			SQL:NEXT(TOTO) <span class="bai_comment"> // On passe à la valeur suivante trouvée par le SQL et on reprend le traitement pour cette valeur</span><br>
+			SI RESULT &gt; 0 ;&gt;BOUCLE <span class="bai_comment"> // Si cette valeur existe, on retourne à la ligne comportant le label BOUCLE</span><br>
+			:FINTAB <span class="bai_comment"> // Déclaration du label FINTAB</span><br>
+			SQL:CLOSE(TOTO) <span class="bai_comment"> // Arrêt de la requête</span><br>
+			SQL:FREE(TOTO) <span class="bai_comment"> // Suppression de la requête</span><br>
+		</div>
+	</div>
+
+	<p>
+		On introduit entre ces lignes, les formules de calcul que l'on souhaite appliquer aux valeurs sélectionnées par le SQL en fonction du résultat que l'on souhaite obtenir. Ces nouvelles lignes seront intégrées dans le SQL mais ne feront pas partie du SQL (donc non précédées d'un *) et sont constituées de la même façon que dans une formule de calcul classique (se reporter à la documentation correspondante).
+	</p>
+
+</body>

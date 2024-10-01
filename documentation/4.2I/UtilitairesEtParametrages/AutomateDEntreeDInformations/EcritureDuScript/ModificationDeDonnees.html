@@ -1,0 +1,96 @@
+<body>
+	<h2>Modification de données</h2>
+
+	<p>
+		Il faut être prudent avec certaines modifications des données, des incohérences peuvent survenir si l'on modifie la valeur de champs servant à établir un lien entre plusieurs tables.
+	</p>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>:=</code> : Affectation de valeurs</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Après avoir accédé à un enregistrement ou bien après l'avoir créé, on peut modifier le contenu par de simples affectations de valeurs aux champs disponibles.
+			</p>
+
+			<p>
+				L'opérateur d'affectation est, comme en formule de calcul, ':='
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					?POLI("b_police") := "123456" <span class="bai_comment">// affectation de la constante : 123456</span><br>
+					?POLI("b_police") := ("123" + "456") <span class="bai_comment">// affectation de la constante : 123456</span><br>
+					?POLI("b_police") := ?DATA("numéro_police") <span class="bai_comment">// affectation de la valeur de l'information lue</span><br>
+					?POLI("b_police") := IA <span class="bai_comment">// affectation de la valeur contenue dans la variable</span><br>
+					<span class="bai_comment">// intermédiaire IA, préalablement initialisée dans le script.</span>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>OK</code> : validation des mises à jour effectuées sur les fichiers</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Pour que les modifications soient effectives, il faut que l'instruction OK soit exécutée.
+			</p>
+
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				Mise à jour du n° de téléphone d'un tiers identifié par son n° de dossier
+				<div class="bai_code">
+					...<br>
+					IA:=?DATA("B_NUMTIERS")<br>
+					RECTIERS(IA)<br>
+					SI RESULT0,&gt;MAJTIERS<br>
+					PRINT("Tiers "+IA+" inconnu")<br>
+					FIN<br>
+					:MAJTIERS<br>
+					?TIERS("B_NTEL"):=?DATA("telephone")<br>
+					OK<br>
+					...
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HistoArreter / HistoDemarrer</code> : Gestion de l'historisation dans les Scripts Bsi</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Explication du comportement
+			</p>
+			<p>
+				Dès que l'on écrit HISTOARRETER l'historisation est arrêtée pour n'importe quelle table. <br>L'historisation ne reprendra que quand on écrit HISTODEMARRER ou que l'on arrive à la fin du script. <br>Cas particulier s'il y a une erreur entre l'instruction HISTOARRETER et HISTODEMARRER alors on réenclenche l'historisation.
+			</p>
+			<b>Pre requis pour le test :</b>
+<ul><li>sur APPDEI</li>
+<li>ouvrir la modélisation</li>
+<li>activer l'historisation sur la table TIERS</li>
+<li>enregistrer le métamodel</li></ul>
+			<p>
+				Voici un Script Automate pour tester la nouvelle fonction :
+			</p>
+<pre><code class="c syntaxhl"><span class="CodeRay">HISTOARRETER 
+rectiers(1000)
+?tiers("b_ntel") := jour_heure
+ok
+HISTODEMARRER
+
+rectiers(1009)
+?tiers("b_ntel") := jour_heure
+ok 
+</span></code></pre>
+<p>Comportement attendu : <br> Une ligne dans la table TIERS_HISTO_LOG</p>
+<p><img src="images/gestionhistobse.png"></p>	
+		</div>
+	</div>
+	
+</body>

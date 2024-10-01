@@ -1,0 +1,50 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+					<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Event_ListItems</code></h3>
+		</div>
+
+<p>Récupère la liste des événements d'un tiers, d'un contrat ou d'un sinistre. On peut aussi indiquer l'ordre (l'id événement) pour n'avoir qu'un seul événement.</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>tiers (int, optionnel) : numéro du dossier tiers</li>
+		<li>contrat (int, optionnel) : numéro interne du contrat</li>
+		<li>sinistre (int, optionnel) : numéro interne du sinistre</li>
+		<li>recla (int, optionnel) : numéro interne de la réclamation </li>
+		<li>event (int, optionnel) : numéro d'ordre de l'événement dans le dossier du tiers</li>
+		<li>datefrom (date, optionnel) : date de départ</li>
+		<li>dateto (date, optionnel) : date de fin</li>
+		<li>user (string, optionnel) : utilisateur concerné</li>
+	</ul>
+
+
+	<a name="traitement"></a>
+<h3>traitement<a href="#traitement" class="wiki-anchor"></a></h3>
+
+
+	<p>REequête SQL sur CHRO selon les paramètres donnés</p>
+
+
+	<a name="retour"></a>
+<h3>retour<a href="#retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;events&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CHRO"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Codeclas"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Codelet"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      ...
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CHRO"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+    ...
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/events&gt;</span>
+</code></pre>
+</div></body>

@@ -1,0 +1,46 @@
+<body>
+	<h2>Anonymisation de la base de données</h2><br>
+
+	<p>Afin d'être conforme au RGPD, vous pouvez être amené à fournir une <b>copie</b> de votre base de données à un tiers, ne contenant aucune donnée personnelle sensible (nom/prénom, n. de téléphone, références bancaires, etc..</p>
+
+	<p>Belair intègre deux fonctions de maintenance permettant de procéder à l'anonymisation complète d'une base.
+		<br>
+		Ces fonctions sont accessibles uniquement aux adminstrateurs.
+	</p>
+	<!-- Fonction RGPDFIELDS -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RGPDFIELDS</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>Cette fonction analyse le modèle de données de votre base, y compris vos données spécifiques (exrtensions, ...) 
+				et recense tous les champs sensibles (n. de téléphone, email, etc...) en plus des champs déclarés sensibles par défaut (nom, prénom, Iban, etc...).
+				<br>
+				La liste des champs est stockée dans la table de codes <b>RGPDFIELDS</b>
+			</p>
+			<div class="alert alert-info" role="info">
+				En cas de besoin, vous pouvez ajouter dans cette table tout champ jugé sensible, non repéré du fait de sa nature,
+				comme par exemple un champ alphabétique simple dans une extension peronnelle, utilisé pour stocker un nom, une adresse email, etc... 
+			</div>
+	</div>
+
+	<!-- Fonction RGPDANONYME -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RGPDANONYME</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>Lancement de la fonction d'anonymisation de la base.</p>
+
+			<div class="alert alert-danger" role="danger">
+				<i class="fas fa-exclamation-triangle fa-2x"></i>
+				Cette opération étant irréversible, une confirmation sur le lancement de l'opération est demandée.</div>
+			<pre>Vous demandez l'anonymisation de la base.
+Ceci signifie que toutes les données personnelles vont être effacées, de manière DEFINITIVE
+Etes-vous sur de vouloir faire cette opération ?
+[OUI] <b>[NON]</b></pre>
+		</div>
+		</div>	
+		</div>		
+	
+</body>

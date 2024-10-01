@@ -1,0 +1,66 @@
+<body>
+
+
+<h3>Fonctions de manipulation de dates</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DateDiff(DiffUnit, ToValue, FromValue)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie la différence entre deux valeurs DateTime.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>DiffUnit</code> : la part de DateTime (l'unité de différence) :
+<ul><li>"year", "yy" pour les années ;</li>
+<li>"month", "mm" pour les mois ;</li>
+<li>"week", "ww" pour les semaines ;</li>
+<li>"day", "dd" pour les jours ;</li>
+<li>"hour", "hh" pour les heures ;</li>
+<li>"minute", "mi" pour les minutes ;</li>
+<li>"second", "ss" pour les seconds ;</li>
+<li>"millisecond", "ms" pour les milliseconds.</li></ul></li>
+<li><code>ToValue</code> : la valeur "jusqu'à".</li>
+<li><code>FromValue</code> : la valeur "a partir".</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>Le nombre entier (signé) de la différence, dans l'unité choisie.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local date1, date2
+date1 := EncodeDateTime(<span class="integer">2015</span>, <span class="integer">10</span>, <span class="integer">11</span>, <span class="integer">21</span>, <span class="integer">35</span>, <span class="integer">51</span>, <span class="integer">123</span>)
+date2 := EncodeDateTime(<span class="integer">2017</span>, <span class="integer">8</span>, <span class="integer">25</span>, <span class="integer">7</span>, <span class="integer">44</span>, <span class="integer">31</span>, <span class="integer">456</span>)
+Print(DateDiff(<span class="string"><span class="delimiter">"</span><span class="content">year</span><span class="delimiter">"</span></span>, date2, date1))
+Print(DateDiff(<span class="string"><span class="delimiter">"</span><span class="content">month</span><span class="delimiter">"</span></span>, date2, date1)) 
+Print(DateDiff(<span class="string"><span class="delimiter">"</span><span class="content">week</span><span class="delimiter">"</span></span>, date2, date1))
+Print(DateDiff(<span class="string"><span class="delimiter">"</span><span class="content">day</span><span class="delimiter">"</span></span>, date2, date1))
+Print(DateDiff(<span class="string"><span class="delimiter">"</span><span class="content">hour</span><span class="delimiter">"</span></span>, date2, date1))
+Print(DateDiff(<span class="string"><span class="delimiter">"</span><span class="content">minute</span><span class="delimiter">"</span></span>, date2, date1))
+Print(DateDiff(<span class="string"><span class="delimiter">"</span><span class="content">second</span><span class="delimiter">"</span></span>, date2, date1))
+Print(DateDiff(<span class="string"><span class="delimiter">"</span><span class="content">ms</span><span class="delimiter">"</span></span>, date2, date1))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">Years: 1
+Months: 22
+Weeks: 97
+Days: 684
+Hours: 16402
+Minutes: 984128
+Seconds: 59047720
+Milliseconds: 59047720333
+</span></code></pre>
+				
+			
+			<br>
+		</div>
+	</div>
+	<br><br>
+</body>

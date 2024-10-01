@@ -1,0 +1,18 @@
+<body>
+	<h2>Formules de calcul - Commandes de déclenchement d'une URL</h2>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>URLGET(<i>http://xxxxxxxx</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>Cette fonction doit retourner le même résultat que la fonction de calcul URLGET.</p>
+			<p>Elle est indispensable dans BSE pour permettre par exemple le traitement d'un flux XML retournée par une URL</p>
+			<br>
+		<b>Exemple :</b>
+<div class="bai_exemple"><pre>local xmldoc
+xmldoc := XML:OPEN(URLGET("https://jimi79.hd.free.fr/belair/dates.php"))
+Print(Xml:PrettyFormat(XmlDoc))
+</pre></div>
+		</div>
+		</div>
+</body>

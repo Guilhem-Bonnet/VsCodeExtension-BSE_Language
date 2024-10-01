@@ -1,0 +1,156 @@
+<body>
+
+
+<h3>Gestions des transactions</h3>
+	<div>
+	<p>Les fonctions suivantes permettent de gérer les transactions BDD dans les scripts BSE</p>
+	</div>
+
+ 	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:BeginTransaction()</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>commence une transaction.
+			</p>
+			<div class="alert alert-warning" role="alert">
+				Les transactions imbriquées ne sont pas supportées : si la transaction est déjà ouverte, rien ne se passe, 
+			</div>
+		</div>
+	</div>
+	<br><br>
+	
+ 	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:CommitTransaction()</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>valide et ferme la transaction courante.
+			</p>
+			<div class="alert alert-warning" role="alert">
+				si la transaction n'a pas été ouverte, une exception niveau SGBD estdéclenchée:<br>
+				"The COMMIT TRANSACTION request has no corresponding BEGIN TRANSACTION"				
+			</div>
+		</div>
+	</div>
+	<br><br>
+
+ 	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:RollbackTransaction()</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>annule tous les modifications BDD depuis l'ouverture de la transaction et ferme la transaction.
+			</p>
+			<div class="alert alert-warning" role="alert">
+				si la transaction n'a pas été ouverte, une exception niveau SGBD estdéclenchée:<br>
+				"The ROLLBACK TRANSACTION request has no corresponding BEGIN TRANSACTION"				
+			</div>
+		</div>
+	</div>
+	<br><br>
+
+ 	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:InTransaction()</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>renvoie True si une transaction est ouverte, False sinon.
+			</p>
+		</div>
+	</div>
+	
+	<div>
+			<p>
+				<b><br>Exemple d'utilisation classique :</b><br>
+				
+					</p><pre style="color:#000000;background:#ffffff;">
+	local TestKeyName
+	TestKeyName <span style="color:#800080; ">:</span><span style="color:#808030; ">=</span> <span style="color:#800000; ">"</span><span style="color:#0000e6; ">TestKeyName</span><span style="color:#800000; ">"</span> 
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Count before: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>ExecResult<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">SELECT COUNT(1) FROM applic WHERE reference = :TestKeyName</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">SQL:</span>BeginTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Begin transaction</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">  SQL:</span>ExecDirect<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">INSERT INTO applic (reference, valeur) VALUES (:TestKeyName, 'Test Tnx')</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	 Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Count within transaction: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>ExecResult<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">SELECT COUNT(1) FROM applic WHERE reference = :TestKeyName</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	 Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">In transaction: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>InTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">SQL:</span>RollbackTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Rolled back</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">In transaction: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>InTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Count after rollback: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>ExecResult<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">SELECT COUNT(1) FROM applic WHERE reference = :TestKeyName</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+
+	<span style="color:#e34adc; ">SQL:</span>BeginTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Begin transaction</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">  SQL:</span>ExecDirect<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">INSERT INTO applic (reference, valeur) VALUES ('</span><span style="color:#800000; ">"</span> <span style="color:#808030; ">+</span> TestKeyName <span style="color:#808030; ">+</span> <span style="color:#800000; ">"</span><span style="color:#0000e6; ">', 'Test Tnx')</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	  Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Count within transaction: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>ExecResult<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">SELECT COUNT(1) FROM applic WHERE reference = :TestKeyName</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">SQL:</span>CommitTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Committed</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Count after commit: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>ExecResult<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">SELECT COUNT(1) FROM applic WHERE reference = :TestKeyName</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Deleted: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>ExecDirect<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">DELETE FROM applic WHERE reference = :TestKeyName</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	</pre>
+	
+	
+			<p>Résultat :</p>
+<pre><code class="text syntaxhl"><span class="CodeRay">
+Count before: 0
+Begin transaction
+Count within transaction: 1
+In transaction: True
+Rolled back
+In transaction: False
+Count after rollback: 0
+Begin transaction
+Count within transaction: 1
+Committed
+Count after commit: 1
+Deleted: 1
+</span></code></pre>
+	</div>
+
+
+<div>
+			<p>
+				<b><br>Rollback automatique en cas d'erreur :</b><br>
+				Ce script déclenche une erreur: la transaction n'est pas validée.
+				
+</p><pre style="color:#000000;background:#ffffff;">
+	local TestKeyName
+	TestKeyName <span style="color:#800080; ">:</span><span style="color:#808030; ">=</span> <span style="color:#800000; ">"</span><span style="color:#0000e6; ">TestKeyName</span><span style="color:#800000; ">"</span> 
+	<span style="color:#e34adc; ">SQL:</span>ExecDirect<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">DELETE FROM applic WHERE reference = :TestKeyName</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">SQL:</span>BeginTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">  SQL:</span>ExecDirect<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">INSERT INTO applic (reference, valeur) VALUES (:TestKeyName, 'Test Tnx')</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	  Error<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Transaction rolled back</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">SQL:</span>CommitTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+</pre>
+	
+	
+			<p>Pour vérifier :</p>
+<pre style="color:#000000;background:#ffffff;">
+	local TestKeyName
+	TestKeyName <span style="color:#800080; ">:</span><span style="color:#808030; ">=</span> <span style="color:#800000; ">"</span><span style="color:#0000e6; ">TestKeyName</span><span style="color:#800000; ">"</span> 
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">In transaction: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>InTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">Count: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>ExecResult<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">SELECT COUNT(1) FROM applic WHERE reference = :TestKeyName)</span><span style="color:#ffffff; background:#dd0000; font-weight:bold; font-style:italic; ">)</span><span style="color:#0000e6; "></span>
+</pre>
+</div>
+
+<div>
+			<p>
+				<b><br>Pas de gestion de transactions imbriquées:</b><br>
+				
+</p><pre style="color:#000000;background:#ffffff;"><span style="color:#e34adc; ">
+	SQL:</span>BeginTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">SQL:</span>BeginTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">In transaction: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>InTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+	<span style="color:#e34adc; ">SQL:</span>RollbackTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span>
+	Print<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">In transaction: </span><span style="color:#007997; ">%s</span><span style="color:#800000; ">"</span><span style="color:#808030; ">,</span> SQL<span style="color:#800080; ">:</span>InTransaction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span>
+</pre>
+
+	
+			<p>Résultat:</p>
+<pre style="color:#000000;background:#ffffff;">
+In transaction: True
+In transaction: False
+</pre>
+</div>
+	
+	
+</body>

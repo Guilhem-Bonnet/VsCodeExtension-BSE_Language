@@ -1,0 +1,33 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+<br>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Library FileCsvLib</code>
+		</h3></div>
+		<div class="panel-body">
+<pre>function File_ConvertCsvToXml(inputfilename, encoding, ReadColumsNames, SkipFirstLine, Columns, RowName, outputfileName)</pre>
+<p>Retourne un flux XML (ou un fichier XML) du contenu d'un fichier CSV</p>
+<br>
+<pre>function File_ConvertCsvToArray(inputfilename, encoding, ReadColumsNames, SkipFirstLine, Columns)</pre>
+<p>Retourne un tableau représentant le contenu d'un fichier CSV</p>
+				<b><br>Paramètres communs aux 2 fonctions :</b>
+				<ul><li>inputfilename (string) : obligatoire : fichier CSV en lecture</li>
+				<li>encoding (string) : obligatoire : encodage du fichier, parmi les valeurs suivantes</li>
+				<ul><li>ANSI</li>
+				<li>UTF8 ou UTF-8</li>
+				<li>UTF16 ou UTF-16</li></ul>
+				<li>ReadColumnNames (booléen) : obligatoire. Si True, les noms des colonnes sont automatiquement attribués selon la 1ere ligne du fichier (en-tête)</li>
+				<li>SkipFirstLine(booléen) : obligatoire. Si True, on ignore la 1ere ligne (en-tête). Forcé à True si ReadColumnNames = True</li>
+				<li>Columns (string) : optionnel. si renseigné, liste des noms de colonnes à créer, séparés par des ";" </li><br>
+				Ce parametre permet d'ignorer certaines colonnes du CSV et de forcer le type de chaque colonne (par défaut, type=String)
+				<ul><li>Exemple 1 : columns := "numero;nom;;prenom;date_naissance" =&gt; Seules les colonnes 1,2,4 et 5 du fichier sont lues</li>
+				<li>Exemple 2 : columns := "numero=L;nom;;prenom;date_naissance=D;salaire=E" </li>
+				<ul><li>=&gt; Seules les colonnes 1,2,4,5 et 6 du fichier sont lues</li>
+				<li>numero est de type Integer, date_naissance est de type TDateTime et salaire est de type Float (même codification que dans Baiimp : A,L,D et N)</li></ul></ul></ul>
+				<br>
+				<p><b>Paramètres spécifiques à File_ConvertCsvToXml</b></p>
+				<ul><li>RowName (string) : optionnel, donne le nom de la balise du résultat ("row" par défaut)</li>
+				<li>outputfileName (string) : optionnel, si non vide, le résultat est enregistré dans le fichier et la fonction retourne le nom du fichier créé à la place du flux XML</li>
+			
+</ul></div></div></body>

@@ -1,0 +1,58 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Cont_Details</code></h3>
+		</div>
+
+<p>Détails d'un contrat</p>
+
+	<a name="Parametres"></a>
+<h3>Parametres:<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>contrat (int, obligatoire) : numéro contrat</li>
+		<li>Allpieces (boolean, Défaut=False) : Si True, toutes les pieces, sinon, juste la derniere</li>
+		<li>DetailAdh (boolean, Défaut=False) : Si True, détail sur l'adhésion principale et des tables liées (RISA, RIMM, RVEH, RDIV, RDPP)</li>
+		<li>Garanties (boolean, Défaut=False) : Si True, liste des garanties de l'adhésion principale (nécessite DetailAdh=True)</li>
+		<li>Extensions (boolean, Défaut=False) : Si True, ajout des extensions contrat (et celles liées au risque si DetailAdh=True)</li>
+		<li>infosCieProd (boolean, Défaut=False) : Si True, ajout des informations CIE, PROD et BRAN pour chaque pièce</li>
+	</ul>
+
+
+	<a name="RetourFlux-XML-variable-selon-les-parametres-pass%C3%A9s"></a>
+<h3>Retour:<br>Flux XML, variable selon les parametres passés<a href="#RetourFlux-XML-variable-selon-les-parametres-pass%C3%A9s" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;contrat</span> <span class="na">caption=</span><span class="s">"Contrats"</span> <span class="na">contrat=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CONT"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;pieces&gt;</span>
+    <span class="nt">&lt;piece</span> <span class="na">piece=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"piec"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;poli&gt;</span>
+        <span class="nt">&lt;objects&gt;</span>
+           <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"poli"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;/objects&gt;</span>
+      <span class="nt">&lt;/poli&gt;</span>
+      <span class="nt">&lt;adhesion&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"adh"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"RISA"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"rveh"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;objects&gt;</span>
+          <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"rdpp"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;/objects&gt;</span>
+        <span class="nt">&lt;garan&gt;</span>
+          <span class="nt">&lt;objects&gt;</span>
+            <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"garan"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;/objects&gt;</span>
+        <span class="nt">&lt;/garan&gt;</span>
+      <span class="nt">&lt;/adhesion&gt;</span>
+      <span class="nt">&lt;clause&gt;</span>
+        <span class="nt">&lt;objects/&gt;</span>
+      <span class="nt">&lt;/clause&gt;</span>
+    <span class="nt">&lt;/piece&gt;</span>
+  <span class="nt">&lt;/pieces&gt;</span>
+<span class="nt">&lt;/contrat&gt;</span>
+</code></pre>
+</div></body>

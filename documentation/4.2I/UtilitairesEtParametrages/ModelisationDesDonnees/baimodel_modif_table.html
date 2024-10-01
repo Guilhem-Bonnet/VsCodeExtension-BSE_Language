@@ -1,0 +1,76 @@
+<body>
+
+<h2>Modification d'une table</h2>
+
+<p>
+	Par défaut, les éléments sont en lecture seule.<br>
+	Positionnez-vous sur la table concernée, faites Clic-Droit et sélectionnez la fonction 'Débloquer' pour passer en mode édition sur cette table.
+</p>
+
+<p><img src="images/baimodel_champs_debloquer.png" class="img-responsive"></p>
+
+<h3>Pour créer un nouveau champ:</h3>
+<p>
+	Faites Clic-Droit sur la ligne 'Champs' et sélectionnez la fonction 'Nouveau' ou tapez <kbd>[Ctrl]</kbd>+<kbd>N</kbd><br>
+	Remplissez les propriétés du nouveau champ
+</p>
+
+<h3>Pour modifier les propriétés d'un champ:</h3>
+<p>
+	Positionnez-vous sur la ligne du champ concerné et modifier ses propriétés
+</p><div class="alert alert-info" role="alert"> 
+	<p>
+		Certaines modifications sont impossibles et seront refusées lors de la validation du modèle.
+	</p>
+</div>
+
+
+<h3>Pour copier toutes les propriétés d'un champ sur un nouveau champ:</h3>
+<p>
+	Positionnez-vous sur la ligne du champ concerné et sélectionnez la fonction 'Cloner'
+</p>
+
+<h3>Pour supprimer un champ:</h3>
+<p>
+	Faites Clic-Droit sur la ligne du champ concerné et sélectionnez la fonction 'Supprimez' ou tapez <kbd>[Ctrl]</kbd>+<kbd>Suppr</kbd><br>
+	Remplissez les propriétés du nouveau champ
+</p>
+
+<div class="alert alert-danger" role="alert"> 
+	<p>
+		<b>RAPPEL.</b><br>
+		Les champs dont le nom est <code>B_xxxxx</code> font partie du modèle standard de BELAIR.<br>
+		Ne tentez jamais de modifier un champ du modèle standard de BELAIR.<br>
+		De même, lorsque vous ajoutez des champs à une table existante, ou dans uen table que vous créez, ne créez pas de champ avec un nom du type <code>B_xxxxx</code> 
+	</p>
+</div>
+
+<h3>Pour créer un nouvel index secondaire:</h3>
+<p>
+	Faites Clic-Droit sur la ligne 'Index' et sélectionnez la fonction 'Nouveau' ou tapez <kbd>[Ctrl]</kbd>+<kbd>N</kbd><br>
+	Remplissez les propriétés du nouvel index secondaire.<br><br>
+	(cette fonction n'est utile que pour créer des index composés de plusieurs champs; sinon il suffit de modifier la propriété 'indexé' du champ concerné)
+</p>
+
+<h3>Pour modifier les propriétés d'un index secondaire:</h3>
+<p>
+	Positionnez-vous sur la ligne de l'index concerné et modifiez ses propriétés.
+</p>
+
+<h3>Pour copier toutes les propriétés d'un index sur un nouvel index:</h3>
+<p>
+	Positionnez-vous sur la ligne de l'index concerné et sélectionnez la fonction 'Cloner'
+</p>
+
+<h3>Pour copier toutes les propriétés d'une table sur une nouvelle</h3>
+<p>
+	Positionnez-vous sur la ligne de la table concernée et sélectionnez la fonction 'Cloner'
+	Une nouvelle table <code>TAB_xxx</code>
+
+	</p><div class="alert alert-danger" role="alert"> 
+		Le clonage d'une table est à manipuler avec précaution.<br>
+		Si par exemple, vous clonez une extension sur une nouvelle, vous devrez respecter les normes de nommage et de relations de cette nouvelle table, en fonction de sa destination.
+	</div>
+
+
+</body>

@@ -1,0 +1,195 @@
+<body>
+	<h2>Exemples de scripts</h2>
+
+	<b>Recherche du tiers par son nom+prénom et création du tiers si non trouvé</b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			IB$:= ?DATA(1) <span class="bai_comment">\\ titre</span><br>
+			IC$:= ?DATA(2) <span class="bai_comment">\\ nom</span><br>
+			ID$:= ?DATA(3) <span class="bai_comment">\\ prénom</span><br>
+			IA$ := IC + ID <span class="bai_comment">\\ nom + prénom</span><br>
+			<br>
+			RECALP(TIERS,b_rsociale,IA) <span class="bai_comment">\\ recherche alpha sur nom/prénom</span><br>
+			SI RESULT &gt; 0 ;FIN <span class="bai_comment">\\ il existe déjà (avec peut être des homonymes)</span><br>
+			<br>
+			<span class="bai_comment">\\ ci dessous : tous les titres commençant par "M" sont supposés être des p. physiques (MR, MME, etc...)</span><br>
+			SI EXT(IB,1,1) = "M" ;IE$ := "P" ;IE$ := "M" <span class="bai_comment">\\ la fonction EXT extrait le 1er caractère de IB</span><br>
+			IF$ := "1" <span class="bai_comment">\\ type de tiers à créer (ici, "1" pour client)</span><br>
+			NEWTIERS(IF,IE,0) <span class="bai_comment">\\ création tiers de type IF et de nature IE, sans préciser de N°</span><br>
+			<br>
+			<span class="bai_comment">\\ (le N° de tiers est attribué selon le type de tiers)</span><br>
+			SI IE = "M" ;&gt;TIERSDPM<br>
+			<br>
+			<span class="bai_comment">\\---- tiers personne physique (les informations titre, nom, prénom sont automatiquement reprises dans TIERS</span><br>
+			<span class="bai_comment">\\ lors de la validation)</span><br>
+			?FAM("b_parente") := "A" <span class="bai_comment">\\ on est en train de créer l'assuré (FAM est créé par NEWTIE)</span><br>
+			?DPP("b_titre") := IB<br>
+			?DPP("b_nom") := IC<br>
+			?DPP("b_prenom") := ID<br>
+			<span class="bai_comment">\\ etc....</span><br>
+			<br>
+			<span class="bai_comment">\\ autres infos de DPP</span><br>
+			&gt;INFOSTIERS<br>
+			<br>
+			<span class="bai_comment">\\---- tiers personne morale</span><br>
+			:TIERSDPM<br>
+			?TIERS("b_titre") := IC<br>
+			?TIERS("b_rsociale") := ?DATA(3)+" "+?DATA(4)<br>
+			?DPM("b_statutju") := "SA" <span class="bai_comment">\\ statut juridique (ici, constante "SA")</span><br>
+			<span class="bai_comment">\\ etc...</span><br>
+			<br>
+			<span class="bai_comment">\\ infos TIERS communes</span><br>
+			:INFOSTIERS<br>
+			?TIERS("b_adr1") := "Arc de triomphe"<br>
+			?TIERS("b_adr2") := "Place de l'étoile"<br>
+			?TIERS("b_adr3") := ""<br>
+			?TIERS("b_codp") := "75016"<br>
+			?TIERS("b_ville") := "PARIS"<br>
+			?TIERS("b_pays") := "FRANCE"<br>
+			<span class="bai_comment">\\ etc...</span><br>
+			<br>
+			<span class="bai_comment">\\----------- infos client</span><br>
+			SI ?TIERS("b_typtiers")  "1" ;&gt;TESTRIB <span class="bai_comment">\\ ce n'est pas un client</span><br>
+			?CLI("b_pointven") := "AGENCE"<br>
+			<span class="bai_comment">\\ etc...</span><br>
+			<br>
+			<span class="bai_comment">\\ creation du RIB</span><br>
+			:TESTRIB<br>
+			SI ?DATA(18) = " " ;&gt;FINTIERS <span class="bai_comment">\\ test si code banque renseignée</span><br>
+			?RIB("b_codebank") := ?DATA(18) <span class="bai_comment">\\ code banque</span><br>
+			?RIB("b_guichet") := ?DATA(19) <span class="bai_comment">\\ guichet</span><br>
+			?RIB("b_ncompte") := ?DATA(20) <span class="bai_comment">\\ compte</span><br>
+			?RIB("b_clerib") := ?DATA(21) <span class="bai_comment">\\ clé RIB</span><br>
+			?RIB("b_domicil") := ?DATA(22) <span class="bai_comment">\\ domiciliation</span><br>
+			:FINTIERS<br>
+			OK
+		</div>
+	</div>
+
+	<b>Recherche d'un tiers par son numéro et création si non trouvé</b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			IA := ?DATA(0) <span class="bai_comment">\\ n. de tiers</span><br>
+			IB$:= ?DATA(1) <span class="bai_comment">\\ titre</span><br>
+			IC$:= ?DATA(2) <span class="bai_comment">\\ nom</span><br>
+			ID$:= ?DATA(3) <span class="bai_comment">\\ prenom</span><br>
+			<br>
+			RECSQL(TIERS)<br>
+			&gt;SELECT b_numtiers FROM [TIERS] <span class="bai_comment">\\ recherche du tiers n. IA</span><br>
+			&gt;WHERE b_numtiers = :IA<br>
+			SI RESULT = 1 ;FIN <span class="bai_comment">\\ il existe déjà</span><br>
+			<br>
+			<span class="bai_comment">\\ ci dessous : tous les titres commençant par "M" sont supposés être des p. physiques (MR, MME, etc...)</span><br>
+			SI EXT(IB,1,1) = "M" ;IE$ := "P" ;IE$ := "M" <span class="bai_comment">\\ la fonction EXT extrait le 1er caractère de IB</span><br>
+			IF$ := "1" <span class="bai_comment">\\ type de tiers à créer (ici, "1" pour client)</span><br>
+			NEWTIERS(IF,IE,IA) <span class="bai_comment">\\ création tiers N. IA, de type IF et de nature IE</span><br>
+			SI IE = "M" ;&gt;TIERSDPM<br>
+			<br>
+			<span class="bai_comment">\\---- tiers personne physique (les informations titre, nom, prénom sont automatiquement reprises dans TIERS</span><br>
+			<span class="bai_comment">\\ lors de la validation)</span><br>
+			?FAM("b_parente") := "A" \\ on est en train de créer l'assuré (FAM est créé par NEWTIE)<br>
+			?DPP("b_titre") := IB<br>
+			?DPP("b_nom") := IC<br>
+			?DPP("b_prenom") := ID<br>
+			<span class="bai_comment">\\ etc....</span><br>
+			<br>
+			<span class="bai_comment">\\ autres infos de DPP</span><br>
+			&gt;INFOSTIERS<br>
+			<br>
+			<span class="bai_comment">\\---- tiers personne morale</span><br>
+			:TIERSDPM<br>
+			?TIERS("b_titre") := IC<br>
+			?TIERS("b_rsociale") := ?DATA(3)+" "+?DATA(4)<br>
+			?DPM("b_statutju") := "SA" <span class="bai_comment">\\ statut juridique (ici, constante "SA")</span><br>
+			<span class="bai_comment">\\ etc...</span><br>
+			<br>
+			<span class="bai_comment">\\ infos TIERS communes</span><br>
+			:INFOSTIERS<br>
+			?TIERS("b_adr1") := "Arc de triomphe"<br>
+			?TIERS("b_adr2") := "Place de l'étoile"<br>
+			?TIERS("b_adr3") := ""<br>
+			?TIERS("b_codp") := "75016"<br>
+			?TIERS("b_ville") := "PARIS"<br>
+			?TIERS("b_pays") := "FRANCE"<br>
+			<span class="bai_comment">\\ etc...</span><br>
+			<br>
+			<span class="bai_comment">\\----------- infos client</span><br>
+			SI ?TIERS("b_typtiers")  "1" ;&gt;TESTRIB <span class="bai_comment">\\ ce n'est pas un client</span><br>
+			?CLI("b_pointven") := "AGENCE"<br>
+			<span class="bai_comment">\\ etc...</span><br>
+			<br>
+			<span class="bai_comment">\\ creation du RIB</span><br>
+			:TESTRIB<br>
+			SI ?DATA(18) = " " ;&gt;FINTIERS <span class="bai_comment">\\ test si code banque renseignée</span><br>
+			?RIB("b_codebank") := ?DATA(18) <span class="bai_comment">\\ code banque</span><br>
+			?RIB("b_guichet") := ?DATA(19) <span class="bai_comment">\\ guichet</span><br>
+			?RIB("b_ncompte") := ?DATA(20) <span class="bai_comment">\\ compte</span><br>
+			?RIB("b_clerib") := ?DATA(21) <span class="bai_comment">\\ clé RIB</span><br>
+			?RIB("b_domicil") := ?DATA(22) <span class="bai_comment">\\ domiciliation</span><br>
+			:FINTIERS<br>
+			OK
+		</div>
+	</div>
+
+	<b>Recherche d'un membre de famille dans un dossier et création si non trouvé</b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			IA := ?DATA(0) <span class="bai_comment">\\ n. dossier</span><br>
+			IB$ := ?DATA(3) <span class="bai_comment">\\ nom</span><br>
+			IC$ := ?DATA(4) <span class="bai_comment">\\ prenom</span><br>
+			<br>
+			RECSQL(TIERS) <span class="bai_comment">\\ recherche du tiers</span><br>
+			&gt;SELECT b_numtiers FROM [TIERS]<br>
+			&gt;WHERE b_numtiers = :IA<br>
+			SI RESULT = 0 ;FIN <span class="bai_comment">\\ le tiers doit exister</span><br>
+			SI ?TIERS("b_nattiers")  "P" ;FIN <span class="bai_comment">\\ et doit être de type "personne physique"</span><br>
+			<br>
+			RECSQL(FAM)<br>
+			&gt;SELECT FAM.b_numtiers, FAM.b_numdpp FROM [FAM] FAM, [DPP] DPP<br>
+			&gt;WHERE (DPP.b_nom = :IB)<br>
+			&gt;AND (DPP.b_prenom = :IC)<br>
+			&gt;AND (FAM.b_numdpp = DPP.b_numdpp <span class="bai_comment">\\ jointure FAM avec DPP</span><br>
+			&gt;AND (FAM.b_numtiers = :IA) <span class="bai_comment">\\ pour le dossier</span><br>
+			SI RESULT = 0 ;NEWFAM <span class="bai_comment">\\ s'il n'existe pas, création</span><br>
+			?FAM("b_parente") := ??? <span class="bai_comment">\\ (lien de parente)</span><br>
+			?DPP("b_nom") := IB<br>
+			?DPP("b_prenom") := IC<br>
+			<span class="bai_comment">\\ etc....</span><br>
+			<br>
+			<span class="bai_comment">\\ autres infos sur DPP</span><br>
+			OK <span class="bai_comment">\\ validation</span>
+		</div>
+	</div>
+
+	<b>Recherche d'un correspondant d'une société et création si non trouvé</b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			IA := ?DATA(0) <span class="bai_comment">\\ n. dossier</span><br>
+			IB$ := ?DATA(3) <span class="bai_comment">\\ nom</span><br>
+			IC$ := ?DATA(4) <span class="bai_comment">\\ prénom</span><br>
+			<br>
+			RECSQL(TIERS) <span class="bai_comment">\\ recherche du tiers</span><br>
+			&gt;SELECT b_numtiers FROM [TIERS]<br>
+			&gt;WHERE b_numtiers = :IA<br>
+			SI RESULT = 0 ;FIN <span class="bai_comment">\\ le tiers doit exister</span><br>
+			SI ?TIERS("b_nattiers")  "M" ;FIN <span class="bai_comment">\\ et doit être de type "personne morale"</span><br>
+			<br>
+			RECSQL(COR)<br>
+			&gt;SELECT COR.b_numtiers, COR.b_numdpp FROM [COR] COR, [DPP] DPP<br>
+			&gt;WHERE (DPP.b_nom = :IB) AND (DPP.b_prenom = :IC) <span class="bai_comment">\\ nom + prénom</span><br>
+			&gt;AND (COR.b_numdpp = DPP.b_numdpp) <span class="bai_comment">\\ jointure COR avec DPP</span><br>
+			&gt;AND (COR.b_numtiers = :IA) <span class="bai_comment">\\ pour le dossier</span><br>
+			SI RESULT = 0 ;NEWCOR <span class="bai_comment">\\ s'il n'existe pas, création</span><br>
+			?COR("b_role") := " inconnu  <span class="bai_comment">\\ rôle</span><br>
+			<span class="bai_comment">\\ etc...</span><br>
+			<br>
+			<span class="bai_comment">\\ autres infos sur COR</span><br>
+			?DPP("b_nom") := IB<br>
+			?DPP("b_prenom") := IC<br>
+			<span class="bai_comment">\\ etc....</span><br>
+			<br>
+			<span class="bai_comment">\\ autres infos sur DPP</span><br>
+			OK <span class="bai_comment">\\ validation
+		</span></div>
+	</div>
+</body>

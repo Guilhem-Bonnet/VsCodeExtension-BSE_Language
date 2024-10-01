@@ -1,0 +1,170 @@
+<body>
+<h2>La connexion et l'accès aux services BAS</h2>
+<br>
+<br>
+<h3>Bibliothèque d'accès (côté client)</h3>
+
+<p>Afin de se connecter aux services et de manipuler des objets comme "BasParam", "BasDto" et autres, de manière plus simple, les bibliothèques (côté client) sont à disposition des programmeurs :</p>
+<br>
+<ul>
+<li>Delphi (SVN : belair\dev\BAS\Client)<ul><li>BasWebServicesIntf.pas</li><li>Exemples (SVN : belair\dev\BAS\ClientExample\Delphi)</li><ul><li>BasClientExample.dproj</li><li>BasClientExampleD7.dproj</li></ul></ul></li>
+<li>C++ (SVN : belair\dev\BAS\Client)<ul><li>BasWebClient.cpp</li></ul></li>
+<li>PHP (SVN : belair\dev\BAS\ClientExample\PHP)<ul><li>BasClient.php</li><li>BasClientTest.php</li></ul></li>
+</ul>
+
+<br>
+<p>Voir aussi <a class="doc-link" categories="Utilitaires et paramétrages, BAS Belair Application Server, Développement, Quick start (démarrage rapide)" name="BAS%20Quick%20start%20(D%C3%A9marrage%20rapide)">démarrage rapide</a>.</p>
+
+<h3>Les connecteurs</h3>
+
+<p>Chaque service a une classe qui aide à se connecter au service correspondant.
+<br>Les noms sont homogènes : Bas&lt;Nom_de_service&gt;Client.</p>
+
+<br>
+<p><b>Exemple</b></p>
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="inline-delimiter">&lt;?php</span>
+  <span class="local-variable">$BASE_URL</span> = <span class="string"><span class="delimiter">"</span><span class="content">http://localhost:8080</span><span class="delimiter">"</span></span>;
+
+  <span class="local-variable">$authClient</span> = <span class="keyword">new</span> <span class="constant">BasAuthClient</span>(<span class="local-variable">$BASE_URL</span>, <span class="predefined">array</span>(<span class="string"><span class="delimiter">"</span><span class="content">trace</span><span class="delimiter">"</span></span> =&gt; <span class="predefined-constant">true</span>, <span class="string"><span class="delimiter">"</span><span class="content">exceptions</span><span class="delimiter">"</span></span> =&gt; <span class="predefined-constant">true</span>)); 
+  <span class="local-variable">$sc</span> = <span class="local-variable">$authClient</span>-&gt;<span class="constant">OpenSession</span>(<span class="string"><span class="delimiter">"</span><span class="content">SUPERVISEUR</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Password</span><span class="delimiter">"</span></span>);
+
+  <span class="local-variable">$actionClient</span> = <span class="keyword">new</span> <span class="constant">BasActionClient</span>(<span class="local-variable">$BASE_URL</span>, <span class="predefined">array</span>(<span class="string"><span class="delimiter">"</span><span class="content">trace</span><span class="delimiter">"</span></span> =&gt; <span class="predefined-constant">true</span>, <span class="string"><span class="delimiter">"</span><span class="content">exceptions</span><span class="delimiter">"</span></span> =&gt; <span class="predefined-constant">true</span>)); 
+<span class="inline-delimiter">?&gt;</span>
+</span></code></pre>
+
+<h3>Les paramètres</h3>
+
+<h4>BasParam</h4>
+
+<p>Les objets de la classe BasParam servent à porter les valeurs de type différent entre BAS et ses clients.
+<br>La classe comprend les propriétés suivantes :</p>
+<ul>
+<li>Name - qui doit être unique dans un tableau 'BasParams' ;</li>
+<li>DataType - dont les valeurs sont :<ul> <li>basParamInt ;</li> <li>basParamString ;</li> <li>basParamFloat ;</li> <li>basParamDateTime ;</li> <li>basParamBool.</li></ul></li>
+<li>La propriété de valeur, selon le type DataType :<ul> <li>IntVal ;</li> <li>StrVal ;</li> <li>FloatVal ;</li> <li>DateTimeVal ;</li> <li>BoolVal.</li></ul></li>
+<li>IsNull - qui renseigne si la valeur est vide ou pas.</li>
+</ul>
+<br>
+<h4>BasParams</h4>
+
+<p>La classe BasParams enveloppe un tableau des objets BasParam afin de les envoyer aux services où récupérer le résultat.
+<br>Si le type de résultat retourné par service est "BasParam", il est nécessaire de faire la copie avant l'accéder.</p>
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="inline-delimiter">&lt;?php</span>
+  <span class="local-variable">$result</span> = <span class="constant">BasParams</span>::<span class="constant">CreateCopy</span>(<span class="local-variable">$actionClient</span>-&gt;<span class="constant">RunAction</span>(<span class="local-variable">$sc</span>, <span class="string"><span class="delimiter">"</span><span class="content">Sys_Echo</span><span class="delimiter">"</span></span>, <span class="local-variable">$params</span>-&gt;<span class="constant">ToSoapVar</span>(<span class="string"><span class="delimiter">"</span><span class="content">params</span><span class="delimiter">"</span></span>)));
+<span class="inline-delimiter">?&gt;</span>
+</span></code></pre>
+
+<h3>Gestion des exceptions</h3>
+
+<p>BAS peut envoyer les erreurs au client.
+<br>Les classes des exceptions "EBasRemotableException" et "ERemotableException" sont utilisées.</p>
+
+<h4>PHP</h4>
+<p>Pour traiter les erreurs éventuelles, rattrapez l'exception standard "SoapFault".</p>
+<ul>
+<li>La propriété "faultstring" contient le message d'origine (également renvoyé par la méthode getMessage() ).</li>
+<li>La propriété "faultcode" contient le code spécifique en format "SOAP-ENV:NNN:XXX" :<ul> <li>NNN est le numéro de type d'exception BAS (voir ci-dessous).</li>
+<li>XXX est le code personnalisé d'erreur spécifiée par la fonction <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de système" name="Fonctions%20de%20syst%C3%A8me%20:%20Error">BSE Error()</a> ou 0.</li> </ul></li>
+<li>La propriété "detail" peut fournir les informations supplémentaires sur l'exception spécifique BAS (EBasRemotableException).</li>
+</ul>
+
+<br>
+<strong>Exemple d'erreur d'authentification</strong>
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="inline-delimiter">&lt;?php</span>
+  <span class="keyword">try</span> 
+  {
+    <span class="local-variable">$sc</span> = <span class="local-variable">$authClient</span>-&gt;<span class="constant">OpenSession</span>(<span class="string"><span class="delimiter">"</span><span class="content">Nemo</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">InvalidPassword</span><span class="delimiter">"</span></span>);
+  }
+  <span class="keyword">catch</span>(<span class="constant">SoapFault</span> <span class="local-variable">$e</span>)
+  {
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;SoapFault message: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;getMessage() . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;SoapFault::faultcode: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;faultcode . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;SoapFault::faultstring: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;faultstring . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+  }
+  <span class="keyword">catch</span>(<span class="predefined-constant">Exception</span> <span class="local-variable">$e</span>)
+  {
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;Error: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;getMessage() . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;Error class: </span><span class="delimiter">"</span></span> . <span class="predefined">get_class</span>(<span class="local-variable">$e</span>) . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+  }
+<span class="inline-delimiter">?&gt;</span>
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre>SoapFault message: Logon error. User Nemo does not exists or password incorrect
+<br>
+SoapFault::faultcode: SOAP-ENV:30
+<br>
+SoapFault::faultstring: Logon error. User Nemo does not exists or password incorrect</pre>
+<br>
+<br>
+<strong>Exemple d'erreur d'action</strong>
+
+<p>Serveur (l'action "Sys_EchoError.bs") :</p>
+
+<pre>LOCAL msg, code
+msg := GetExtParam("Message")
+code := GetExtParam("Code")
+Error(code, msg)
+RETURN msg</pre>
+
+<p>Client :</p>
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="inline-delimiter">&lt;?php</span>
+  <span class="keyword">try</span> 
+  {
+    <span class="local-variable">$params</span> = <span class="keyword">new</span> <span class="constant">BasParams</span>();
+    <span class="local-variable">$params</span>-&gt;<span class="constant">AddString</span>(<span class="string"><span class="delimiter">"</span><span class="content">Message</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Error from BSE</span><span class="delimiter">"</span></span>);
+    <span class="local-variable">$params</span>-&gt;<span class="constant">AddInt</span>(<span class="string"><span class="delimiter">"</span><span class="content">Code</span><span class="delimiter">"</span></span>, <span class="integer">123456789</span>);
+    <span class="local-variable">$actionClient</span>-&gt;<span class="constant">RunAction</span>(<span class="local-variable">$sc</span>, <span class="string"><span class="delimiter">"</span><span class="content">Sys_EchoError</span><span class="delimiter">"</span></span>, <span class="local-variable">$params</span>-&gt;<span class="constant">ToSoapVar</span>(<span class="string"><span class="delimiter">"</span><span class="content">params</span><span class="delimiter">"</span></span>));
+  }
+  <span class="keyword">catch</span>(<span class="constant">SoapFault</span> <span class="local-variable">$e</span>)
+  {
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;SoapFault message: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;getMessage() . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;SoapFault::faultcode: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;faultcode . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;SoapFault::faultstring: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;faultstring . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+    <span class="keyword">if</span> (property_exists(<span class="local-variable">$e</span>-&gt;detail, <span class="string"><span class="delimiter">"</span><span class="content">EBasRemotableException</span><span class="delimiter">"</span></span>))
+      <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;EBasRemotableException::Details: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;detail-&gt;<span class="constant">EBasRemotableException</span>-&gt;<span class="constant">Details</span> . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+  }
+  <span class="keyword">catch</span>(<span class="predefined-constant">Exception</span> <span class="local-variable">$e</span>)
+  {
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;Error: </span><span class="delimiter">"</span></span> . <span class="local-variable">$e</span>-&gt;getMessage() . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+    <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;Error class: </span><span class="delimiter">"</span></span> . <span class="predefined">get_class</span>(<span class="local-variable">$e</span>) . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+  }
+<span class="inline-delimiter">?&gt;</span>
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre>SoapFault message: Error from BSE
+<br>
+SoapFault::faultcode: SOAP-ENV:40:123456789
+<br>
+SoapFault::faultstring: Error from BSE
+<br>
+EBasRemotableException::Details: Pos: (4,1). Source: D:\BELAIR41\APPDEI\BASScripts\Std\Sys_EchoError.bs Runtime error: Error from BSE PC: 17 (ICALL:15175) Error BP: 2 Call stack: 0: RetAddr: 4 BP: 0 </pre>
+<br>
+<h4>Les codes spécifiques BAS</h4>
+
+<pre>    enum FaultCode
+    {
+      GeneralError        =  1,
+      UnexpectedError     =  2,
+      InsufficientRights  = 10,
+      SessionNotExists    = 20,
+      SessionLimitReached = 25,
+      NotAuthenticated    = 30,
+      BSEError            = 40,
+      LegacyActionError   = 50
+    };</pre>
+	
+	<br>
+	<br>
+	<br>
+
+
+	
+</body>

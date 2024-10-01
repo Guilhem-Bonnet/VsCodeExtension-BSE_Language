@@ -1,0 +1,82 @@
+<body>
+	<h2>Formules de calcul - Contrôle de cohérence des RIB et n°SS</h2>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>MODULO97("<i>Chaîne</i>","<i>Clé</i>","<i>Type</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				<b>Paramètres :</b> 
+				<br><br>
+				<code>Chaîne</code> : une chaîne contenant un numéro à vérifier<br><br>
+				<code>Clef</code> : une chaîne contenant la clef (obligatoirement de longueur 2 ou bien vide (voir remarque ci-après))<br><br>
+				<code>Type</code> : un entier indiquant le type de vérification (1 = RIB, 2 = N° SS)
+				<br><br>
+				Pour un RIB, il faut passer CodeBanque+CodeGuichet+NumeroCompte comme chaîne.<br>
+				Le cas des comptes comportant des lettres (devant obligatoirement être en majuscules) est traité correctement.<br>
+				</p><div class="alert alert-warning" role="alert"><b>Remarque :</b> si le 2ème paramètre (Clef) est une chaîne vide, la fonction isole elle même les 2 derniers caractères du 1er paramètre (Chaîne) comme étant la clé.</div>
+				Cette fonction renvoie un résultat booléen.<br>
+				<br>
+				<div class="alert alert-info" role="alert"><b>NB :</b> La chaîne à contrôler est "nettoyée" avant calcul de validation : on enlève les espaces, les points, les tirets etc.<br>
+				Après nettoyage, la chaîne doit faire 21 (ou 23) caractères pour les RIB et 13 (ou 15) caractères pour les n° SS, sinon on renvoie systématiquement FAUX.</div>
+				<b>Exemples :</b>
+				<div class="bai_exemple">
+					<span class="bai_code">IAX := MODULO97("1480278646176", "24", 2)  ( 2 = numéro SS)</span> :
+					vérifie la cohérence entre le n° de sécurité sociale et la clé passés en paramètres.<br>
+					On aurait pu mettre :
+					<span class="bai_code">IAX := MODULO97("1...;;;;$$$ 48       02-78.646.  176...", "2%%%4", 2)</span><br>
+					Cela marchait aussi car les espaces, points, tirets, etc sont ignorés.
+				</div>
+
+				<b>Exemple de vérification de syntaxe du champ :</b>
+				<div class="bai_exemple">
+					<span class="bai_code">DPP.B_NUMSS =MODULO97(CHAMP,"",2)</span><br>
+					(le paramètre <code>clef</code> est une chaîne vide, donc la clé est supposée incluse dans le 1er paramètre)
+				</div>
+				<br>
+				Contrôle et calcul de clé pour n° SS. (Ne traite pas les RIB)<br>
+				Attend une chaîne, et renvoie une chaîne.<br><br>
+				<ul>
+					<li>Si la chaîne, après nettoyage, a une longueur  13 et  15, la fonction retourne "Longueur incorrecte</li>
+					<li>Si la chaîne a une longueur de 15 et si la clé incluse est correcte, la fonction retourne "OK".</li>
+					<li>Si la chaîne a une longueur de 13 ou bien une longueur de 15 avec une clé incluse incorrecte, la fonction retourne la clé attendue.</li>
+				</ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>MODULO97A("<i>Chaîne</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Renvoie OK ou bien la clé que l'on aurait dû trouver pour un numéro INSEE<br>
+				Ces fonctions MODULO97 respectent les règles indiquées sur le site <a href="http://fr.wikipedia.org/wiki/Code_INSEE">http://fr.wikipedia.org/wiki/Code_INSEE</a>
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>CLERIB("<i>Banque</i>","<i>Guichet</i>","<i>N° compte</i>") </code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Rend en mode alphabétique la clé RIB correspondant aux codes banque et  guichet, ainsi qu'au numéro de compte passés en variables.
+				</p><div class="bai_exemple">
+					<div class="bai_code">
+						?RIB("b_clerib") := CLERIB(?RIB("b_codebank"),?RIB("b_guichet"),?RIB("b_ncompte"))
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</body>

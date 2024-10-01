@@ -1,0 +1,44 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+			<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Event_New</code></h3>
+		</div>
+
+<p>Event_New</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (int, obligatoire) : numéro du dossier tiers</li>
+		<li>data : flux XML</li>
+	</ul>
+
+
+	<p>Le paramètre data donne le flux XML des autres infos<br>(on peut ainsi préciser contrat, sinistre, recla)</p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;data&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CHRO"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Codeclas"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Codelet"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      ...
+    <span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/data&gt;</span>
+</code></pre>
+
+	<a name="retour"></a>
+<h3>retour<a href="#retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;chro&gt;</span>
+  <span class="nt">&lt;numtiers&gt;</span>1002<span class="nt">&lt;/numtiers&gt;</span>
+  <span class="nt">&lt;ordre&gt;</span>29<span class="nt">&lt;/ordre&gt;</span>
+<span class="nt">&lt;/chro&gt;</span>
+</code></pre>
+
+	<p><strong>Remarque :</strong><br>si des pièces sont à joindre, il faudra ensuite utiliser l'action File_Upload en utilisant les identifiants numtiers et ordre retournés par cette action</p>
+</div></body>

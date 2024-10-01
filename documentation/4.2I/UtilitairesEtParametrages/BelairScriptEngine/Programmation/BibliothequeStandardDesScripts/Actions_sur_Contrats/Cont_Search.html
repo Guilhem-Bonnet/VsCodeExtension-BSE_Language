@@ -1,0 +1,80 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Cont_Search</code></h3>
+		</div>
+
+<p>Recherche d'un contrat</p>
+
+
+	<a name="Param%C3%A8tres-"></a>
+<h2>Paramètres :<a href="#Param%C3%A8tres-" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li>reference (string, obligatoire) : référence à rechercher</li>
+		<li>detailorigine (booléen, optionnel) : 
+	<ul>
+	<li>si False, une balise 'origine' par valeur d'origine</li>
+		<li>si true, une balise 'origine' par valeur/codefic/nomchamp</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h2>Retour<a href="#Retour" class="wiki-anchor"></a></h2>
+
+
+	<p>Un flux XML donnant le résultat de la recherche.</p>
+
+
+	<p>Exemple :</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;searchresult-rows</span> <span class="na">reference=</span><span class="s">"POL123%"</span> <span class="na">target=</span><span class="s">"CONT"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;searchresult</span> <span class="na">contrat=</span><span class="s">"7"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;contrat&gt;</span>7<span class="nt">&lt;/contrat&gt;</span>
+    <span class="nt">&lt;derpiece&gt;</span>1<span class="nt">&lt;/derpiece&gt;</span>
+    <span class="nt">&lt;police&gt;</span>POL_123465<span class="nt">&lt;/police&gt;</span>
+    <span class="nt">&lt;intitule&gt;</span>BMW 3.3 CSI - 567 FGH 75<span class="nt">&lt;/intitule&gt;</span>
+    <span class="nt">&lt;origin-rows&gt;</span>
+      <span class="nt">&lt;origin</span> <span class="na">maxpiece=</span><span class="s">"1"</span> <span class="na">codefic=</span><span class="s">"POLI"</span> <span class="na">nomchamp=</span><span class="s">"B_POLICE"</span><span class="nt">&gt;</span>POL_123465<span class="nt">&lt;/origin&gt;</span>
+    <span class="nt">&lt;/origin-rows&gt;</span>
+  <span class="nt">&lt;/searchresult&gt;</span>
+  <span class="nt">&lt;searchresult</span> <span class="na">contrat=</span><span class="s">"8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;contrat&gt;</span>8<span class="nt">&lt;/contrat&gt;</span>
+    <span class="nt">&lt;derpiece&gt;</span>1<span class="nt">&lt;/derpiece&gt;</span>
+    <span class="nt">&lt;police&gt;</span>POL_123466<span class="nt">&lt;/police&gt;</span>
+    <span class="nt">&lt;intitule&gt;</span>VOLKSWAGEN PASSAT 1.9 TDI CONFORT 110 -<span class="nt">&lt;/intitule&gt;</span>
+    <span class="nt">&lt;origin-rows&gt;</span>
+      <span class="nt">&lt;origin</span> <span class="na">maxpiece=</span><span class="s">"1"</span> <span class="na">codefic=</span><span class="s">"POLI"</span> <span class="na">nomchamp=</span><span class="s">"B_POLICE"</span><span class="nt">&gt;</span>POL_123466<span class="nt">&lt;/origin&gt;</span>
+    <span class="nt">&lt;/origin-rows&gt;</span>
+  <span class="nt">&lt;/searchresult&gt;</span>
+  <span class="nt">&lt;searchresult</span> <span class="na">contrat=</span><span class="s">"9"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;contrat&gt;</span>9<span class="nt">&lt;/contrat&gt;</span>
+    <span class="nt">&lt;derpiece&gt;</span>2<span class="nt">&lt;/derpiece&gt;</span>
+    <span class="nt">&lt;police&gt;</span>POL_123468<span class="nt">&lt;/police&gt;</span>
+    <span class="nt">&lt;intitule&gt;</span>HABITATION - 78000  VERSAILLES<span class="nt">&lt;/intitule&gt;</span>
+    <span class="nt">&lt;origin-rows&gt;</span>
+      <span class="nt">&lt;origin</span> <span class="na">maxpiece=</span><span class="s">"1"</span> <span class="na">codefic=</span><span class="s">"POLI"</span> <span class="na">nomchamp=</span><span class="s">"B_POLICE"</span><span class="nt">&gt;</span>POL_123467<span class="nt">&lt;/origin&gt;</span>
+      <span class="nt">&lt;origin</span> <span class="na">maxpiece=</span><span class="s">"2"</span> <span class="na">codefic=</span><span class="s">"POLI"</span> <span class="na">nomchamp=</span><span class="s">"B_POLICE"</span><span class="nt">&gt;</span>POL_123468<span class="nt">&lt;/origin&gt;</span>
+    <span class="nt">&lt;/origin-rows&gt;</span>
+  <span class="nt">&lt;/searchresult&gt;</span>
+<span class="nt">&lt;/searchresult-rows&gt;</span>
+</code></pre>
+
+	<a name="Remarques"></a>
+<h3>Remarques<a href="#Remarques" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>la balise searchresult donne toujours les informations de la derniere pièce du contrat (derpiece, police)</li>
+		<li>dans la balise origin, l'attribut 'maxpiece' indique la dernière pièce pour laquelle la valeur d'origine était présente</li>
+	</ul>
+
+
+	<p>Dans l'exemple ci-dessus, le numéro de police POL_123467 fait partie du résultat de la recherche, mais c'était le numéro de police de la pièce 1, remplacé par le numéro de police POL_123468 dans la piece 2</p>
+
+</div></body>

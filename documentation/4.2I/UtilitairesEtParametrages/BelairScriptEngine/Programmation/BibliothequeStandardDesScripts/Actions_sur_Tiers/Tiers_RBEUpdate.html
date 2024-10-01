@@ -1,0 +1,35 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tiers_RBEUpdate</code></h3>
+		</div>
+
+<p>Mise à jour des bénéficiaires effectifs d'une entreprise</p>
+
+	<p>Cette action se connecte à l'API, récupère les informations et met à jour les données "RBE" du tiers.<br>Elle est exploitée par Belair quand la mise à jour des informations RBE est demandée à partir de l'écran Tiers.<br>Elle peut donc être exploitée dans d'autres process (script automate, application tiers...)</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres:<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (int, obligatoire) : numéro de tiers . Le tiers doit être une personne morale</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;rbe_update</span> <span class="na">dossier=</span><span class="s">"1"</span> <span class="na">raison_sociale=</span><span class="s">"MA PETITE ENTREPRISE"</span> <span class="na">siret=</span><span class="s">"315997371 00017"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;beneficaire</span> <span class="na">nom=</span><span class="s">"MORIC"</span> <span class="na">prenom=</span><span class="s">"Bernard"</span><span class="nt">&gt;</span>140<span class="nt">&lt;/beneficaire&gt;</span>
+  <span class="nt">&lt;beneficaire</span> <span class="na">nom=</span><span class="s">"DEFOU"</span> <span class="na">prenom=</span><span class="s">"Basile"</span><span class="nt">&gt;</span>29<span class="nt">&lt;/beneficaire&gt;</span>
+<span class="nt">&lt;/rbe_update&gt;</span>
+</code></pre>
+</div></body>

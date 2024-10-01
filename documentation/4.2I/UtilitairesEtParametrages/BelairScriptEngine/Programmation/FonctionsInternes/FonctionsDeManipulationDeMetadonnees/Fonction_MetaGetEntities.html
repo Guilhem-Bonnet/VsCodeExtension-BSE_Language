@@ -1,0 +1,49 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:GetEntities(number)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie l'entité, selon son numéro dans la liste des entités.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>number</code> : le numéro de l'entité.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>L'objet de type "TMetaTable" ou descendant ("TExtendedMetaTable", "TCatalogMetaTable", "TProtectedMetatable").</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local i, j, entity
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Meta:EntityCount() 
+begin
+  entity := Meta:GetEntities(i)
+  Print(<span class="string"><span class="delimiter">"</span><span class="content">Entity %s (%s). Code: %s, name: %s</span><span class="delimiter">"</span></span>, i, entity.TypeName, entity.Code, entity.Name)
+  i := i + <span class="integer">1</span>
+end
+</span></code></pre>
+			
+			<p>Résultat :</p>
+			<pre>Entity 0 (TMetaTable). Code: ADH, name: ADHDEI
+Entity 1 (TMetaTable). Code: ADHGRPE, name: ADHGRDEI
+Entity 2 (TMetaTable). Code: AGEMOD, name: AGMDEI
+Entity 3 (TMetaTable). Code: AGENDA, name: AGEDEI
+Entity 4 (TExtendedMetaTable). Code: XDCOR, name: XDCORDEI
+...
+Entity 204 (TProtectedMetaTable). Code: Locale, name: LOCALES
+Entity 205 (TMetaTable). Code: CiekCourtiers, name: CIEK_COURTIERS
+Entity 206 (TExtendedMetaTable). Code: XTEXN, name: XTEXNDEI</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

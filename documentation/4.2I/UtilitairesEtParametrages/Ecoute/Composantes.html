@@ -1,0 +1,372 @@
+<body>
+	<h2>Composantes</h2>
+
+	<h3>Composante intégration, présentation</h3>
+
+	<p>
+		Voici comment se présente visuellement cette composante :
+	</p>
+
+	<img src="images/ecoute02.jpg">
+
+	<p>
+		Le principe de fonctionnement de l'intégration est de scruter les fichiers d'un répertoire, toutes les x minutes, pour les traiter par un script d'import.
+	</p>
+
+	<p>
+		A noter que ce traitement utilise l'automate d'import. Il faut que l'automate ne soit pas lancé lorsque le programme est susceptible de l'utiliser, sinon cela bloquera le processus d'intégration, jusqu'à ce que l'automate d'import soit fermé et donc disponible pour le programme.
+	</p>
+
+	<p>
+		Copie d'écran de l'agent en cours de fonctionnement :
+	</p>
+
+	<img src="images/ecoute03.jpg">
+
+	<p>
+		On peut voir sur cette copie d'écran que l'automate d'import s'ouvre lors du traitement d'un fichier. Cela implique qu'il ne faut pas qu'il soit ouvert par ailleurs.
+	</p>
+
+	<h4>Description du paramétrage de la composante intégration</h4>
+
+	<p>
+		Le paramétrage de cette composante est indiqué dans la section [Ecoute] du fichier INI utilisé.
+	</p>
+
+	<p>
+		A noter que les lignes précédées d'un apostrophe (') sont commentées. C'est le cas de certaines lignes de cet exemple.
+	</p>
+
+	<p>
+		<b>Exemple de section</b>
+	</p>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			[Ecoute]<br>
+			WBIP=localhost<br>
+			WBport=5000<br>
+			WBBase=0<br>
+			Script=C:\BELAIR3\APPLICS\APPDEV\Automate\Import.BSI <br>
+			Base=C:\BELAIR3\APPLICS\APPDEV\APPDEV.DB <br>
+			CleRegistre=HKEY_CURRENT_USER<br>
+			Repertoire=c:\temp <br>
+			RepertoireBackup=c:\temp\backup <br>
+			RepertoireErreur=c:\temp\erreur <br>
+			FrequenceVerif=10 <br>
+			FichierLog=c:\temp\log\log.txt <br>
+			AjouteDate=oui<br>
+			AutoStart=oui <br>
+			'Simulation=oui<br>
+			DateDernierTraitement=28/09/2007 18:00:36 <br>
+			CommandeAvantTraitement=xcopy c:\oldtemp\*.* c:\temp<br>
+		</div>
+		<p>
+			</p><ul>
+				<li>
+					<b>WBIP [Facultatif]</b> dans la cas d'une utilisation avec WEBCOM, permet d'indiquer l'ip du webcom à utiliser.
+					Si ce paramètre est présent, webcom sera utilisé. Dans le cas contraire, une connexion OLE sera utilisée, même si d'autres paramètres spécifiques Webcom sont rencontrés.
+				</li>
+
+				<li>
+					<b>WBPort [Facultatif]</b> dans le cas d'une utilisation avec Webcom, permet d'indiquer le port du webcom à utiliser.
+				</li>
+
+				<li>
+					<b>WBBase [Facultatif]</b> dans le cas d'une utilisation avec Webcom, permet d'indiquer la base à utiliser. 
+				</li>
+
+				<li>
+					<b>Script[1..n]</b> : indique le chemin du script à utiliser pour traiter les fichiers en attente. Le fichier est toujours du type .BSI
+					Il est possible de définir plusieurs scripts, chaque script étant utilisé pour le répertoire correspondant (voir paragraphe 2.1.2).
+				</li>
+
+				<li>
+					<b>Base</b> : indique le chemin de la base à mettre à jour. Le chemin de la base correspond au chemin du fichier .db qui contient les informations de connexion à la base.
+				</li>
+
+				<li>
+					<b>CleRegistre</b> : indique dans quelle clé de registre sont enregistrées les informations BELAIR. Par défaut, elles sont dans la clé HKEY_CURRENT_USER. 
+				</li>
+
+				<li>
+					<b>Repertoire[1..n]</b> : indique le répertoire où se situent les fichiers destinés à être traités par le script. Tous les fichiers de ce répertoire seront traités, quelque soit leur extension. Veillez donc à laisser ce répertoire vide en dehors de tout fichier destiné à être traité par l'automate d'import. 
+					Il est possible de définir plusieurs répertoires, le fichier étant traité par le script correspondant (voir paragraphe 2.1.2). 
+				</li>
+
+				<li>
+					<b>RepertoireBackup[1..n] [Facultatif]</b> : indique le répertoire où seront stockés les fichiers, si leur traitement est allé jusqu'au bout et que le compte rendu de l'automate d'import contient le mot "OK" en dernière ligne (avant le texte "****Fin : ..." généré automatiquement par l'automate d'import). 
+				</li>
+
+				<li>
+					<b>RepertoireErreur[1..n] [Facultatif]</b> : indique le répertoire où seront stockés les fichiers, si leur traitement est allé jusqu'au bout et que le compte rendu de l'automate d'import ne contient pas le mot "OK" en dernière ligne (avant le texte "**** Fin : ..." généré automatiquement par l'automate d'import). 
+				</li>
+
+				<li>
+					<b>FrequenceVerif</b> : fréquence de vérification du répertoire, en minutes. Toutes les x minutes, chaque fichier présent dans le répertoire sera traité par l'automate d'import et le script paramétré. 
+				</li>
+
+				<li>
+					<b>FichierLog</b> : nom du fichier .log qui contiendra le nom de chaque fichier traité, ainsi que le résultat fourni par l'automate d'import pour chacun des fichiers. Ce résultat peut contenir par exemple un numéro de tiers traité. 
+				</li>
+
+				<li>
+					<b>AjouteDate [Facultatif]</b> : cette option, à "oui" pour être activée, permet de rajouter la date après le nom du fichier log pour avoir un fichier par jour. De cette manière, les fichiers logs seront plus courts, et donc plus faciles à traiter.
+				</li>
+
+				<li>
+					<b>Simulation [Facultatif]</b> : cette option permet de simuler le traitement du fichier. Lorsque cette option a pour valeur "oui", l'automate d'import est chargé, puis le script BSI chargé, mais pas exécuté. Ainsi, le fichier n'est pas traité.
+				</li>
+
+				<li>
+					<b>DateDernierTraitement</b> (renseigné par le programme) : date du dernier traitement, pour une utilisation en interne.
+				</li>
+
+				<li>
+					<b>Autostart</b> : cette option permet de savoir si la composante d'intégration de fichier doit démarrer automatiquement. Indiquer "oui" pour activer cette option. 
+				</li>
+
+				<li>
+					<b>CommandeAvantTraitement [Facultatif]</b> : cette option permet d'exécuter des commandes avant chaque traitement. Cela peut être utilisé par exemple pour rapatrier les fichiers d'un autre endroit, ou les renommer si on a l'utilitaire adéquat en ligne de commande. Il faut que la commande à lancer corresponde à un programme .EXE, et non pas une commande MS-DOS. 
+					A noter qu'on peut avoir plusieurs commandes, séparées par le caractère dièse (#).
+				</li>
+			</ul>
+		
+
+		<p>
+			Dans l'exemple précédent, on peut voir que le script à utiliser est le script Import.BSI, présent dans le répertoire de l'application APPDEV.
+		</p>
+
+		<p>
+			La base utilisée pour exécuter le script sera la base APPDEV, caractérisée c:\belair3\applics\appdev.db 
+		</p>
+
+		<p>
+			Ce script va permettre de traiter tous les fichiers du répertoire c:\temp, et selon le résultat de les classer dans c:\temp\backup ou c:\temp\erreur.
+		</p>
+
+		<p>
+			Le traitement a lieu toutes les 10 minutes, et chaque traitement fera l'objet d'un enregistrement dans le fichier c:\temp\log\log.txt. Si la date du jour est le 10/10/2007, alors le fichier log aura pour nom log2007-10-10.txt. On peut voir que les commandes simulation et CommandeAvantTraitement sont en commentaires, ainsi ces deux options sont désactivées.
+		</p>
+	</div>
+
+
+
+	<h4>Principe d'utilisation avec plusieurs scripts et répertoires</h4>
+
+	<p>
+		Il est possible d'utiliser plusieurs scripts, chaque script étant utilisé pour scruter un répertoire donné. Le répertoire peut aussi contenir un masque pour ne prendre que certains fichiers, comme par exemple "saisie_internet*.*".
+	</p>
+
+	<b>Exemple d'utilisation d'Ecoute.EXE pour scruter plusieurs répertoires :</b>
+
+	<div class="bai_exemple">
+		<div class="bai_code">
+			<p>
+				Script1=C:\belair3\applics\appdev\automate\a.bsi<br>
+				Script2=C:\belair3\applics\appdev\automate\a2.bsi<br>
+				Script3=C:\belair3\applics\appdev\automate\a3.bsi<br>
+				Script4=C:\belair3\applics\appdev\automate\a4.bsi
+			</p>
+
+			<p>
+				Repertoire1=c:\temp\a<br>
+				Repertoire2=c:\temp\a2\*.txt<br>
+				Repertoire3=c:\temp\a2\*.a<br>
+				RepertoireBackup=c:\temp\b<br>
+				RepertoireErreur=c:\temp\c
+			</p>
+
+			<p>
+				RepertoireBackup2=c:\temp\b<br>
+				RepertoireErreur2=c:\temp\c<br>
+				RepertoireBackup3=c:\temp\b<br>
+				RepertoireErreur3=c:\temp\c 
+			</p>
+		</div>
+
+		<p>
+			Dans cet exemple, le programme va prendre les fichiers contenu dans le répertoire a, pour les traiter par le script a.bsi.
+		</p>
+
+		<p>
+			Les fichiers du répertoire a2 seront traités de la manière suivante : les fichiers dont l'extension est "txt" seront traités par le script a2.bsi. Les fichiers dont l'extension est "a" seront traités par le script a3.bsi.
+		</p>
+
+		<p>
+			On peut voir toujours dans cet exemple que les fichiers traités correctement et en erreur seront tous dans les répertoires respectifs b et c.
+		</p>
+
+		<p>
+			La règle est la suivante : si dans le nom du répertoire se trouve une étoile ou un point d'interrogation, alors le filtre exact sera appliqué. Sinon, le chemin sera considéré comme un répertoire, et tous les fichiers seront traités. 
+		</p>
+
+		<p>
+			Ainsi :"Repertoire=c:\temp\a\" va déclencher le traitement du répertoire "c:\temp\a" dans sa totalité 
+			"Repertoire=c:\temp\a.txt" va déclencher le traitement du répertoire "c:\temp\a.txt\" dans sa totalité
+			"Repertoire=c:\temp\a\*.txt" va déclencher le traitement des fichiers dont l'extension est "txt", dans le répertoire "c:\temp\a"
+		</p>
+	</div>
+
+	<div class="alert alert-warning" role="alert">
+		Concernant les fichiers de configuration de l'ancienne version : les paramètres qui ne sont pas suivis d'un numéro sont toujours pris en compte. Ainsi, un paramétrage "script" sera pris en compte, aussi bien qu'un paramétrage "script1" et "script2", au sein du même fichier ini.
+	</div>
+
+	<h4>Gestion des erreurs</h4>
+
+	<ul>
+		<li>
+			<b>Cas 1 : erreur prévue par le script lors du traitement du fichier</b>
+			<p>
+				Le programme Ecoute.EXE utilise le compte rendu de l'exécution du script, pour déterminer si le fichier a été traité correctement. Ce compte rendu est créé par les instructions PRINT présentes dans le script.
+			</p>
+
+			<img src="images/ecoute04.jpg">
+
+			<p>
+				Dans cet exemple, on voit que le script a considéré que le traitement était OK, car il se termine par le mot "OK". Ainsi, le programme Ecoute.EXE va ranger le fichier dans le répertoire backup (si ce dernier est paramétré, sinon le fichier est supprimé).
+			</p>
+
+			<p>
+				On peut voir par cet autre exemple ce que donnerait un fichier erroné, traité par un script capable de détecter cette erreur : 
+			</p>
+
+			<img src="images/ecoute05.jpg">
+
+			<p>
+				A la fin du compte rendu, avant le texte "**** Fin : ..." généré par l'automate d'import, le mot "ERREUR" est présent. Le fichier sera donc rangé dans le répertoire erreur paramétré.
+			</p>
+		</li>
+
+		<li>
+			<b>Cas 2 : erreur de disponibilité du programme de l'automate d'import</b>
+
+			<p>
+				Si le programme automate d'import n'est pas disponible, ou si son exécution ne s'est pas faite en totalité, alors le fichier reste en lieu et place. Il n'est pas déplacé ni dans le répertoire backup, ni dans le répertoire erreur. Ainsi, il pourra être retraité plus tard. Ce mode de fonctionnement a été choisi car si l'automate d'import n'est pas disponible sur la machine à un instant T, il pourra l'être lors de la prochaine vérification.
+			</p>
+		</li>
+	</ul>
+
+	<p>
+		Dans les deux cas d'erreur, un mémo sera envoyé à l'utilisateur, si les éléments de la section memo ont été correctement paramétrés (voir "paramétrage de la section memo").
+	</p>
+
+	<h3>Composante copie de base (uniquement sur les bases en Interbase ou FireBird)</h3>
+
+	<p>
+		Cette composante déclenche la copie d'une base vers une autre, à une heure donnée. Cela permet d'avoir une base en consultation, ou éventuellement pour avoir une base à distance avec des temps d'accès plus rapide.
+	</p>
+
+	<img src="images/ecoute06.jpg">
+
+	<h4>Fichier INI</h4>
+
+	<p>
+		La section du fichier INI utilisée pour la copie de base est la section [Copie]
+		A noter que les lignes précédées d'un apostrophe (') sont commentées. C'est le cas de certaines lignes de cet exemple.
+	</p>
+
+	<b>Voici un exemple de section [Copie], suivi de l'explication pour chaque clé : </b>
+	<div class="bai_exemple">
+		<div class="bai_code">
+			<p>
+				[Copie]<br>
+				SourceGDB=C:\BELAIR3\APPDEV\APPDEV.IDB<br>
+				SourceServeur=Localhost<br>
+				SourceProtocol=TCP<br>
+				SourceViaReseau=\\Localhost\APPDEV\<br>
+				DestGDB=\\Machine2\APPDEV\APPDEV.IDB<br>
+				RepTempGDB=C:\TEMP2<br>
+				HeureBackup=22:10<br>
+				'TablesAVider=KECRAIC;KLIGAIC<br>
+			</p>
+			<p>
+				'CommandeAvantTraitement=c:\belair3\updateappxxx<br>
+				FichierLog=c:\temp2\temp.log<br>
+				AjouteDate=oui<br>
+				User=SYSDBA<br>
+				Password=masterkey<br>
+				AutoStart=oui<br>
+				'Simulation=oui<br>
+				LogCalculHeureLancement=oui<br>
+				VerifRepertoireVide=c:\temp
+			</p>
+		</div> 
+
+		<p>
+			</p><ul>
+				<li>
+					<b>SourceGDB</b> : indique le chemin de la base source (fichier Interbase ou FireBird), dont on va faire un backup. 
+				</li>
+
+				<li>
+					<b>SourceServeur</b> : indique le serveur où est située la base à archiver. Ici, localhost indique que c'est la machine où est exécuté Ecoute.EXE.
+				</li>
+
+				<li>
+					<b>SourceProtocol</b> : indique le protocole à utiliser pour exploiter la base à archiver. Généralement, le protocole utilisé est TCP.
+				</li>
+
+				<li>
+					<b>SourceViaReseau</b> : indique le chemin du .DB de la base à archiver, vu par le réseau.
+				</li>
+
+				<li>
+					<b>DestGDB</b> : indique le chemin du fichier GDB à restaurer, c'est à dire la destination de la copie de la base. Le chemin peut-être un chemin réseau. 
+				</li>
+
+				<li>
+					<b>RepTempGDB</b> : il est nécessaire de fournir un répertoire temporaire, pour stocker le fichier GBK généré lors de l'archivage. De préférence, le stocker sur l'ordinateur où Ecoute.EXE est lancé, pour accélérer le traitement.
+				</li>
+
+				<li>
+					<b>HeureBackup</b> : pour indiquer l'heure à laquelle se déclenche la copie de la base. L'heure est à indiquer au format hh:mm.
+				</li>
+
+				<li>
+					<b>TableAVider [Facultatif]</b> : contient la liste des tables à vider, lors du backup. A noter que si cet argument est en commentaire, comme dans l'exemple, un seul backup/restore sera fait. Dans le cas contraire, où des tables sont à vider, un premier backup/restore est fait, la base temporaire purgée, et un second backup/restore est fait. A n'utiliser que pour masquer des données confidentielles (comme la compta).
+				</li>
+
+				<li>
+					<b>CommandeAvantTraitement [Facultatif]</b> : cette option permet d'exécuter des commandes, avant chaque traitement. Cela peut être utilisé par exemple pour rapatrier les fichiers d'un autre endroit, ou les renommer si on a l'utilitaire adéquat en ligne de commande. Il faut que la commande à lancer corresponde à un programme .EXE, et non pas une commande MS-DOS.
+					A noter qu'on peut avoir plusieurs commandes, séparées par le caractère dièse (#).
+				</li>
+
+				<li>
+					<b>FichierLog</b> : nom du fichier log qui contiendra le nom de chaque fichier traité, ainsi que le résultat fourni par l'automate d'import pour chacun des fichiers. Ce résultat peut contenir par exemple un numéro de tiers traité. 
+				</li>
+
+				<li>
+					<b>AjouteDate [Facultatif]</b> : cette option, à "oui" pour être activée, permet de rajouter la date après le nom du fichier log, pour avoir un fichier par jour. De cette manière, les fichiers logs seront plus courts, et donc plus faciles à traiter.
+				</li>
+
+				<li>
+					<b>Simulation [Facultatif]</b> : cette option permet de simuler le traitement du fichier. Lorsque cette option a pour valeur "oui", l'automate d'import est chargé, puis le script BSI chargé, mais pas exécuté. Ainsi, le fichier n'est pas traité.
+				</li>
+
+				<li>
+					<b>VerifRepertoireVide [Facultatif]</b> : cette option permet de paramétrer un répertoire qui doit être vide avant le lancement de la copie. Si le répertoire est vide, alors la copie se fera, sinon elle sera reportée au lendemain et un mémo sera envoyé à l'utilisateur paramétré dans la section mémo. Le log indiquera également que le répertoire n'est pas vide.
+				</li>
+
+				<li>
+					<b>Autostart</b> : cette option permet de savoir si la composante d'intégration de fichier doit démarrer automatiquement. Indiquer "oui" pour activer cette option.
+				</li>
+			</ul>
+		
+
+		<p>
+			Le fichier tel que paramétré déclenchera, tous les jours à 22h10, le backup de la base APPDEV présente sur l'ordinateur où s'execute Ecoute.EXE, pour en faire une copie sur l'ordinateur Machine2, en utilisant le répertoire c:\temp2 de manière temporaire.
+		</p>
+
+		<p>
+			Le fichier log sera le fichier c:\temp2\log.txt, dont le nom comportera la date à la fin. Si par exemple on est le 10/10/2007, le nom du fichier sera c:\temp2\log2007-10-10.txt.
+		</p>
+
+		<p>
+			La copie de la base ne sera pas faite si le répertoire c:\temp n'est pas vide. Si on se reporte à l'exemple d'intégration de fichier, cela signifie que si des fichiers restent à intégrer, alors le backup/restore ne se lancera pas.
+		</p>
+	</div>
+
+	<div class="alert alert-warning">
+		A noter que pour que la copie se fasse, il faut que les bases ne soient pas en cours d'utilisation. Dans le cas contraire, une erreur sera générée dans le fichier log et un mémo envoyé
+	</div>
+</body>

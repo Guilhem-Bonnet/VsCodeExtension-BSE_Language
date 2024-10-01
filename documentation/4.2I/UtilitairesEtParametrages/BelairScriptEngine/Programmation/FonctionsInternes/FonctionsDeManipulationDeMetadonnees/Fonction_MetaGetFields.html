@@ -1,0 +1,54 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:GetFields(Entity, Number)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie un champ d'entité, selon son numéro dans la liste des champs.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Entity</code> : l'entité.</li>
+				<li><code>Number</code> : le numéro de champ.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>L'objet de type "TMetaField".</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+</p><pre><code class="c syntaxhl"><span class="CodeRay">local i, j, entity, field
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Meta:EntityCount() 
+begin
+  entity := Meta:GetEntities(i)
+  Print(<span class="string"><span class="delimiter">"</span><span class="content">Entity %s (%s). Code: %s, name: %s</span><span class="delimiter">"</span></span>, i, entity.TypeName, entity.Code, entity.Name)
+  i := i + <span class="integer">1</span>
+  j := <span class="integer">0</span>
+  <span class="keyword">while</span> j &lt; Meta:FieldCount(entity)
+  begin
+    field := Meta:GetFields(entity, j)
+    Print(<span class="string"><span class="delimiter">"</span><span class="content">Field %s (%s). Code: %s, name: %s</span><span class="delimiter">"</span></span>, j, field.TypeName, field.Code, field.Name)
+    j := j + <span class="integer">1</span>
+  end
+end
+</span></code></pre>
+			
+			<p>Résultat :</p>
+			<pre>Entity 0 (TMetaTable). Code: ADH, name: ADHDEI
+Field 0 (TMetaField). Code: Contrat, name: B_CONTRAT
+Field 1 (TMetaField). Code: Piece, name: B_PIECE
+Field 2 (TMetaField). Code: Adhesion, name: B_ADHESION
+Field 3 (TMetaField). Code: Entree, name: B_ENTREE
+...</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

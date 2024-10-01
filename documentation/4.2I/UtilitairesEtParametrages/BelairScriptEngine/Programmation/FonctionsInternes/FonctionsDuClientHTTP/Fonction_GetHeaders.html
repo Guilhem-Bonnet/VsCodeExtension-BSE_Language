@@ -1,0 +1,59 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:GetHeaders</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			Créé un objet dont chaque propriété correspond à un champ header renvoyé par le serveur.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. objet HTTP</li></ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			</p><p>Objet avec la liste des champs headers.</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+			</p><p>
+			Note:
+			</p>
+			<p>
+			Dans cet exemple, on utilise httpbin.org, un site qui permet de vérifier la demande qui lui a été faite.
+			Le site retourne en json le détail de la requête qui lui a été passée.
+			</p>
+				<p>Code :</p>
+				<div class="bai_exemple"><pre>
+local Http, Body, Headers
+Http := HTTP:New()
+Body := HTTP:POST(Http, "https://httpbin.org/post")
+Assert(HTTP:ResponseCode(Http) = 200) // raise if not 200
+Headers := HTTP:GetHeaders(Http)
+print(dumpvar(Headers))
+print(StrFormat("Type de serveur= %s", Headers.Server))
+				</pre></div>	
+			
+			
+			<p>Résultat :</p>
+			<pre>Object (Object):
+  Access-Control-Allow-Credentials (UnicodeString): true
+  Access-Control-Allow-Origin (UnicodeString): *
+  Connection (UnicodeString): keep-alive
+  Content-Length (UnicodeString): 528
+  Content-Type (UnicodeString): application/json
+  Date (UnicodeString): Thu, 19 Mar 2020 16:28:41 GMT
+  Server (UnicodeString): gunicorn/19.9.0
+Type de serveur= gunicorn/19.9.0
+</pre>
+		</div>
+	</div>
+	<br><br>
+</body>

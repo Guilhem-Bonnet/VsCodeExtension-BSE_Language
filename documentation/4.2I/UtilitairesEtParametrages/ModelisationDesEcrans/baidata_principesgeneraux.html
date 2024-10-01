@@ -1,0 +1,215 @@
+<body>
+<h2>Modélisation des écrans : principes généraux</h2>
+
+	Un écran est composé d'objets divers (textes, zones de saisie, images,...) appelés <b>contrôles.</b><br>
+	Chaque contrôle est positionné dans un autre contrôle appelé <b>parent</b><br>
+	Chaque contrôle est donc l'enfant de son parent, lui même enfant de son parent, jusqu'à arriver à la fenêtre elle-même.<br>
+	C'est donc un principe de 'poupées russes'.<br><br>
+
+<h3>Manipulation d'un objet</h3>
+
+	La sélection d'un objet se fait en cliquant dessus : des poignées apparaissent alors autour de l'objet sélectionné.<br>
+	Les poignées permettent de déplacer / redimensionner l'objet.<br>
+	L'objet peut être déplacé en glissant et en relachant la souris.<br><br>
+	Plusieurs objets peuvent être sélectionnés en même temps : une fois le 1er objet sélectionné, sélectionner le nouvel objet en appuyant en même temps sur <kbd>[Maj]</kbd> : <br>
+	les poignées deviennent alors grisées et entourent l'ensemble des objets sélectionnés.<br><br>
+	La touche <kbd>[EChap]</kbd> permet d'annuler la sélection.<br><br>
+
+<h3>Le menu contextuel</h3>
+
+	En faisant un clic droit, le menu des fonctionnalités disponibles pour le ou les objets sélectionnés apparait.<br>
+	Certaines fonctions ne sont disponibles que pour certaines natures d'objet.
+
+	<p><img src="images/baidata_menuobjet.png" class="img-responsive"></p><br><br>
+
+	<h4>Fonctions communes:</h4>
+
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td><span class="menu">Inspecteur</span></td>
+			<td>affiche l'inspecteur des propriétés de l'objet (voir ci-dessous)</td>
+		</tr>
+		<tr>
+			<td><span class="menu">Sélectionner tous les enfants</span><br>(contrôles pouvant contenir d'autres contrôles)</td>
+			<td>Sélection de tous les contrôles enfant de cet objet</td>
+		</tr>
+		<tr>
+			<td><span class="menu">Ordre tabulation</span><br>(contrôles pouvant contenir d'autres contrôles)</td>
+			<td>Permet de régler la tabulation des contrôles enfant de cet objet</td>
+		</tr>
+		<tr>
+			<td><span class="menu">Invisible</span></td>
+			<td>Le contrôle ne sera pas affiché en mode exploitation dans Belair</td>
+		</tr>
+		<tr>
+			<td><span class="menu">Export HTML</span></td>
+			<td>affichage dans une fenêtre du code HTML sommaire représentant l'objet et son contenu </td>
+		</tr>
+			<td><span class="menu">Résumé</span></td>
+			<td>affichage du nom, de la classe, de la position et de des dismensions de l'objet</td>
+		
+		<tr>
+			<td><span class="menu">Effacer</span></td>
+			<td>Effacement de l'objet<br>(certains objets ne peuvent pas être effacés)</td>
+		</tr>
+	</tbody>
+</table>		
+	
+	
+<h3>Déplacer / Aligner / Redimensionner</h3>
+
+	Lorsqu'un ou plusieurs objets sont sélectionnés, il est possible de les déplacer en utilisant les flèches du clavier et en appuyant sur <kbd>[Maj]</kbd><br>
+	Les objets sélectionnés sont déplacés à chaque fois du nombre de pixel définis dans la grille.<br><br>
+
+	Lorsqu'un ou plusieurs objets sont sélectionnés, il est possible de les redimensionner en utilisant les flèches du clavier et en appuyant sur <kbd>[Ctrl]</kbd><br>
+	<ul>
+		<li><kbd>[Ctrl]</kbd> + <kbd>[flèche Haute]</kbd>  diminution de la hauteur</li>
+		<li><kbd>[Ctrl]</kbd> + <kbd>[flèche Basse]</kbd>  augmentation de la hauteur</li>
+		<li><kbd>[Ctrl]</kbd> + <kbd>[flèche Gauche]</kbd>  diminution de la largeur</li>
+		<li><kbd>[Ctrl]</kbd> + <kbd>[flèche Droite]</kbd>  augmentation de la largeur</li>
+	</ul>
+	La hauteur et largeur sont augmentées ou diminuées à chaque fois du nombre de pixel définis dans la grille.<br><br><br>
+
+<div class="alert alert-info" role="alert">
+	Les dismensions de la grille sont modifiables par la fonction <span class="menu">Outils | Grille</span>
+</div>
+
+
+	
+	Lorsque plusiseurs objets sont sélectionnés, l'alignement et la taille des objets peuvent être réglés 
+	en utilisant les fonctions suivantes du menu contextuel : <br><br>
+	
+	<span class="menu">Position | Aligner...</span><br>
+	<p><img src="images/baidata_position.png" class="img-responsive"></p><br>
+	
+	<span class="menu">Position | Aligner sur la grille</span><br>
+	<p>Tous les objets sont repositionnés et redimensionnés pour coller aux dismensions de la grille</p><br>
+
+	<span class="menu">Position | Taille...</span><br>
+	<p><img src="images/baidata_taille.png" class="img-responsive"></p><br><br>
+	
+<h3>Copier / Couper / Coller / Supprimer un ou plusieurs objets</h3>
+
+	Lorsqu'un ou plusieurs objets sont sélectionnés, les fonctions suivantes sont disponibles:<br>
+	<ul>
+		<li><span class="menu">Edition | Copier</span> <kbd>[Ctrl]</kbd>+<kbd>[C]</kbd>  : copie des objets dans le presse-papier</li>
+		<li><span class="menu">Edition | Couper</span> <kbd>[Ctrl]</kbd>+<kbd>[X]</kbd>  : copie des objets dans le presse-papier et les supprime</li>
+		<li><span class="menu">Edition | Coller</span> <kbd>[Ctrl]</kbd>+<kbd>[V]</kbd>  : création des objets contenus dans le presse-papier dans le contrôle sélectionné</li>
+		<li><span class="menu">Edition | Supprimer</span> <kbd>[Ctrl]</kbd>+<kbd>[Suppr]</kbd>  : copie des objets dans le presse-papier</li>
+	</ul>
+
+<div class="alert alert-info" role="alert">
+	<b>Couper / Coller</b> permet ainsi de déplacer un ou plusieurs objets d'un parent à un autre
+</div>
+	
+<div class="alert alert-danger" role="alert">
+	<b>Attention</b><br>
+	Si vous coupez des objets 'en dur' sans les coller ailleurs immédiatement, vous risquez de les perdre.<br>
+	Votre écran ne pourra pas être enregistré!!
+</div>
+<br>
+	
+<h3>L'inspecteur d'objet</h3>
+
+	Chaque objet possède des caractéristiques propres appelées <b>propriétés</b> qui sont modifiables.<br>
+	La fonction <span class="menu">Outils | Inspecteur</span>   <kbd>[F11]</kbd> permet d'afficher l'inspecteur d'objet et les propriétés de l'objet sélectionné.<br><br>
+
+	<p><img src="images/baidata_inspecteur_objet.png" class="img-responsive"></p>
+	
+
+<div class="alert alert-info" role="alert">
+	Le nom et la nature (la classe) de l'objet apparait en haut de la liste de ses propriétés.<br>
+	La liste des propriétés modifiables dépend de la nature de l'objet sélectionné.
+</div>
+	
+	
+<h4>Chaque contrôle dispose des propriétés standard suivantes de positionnement / dismensionnement:</h4>
+
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td>Height</td>
+			<td>Hauteur</td>
+		</tr>
+		<tr>
+			<td>Left</td>
+			<td>coordonnée horizontale au sein du parent</td>
+		</tr>
+		<tr>
+			<td>Top</td>
+			<td>coordonnée verticale au sein du parent</td>
+		</tr>
+		<tr>
+			<td>Width</td>
+			<td>Largeur</td>
+		</tr>
+	</tbody>
+</table>		
+
+<h4>Autres propriétés communes à la plupart des objets</h4>
+
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td>Anchors (ancres)<br><span class="label label-danger ">usage délicat</span></td>
+			<td>définition du comportement lorsque son parent est déplacé ou redismensionné
+			<code>AkLeft </code> conservation de la distance par rapport au bord gauche du parent<br>
+			<code>AkTop </code> conservation de la distance par rapport au bord haut du parent<br>
+			<code>AkRight </code> conservation de la distance par rapport au bord droit du parent<br>
+			<code>AkBottom </code> conservation de la distance par rapport au bord bas du parent<br><br>
+			certaines combinaisons peuvent provoquer un redismensionnement automatique:<br>
+			<code>AkLeft, Akright, Aktop</code> la largeur du contrôle sera agrandie ou diminuée si la largeur de son parent change<br>
+			<code>AkLeft, AkBottom, Aktop</code> la hauteur du contrôle sera agrandie ou diminuée si la hauteur de son parent change</td><td>
+		</td></tr>
+		<tr>
+			<td>Align</td>
+			<td>Alignement par rapport au parent
+			<code>Alnone </code> Aucun alignement<br>
+			<code>AlTop </code> en haut : le contrôle est placé en haut de la zone disponible du parent et prend toute la largeur disponible<br>
+			<code>AlBottom </code> en bas : le contrôle est placé en bas de la zone disponible du parent et prend toute la largeur disponible<br>
+			<code>AlLeft </code> à gauche : le contrôle est placé à gauche de la zone disponible du parent et prend toute la hauteur disponible<br>
+			<code>AlRight </code> à droite : le contrôle est placé à droite de la zone disponible du parent et prend toute la hauteur disponible<br><br>
+			Remarques: les alignements <code>AlTop </code> et <code>AlBottom </code> sont prioritaires aux autres</td>
+		</tr>
+		<tr>
+			<td>Color</td>
+			<td>couleur de fond</td>
+		</tr>
+		<tr>
+			<td>Font</td>
+			<td>Définition de la fonte (textes ou zone de saisie)</td>
+		</tr>
+		<tr>
+			<td>ParentColor</td>
+			<td>si coché, la couleur de fond hérite automatiquement de son parent</td>
+		</tr>
+		<tr>
+			<td>ParentFont</td>
+			<td>si coché, la fonte hérite automatiquement de son parent</td>
+		</tr>
+		<tr>
+			<td>Ctl3D<br>(objets pouvant avoir une bordure)</td>
+			<td>si coché, la bordure est en relief</td>
+		</tr>
+		<tr>
+			<td>Baistd3D<br>(objets pouvant avoir une bordure)</td>
+			<td><code> 0 </code> le relief hérite automatiquement de son parent<br>
+			<code> 1 </code> en relief, avec bordure<br>
+			<code> 2 </code> sans relief, avec bordure<br>
+			<code> 3 </code> sans relief, pas de bordure<br>
+			<code> 4 </code> en relief, pas de bordure</td>
+		</tr>
+		<tr>
+			<td>BaiPalette<br>(objets ayant une couleur et/ou une fonte)</td>
+			<td><code> 0 </code> couleur et/ou fonte hérités de son parent<br>
+			<code> 1..8 </code> paramètres de la palette (1 à 8)<br>
+			<code> 255 </code> couleur et/ou fonte spécifiques</td>
+		</tr>
+	</tbody>
+</table>		
+
+<br><br>
+
+		
+</body>

@@ -1,0 +1,71 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:SelectResult(doc, Xpath, default)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction recherche le nœud spécifié par la requête <a href="https://www.w3schools.com/xml/xpath_intro.asp" target="__BLANK">XPath</a> comme la fonction 
+<a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de XML" name="Fonctions%20de%20XML%20:%20XML:Select">XML:Select</a>, puis renvoie le texte du nœud trouvé.
+			<br>Le texte peut être affecté par la fonction 
+<a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de XML" name="Fonctions%20de%20XML%20:%20XML:SetNodeText">XML:SetNodeText</a>.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>Xpath</code> : la requête XPath.</li>
+				<li><code>default</code> : la valeur par défaut, si la requête ne trouve rien (optionnel).</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			</p><ul><li>Le texte du nœud trouvé.</li>
+			</ul>
+			<p>Si la requête XPath ne trouve rien, et si la valeur par défaut n'est pas spécifiée, une erreur est générée.</p>
+			
+			
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">cars</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">manufacturer</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Toyota</span><span class="delimiter">"</span></span>)
+  XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">manufacturer</span><span class="delimiter">"</span></span>)
+    XML:SetNodeText(doc, <span class="string"><span class="delimiter">"</span><span class="content">Renault</span><span class="delimiter">"</span></span>)
+    XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">country</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">France</span><span class="delimiter">"</span></span>)
+  XML:EndNode(doc)
+  XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">manufacturer</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Nissan</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc)
+Print(XML:SelectResult(doc, <span class="string"><span class="delimiter">"</span><span class="content">/cars/manufacturer[1]</span><span class="delimiter">"</span></span>))
+Print(XML:SelectResult(doc, <span class="string"><span class="delimiter">"</span><span class="content">//manufacturer[@country='France']</span><span class="delimiter">"</span></span>))
+Print(XML:SelectResult(doc, <span class="string"><span class="delimiter">"</span><span class="content">//*[text()='Renault']</span><span class="delimiter">"</span></span>))
+Print(XML:SelectResult(doc, <span class="string"><span class="delimiter">"</span><span class="content">//*[text()='Ford']</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">No Ford found</span><span class="delimiter">"</span></span>))
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">Toyota
+Renault
+Renault
+No Ford found
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;cars&gt;</span>
+  <span class="tag">&lt;manufacturer&gt;</span>Toyota<span class="tag">&lt;/manufacturer&gt;</span>
+  <span class="tag">&lt;manufacturer</span> <span class="attribute-name">country</span>=<span class="string"><span class="delimiter">"</span><span class="content">France</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>Renault<span class="tag">&lt;/manufacturer&gt;</span>
+  <span class="tag">&lt;manufacturer&gt;</span>Nissan<span class="tag">&lt;/manufacturer&gt;</span>
+<span class="tag">&lt;/cars&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

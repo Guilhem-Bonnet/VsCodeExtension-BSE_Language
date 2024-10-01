@@ -1,0 +1,56 @@
+<body>
+	<h2>Conditions</h2>
+
+	<!-- Fonction SI valeur 1 -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SI valeur1 { ET / OU valeur2 { ET / OU valeur3 ….. } }</code>  <b></b><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				<code>Valeur1</code>, <code>valeur2</code>, <code>valeur3</code> : tests rendant VRAI ou FAUX (valeurs booléennes)
+			</p>
+			<p>
+				<b>Exemples de valeur booléenne :</b>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						?DPP("b_age") 
+					VRAI si age 
+					<span class="bai_code">
+						?CONT("b_tacite")
+					</span>
+					L'information "sans tacite reconduction" est de type booléen, rendant VRAI ou FAUX
+				</span></div>	
+			
+			<p>
+				Les conditions permettent de piloter le déroulement d'une formule
+			</p>
+			<p>
+				<b>Exemples d'utilisation dans une formule alphabétique" :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">
+						SI ?DPP("b_sexe") = "M" ;&gt;HOMME <span class="bai_comment">// débranchement selon le sexe</span>
+						<br>
+						SI ?DPP("b_sexe") = "F" ;&gt;FEMME <span class="bai_comment">// débranchement selon le sexe</span>
+						<br>
+						="sexe inconnu" <span class="bai_comment">// résultat pour les personnes mal saisies</span>
+						<br><br>
+						:HOMME <span class="bai_comment">// la formule reprend ici pour les hommes</span>
+						<br>
+						SI ?DPP("b_age") &gt; 60 ;&gt;TROPVIEUX <span class="bai_comment">// limite d'age = 60 pour les hommes</span>
+						<br>
+						SI ?DPP("b_age") &gt; 25 ;="OK" ;= "trop jeune" <span class="bai_comment">// "OK" si age &gt; 25 ans, "trop jeune" sinon</span>
+						<br><br>
+						:FEMME <span class="bai_comment">// la formule reprend ici pour les femmes</span>
+						<br>
+						SI ?DPP("b_age") &gt; 55 ;&gt;TROPVIEUX <span class="bai_comment">// limite d'age = 55 pour les femmes</span>
+						<br>
+						SI ?DPP("b_age") &gt; 30 ;="OK" ;= "trop jeune" <span class="bai_comment">// "OK" si age &gt; 30 ans, "trop jeune" sinon</span>
+						<br><br>
+						:TROPVIEUX ="personne trop âgée"
+					</span>
+				</div>
+			
+		</div>
+	</div>
+</body>

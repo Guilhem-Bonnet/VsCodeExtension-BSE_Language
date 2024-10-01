@@ -1,0 +1,53 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:SetAttr(doc, name, value)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction crée ou affecte l'attribut existant par la valeur donnée.
+			<br>Selon le type de valeur, elle sera convertie dans une chaîne de caractères au format approprié.
+			</p>
+			
+			<br>
+			<p><b>Paramètres d'entrée :</b></p>
+				<ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>name</code> : le nom d'attribut.</li>
+				<li><code>value</code> : la valeur.</li></ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>Aucun.</p>
+			
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">order</span><span class="delimiter">"</span></span>)
+  XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">date</span><span class="delimiter">"</span></span>, EncodeDate(<span class="integer">2017</span>, <span class="integer">11</span>, <span class="octal">07</span>))
+  XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">completed</span><span class="delimiter">"</span></span>, <span class="predefined-constant">true</span>)
+  XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item</span><span class="delimiter">"</span></span>)
+    XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Wheat flour</span><span class="delimiter">"</span></span>)
+    XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">price</span><span class="delimiter">"</span></span>, <span class="float">0</span><span class="float">.70</span>)
+    XML:SetAttr(doc, <span class="string"><span class="delimiter">"</span><span class="content">amount</span><span class="delimiter">"</span></span>, <span class="integer">150</span>)
+  XML:EndNode(doc)
+XML:EndNode(doc)
+Print(XML:ToString(doc))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;order</span> <span class="attribute-name">date</span>=<span class="string"><span class="delimiter">"</span><span class="content">2017-11-07T00:00:00.000</span><span class="delimiter">"</span></span> <span class="attribute-name">completed</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;item</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">Wheat flour</span><span class="delimiter">"</span></span> <span class="attribute-name">price</span>=<span class="string"><span class="delimiter">"</span><span class="content">7.00000000000000E-0001</span><span class="delimiter">"</span></span> <span class="attribute-name">amount</span>=<span class="string"><span class="delimiter">"</span><span class="content">150</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span><span class="tag">&lt;/order&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

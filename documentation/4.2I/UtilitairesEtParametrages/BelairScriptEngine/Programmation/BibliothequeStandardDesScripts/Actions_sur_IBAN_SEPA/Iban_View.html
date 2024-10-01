@@ -1,0 +1,53 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Iban_View</code></h3>
+		</div>
+
+<p>Liste des IBan associés à un tiers ou à un contrat</p>
+
+
+	<a name="parametres"></a>
+<h3>parametres<a href="#parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (integer, optionnel) : numéro de tiers<br>OU</li>
+		<li>contrat (integer, obligatoire) : numéro du contrat</li>
+	</ul>
+
+
+	<ul>
+	<li>utilise (True / False) : Si True, la recherche se limite aux Iban "actifs" (liés à un mandat OU utilisé en Virement)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Exemple avec dossier = 801</p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;ibans&gt;</span>
+  <span class="nt">&lt;iban&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"IBAN"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;mandats&gt;</span>
+      <span class="nt">&lt;mandat&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"MANDAT"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;objects&gt;</span>
+          <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Cont"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;/objects&gt;</span>
+      <span class="nt">&lt;/mandat&gt;</span>
+      <span class="nt">&lt;mandat&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"MANDAT"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;objects&gt;</span>
+          <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Cont"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;/objects&gt;</span>
+      <span class="nt">&lt;/mandat&gt;</span>
+    <span class="nt">&lt;/mandats&gt;</span>
+  <span class="nt">&lt;/iban&gt;</span>
+<span class="nt">&lt;/ibans&gt;</span>
+</code></pre>
+</div></body>

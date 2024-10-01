@@ -1,0 +1,43 @@
+<body>
+<!-- titre page -->
+<h1 class="h1">Expressions régulières</h1>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>RegEx:Replace(<i>regExObject, expression, chaine</i>)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>
+			La fonction remplace les occurrences d'une expression régulière par un texte de remplacement formaté et retourne le texte modifié.
+		</p>
+		<p>
+			<b>Paramètre :</b>
+			<br><br>
+			<code>regExObject</code> : Un objet de type 'RegEx'<br>
+			<code>expression</code> : Une expression régulière (string)<br>
+			<code>chaine</code> : Le texte de remplacement formaté (string)<br>
+		</p>
+
+		<p><b>Résultat</b>: Une variable de type string</p>
+
+		<p>
+			<b>Exemple :</b><br>
+			</p><div class="bai_exemple">
+				<pre><span class="bai_code">
+local regExObject, result 
+regExObject := RegEx:New("Some people, when confronted with a problem, think I know, I'll use regular expressions. Now they have two problems.")
+result := RegEx:Replace(regExObject, "(\w{7,})", "[$&amp;]")     
+return result</span></pre>
+				</div>	
+			
+			<p>
+				<b>Résultat :</b>
+				</p><div class="bai_code">
+					<pre>
+Script result:
+Some people, when [confronted] with a [problem], think I know, I'll use [regular] [expressions]. Now they have two [problems].</pre>
+				</div>
+			
+		</div>
+	</div>
+</body>

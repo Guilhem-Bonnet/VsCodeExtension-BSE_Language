@@ -1,0 +1,57 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+				<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tab_Save</code></h3>
+		</div>
+
+<p>Cette action permet de créer et de modifier une table de codes et son contenu</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>tabcode  (String, obligatoire) : nom de la table de codes</li>
+		<li>action (String, obligatoire) : "UPDATE" ou "CREATE" </li>
+		<li>data : flux XML</li>
+	</ul>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;tab</span> <span class="na">tabcode=</span><span class="s">"TITRE"</span> <span class="na">type=</span><span class="s">"C"</span> <span class="na">align=</span><span class="s">"G"</span> <span class="na">size=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;items&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"tab"</span><span class="nt">&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Tabaff"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Auto Ecole<span class="nt">&lt;/param&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Tabcode"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>TITRE<span class="nt">&lt;/param&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Tabref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AE<span class="nt">&lt;/param&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Tabval"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Auto Ecole<span class="nt">&lt;/param&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Valref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AE:Auto Ecole<span class="nt">&lt;/param&gt;&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"tab"</span><span class="nt">&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Tabaff"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Aréo-Club<span class="nt">&lt;/param&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Tabcode"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>TITRE<span class="nt">&lt;/param&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Tabref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AERO<span class="nt">&lt;/param&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Tabval"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Aréo-Club<span class="nt">&lt;/param&gt;&lt;param</span> <span class="na">name=</span><span class="s">"Valref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AERO:Aréo-Club<span class="nt">&lt;/param&gt;&lt;/object&gt;</span>
+      ...
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/items&gt;</span>
+<span class="nt">&lt;/tab&gt;</span>
+</code></pre>
+
+	<p>Ce flux correspond au retour de l'action Tab_ListValues (<a class="issue tracker-2 status-5 priority-4 priority-default closed child" title="Evolution: BSE - Action Tab_ListValues (BL): contenu d'une table de codes (Terminé)" href="http://redmine4.belair.local/issues/13807">#13807</a>)</p>
+
+
+	<a name="R%C3%A8gles-sur-les-attributs-type-align-et-size"></a>
+<h3>Règles sur les attributs type, align et size<a href="#R%C3%A8gles-sur-les-attributs-type-align-et-size" class="wiki-anchor"></a></h3>
+
+
+Ces attributs sont optionnels et en cas d'absence, les valeurs suivantes sont prises en compte
+	<ul>
+	<li>CREATE
+	<ul>
+	<li>type = "C" </li>
+		<li>align = "G" </li>
+		<li>size = "16" </li>
+	</ul>
+	</li>
+		<li>UPDATE
+	<ul>
+	<li>type = tab.type</li>
+		<li>align = tab.align</li>
+		<li>size = tab.size</li>
+	</ul></li>
+	</ul>
+</div></body>

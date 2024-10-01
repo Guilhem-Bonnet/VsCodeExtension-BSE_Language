@@ -1,0 +1,36 @@
+<body>
+
+
+<h3>Fonctions du client HTTP</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTTP:SaveResponseToFile(http, filename)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>
+			enregistrement de la réponse des fonctions http dans un fichier.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+					<li><code>http</code> objet HTTP</li>
+					<li><code>filename</code> Fichier à enregistrer</li>
+				</ul>
+			
+			
+			<p><br><b>Résultat :</b>
+			</p><p>Aucun.</p>
+			
+			<p>
+				<b><br>Exemple :</b><br>
+				</p><div class="bai_exemple"><pre>local h
+h := HTTP:New()
+HTTP:Get(h, "https://www.belair-info.fr/pictos/LOGO-BELAIR-1600px.png")
+HTTP:SaveResponseToFile(h, "c:\tmp\belair.png")
+				</pre></div>	
+			
+		</div>
+	</div>
+</body>

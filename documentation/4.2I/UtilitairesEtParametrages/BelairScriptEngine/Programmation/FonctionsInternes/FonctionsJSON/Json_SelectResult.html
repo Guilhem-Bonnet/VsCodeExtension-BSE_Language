@@ -1,0 +1,69 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:SelectResult(doc,path,default)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>cette fonction cherche la valeur spécifiée par la requête JSONPath comme la fonction <code>Json:ValueExists</code> puis renvoie le texte de la valeur trouvée.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			<li><code>path</code> : la requête JSONPath</li>
+			<li><code>default</code> : la valeur par défaut si la requête ne trouve aucun résultat (optionnel)</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>le texte de la valeur trouvée.
+</p><div class="alert alert-warning" role="alert">
+Si la requête JSONPath ne trouve rien et la valeur par défaut n'est pas spécifiée, une erreur est générée.
+</div>
+		
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "Cars")
+  Json:NewArray(doc, "Renault")
+    Json:NewObject(doc)
+      Json:NewValue(doc, "Model", "clio")
+      Json:NewValue(doc, "Price", 10990)
+      Json:NewValue(doc, "InStock", false)
+    Json:EndObject(doc)
+    Json:NewObject(doc)
+      Json:NewValue(doc, "Model", "zoe")
+      Json:NewValue(doc, "Price", 25700)
+      Json:NewValue(doc, "InStock", true)
+    Json:EndObject(doc)
+  Json:EndArray(doc)
+Json:EndObject(doc)
+Json:Close(doc)            
+print(Json:SelectResult(doc, "cars.renault[0].model"))
+print(Json:SelectResult(doc, "cars.renault[1].Price"))
+print(Json:SelectResult(doc, "NotAGoodPath", "Value not found"))   
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+clio
+25700
+Value not found
+</pre>
+	</div>
+</div>
+</body>

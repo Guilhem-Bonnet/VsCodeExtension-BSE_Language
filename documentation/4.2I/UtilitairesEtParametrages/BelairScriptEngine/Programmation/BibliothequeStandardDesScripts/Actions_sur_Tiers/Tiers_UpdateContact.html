@@ -1,0 +1,87 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tiers_UpdateContact</code></h3>
+		</div>
+
+<p>Modification d'un correspondant d'un tiers 'Personne morale'</p>
+
+
+	<p>Cette action permet de modifier les entités 'cor' et/ou 'dpp' d'un correspondant</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (integer, obligatoire) : n. de tiers</li>
+		<li>numdpp (integer, obligatoire) : numéro de DPP</li>
+		<li>data : flux XML (identique au retour de l'action Tiers_ContactDetails)</li>
+	</ul>
+
+
+	<p><span style="color:red;">IMPORTANT: chacune des balises doit contenir le(s) champ(s) de la clé primaire (DPP : numdpp et COR : numtiers+numdpp)</span></p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;contact&gt;</span>
+ <span class="nt">&lt;input&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+   <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPP"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"NumDpp"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"32"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Prenom"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Ginette<span class="nt">&lt;/param&gt;</span>
+   <span class="nt">&lt;/object&gt;</span>
+   <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"COR"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"NumDpp"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"32"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"NumTiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"100"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Service"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>HOTLINE<span class="nt">&lt;/param&gt;</span>
+   <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+ <span class="nt">&lt;/input&gt;</span>
+<span class="nt">&lt;/contact&gt;</span>
+</code></pre>
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>vérification existence dossier/numdpp dans COR : Error("personne N. xxxx inexistante dans les correspondants du tiers yyyyyy")</li>
+		<li>vérification existence numdpp dans DPP : Error("personne N. xxxx inexistante")</li>
+		<li>data vérification de la présence de &lt;contact&gt;</li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Si balise &lt;Object typename="COR"&gt; 
+	<ul>
+	<li>modification de l'enregistrement COR</li>
+	</ul>
+	</li>
+		<li>Si balise &lt;Object typename="DPP"&gt; 
+	<ul>
+	<li>modification de l'enregistrement DPP</li>
+		<li>si dpp.numtiers  0 
+	<ul>
+	<li>faut modifier la table TIERS (tiers.titre := dpp.titre, tiers.rsociale := dpp.nom + " " + dpp.prenom)</li>
+		<li>AlphaSearchUpdate("TIERS", dpp.numtiers)</li>
+	</ul></li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;cor&gt;</span>
+  <span class="nt">&lt;numtiers&gt;</span>xxxxx<span class="nt">&lt;/numtiers&gt;</span>
+  <span class="nt">&lt;numdpp&gt;</span>yyyyy<span class="nt">&lt;/numdpp&gt;</span>
+<span class="nt">&lt;/cor&gt;</span>
+</code></pre>
+</div></body>

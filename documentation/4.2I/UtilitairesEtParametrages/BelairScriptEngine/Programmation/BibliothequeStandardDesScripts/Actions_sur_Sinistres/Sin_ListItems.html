@@ -1,0 +1,56 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Sin_ListItems</code></h3>
+		</div>
+
+<p>Listes des sinistres d'un tiers ou d'un contrat</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Cible : 
+	<ul>
+	<li>dossier (int, optionnel) : numéro de tiers <br>OU</li>
+		<li>contrat (int, optionnel) : numéro de contrat</li>
+	</ul>
+	</li>
+		<li>all (boolean, optionnel) : si TRUE, affichage des sinistres cloturés (FALSE par défaut)</li>
+		<li>Fields (string, optionnel) : liste des champs à retourner, séparés par des virgules
+	<ul>
+	<li>Exemple : circons, dateouv, datesurv,Dateferm,lieu</li>
+		<li>Les champs sinistre, contrat et risque sont ajoutés automatiquement et ne doivent pas être mis dans la liste</li>
+		<li>Par défaut, tous les champs sont retournés</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;sin-rows&gt;</span>
+  <span class="nt">&lt;objects&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"sin"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Action"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Alcool"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"external_pol_police"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>C1<span class="nt">&lt;/param&gt;</span>
+     .....
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"sin"</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+<span class="nt">&lt;/sin-rows&gt;</span>
+</code></pre>
+
+	<p>Remarque : le n. de police du contrat est ajouté dans <code>external_pol_police</code></p>
+</div></body>

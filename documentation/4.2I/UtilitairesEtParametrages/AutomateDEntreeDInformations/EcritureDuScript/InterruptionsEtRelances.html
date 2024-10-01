@@ -1,0 +1,141 @@
+<body>
+	<h2>Interruptions et relances de traitement</h2>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>PAUSE("message")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affichage du message, validation par UG2 et poursuite du traitement.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>ERREUR("message")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affichage du message, validation par UG et arrêt du traitement.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>CHOIX("message")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affichage du message avec choix de l'action "Continuer ?"
+				</p><ul>
+					<li><kbd>Oui</kbd> : on continue le script</li>
+					<li><kbd>Non</kbd> : interruption du script pour l'enregistrement en cours (idem FIN) et reprise sur l'enregistrement suivant</li>
+					<li><kbd>Abandonner</kbd> : arrêt du traitement (les enregistrements suivants ne sont pas traités).</li>
+				</ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>FIN</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Interruption du script pour l'enregistrement en cours.<br>
+				Les mises à jour effectuées ne sont pas enregistrées et le script est interrompu : le traitement passe à l'enregistrement suivant.<br>
+				FIN est facultatif : le traitement s'arrête à la dernière ligne du script (dans ce cas, si OK est omis, toutes les modifications en cours non validées sont annulées)
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>BREAK</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Interruption du script en cours de traitement d'un enregistrement.<br>
+				Permet l'interruption du script par les boutons <kbd>Pause</kbd> et <kbd>Arrêt</kbd> sans attendre la fin du traitement de l'enregistrement en cours.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>:!FINSCRIPT</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Instruction de fin de traitement du script.<br>
+				<br>
+				Les éléments de script inscrits après cette commande ne seront exécutés qu'une seule fois lorsque tous les enregistrements auront été traités.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RESTART et IMPSES</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retraitement des enregistrements<br>
+				La commande RESTART permet de demander le retraitement des mêmes enregistrements et la fonction de calcul IMPSES permet de connaître le nombre de fois où le traitement à été lancé.<br>
+				Il est donc possible de faire des contrôles de cohérence sur le fichier avant de commencer le traitement réel, ou alors de faire plusieurs actions différentes, difficiles à traiter en une seule passe.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RESTART</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Provoque le redémarrage du script à partir du 1er enregistrement. Normalement il doit être placé dans le traitement de fin de script, donc après la commande :!FINSCRIPT, mais on peut imaginer que dans certains cas, on souhaite interrompre le traitement sur un enregistrement et redémarrer
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>IMPSES</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Numéro de session de traitement. Mis à 1 lorsque le script est lancé, il augmente de 1 à chaque "RESTART"
+			</p>
+
+			<b>Exemple de script</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					<p>
+						SI IMPSES = 2 ;&gt;PHASE2<br>
+						<br>
+						<span class="bai_comment">// traitement à faire lors du 1er passage</span><br>
+						....<br>
+						....<br>
+						<br>
+						FIN<br>
+						<span class="bai_comment">//----------- fin phase 1</span><br>
+						<br>
+						:PHASE2<br>
+						<span class="bai_comment">// traitement à faire lors du 2ème passage</span><br>
+						....<br>
+						....<br>
+						<br>
+						FIN<br>
+						<span class="bai_comment">//----------- fin phase 2</span><br>
+						<br>
+						:!FINSCRIPT<br>
+						SI IMPSES = 1 ; RESTART <span class="bai_comment">// déclenche un 2ème tour</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,83 @@
+<body>
+
+
+<h3>Fonctions de manipulation des objets</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Obj:LoadFromXML</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction crée et initialise l'objet (simple ou métier) ou le tableau des objets à partir d'un document XML.
+			<br>Le document XML doit comprendre les balises correspondantes, selon le format de sérialisation de <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de manipulation des objets" name="Fonctions%20de%20manipulation%20des%20objets%20:%20Obj:SaveToXML">Obj:SaveToXML</a>.
+			<br>
+			<br>La fonction cherche la balise "object" ou "objects" à l'intérieur de balise courante. Si la balise courante n'est pas attribuée, on tente de prendre le premier noeud enfant de la balise racine.
+			<br>Une exception est produite si aucune balise n'a été trouvée.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. Le document XML.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				</p><ul><li>1. L'objet ou le tableau des objets.</li></ul>
+			
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc, a1, a2
+<span class="comment">// Prepare array</span>
+a1 := Obj:NewArray()
+a1[<span class="integer">0</span>] := Obj:New()
+a1[<span class="integer">0</span>].PropInt := <span class="integer">123</span>
+a1[<span class="integer">0</span>].PropStr := <span class="string"><span class="delimiter">"</span><span class="content">String 1</span><span class="delimiter">"</span></span> 
+a1[<span class="integer">1</span>] := Obj:New()
+a1[<span class="integer">1</span>].PropInt := <span class="integer">456</span>
+a1[<span class="integer">1</span>].PropStr := <span class="string"><span class="delimiter">"</span><span class="content">String 2</span><span class="delimiter">"</span></span> 
+<span class="comment">// Save array</span>
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">test</span><span class="delimiter">"</span></span>)
+Obj:SaveToXML(doc, a1)
+XML:EndNode(doc)
+Print(XML:PrettyFormat(doc))
+<span class="comment">// Load array</span>
+XML:First(doc) <span class="comment">// Set current tag to root</span>
+a2 := Obj:LoadFromXML(doc)
+Print(DumpVar(a2))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;test&gt;</span>
+  <span class="tag">&lt;objects&gt;</span>
+    <span class="tag">&lt;object</span> <span class="attribute-name">typename</span>=<span class="string"><span class="delimiter">"</span><span class="content">Object</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">PropInt</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptInt</span><span class="delimiter">"</span></span> <span class="attribute-name">int_val</span>=<span class="string"><span class="delimiter">"</span><span class="content">123</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">PropStr</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptString</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>String 1<span class="tag">&lt;/param&gt;</span>
+    <span class="tag">&lt;/object&gt;</span>
+    <span class="tag">&lt;object</span> <span class="attribute-name">typename</span>=<span class="string"><span class="delimiter">"</span><span class="content">Object</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">PropInt</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptInt</span><span class="delimiter">"</span></span> <span class="attribute-name">int_val</span>=<span class="string"><span class="delimiter">"</span><span class="content">456</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">PropStr</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptString</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>String 2<span class="tag">&lt;/param&gt;</span>
+    <span class="tag">&lt;/object&gt;</span>
+  <span class="tag">&lt;/objects&gt;</span>
+<span class="tag">&lt;/test&gt;</span>
+
+Array length: 2
+  [0]: Object (Object):
+    PropInt (Int64): 123
+    PropStr (UnicodeString): String 1
+  [1]: Object (Object):
+    PropInt (Int64): 456
+    PropStr (UnicodeString): String 2
+</span></code></pre>
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

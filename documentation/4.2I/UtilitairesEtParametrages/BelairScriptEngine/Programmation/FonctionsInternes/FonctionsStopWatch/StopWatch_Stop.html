@@ -1,0 +1,47 @@
+<body>
+
+<h3>Fonctions de StopWatch</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>StopWatch:Stop(mockStopWatch)</code>
+	</h3></div>
+	<div class="panel-body">
+	<p>La fonction cesse de mesurer le temps écoulé pour un intervalle puis retourne le temps écoulé en millisecondes.</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>mockStopWatch</code> : Un objet de type 'BaiStopWatch'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br></p><ul><li>Le temps écoulé </li></ul>
+		
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><div class="bai_exemple"><pre><span class="n">local</span> <span class="n">mockStopWatch</span><span class="p">,</span> <span class="n">i</span>
+<span class="n">mockStopWatch</span> <span class="o">:=</span> <span class="n">StopWatch</span><span class="o">:</span><span class="n">New</span><span class="p">()</span>
+<span class="n">StopWatch</span><span class="o">:</span><span class="n">Start</span><span class="p">(</span><span class="n">mockStopWatch</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">:=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span>
+  <span class="n">i</span> <span class="o">:=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="o">:=</span> <span class="n">StopWatch</span><span class="o">:</span><span class="n">Stop</span><span class="p">(</span><span class="n">mockStopWatch</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">StrFormat</span><span class="p">(</span><span class="s">"Temps écoulé %sms"</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+ </pre></div>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<div class="bai_exemple"><pre><span class="n">Script</span> <span class="n">result</span><span class="o">:</span>
+<span class="n">Temps</span> <span class="err">é</span><span class="n">coul</span><span class="err">é</span> <span class="mi">3</span><span class="n">ms</span>
+</pre>
+	</div>
+</div>
+</div></body>

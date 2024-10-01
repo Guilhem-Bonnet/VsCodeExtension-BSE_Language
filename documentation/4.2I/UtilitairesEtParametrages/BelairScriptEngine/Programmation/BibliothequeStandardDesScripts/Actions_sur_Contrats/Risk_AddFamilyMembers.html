@@ -1,0 +1,46 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Risk_AddFamilyMembers</code></h3>
+		</div>
+
+<p>Cette action ajoute dans un risque existant les membres de la famille non encore associés au risque</p>
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>contrat de type multi-adhésion
+	<ul>
+	<li>adhesion (int, optionnel) : numéro de l'adhésion (c.a.d. numéro du risque)</li>
+	</ul>
+	</li>
+		<li>pour contrat mono adhésion
+	<ul>
+	<li>contrat (int, optionnel) : numéro du contrat du risque concerné</li>
+		<li>piece ((int, optionnel) : numéro de la pièce du risque concerné. SI non précisé, modification du risque de la dernière pièce de <em>contrat</em></li>
+	</ul>
+	</li>
+		<li>numdpp : numéro de la personne à ajouter (dpp.b_numdpp) : par défaut, tous les membres de la famille</li>
+	</ul>
+
+
+	<p>L'action ajoute dans le risque la (les) personne(s) non encore ajoutée(s) au risque</p>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML indiquant le nombre de personne(s) ajoutée(s)<br></p><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;risk_addfamilymembers&gt;</span>
+  <span class="nt">&lt;familymembers_added&gt;</span>2<span class="nt">&lt;/familymembers_added&gt;</span>
+<span class="nt">&lt;/risk_addfamilymembers&gt;</span>
+</code></pre>
+
+
+	<p><span style="color:blue;">NOTE:</span><br>Cette action crée les entités rdpp et recopie les données de l'entité dpp pour chaque peronne<br>Elle ne permet pas de modifier les données (entité rdpp) : si besoin, utilisez ensuite l'action Risk_Update:<br>Ajout de balise(s)  &lt;object typename="RDPP"&gt; <strong>en précisant la valeur de numdpp dans chaque objet</strong></p>
+
+</div></body>

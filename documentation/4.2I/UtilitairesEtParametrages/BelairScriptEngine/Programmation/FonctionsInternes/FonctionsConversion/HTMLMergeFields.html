@@ -1,0 +1,51 @@
+<body>
+
+
+<h3>Fonctions de HTML</h3>
+
+	<!-- Fonction DATEALP -->
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>HTML:MergeFields(html, ObjBSE, options)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction exécute la fusion d'une chaine qui représente le contenu d'un HTML puis retourne le résultat.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul><li><code>Html</code> : Une chaine qui représente le contenu d'un HTML.</li>
+				<li><code>ObjBSE </code>: Un objet qui représente le champs a fusionner</li>
+				<li><code>Options  </code> : Une chaîne qui permet de récupérer le HTML avec la balsie HTML et BODY : Valeur : Outer ; ou bien justement le contenu du BODY (optionnel, string) : Valeur : Inner</li></ul>
+			
+			<br>
+			<p>Note: Par défaut le retour représente le Outer</p>
+			<br>
+			<p><b>Résultat :</b>
+			<br></p><li>Le texte HTML fusionné</li>
+			<br>
+			<p>Si le programme retourne une erreur, celle ci sera retournée par la fonction.</p>
+<br>
+<h4> Exemple :</h4>
+<pre>
+local obj, htmlText
+
+htmlText := "&lt;HTML&gt;&lt;BODY&gt;&lt;P&gt;Test Merge by Text &lt;SPAN style=""mso-no-proof: yes""&gt;Field1&lt;/SPAN&gt;&lt;SPAN style=""mso-no-proof: yes""&gt;Field2&lt;/SPAN&gt;&lt;/P&gt;&lt;/BODY&gt;&lt;/HTML&gt;"
+Obj := Obj:New()
+Obj:SetProp(Obj, "Field1", "Unit")
+Obj:SetProp(Obj, "Field2", "Test")
+htmlText :=  HTML:MergeFields(htmlText, obj, "inner")
+return htmlText
+</pre>			
+<br>
+			<p><b>Résultat :</b>
+			</p><pre>Script result:
+&lt;P&gt;Test Merge by Text &lt;SPAN style="mso-no-proof: yes"&gt;Unit&lt;/SPAN&gt;&lt;SPAN style="mso-no-proof: yes"&gt;Test&lt;/SPAN&gt;&lt;/P&gt;</pre>
+		</div>
+	</div>
+	<br>			
+
+		
+	
+	<br>
+</body>

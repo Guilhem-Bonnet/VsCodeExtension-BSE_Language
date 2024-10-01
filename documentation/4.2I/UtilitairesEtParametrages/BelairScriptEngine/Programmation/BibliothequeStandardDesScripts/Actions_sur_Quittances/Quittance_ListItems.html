@@ -1,0 +1,44 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Quittance_ListItems</code></h3>
+		</div>
+
+<p>Liste de quittances</p>
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (int, optionnel) : numéro de tiers pour quittances du tiers<br>OU</li>
+		<li>contrat (int, optionnel) : numéro de contrat pour quittances d'un contrat<br>(si les 2 sont indiqués, <em>dossier</em> est ignoré)</li>
+	</ul>
+
+
+Autres paramètres
+	<ul>
+	<li>listenatures (string, optionnel)) : filtre sur une liste de natures de bordereau, séparés par un . ou une ,</li>
+		<li>detail (string, optionnel) : niveau de détail souhaité
+	<ul>
+	<li>"all" : tous les champs</li>
+		<li>"id" : identifiants seuls</li>
+		<li>"primes" : identifiants et montants de prime</li>
+		<li>par défaut : identifiants, montants de prime, police, nature, dates et situation client</li>
+	</ul>
+	</li>
+		<li>datemin (date, optionnel) : date mini d'enregistrement de quittance</li>
+		<li>datemax (date, optionnel) : date maxi d'enregistrement de quittance</li>
+		<li>nonsoldee (booléen, optionnel) : si True, liste limitée aux non soldées</li>
+		<li>branche (string, optionnel) : filtre sur branche (type d'écran) du produit (A1, A2, etc...)</li>
+		<li>detailbordereau (booléen, optionnel) : si True, un champ "qbor_nombordereau" est ajouté pour chaque quittance retournée</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux XML de contenu variable (dépend du paramètre <em>detail</em> )</p>
+	</div></body>

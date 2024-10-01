@@ -1,0 +1,133 @@
+<body>
+	<h2>Formules de calcul - Commandes de déclenchement de fonctions</h2>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>COURRIER("<i>classeur</i>", "<i>lettre</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet de déclencher l'édition d'un courrier.<br>
+				La commande doit être glissée dans la formule de calcul en utilisant le "Dictionnaire" afin qu'il soit proposé les différents courriers de la gestion de textes.
+			</p>
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+								<code>COURRIER("<i>classeur</i>","<i>lettre</i>","<i>PDF</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Variante de la fonction précédente : permet de déclencher le courrier en format PDF.
+			</p>
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>ENVOI_COURRIER_EXT("<i>files</i>","<i>entite</i>","<i>ecran</i>","<i>options</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>Cette commande permet d’envoyer des courriers avec des documents déjà existants</p>
+			<h4>Paramètres : </h4>
+			<p></p><ul><li><code>files</code> : Liste des fichiers: string (obligatoire) : les fichiers doivent etres separer par des ';'</li>
+    <li><code>entite</code> : Entité juridique : Integer (obligatoire)</li>
+    <li><code>ecran</code> : Ecran d'archivage, dans la GRC: string (obligatoire) : "TIERS" / "CONT" / "SIN"</li>
+    <li><code>options</code> : les option Maileva : string (Facultatif)</li>
+        <li><code>Format -NomDuParamétres</code> :La Valeur ….</li></ul>
+		<h4>Exemple :</h4>
+		Envoi de deux fichiers pour le contrat 138
+<br><pre>RecPiece(138, 1)
+Envoi_Courrier_Ext("C:\tmp\TestFile1.pdf;C:\tmp\TestFile2.pdf", 1, "CONT")
+Fin</pre>
+<h4>Remarques :</h4>
+Cette fonction peut donc être utilisée conjointement avec la fonction COURRIER(xxxxxxx) si des courriers doivent être fusionnés et ajoutés aux 'documents externes' 
+<br> <ul><li><code>COURRIER(xxxxx)</code> pour générer le(s) document(s) : le nom du fichier généré par chaque commande COURRIER est récupérable dans PDFFILE</li>
+<li><code>Envoi_Courrier_Ext</code> avec la liste de tous les documents (fusionnés et externes)</li></ul>
+		<h4>Exemple :</h4>
+		Envoi de deux fichiers pour le cntrat 138
+<br><pre>RecPiece(138, 1)
+courrier(4, 6, "pdf")
+IA$ := "C:\tmp\TestFile1.pdf;C:\tmp\TestFile2.pdf;" + pdffile
+Envoi_Courrier_Ext(IA, 1, "CONT")
+Fin</pre>
+
+			
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>REQUETE("<i>requête</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Exploite la requête dont le code est "requete".
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>AGENDA("<i>Modèle</i>","<i>?</i>") </code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Création d'une fiche agenda en se basant sur le code du modèle indiqué en premier paramètre sur l'écran correspondant au 2ième paramètre soit T pour Tiers, C pour contrat, S pour Sinistre ou Q pour Quittance pour l'utilisateur en cours. 
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>AGENDA("<i>Modèle</i>","<i>?</i>","<i>utilisateur</i>" ,"<i>date</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Création d'une fiche agenda en se basant sur le code du modèle indiqué en premier paramètre sur l'écran correspondant au 2ième paramètre soit T pour Tiers, C pour contrat, S pour Sinistre ou Q pour Quittance pour l'utilisateur indiqué en 3ième paramètre. La date d'effet de la fiche agenda est calculée en fonction du paramètre "date" ; celui-ci est facultatif.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>COPYSITATT("<i>Modèle</i>","<i>?</i>") </code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Création d'une situation d'attente en se basant sur le code du modèle indiqué en premier paramètre sur l'écran correspondant au 2ième paramètre soit C pour contrat ou S pour Sinistre.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>AUTOMATE("<i>Script</i>","<i>Fichier</i>")</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet de lancer l'exécution du script passé en paramètre.<br>
+				Si le script doit traiter un fichier donné, l'indiquer en 2ième paramètre (optionnel).<br>
+				<br>
+				Le lancement de cette commande fait que les variables <code>IA</code> à <code>IZ</code> (variables <code>Ix</code>) sont transmises à l'automate sous forme de valeurs.<br>
+				Pour les récupérer dans l'automate, il faut donc utiliser <span class="bai_code">VAL("Ix")</span>.<br>
+				<br>
+				Une commande <span class="bai_code">EXTLINE("<i>Script</i>","<i>ligne</i>")</span> permet de récupérer le contenu d'une ligne du compte-rendu du script (attention, la 1ère ligne est considérée comme la ligne 0).
+			</p>
+		</div>
+	</div>
+</body>

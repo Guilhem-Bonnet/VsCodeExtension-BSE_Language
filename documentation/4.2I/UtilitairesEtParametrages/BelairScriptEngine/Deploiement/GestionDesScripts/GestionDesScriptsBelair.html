@@ -1,0 +1,102 @@
+<body>
+<h2>Gestion des scripts Belair</h2>
+<br>
+<p>
+Les scripts Belair sont les fichiers ".bs", qui sont traités par le compilateur BSE.
+<br>
+<br>On distingue 2 niveaux de scripts :
+
+</p><ul><li>1. les scripts "standards" (fournis par Belair "en boîte") ;</li>
+<li>2. les scripts "custom" (développés par l'éditeur pour le client, ou par le client pour ses propres objectifs).</li></ul>
+
+<br>
+<div class="alert alert-warning" role="alert"><p><b>A noter que :</b>
+<br>
+<br>Les scripts du niveau "standard" sont remplacés lors de chaque mise à jour de l'application.</p> </div>
+
+<p>TODO : A confirmer si l'option/licence spécifique est nécessaire pour rajouter ses propres scripts.</p>
+<br>
+<h3>Organisation de stockage</h3>
+<br>
+<p>Les fichiers de script sont groupés dans les répertoires suivants :</p>
+
+<table class="table table-bordered"> 
+ <tbody> 
+  <tr> 
+   <td><b>Répertoire</b></td> 
+   <td><b>Désignation</b></td>
+  </tr> 
+  <tr> 
+   <td>Belair</td> 
+   <td>Répertoire racine des solutions</td>
+  </tr> 
+  <tr> 
+   <td>Belair\APPxxx</td> 
+   <td>Répertoire de solutions (applications)</td>
+  </tr> 
+  <tr> 
+   <td>Belair\APPxxx\BASScripts</td> 
+   <td>	Répertoire racine des scripts</td>
+  </tr>
+  <tr>
+  <td>Belair\APPxxx\BASScripts\Std</td>
+  <td>Les scripts "standards" (livrés par Belair)</td>
+  </tr>
+  <tr>
+  <td>Belair\APPxxx\BASScripts\Std\Libs</td>
+  <td>Les bibliothèques "standards" (sous-programmes et définitions)</td>
+  </tr>
+  <tr>
+  <td>Belair\APPxxx\BASScripts\Custom</td>
+  <td>Les scripts "custom" (développés par le client ou par Belair pour un client)</td>
+  </tr>
+  <tr>
+  <td>Belair\APPxxx\BASScripts\Custom\Libs</td>
+  <td>	Les bibliotèques "custom"</td>
+  </tr>
+ </tbody> 
+</table>
+<br>
+<h3>Règles de traitement</h3>
+<br>
+<p>Les scripts sont traités par le compilateur BSE de la manière suivante :
+
+</p><ul><li>1. Le point d'entrée est le nom du script/action, qui est le nom du fichier BS.</li>
+<li>2. Le compilateur cherche le script dans le sous-répertoire "Custom".</li>
+<li>3. Si le fichier est trouvé on le traite, sinon on cherche dans le répertoire "Custom\Libs".</li>
+<li>4. Si le fichier est trouvé on le traite, sinon on cherche dans le sous-répertoire "Std".</li>
+<li>5. Si le fichier est trouvé on le traite, sinon on cherche dans le sous-répertoire "Std\Libs".</li>
+<li>6. Autrement, l'erreur de type "non trouvé" se produit.</li></ul>
+<br>
+
+<h4>Exemple de traitement</h4>
+<br>
+<pre>|--APPDEI
+   |--Std
+   |  |-- Quittance_List.bs
+   |  |-- Tiers_Details.bs
+   |  |-- Libs
+   |      |-- TiersLib.bs
+   |--Custom
+   |  |-- Tiers_Details.bs
+   |  |-- Libs
+   |      |-- QuittancesLib.bs</pre>
+   <br>
+   <p>Dans cet exemple :</p>
+   <ul><li>"Tiers_Details.bs" correspond à une action <i>Tiers_Details</i>.</li>
+   <li>"Quittance_List.bs" correspond à une action <i>Quittance_List</i>.</li></ul>
+   <br>
+   <p>A propos des traitements :</p>
+   
+   <ul><li>1. Si l'action <i>Tiers_Details</i> est appelée, le script "Custom\Tiers_Details.bs" sera exécuté.
+   <br>Par contre, la bibliothèque "Std\Tiers.bs" sera retenue.</li>
+   <li>2. Si l'action <i>Quittance_List</i> est appelée, le script "Std\Quittance_List.bs" sera exécuté.
+   <br>Par contre, la bibliothèque "Custom\Quittances.bs" sera retenue.</li></ul>
+   <br>
+   <h3>Protection des scripts</h3>
+   <br>
+   <p>Les scripts peuvent être livrés en format binaire (fichiers ".bse"), qui est protégé contre d'éventuelles modifications par le client.</p>
+   <br>
+   <br>
+   
+</body>

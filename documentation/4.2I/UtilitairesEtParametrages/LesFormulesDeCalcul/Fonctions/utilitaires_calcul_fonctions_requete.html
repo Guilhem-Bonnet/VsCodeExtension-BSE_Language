@@ -1,0 +1,52 @@
+<body>
+	<h3>Fonctions de calcul REQUETE</h3>
+<br>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>REQUETE("MAREQUETE","-NOMPARAM1:VALEUR1, -NOMPARAM2:VALEUR2")</code></h3>
+		</div>
+		<div class="panel-body">
+			<h3>Description</h3>
+				<ul><li>1. Passage de parametre(s)</li></ul>
+<p>La fonction actuelle REQUETE(nom) ne permet pas de passer des paramètres d'exécution.<br>
+Il faut donc faire comme pour l'appel d'une action BSE en passant la liste des valeurs d'exécution à récupérer dans un 2eme paramètre, optionnel</p>
+<br>
+<p>Remarque : les noms des paramètres doivent être ceux déclarés dans la requête</p>
+<br>
+<p>REQUETE(nom,[paramslist])</p>
+<h3>Exemples :</h3>
+<pre>locald datedebut
+locald datefin
+!datedebut := DATEALP("01/01/2020")
+!datefin := DATEALP("31/03/2020")
+
+REQUETE("MAREQUETE","DATEDEBUT, DATEFIN")</pre>
+			
+			<br>
+<ul><li>2. Générer automatiquement un PDF</li></ul>
+<p>Comme pour la commande COURRIER, il faut pouvoir demander à ce que l'état généré par une requête soit automatiquement enregistré sous forme d'un fichier PDF.</p>
+<br>
+<ul><li>Si le mot PDF est contenu dans la liste des paramètres d'exécution, génération d'un PDF</li>
+<li>retour : comme pour COURRIER, mettre dans la varable lue par PDFFILE le nom du fichier généré.
+PDFFILE récupère GetDocIntegrationService.LastPDFFile
+=&gt; si trop compliqué de renseigner GetDocIntegrationService.LastPDFFile, gérer une autre variable, par exemple PDFREQFILE</li></ul>
+
+<br>
+<h3>Fonction requête</h3>
+<ul>Paramètres</ul><p></p>
+<br>
+<li>1- Nom de la requête : string (Obligatoire)
+</li><li>2- La liste des paramètres et leur valeur : string (Facultatif)<br>Format -NomDuParamétre :LaValeur ….
+<p></p>
+<br>
+<ul>Explication du nouveau comportement</ul>
+<br>
+<p>Avec ce nouveau comportement il n’y a plus de fenêtre de saisie pour les paramètres.<br>Le seul moyen de définir les valeurs pour la requête est le deuxième paramètre de la fonction, donnant la liste Nom:Valeur de tous les paramètres<br>Si un état doit sortir alors le résultat sera enregistré en PDF dans le dossier de travail : PDFFILE permet de récupérer le nom du fichier créé.</p>
+<br>
+<h3>Exemples :</h3>
+<pre>Requete("TTRCETAT", "-TRANSAC:100")
+Print(PDFFILE)
+Fin</pre>
+		</li></div>
+	</div>
+</body>

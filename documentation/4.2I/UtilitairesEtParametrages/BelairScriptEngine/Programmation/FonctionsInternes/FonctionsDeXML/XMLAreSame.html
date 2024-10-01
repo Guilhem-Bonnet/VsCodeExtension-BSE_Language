@@ -1,0 +1,55 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:AreSame(doc1, doc2, ignore)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction compare deux documents XML.
+			<br>La fonction n'est pas sensitive à la casse de caractères de valeurs ou de balises. Pour la comparaison sensitive à la casse : utiliser <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de XML" name="Fonctions%20de%20XML%20:%20XML:AreEqual">XML:AreEqual</a>.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul><li><code>doc1</code> : le premier document XML.</li>
+				<li><code>doc2</code> : le deuxième document XML.</li>
+				<li><code>ignore</code> (True/False): inorer la casse de caractères de noms de balises/attributs (optionnel, False par défaut).</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			</p><ul><li>"True" - les documents sont égaux.</li>
+			<li>"False" - il y a une différence entre ces documents.</li></ul>
+			
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc1, doc2
+doc1 := XML:New()
+XML:StartNode(doc1, <span class="string"><span class="delimiter">"</span><span class="content">items</span><span class="delimiter">"</span></span>)
+  XML:StartNode(doc1, <span class="string"><span class="delimiter">"</span><span class="content">item1</span><span class="delimiter">"</span></span>)
+    XML:SetAttr(doc1, <span class="string"><span class="delimiter">"</span><span class="content">attr1</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Attr1 Text</span><span class="delimiter">"</span></span>)
+    XML:SetNodeText(doc1, <span class="string"><span class="delimiter">"</span><span class="content">Item1 Text</span><span class="delimiter">"</span></span>)
+  XML:EndNode(doc1)
+  XML:AppendNode(doc1, <span class="string"><span class="delimiter">"</span><span class="content">item2</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">Item2 Text</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc1)
+doc2 := XML:Open(<span class="string"><span class="delimiter">"</span><span class="content">&lt;items&gt;&lt;item1 attr1=</span><span class="delimiter">"</span></span><span class="string"><span class="delimiter">"</span><span class="content">attr1 text</span><span class="delimiter">"</span></span><span class="string"><span class="delimiter">"</span><span class="content">&gt;item1 text&lt;/item1&gt;&lt;item2&gt;item2 text&lt;/item2&gt;&lt;/items&gt;</span><span class="delimiter">"</span></span>)
+Print(XML:AreSame(doc1, doc2))
+doc2 := XML:Open(<span class="string"><span class="delimiter">"</span><span class="content">&lt;Items&gt;&lt;Item1 Attr1=</span><span class="delimiter">"</span></span><span class="string"><span class="delimiter">"</span><span class="content">Attr1 Text</span><span class="delimiter">"</span></span><span class="string"><span class="delimiter">"</span><span class="content">&gt;Item1 Text&lt;/Item1&gt;&lt;Item2&gt;Item2 Text&lt;/Item2&gt;&lt;/Items&gt;</span><span class="delimiter">"</span></span>)
+Print(XML:AreSame(doc1, doc2, <span class="predefined-constant">true</span>))
+</span></code></pre>
+
+<p>Résultat :</p>
+<pre>True
+True</pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

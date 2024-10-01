@@ -1,0 +1,61 @@
+<body>
+<h2>BaiimpPool</h2>
+
+<p>L'application BaiimpPool est un service Windows qui gère le "pool" des instances de l'automate (Baiimp) pouvant gérer des appels synchrones dans les scripts BSE via les fonctions <code>Automate(..)</code> et <code>AutomatebyBsi(..)</code>.</p>
+
+<h3>Configuration</h3>
+
+<p> Le fichier de configuration BaiImpService.conf doit être placé <u>dans le même répertoire que l'exécutable</u>.<br>
+Ce fichier décrit la ou les solutions (applications) servies par les instances de BaiimpPool.</p>
+
+<pre>[Apps]
+[App1]
+MaxProcessCount=5
+Base=d:\Belair42\AppDei\AppDei.conf
+User=SUPERVISEUR
+Password=""
+[App2]
+MaxProcessCount=2
+Base=d:\Belair42\AppBis\AppBis.mssql.conf
+User=SUPERVISEUR
+Password=""
+</pre>
+<p>Note : il est possible d'avoir plusieurs applications.</p>
+
+<h3>Installation et démarrage</h3>
+<br>
+<p><b>Installer le service :</b></p>
+
+<pre>….\ BaiimpPool.exe /install</pre>
+<br>
+<p><b>Désinstaller le service :</b></p>
+
+<pre>….\ BaiimpPool.exe /unistall</pre>
+<br>
+<br>
+<p>Démarrez le service depuis le panneau de configuration (voir "services").</p>
+
+<h3>lancer le service</h3>
+
+<p><u>Première méthode</u></p>
+<ul>
+	<li>Clic droit dans la barre Windows en bas</li>
+	<li>Clic sur gestionnaire des taches</li>
+	<li>Aller dans l'onglet tout a droite (Services)</li>
+	<li>Choisir le service baiimppoolService</li>
+	<li>Cliquer droit dessus est sélectionner « Démarrer »</li>
+</ul>
+
+<p><u>Deuxième méthode</u></p>
+<ul>
+	<li>Appuyer sur les touches WIN + R
+	</li><li>Taper Cmd
+	</li><li>Sc start baiimppoolService (attention il faut être administrateur)</li>
+</ul>
+
+<div class="alert alert-info" role="alert">
+<p>Toutes ces opérations de configuration et de paramétrage peuvent être effectuées via la console d'adminstration (BasAdmin)</p>
+</div>
+
+
+</body>

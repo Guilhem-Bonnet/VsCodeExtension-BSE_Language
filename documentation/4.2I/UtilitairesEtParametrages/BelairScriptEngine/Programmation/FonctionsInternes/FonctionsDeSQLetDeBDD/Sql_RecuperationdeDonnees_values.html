@@ -1,0 +1,114 @@
+<body>
+
+
+<h3>SQL : résupération des valeurs des champs</h3>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:FieldValue(Query, Fieldname)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Fonction générique retournant la valeur d'un champ d'un ensemble de données SQL</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>Query</code> : l'objet de type SQL</li>
+				<li><code>Fieldname</code> : le nom du champ</li>
+				</ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:FieldAsBool(Query, Fieldname)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Fonction retournant la valeur d'un champ d'un ensemble de données SQL sous forme True/False
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>Query</code> : l'objet de type SQL</li>
+				<li><code>Fieldname</code> : le nom du champ</li>
+				</ul>
+			
+<div class="alert alert-warning" role="alert">
+<p><b>Rôle de cette fonction :</b><br>
+Selon le SGBD utilisé, les champs booléens de la base Belair sont soit des champs natifs booléens, soit des champs de type VarChar(1).<br>
+Un champ booléen de type varchar(1) accepte les valeurs 'T' et 'V' pour True et 'F' pour False:<br>
+cette fonction permet de traiter de manière uniforme les champs booléens de la base Belair en rendant toujours True ou False, quelque soit le SGBD.
+</p></div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:FieldAsCurrency(Query, Fieldname)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Fonction retournant la valeur d'un champ d'un ensemble de données SQL au format monétaire (Currency)</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>Query</code> : l'objet de type SQL</li>
+				<li><code>Fieldname</code> : le nom du champ</li>
+				</ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:FieldAsDate(Query, Fieldname)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Fonction retournant la valeur d'un champ d'un ensemble de données SQL au format DateTime</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>Query</code> : l'objet de type SQL</li>
+				<li><code>Fieldname</code> : le nom du champ</li>
+				</ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:FieldAsFloat(Query, Fieldname)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Fonction retournant la valeur d'un champ d'un ensemble de données SQL u format numérique flottant</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>Query</code> : l'objet de type SQL</li>
+				<li><code>Fieldname</code> : le nom du champ</li>
+				</ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:FieldAsString(Query, Fieldname)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Fonction retournant la valeur d'un champ d'un ensemble de données SQL au format chaine (string).<br>
+			La conversion en chaine est assurée selon le type de champ</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>Query</code> : l'objet de type SQL</li>
+				<li><code>Fieldname</code> : le nom du champ</li>
+				</ul>
+			
+		</div>
+	</div>
+	
+</body>

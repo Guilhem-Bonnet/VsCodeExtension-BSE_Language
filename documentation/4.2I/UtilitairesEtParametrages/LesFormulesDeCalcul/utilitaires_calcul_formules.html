@@ -1,0 +1,79 @@
+<body>
+	<h2>Appel de formules</h2>
+
+	<h3>Appel d'une formule autonome numérique</h3>
+
+	<!-- Fonction [formule] -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>[<i>formule</i>]</code> <span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				La combinaison de la touche [Ctrl] et du double-clic sur la <i>formule</i> permet de l'ouvrir pour la consulter (ou la modifier).
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>formule</code> : Code de la formule <b>numérique</b> à insérer dans le calcul en cours
+			</p>
+		</div>
+	</div>
+
+	<h3>Appel d'une formule autonome alphabétique</h3>
+
+	<!-- Fonction {formule} -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>{<i>formule</i>}</code>  <b>(attention : ici, les accolades ne signifient pas 'optionnel')</b><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				La combinaison de la touche [Ctrl] et du double-clic sur la <i>formule</i> permet de l'ouvrir pour la consulter (ou la modifier).
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>formule</code> : Code de la formule <b>alphabétique</b> à insérer dans la chaîne alphabétique en cours
+				<br>
+			</p>
+		</div>
+	</div>
+
+	<h3>Appel d'une formule autonome booleenne</h3>
+
+	<!-- Fonction [formule] -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>[<i>formule</i>]</code><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>formule</code> : Code de la formule <b>booleenne</b> à insérer dans la condition en cours
+			</p>
+				</div>
+				</div>
+				
+	<h3>Appel d'une formule liée à un champ</h3>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code><code>[<i>formule</i>]</code></code></h3>
+		</div>
+		<div class="panel-body">
+				<div class="alert alert-danger" role="alert">
+				Ces formules sont des formules de calcul comme les autres, avec un nom particulier, qui peuvent donc être appelées par n'importe quelle autre instruction.
+				</div>
+				Valeur par défaut : <code>$code:champ<br></code>
+				Test si saisie : <code>#code:champ</code>
+			
+						<p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">
+					<span class="bai_code">IA$ := {"$RISA:B_APPEL") <span class="bai_comment">// valeur par défaut du champ RISA("B_appel")</span></span>
+				</div>
+			
+				</div>
+				</div>
+</body>

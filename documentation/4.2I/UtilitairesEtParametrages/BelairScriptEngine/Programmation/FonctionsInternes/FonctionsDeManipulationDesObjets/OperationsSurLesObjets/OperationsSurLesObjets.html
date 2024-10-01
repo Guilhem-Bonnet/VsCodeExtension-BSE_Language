@@ -1,0 +1,49 @@
+<body>
+
+
+<h3>Fonctions de manipulation des objets</h3>
+<br>
+<h4><b>Opérations sur les objets métiers (Business layer)</b></h4>
+<br>
+<h4>Vue d'ensemble</h4>
+<br>
+<p>Les objets métiers sont définis dans le méta-modèle (entités et champs). Ils sont projetés sur la BDD relationnelle (tables et colonnes).
+<br>Dans un script BSE il est possible de manipuler les objets sans les opérations SQL <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="__BLANK">CRUD</a>.
+<br>Les fonctions de manipulations CRUD, ainsi que l'extension de langage BSE LINQ (homologue de <a href="https://en.wikipedia.org/wiki/Language_Integrated_Query" target="__BLANK">LINQ</a> de Microsoft), servent à manipuler les objets persistants.
+<br>
+<br>De plus, il est possible de projeter le résultat d'une requête SQL sur l'ensemble des objets.
+</p>
+<br>
+<h4>Limitations</h4>
+<br>
+<ul><li>Les valeurs correspondant au <i>type BLOB de champ d'entité</i> ne sont pas supportées.</li>
+<li>La modification de valeur de la clé primaire n'est pas prise en compte.
+<br>Afin de modifier la clé primaire (cas rare) : supprimez puis récréez l'objet.</li></ul>
+<br>
+<h4><br>Opérations CRUD</h4>
+
+<br><b>Récupération des entités</b>
+<br><br>
+<ul><li> <i>Obj:GetByKey</i>.</li>
+<li> <i>Utiliser LINQ</i>.</li>
+<li> <i>Obj:SelectSQL</i> : non recommandé, à utiliser avec précaution.</li>
+</ul>
+<br>
+<b>Création des entités</b>
+<br><br>
+<ul><li> <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de manipulation des objets" name="Fonctions%20de%20manipulation%20des%20objets%20:%20Obj:New">Obj:New</a>.</li></ul>
+<br>
+<b>Modification des entités</b>
+<br><br>
+<ul><li> <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de manipulation des objets" name="Fonctions%20de%20manipulation%20des%20objets%20:%20Obj:Save">Obj:Save</a>.</li></ul>
+<br>
+<b>Suppression des entités</b>
+<br><br>
+<ul><li><i>Obj:Delete</i>.</li></ul>
+<br>
+<b>Sérialisation</b>
+<br><br>
+<ul><li> <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de manipulation des objets" name="Fonctions%20de%20manipulation%20des%20objets%20:%20Obj:LoadFromXML">Obj:LoadFromXML</a>.</li>
+<li> <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de manipulation des objets" name="Fonctions%20de%20manipulation%20des%20objets%20:%20Obj:SaveToXML">Obj:SaveToXML</a>.</li></ul>
+<br><br>
+</body>

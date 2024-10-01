@@ -1,0 +1,88 @@
+<body>
+
+<h2>Service des actions BAS</h2>
+<br>
+<h3>Vue d'ensemble</h3>
+
+<p>Le service IBasActionService a pour but l'accès aux couches de logique métier (Business layer) de Belair.
+<br>Les actions peuvent :</p>
+
+<ul>
+<li>Récupérer les informations sur les différentes entités de Belair en format personnalisé et composite.
+<br>I.e. - Le résultat de consultation d'un tiers comprend plusieurs informations des entités liées (contrats, quittances etc...) ;</li>
+<li>Faire le traitement transactionnel des données qui concernent plusieurs entités en même temps.
+<br>I.e. - La création d'un contrat ou d'un tiers impose plusieurs modifications dans la BDD.</li>
+</ul>
+<br>
+<div class="alert alert-info" role="alert">
+<p><b>A NOTER QUE :</b>
+<br>Pour les traitements de longue durée (plusieurs dizaines de secondes, ou plus), il est possible d'utiliser le service de planification des tâches (scheduler), qui lance les actions en mode "asynchrone".</p></div>
+<br>
+<h3>API d'accès</h3>
+<br>
+<h4>Accéder au service</h4>
+
+<p>Nous allons utiliser la classe "connecteur" correspondante, définie dans BasClient.php.
+<br>Voir aussi <a class="doc-link" categories="Utilitaires et paramétrages, BAS Belair Application Server, Développement, Connexion et accès aux services" name="La%20connexion%20et%20l'acc%C3%A8s%20au%20services%20BAS">La connexion et l'accès au services BAS</a>.</p>
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="inline-delimiter">&lt;?php</span>
+  <span class="local-variable">$actionClient</span> = <span class="keyword">new</span> <span class="constant">BasActionClient</span>(<span class="local-variable">$BASE_URL</span>, <span class="predefined">array</span>(<span class="string"><span class="delimiter">"</span><span class="content">trace</span><span class="delimiter">"</span></span> =&gt; <span class="predefined-constant">true</span>, <span class="string"><span class="delimiter">"</span><span class="content">exceptions</span><span class="delimiter">"</span></span> =&gt; <span class="predefined-constant">true</span>)); 
+<span class="inline-delimiter">?&gt;</span>
+</span></code></pre>
+
+<br>
+<h4>RunAction</h4>
+
+<p>La fonction déclenche l'exécution d'une action choisie.</p>
+
+<pre>BasActionResult RunAction(BasSecurityContext sc, string name, BasParams params);</pre>
+
+<ul>
+<li>"sc" : le contexte de sécurité obtenu précédemment par IBasAuthService::OpenSession() ;</li>
+<li>"name" : le nom de l'action (voir ci-dessous la liste des actions disponibles) ;</li>
+<li>"params" : les paramètres nécessaires selon la description de l'action.</li>
+</ul>
+
+<br>
+<p>La fonction renvoie le résultat comme un objet structuré de la façon suivante :</p>
+
+<ul>
+<li><strong>Data</strong> (string) - Le résultat de l'action. Le type de contenu dépend de l'action effectuée ;</li>
+<li><strong>Params</strong> (BasParams) - Les paramètres éventuels de sortie ;</li>
+<li><strong>Log</strong> (objet) - Le compte-rendu d'exécution :
+<ul>
+<li>Log-&gt;Items (array) - Un tableau des objets "BseActionLogEntry" :
+<ul>
+<li>EntryType (string, enum) ;
+<ul>
+<li>basActionLogEntryError</li>
+<li>basActionLogEntryInfo</li>
+<li>basActionLogEntryWarning</li>
+</ul>
+</li>
+<li>State (int) - L'état (i.e. le code) de message ;</li>
+<li>Message (string) - Le message.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<br>
+<p>La fonction peut déclencher une exception.
+<br><br>Voir un exemple dans "dev\BAS\ClientExample\PHP\BasActionServiceTest.php".</p>
+
+<h3>Liste des codes "erreur"</h3>
+
+<p><i>Codes "erreur"</i></p>
+
+<h3>Les actions disponibles</h3>
+
+<p>Voir <i>Les scripts des actions</i>.</p>
+
+<br>
+<br>
+
+
+
+</body>

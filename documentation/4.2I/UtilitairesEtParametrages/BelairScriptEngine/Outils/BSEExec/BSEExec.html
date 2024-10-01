@@ -1,0 +1,208 @@
+<body>
+<h2>BSEExec : outil d'exécution des scripts BS à partir de lignes de commande</h2>
+<h3>Démarrage</h3>
+<br>
+<div class="alert alert-info" role="alert">
+BseExec.exe se trouve dans le répertoire d'installation de votre poste
+</div>
+
+<h4><b>Paramètres de démarrage</b></h4>
+<br>
+<pre>BSEExec /help</pre>
+<br>
+
+<p><b>Paramètres standards de Belair</b></p>
+
+<p>
+Ces paramètres sont communs à tous les programmes devant se connecter à une application Belair.
+</p>
+
+<table class="table table-bordered"> 
+ <tbody> 
+  <tr>
+			<th>Option      </th>
+			<th>Obligatoire ?</th>
+			<th>Designation  </th>
+			<th>Valeur par défaut </th>
+		</tr>
+		<tr>
+			<td> /A&lt;file&gt;     </td>
+			<td> non           </td>
+			<td> Ficher de configuration d'application Belair. </td>
+			<td> Application par défaut </td>
+		</tr>
+		<tr>
+			<td> /D           </td>
+			<td> non           </td>
+			<td> Mode de débogage : les fichiers de dump et de traces vont être créés. </td>
+			<td> Désactivé </td>
+		</tr>
+		<tr>
+			<td> /HELP        </td>
+			<td> non           </td>
+			<td> Afficher toutes les options. </td>
+			<td> </td>
+		</tr>
+ </tbody> 
+</table>
+
+<br>
+<br><p><b>Paramètres spécifiques de BSEExec</b></p>
+
+<p>Toutes les options spécifiques doivent être précédées de ":", afin d'éviter toute ambiguïté avec les options de Belair.</p>
+
+<table class="table table-bordered"> 
+ <tbody> 
+ <tr>
+			<th>Option      </th>
+			<th>Obligatoire ?</th>
+			<th>Designation  </th>
+			<th>Valeur par défaut </th>
+		</tr>
+		<tr>
+			<td> /:COMPILE    </td>
+			<td> non           </td>
+			<td> Compiler uniquement le script sans l'exécuter. </td>
+			<td> Désactivée </td>
+		</tr>
+		<tr>
+			<td> /:ENCODING:&lt;value&gt; </td>
+			<td> non           </td>
+			<td> L'encodage de script BS.<br>Les valeurs possibles : AUTO, ANSI, UTF8, UTF16LE.</td>
+			<td> UTF8 </td>
+		</tr>
+		<tr>
+			<td> /:I:&lt;file&gt;   </td>
+			<td> oui           </td>
+			<td> Le fichier de script.<br>L'option est en exclusion mutuelle avec celle /:TS. </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> /:TS:&lt;file&gt;  </td>
+			<td> oui           </td>
+			<td> Le fichier de "test suite".
+			<br>L'option est en exclusion mutuelle avec celle /:IS. </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> /:IP:&lt;file&gt;  </td>
+			<td> non           </td>
+			<td> Le fichier de paramètres d'entrée.</td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> /:O:&lt;file&gt;   </td>
+			<td> non           </td>
+			<td> Le fichier de sortie du résultat de l'exécution.</td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> /:LOGON      </td>
+			<td> non           </td>
+			<td> Se connecter à Belair en tant que.</td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> /:BAIUSER:&lt;name&gt; </td>
+			<td> non       </td>
+			<td> Le nom d'utilisateur Belair. </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> /:BAIPWD:&lt;password&gt; </td>
+			<td> non       </td>
+			<td> Le mot de passe d'utilisateur Belair.</td>
+			<td> </td>
+		</tr>
+ </tbody> 
+</table>
+
+<div class="alert alert-warning" role="alert">
+Comme les options /:I: et /:TS: sont en exclusions mutuelles, il faut spécifier soit l'une soit l'autre.<br>
+Si les deux options sont spécifiées par une erreur, seule la première est prise en compte.
+</div>
+
+<h3>Fichier de paramètres d'entrée</h3>
+<br>
+<p>Ce fichier XML comprend les paramètres à passer au script (paramètre /:IP:)
+</p><div class="alert alert-info" role="alert">
+Le format est le même que pour le fichier de paramètres de traitement BAS
+</div>
+<p>Exemple :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;params&gt;</span>
+  <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">NombrePieces</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptInt</span><span class="delimiter">"</span></span> <span class="attribute-name">int_val</span>=<span class="string"><span class="delimiter">"</span><span class="content">12345</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">Salutation</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptString</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>Hello from BSEScript!<span class="tag">&lt;/param&gt;</span>
+  <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">Temperature</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptFloat</span><span class="delimiter">"</span></span> <span class="attribute-name">float_val</span>=<span class="string"><span class="delimiter">"</span><span class="content">25.5</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">DebutContrat</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptDateTime</span><span class="delimiter">"</span></span> <span class="attribute-name">date_val</span>=<span class="string"><span class="delimiter">"</span><span class="content">2017-08-15 12:00:00</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">DosierComplete</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptBool</span><span class="delimiter">"</span></span> <span class="attribute-name">bool_val</span>=<span class="string"><span class="delimiter">"</span><span class="content">false</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/params&gt;</span>
+</span></code></pre>
+<br>
+<p>Le script accède aux paramètres de manière habituelle :</p>
+
+<pre><code class="c syntaxhl"><span class="CodeRay">LOCAL NbPieces
+<span class="keyword">if</span> ExtParamExists(<span class="string"><span class="delimiter">"</span><span class="content">NombrePieces</span><span class="delimiter">"</span></span>) then begin
+  NbPieces := GetExtParam(<span class="string"><span class="delimiter">"</span><span class="content">NombrePieces</span><span class="delimiter">"</span></span>)
+  ...
+end
+</span></code></pre>
+<br>
+<p>ou :</p>
+
+<pre><code class="c syntaxhl"><span class="CodeRay">LOCAL NbPieces
+NbPieces := GetExtParamDef(<span class="string"><span class="delimiter">"</span><span class="content">NombrePieces</span><span class="delimiter">"</span></span>, <span class="integer">10</span>)
+</span></code></pre>
+<br>
+<h3>Fichier de sortie</h3>
+
+<p>Le fichier de sortie contient le résultat renvoyé par le script. Par exemple :</p>
+
+<pre><code class="c syntaxhl"><span class="CodeRay">LOCAL doc
+... <span class="comment">// créer XML</span>
+RETURN doc
+</span></code></pre>
+	<p>Dans ce cas, le ficher sera le document XML créé dans le script.</p>
+<br>
+	<p>En cas de type simple (string, int, dates etc.), le fichier contient la valeur retournée.</p>
+
+
+<pre><code class="c syntaxhl"><span class="CodeRay">LOCAL result
+... 
+result := <span class="predefined-constant">true</span>;  
+...
+RETURN result
+</span></code></pre>
+<br>
+<h3>Exemple d'utilisation</h3>
+<p>Exemple d'exécution du script <i>Sys_Echo</i> en ligne de commande.
+<br><br>Fichier d'entrée :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;params&gt;</span>
+  <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">Message</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">ptString</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>Hello from BSEExec!<span class="tag">&lt;/param&gt;</span>
+<span class="tag">&lt;/params&gt;</span>
+</span></code></pre>
+<br>
+	<p>Démarrage :</p>
+
+
+<pre><code>
+BSEExec.exe /D /:I:D:\belair\appdei\BASScripts\Std\Sys_Echo.bs /:IP:BSEExecParams.xml /:O:BSEExecResult.out
+</code></pre>
+<br>
+	<p>Résultat dans "BSEExecResult.out" :</p>
+
+
+<pre>
+Hello from BSEExec!
+</pre>
+<br>
+<br>
+
+		
+	
+
+	
+</body>

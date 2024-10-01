@@ -1,0 +1,45 @@
+<body>
+
+
+<h3>SQL : Ecriture dans la base par INSERT / UPDATE / DELETE</h3>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:ExecDirect(clauseSQL)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction exécute une requête SQL de type INSERT / UPDATE / DELETE</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>clauseSQL</code> : la clause SQL de type 'INSERT / UPDATE / DELETE'</li></ul>
+			
+<div class="alert alert-danger" role="alert">
+<p><b>Danger du SQL-injection !</b><br>
+<br>Pour des raisons évidentes de sécurité, l'utilisation de cette fonction doit-être faite de manière rigoureuse<br><br>
+<b>Exemple à bannir:</b>
+</p><pre>
+local QryText
+QryText := GetExtParam("clauseSql")
+Sql:ExecDirect(QryText)
+</pre>
+
+</div>
+
+<div class="alert alert-info" role="alert">
+<p><b>Utilisation correcte :</b><br><br>
+La clause Sql doit être pré-définie dans le script: seuls ses paramètres doivent être récupérés.<br><br>
+</p><pre>
+local numtiers, email, QryText
+numtiers := GetExtparam("numtiers")
+email := GetExtparam("email")
+QryText := "UPDATE [TIERS] SET b_numemail = :email where b_numtiers = :numtiers"
+Sql:ExecDirect(QryText)
+</pre>
+</div>
+			<p>
+				<b><br>Résultat :</b>
+				</p><ul><li>Le nombre d'enregistrement(s) traité(s)</li></ul>
+			
+		</div>
+	</div>
+</body>

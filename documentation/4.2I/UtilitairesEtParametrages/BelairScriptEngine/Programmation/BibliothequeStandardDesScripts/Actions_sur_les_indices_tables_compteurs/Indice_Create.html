@@ -1,0 +1,45 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Indice_Create</code></h3>
+		</div>
+
+<p>Création d'un indice</p>
+
+	<p>Entité concernée : indices</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>indice (string, obligatoire) : nom de l'indice</li>
+		<li>data : flux XML</li>
+	</ul>
+
+
+<pre><code class="XML syntaxhl">  <span class="nt">&lt;data&gt;</span>
+    <span class="nt">&lt;libelle&gt;</span>
+    <span class="nt">&lt;format&gt;</span>
+  <span class="nt">&lt;/data&gt;</span>
+</code></pre>
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>vérification parametres indice et data</li>
+		<li>data/libelle : obligatoire</li>
+		<li>data/format : obligatoire . Valeurs acceptées : ('0', '0.0', '0.00', '0.000' , '0.0000' )</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>loginfos : "Indice %s créé"</p>
+</div></body>

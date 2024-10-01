@@ -1,0 +1,54 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:StartNode(doc, name)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction ajoute un nœud enfant qui sera le nœud courant.
+			</p>
+			<br>
+			<div class="alert alert-warning" role="alert">
+			<p><b>Notez que :</b><br>
+			<br><b>1) Sauf si vous utilisez XML:SetForceLowerCase(doc, false), le nom donné sera converti en minuscule</b>.
+			<br>2) Conseil : Utilisez les tiret-bas pour séparer les noms composites, i.e. "book_name" au lieu de "BookName", transformé en "bookname".</p></div>
+			
+			<br>
+			<p><b>Paramètres d'entrée :</b></p>
+				<ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>name</code> : le nom de nœud.</li></ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>Aucun.</p>
+			
+			
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">cars</span><span class="delimiter">"</span></span>)
+  Print(XML:GetNodeName(doc))
+  XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">toyota</span><span class="delimiter">"</span></span>)
+    Print(XML:GetNodeName(doc))
+  XML:EndNode(doc)
+XML:EndNode(doc)
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">cars
+toyota
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

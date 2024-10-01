@@ -1,0 +1,79 @@
+<body>
+<h2>Principe de fonctionnement</h2>
+<p>BaiSetup est un outil de maintenance BelAir. Il vous permet de :</p>
+<ul><li>diagnostiquer Belair</li>
+<li>initialiser ou mettre à jour une base de données</li>
+<li>sauvegarder et restaurer une applications Belair, en dehors des archives et documents scannés</li>
+<li>effectuer les opération de maintenance</li>
+<li>nettoyer de la base de données</li>
+<li>transférer de la base de données</li></ul>
+<h3>Fonctions en mode simple</h3>
+<h4>Diagnostique</h4>
+<p>Cette fonction sert à vérifier une liste de fonctionnalités de l'environnement Belair.</p>
+<img src="images/baisetup03.png" class="img-responsive"><br>
+<h4>Sauvegarde de l'application</h4>
+<p>Cette option permet la création d'un fichier de sauvegarde incluant les éléments suivants :</p>
+<ul><li>les répertoires </li>
+<ul><li>scripts d'automate (dossier AUTOMATE)</li>
+<li>fichiers ds écrans (dossier ECRANS)</li>
+<li>images (dossier IMAGES)</li>
+<li>icônes (dossier ICONES)</li>
+<li>modèles de lettres (dossier LETTRESW)</li></ul>
+<li>le fichier de configuration</li>
+<li>la base de données (en option)</li></ul>
+<p>
+</p><pre><code class="c syntaxhl"><span class="CodeRay"><b>Note :</b> l'utilisation de BaiSetup pour sauvegarder la base de donnée n'est préconisée que pour les petites volumes </span></code></pre>			
+
+<img src="images/baisetup01.png" class="img-responsive">
+<p>À la fin de traitement, BaiSetup créé un fichier XXX_backup_yyyy-mm-dd_hh-mm-ss.bbz. XXX étant remplacé par les trois lettres spécifiques à votre application.</p><br>
+<h4>Restauration de l'application</h4>
+<p>Cette fonction permet de restaurer une base au format bbz, avec des options selon vos besoins.</p>
+<img src="images/baisetup02.png" class="img-responsive"><br>
+<h4>Transfert de base de données</h4>
+<p>Sélectionnez le menu <b>Opérations</b> -- <b>Transfert de base de données</b></p>
+<ul><li>Sélectionnez les fichier des configurations de BDD source et de celle cible</li>
+<li>Appuyez <b>Tester</b> afin de tester les connexion aux serveurs BDD</li>
+<li>Si tout est OK, démarrez le transfert.</li></ul>
+<p>Après cette étape la BDD BelAir sera transférée. Vous pouvez s'en connectez et explorer.</p>
+<pre><code class="c syntaxhl"><span class="CodeRay">Attention ! La renommage d'application lors de transfert est réservée uniquement pour l'utilisation en interne , i.e. pour cloner BDD de tests/recettes.<br> Il ne faut jamais utiliser cette option en cadre des projets clients. ou en exploitation.</span></code></pre>
+<img src="images/baisetup04.png" class="img-responsive"><br>
+<h4>Fonctions avancées</h4>
+<p>Sélectionnez le menu <b>Fichiers</b> -- <b>Mode avancé</b> afin d'accéder aux fonctions avancées.</p>
+<img src="images/baisetup05.png" class="img-responsive"><br>
+<h4>Initialisation de la BDD</h4>
+<p>Cette fonction permet d'établir une nouvelle base de données Belair et/ou l'initialiser par données de demonstration.<br>Le fichier de configuration (APP???.conf) décrit les informations de connexion à une base de donnée physique existante, vide ou pas.</p>
+<p>L'option <b>Forcer l'initialisation des données maîtres</b> déclenche le remplacement de l'ensemble des données dans la base par les données de démonstration Belair.</p>
+<img src="images/baisetup06.png" class="img-responsive"><br>
+<h4>Nettoyage de base de données</h4>
+<p>Les modes de nettoyage sont suivantes :</p>
+<ul><li><b>Standard :</b> suppression des données, exception faite du paramétrage ;</li>
+<li><b>Complet :</b> suppression de toutes les tables avec l'ensemble des données.</li></ul>
+<p>Spécifiez le fichier de configuration d'application, puis démarrez l'opération de nettoyage.</p>
+<img src="images/baisetup07.png" class="img-responsive"><br>
+<h4>Les opération de maintenance</h4>
+<p><u>Condensation de base de données (Firebird uniquement)</u></p>
+<p>Cette opération requis les compétences de supporte de SGBD. Il est recommandé aussi d'effectuer cette opération par les propres moyens de SGBD.</p>
+<p> Pour Firebird, les contraintes : </p>
+<ul><li>lancer BaiSetup sur le serveur</li>
+<li>la condensation fait par les sauvegarde/restauration et donc toutes les connexion doivent être fermées avant l'opération</li></ul>
+<img src="images/baisetup08.png" class="img-responsive"><br>
+<h4>Utilisation en ligne de commande</h4>
+<p>Il est possible de lancer BaiSetupCmd.exe à partir de ligne de commande.</p>
+<p>Les options de la ligne de commande sont disponibles avec la commande</p>
+<pre><code class="c syntaxhl"><span class="CodeRay">BaiSetupCmd.exe -h</span></code></pre>
+<p>Exemple de commande pour effectuer une sauvegarde</p>
+<pre><code class="c syntaxhl"><span class="CodeRay">c:\belair42\BaiSetupCmd.exe -c c:\belair42\appdei\appdei.conf -o backup --out-dir=c:\tmp\ --backup-mode=full --gbak --user=<b><i>NAME</i></b> --password=<b><i>PASSWORD</i></b></span></code></pre>
+<p>Exemple de commande pour effectuer une restauration</p>
+<pre><code class="c syntaxhl"><span class="CodeRay">c:\belair42\BaiSetupCmd.exe -c c:\tmp\DEI_backup_2020-04-09_16-02-07_4_2E_22876.bbz -o restore --out-dir=c:\belair42 --restore-mode=full --gbak --user=<b><i>NAME</i></b> --password=<b><i>PASSWORD</i></b></span></code></pre>
+<h4>Utilisation de GBAK en ligne de commande</h4>
+<p>Il est possible de lancer gbak.exe à partir de ligne de commande.</p>
+<p><u>Exemple de commande pour effectuer une sauvegarde</u></p>
+<p>Créer un script .bat avec le contenu</p>
+<pre><code class="c syntaxhl"><span class="CodeRay">cd C:\Program Files\Firebird\Firebird_2_5\bin\
+.\gbak.exe -v -t -user SYSDBA -password masterkey "C:\Temp\APPDEI - 4.2e23532\APPDEI.IDB" "C:\Temp\APPDEI.fbk"</span></code></pre>
+<p><u>Exemple de commande pour effectuer une restauration</u></p>
+<p>Créer un script .bat avec le contenu</p>
+<pre><code class="c syntaxhl"><span class="CodeRay">cd C:\Program Files\Firebird\Firebird_2_5\bin\
+.\gbak.exe -c -v -user SYSDBA -password masterkey "C:\Temp\APPDEI.fbk" "C:\Temp\APPDEI.IDB"</span></code></pre>
+	
+</body>

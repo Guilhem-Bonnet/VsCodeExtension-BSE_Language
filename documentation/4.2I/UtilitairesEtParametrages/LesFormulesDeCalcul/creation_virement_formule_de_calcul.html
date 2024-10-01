@@ -1,0 +1,61 @@
+<body>
+	<h2>Création d'un virement par une formule de calcul</h2>
+	
+	<ul>
+		<li><code>CREERVIR(A, B, C, D, E)</code> : Création du virement</li>
+		<ul>
+			<li>"A" est le numéro de tiers</li>
+			<li>"B" est l'entité juridique</li>
+			<li>"C" est la date du virement</li>
+			<li>"D" est le montant du virement</li>
+			<li>"E" est le libellé du virement</li>
+		</ul>
+		<br>
+		<li><code>LVD</code> : Devise du virement</li>
+		<br>
+		<li><code>LVE</code> : Date d'échéance du virement</li>
+		<br>
+		<li><code>LVL</code> : Libellé du virement</li>
+		<br>
+		<li><code>LVP</code> : Montant protégé du virement ("****" + montant + code devise + "****")</li>
+		<br>
+		<li><code>LVS</code> : Montant "brut" du virement, en chiffres</li>
+		<br>
+		<li><code>LVX(n)</code> : Traduction en lettres du montant du virement, limité à n caractères </li>
+		<br>
+		<li><code>LVY</code> : Reliquat de la traduction en lettres du montant du virement, si 1ère ligne trop courte (doit être précédé de LVX(n) )</li>
+		<br>
+	</ul>
+	
+	
+<h3>Utilisation d'une formule de calcul : </h3>
+<h3><code>Commande CREERVIR(v,w,x,y,z)</code></h3><br>
+Cette commande crée un enregistrement dans le fichier des virements sans passer par la gestion de textes.<br>
+Elle peut être mise par exemple dans la procédure comptable utilisée lors de la rétrocession des commissions aux apporteurs.<br>
+<li><code>v</code> - Le premier paramètre est le <code>numéro de tiers</code>.</li>
+<li><code>w</code> - Le deuxième paramètre est <code>l'entité juridique</code>.</li>
+<li><code>x</code> - Le troisième paramètre est <code>la date du virement</code> (La date de création est systématiquement mise à la date/heure courante de BELAIR).</li>
+<li><code>y</code> - Le quatrième paramètre est <code>le montant du virement</code>. La devise utilisée est celle du calcul en cours. Si elle est vide, c'est la monnaie par défaut qui est prise.</li>
+<li><code>z</code> - Le cinquième paramètre est <code>le libellé du virement</code>.</li><br>
+Cette commande renvoie le montant du virement. Elle ne fait rien si le montant est 0 est renvoie 0. Si le montant est négatif, elle ne fait rien et renvoie 0.<br>
+Exemple d'utilisation : <code>=CREERVIR(?TIERS("b_numtiers"),1,ENC_DATE,ENC_MON,"virement")</code><br><br>	
+	
+	
+<h3>Virements à effectuer :</h3>	
+
+Lorsqu'un virement doit être effectué, celui-ci est généré automatiquement par la formule de calcul "CREERVIR" si elle est insérée dans des procédures comptables, OU en portefeuille.<br>
+Afficher l'écran concerné et par le menu<br>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="#">Bureautique</a></li>
+	<li class="breadcrumb-item active" aria-current="page">Courrier</li>
+  </ol>
+</nav>
+Envoyer la lettre-virement permettant d'avertir le client du virement.<br>
+Au moment de l'envoi d'une lettre-virement, si le RIB/IBAN du client n'est pas saisi, le système permet à ce moment de le saisir.<br>
+Une fenêtre s'ouvre alors permettant de saisir :<br>
+<li>"Comptabilité" : dans le cas où plusieurs entités juridiques sont gérées, sélectionner la comptabilité devant être alimentée. (dans le cas d'un règlement de sinistre, la comptabilité est reprise implicitement)</li>
+<li>"Montant" : saisir le montant à virer. (dans le cas d'un règlement de sinistre, le montant saisi au moment du règlement est repris automatiquement)</li>
+<li>"Date prévisionnelle du virement" : date à partir de laquelle le virement sera effectué. Au moment de la constitution du fichier des virements, tous les virements prévus postérieurement à la date de constitution du fichier ne seront pas pris en compte</li>
+<li>"Libellé du virement" : il est recommandé d'indiquer le numéro de tiers du client et le motif du virement.</li>
+</body>

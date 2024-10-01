@@ -1,0 +1,46 @@
+<body>
+
+
+<h3>Fonctions de manipulation des chaînes de caractères (strings)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>StrToInt</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Convertit en nombre une chaîne qui représente un entier (décimal ou hexadécimal).
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. La chaîne.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>La valeur de type entier.
+				<br>Si la chaîne ne représente pas un nombre valide, StrToInt déclenche une erreur.
+
+			</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">Print(StrToInt(<span class="string"><span class="delimiter">"</span><span class="content">123</span><span class="delimiter">"</span></span>))
+Print(StrToInt(<span class="string"><span class="delimiter">"</span><span class="content">0x123</span><span class="delimiter">"</span></span>))
+Print(StrToInt(<span class="string"><span class="delimiter">"</span><span class="content">ABC</span><span class="delimiter">"</span></span>))
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre><code class="text syntaxhl"><span class="CodeRay">123
+291
+Error: 'ABC' n'est pas une valeur entière correcte
+</span></code></pre>
+			
+			
+		</div>
+	</div>
+</body>

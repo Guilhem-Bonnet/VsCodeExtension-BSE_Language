@@ -1,0 +1,20 @@
+<body>
+<h3>Fonction Alphanumérique</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Fonction Chr(n)</code>
+		</h3></div>
+		<div class="panel-body">
+<p>Cette fonction permet de générer un caractère à partir d'un code. <br>Fonction inverse de Ord()</p>
+<p>
+<b><br>Voici un exemple :</b>
+</p><pre><code class="c syntaxhl"><span class="CodeRay">local testTab, testTilde
+testTab := "Horizontal tab" + Chr(9) + "test"                
+testTilde := "Tilde" + Chr(126) + "test" 
+Assert(testTab = "Horizontal tab    test", "Tab Caracter not good")
+Assert(testTilde = "Tilde~test", "Tilde Caracter not good")
+return 0         
+</span></code></pre>
+</div></div></body>

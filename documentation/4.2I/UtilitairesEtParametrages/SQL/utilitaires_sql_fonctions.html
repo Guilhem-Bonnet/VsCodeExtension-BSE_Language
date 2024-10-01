@@ -1,0 +1,145 @@
+<body>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:NEW(Query)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Création d'une requête
+			</p>
+
+			<p>
+				Le texte SQL  associé doit être inséré immédiatement en dessous, chaque ligne de commandes devant commencer par *. <br>Query est le nom de la requête qui sera utilisé pour les autres commandes
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					SQL:NEW(MONSQL)<br>
+					*SELECT COUNT (*) FROM [TIERS]
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:OPEN(Query)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Ouverture d'une requête donnant un résultat
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					SQL:OPEN(MONSQL)
+				</div>
+				</div>
+				Le nombre d'enregistrements retournés est mis dans : RESULT
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:NEXT(Query)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Passage à l'enregistrement suivant
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					SQL:NEXT(MONSQL)
+				</div>
+				</div>
+				Si fin de fichier RESULT = 0, sinon RESULT = 1
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:CLOSE(Query)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Fermeture de la requête
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					SQL:CLOSE(MONSQL)
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:FREE(Query)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Suppression de la requête (important : un FREE pour chaque NEW)
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					SQL:FREE(MONSQL)
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:EXEC(Query)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Execution d'une requête de type 'UPDATE'
+			</p>
+
+			<div class="bai_exemple">
+				<div class="bai_code">
+					SQL:EXEC(MONSQL)
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>SQL:NEWEXT(Query)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>Permet d'accéder à une base autre que la base Belair</p>
+			<p>Dans l'automate de traitement de données, dès lors que la source de données est un SGBD autre que la base BELAIR (connexion à un alias),<br> il faut pouvoir créer un SQL connecté à cette base et non pas à APPxxx</p>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					SQL:NEWEXT(Alias, MONSQL)
+				</div>
+				</div>
+				<br>
+			<p><u>Voici un Exemple:</u></p>
+			<p>Déclaration de l'Alias à partir de l'onglet "Description",<br> Cocher SGBD<br>Dans le menu déroulant <b>Alias</b>, sélectionner <b>[Ajouter]</b> puis cliquer sur <b>[Editer]</b> pour renseigner les paramètres définissant la base sur laquelle travailler.</p>
+			<p>il est important d'utiliser <b><i>SQL:FREE</i></b> pour libérer la connexion
+			</p><p>Attention les Connections sont identifiées par le nom de l'alias il est donc possible de se connecter plusieurs fois à la même Base si l'alias est différent.</p>
+Alias1
+<pre>server name=bai-dev-dim
+;Base :
+database=d:\belair42\appdei\appdei.idb
+;Identifiants :
+user name=SYSDBA
+password=masterkey</pre>
+Alias2
+<pre>server name=bai-dev-dim
+;Base :
+database=d:\belair42\appdei\appdei.idb
+;Identifiants :
+user name=SYSDBA
+password=masterkey</pre>
+<p>On a 2 connections différentes à la même DataBase il n'y a aucun lien entre les deux connections. <br>On peut être connecter à une infinité de base en même temps.</p>
+</div>	
+</div>	
+</body>

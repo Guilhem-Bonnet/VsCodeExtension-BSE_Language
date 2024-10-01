@@ -1,0 +1,36 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DocHolder_FileDownload</code></h3>
+		</div>
+
+<p>Cette fonction télécharge un des fichiers d'un porte-documents</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h2>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li>TargetKind (string, obligatoire): T,C,S =&gt; indique la table concernée (TIERS, CONTRAT, SINISTRE)</li>
+	<li>TargetId (integer, obligatoire): id dans la table concernée</li>
+	<li>FileId(integer, optionnel) : id du fichier dans le porte-documents</li>
+	<li>OU Title (string, optionnel) : Titre du document dans le porte-documents</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h2>Retour<a href="#Retour" class="wiki-anchor"></a></h2>
+
+
+	<p>Flux XML</p>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;file&gt;</span>
+  <span class="nt">&lt;id&gt;</span>(FICH.B_ID)<span class="nt">&lt;/filename&gt;</span>
+  <span class="nt">&lt;name&gt;</span>(FICH.B_FICHIER)<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;data&gt;</span>(contenu du fichier encodé)<span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/file&gt;</span>
+</code></pre>
+</div></body>

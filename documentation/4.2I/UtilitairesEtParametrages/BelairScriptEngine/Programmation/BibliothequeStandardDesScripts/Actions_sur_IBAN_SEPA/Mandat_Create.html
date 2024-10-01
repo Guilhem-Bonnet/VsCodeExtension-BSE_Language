@@ -1,0 +1,75 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Mandat_Create</code></h3>
+		</div>
+
+<p>Création d'un Mandat</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>dossier (int, obligatoire) : numéro de tiers</li>
+		<li>data : flux XML de toutes les informations du mandat  à créer<br><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;mandat&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"mandat"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Creation"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2013-12-20T00:00:00.000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Deriban"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"-1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Derics"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Iban"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"47"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"800"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Revoc"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Rum"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>20131220QUERAB41<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Signatur"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2013-12-20T00:00:00.000"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Type"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>M<span class="nt">&lt;/param&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;contrats&gt;</span>
+    <span class="nt">&lt;contrat&gt;</span>7<span class="nt">&lt;/contrat&gt;</span>
+    <span class="nt">&lt;contrat&gt;</span>53<span class="nt">&lt;/contrat&gt;</span>
+  <span class="nt">&lt;/contrats&gt;</span>
+<span class="nt">&lt;/mandat&gt;</span>
+</code></pre></li>
+	</ul>
+
+
+	<a name="Retour-n-du-mandat-cr%C3%A9%C3%A9"></a>
+<h3>Retour : n. du mandat créé<a href="#Retour-n-du-mandat-cr%C3%A9%C3%A9" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;mandat&gt;&lt;id&gt;</span>53<span class="nt">&lt;/id&gt;&lt;/mandat&gt;</span>
+</code></pre>
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Le tiers <code>dossier</code> doit exister</li>
+		<li>Le champ <code>Iban</code>: doit être renseigné</li>
+		<li>L'iban correspondant doit exister dans la table IBAN et doit être autorisé pour les prélèvements</li>
+	</ul>
+
+
+	<a name="Remarques"></a>
+<h3>Remarques:<a href="#Remarques" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li><code>Numtiers</code> est forcé à <code>dossier</code></li>
+		<li><code>Type</code> est forcé à <code>"M"</code></li>
+		<li><code>DerIban</code> est forcé à -1</li>
+		<li>SI <code>Creation</code> est vide, mise de la date du jour</li>
+		<li>SI <code>Rum</code> est vide , calcul à partir de la fonction <code>MandatRumLib.Mandat_GetRumNumber(mandat)</code> 
+	<ul>
+	<li>L'algorithme est donc personnalisable</li>
+		<li>Si la formule de calcul <code>SEPANUMRUM</code> existe appel d'un script via BaiimpPool pour utiliser cette formule</li>
+	</ul>
+	</li>
+		<li>Tous les contrats indiqués dans la balise optionnelle &lt;contrats&gt; sont associés au mandat créé</li>
+	</ul>
+</div></body>

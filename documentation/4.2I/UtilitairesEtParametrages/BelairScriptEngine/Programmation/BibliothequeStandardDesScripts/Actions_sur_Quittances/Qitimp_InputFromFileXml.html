@@ -1,0 +1,108 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Qitimp_InputFromFileXml</code></h3>
+		</div>
+
+<p>Ajout de quittances dans un bordereau, à partir d'un fichier XML</p>
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>XmlInputFileName (string, obligatoire) : nom du fichier XML</li>
+		<li>XmlReportFileName (string, optionnel) : si renseigné, nom du fichier XML de reporting de l'action (si non renseigné, le flux XML de reporting est renvoyé comme résultat de l'action)</li>
+		<li>DestPath (string, optionnel) : si renseigné, nom du répertoire où sera déplacé le fichier en entrée, après traitement</li>
+	</ul>
+
+
+	<a name="Format-du-fichier-XML-en-entr%C3%A9e-XmlInputFileName-"></a>
+<h3>Format du fichier XML en entrée (XmlInputFileName )<a href="#Format-du-fichier-XML-en-entr%C3%A9e-XmlInputFileName-" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;qitimp_inputfromfilexml&gt;</span>
+  <span class="nt">&lt;header&gt;</span>
+    <span class="nt">&lt;bdx_number&gt;</span>0<span class="nt">&lt;/bdx_number&gt;</span>
+    <span class="nt">&lt;bdx_model&gt;</span>5<span class="nt">&lt;/bdx_model&gt;</span>
+    <span class="nt">&lt;bdx_year&gt;</span>2021<span class="nt">&lt;/bdx_year&gt;</span>
+    <span class="nt">&lt;bdx_month&gt;</span>1<span class="nt">&lt;/bdx_month&gt;</span>
+    <span class="nt">&lt;bdx_name&gt;</span>TEST BS<span class="nt">&lt;/bdx_name&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  <span class="nt">&lt;items&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">index=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;endtoendid&gt;</span>GI - 1239587/M/0<span class="nt">&lt;/endtoendid&gt;</span>
+      <span class="nt">&lt;contrat&gt;</span>67<span class="nt">&lt;/contrat&gt;</span>
+      <span class="nt">&lt;piece&gt;</span>1<span class="nt">&lt;/piece&gt;</span>
+      <span class="nt">&lt;quit&gt;</span>
+        <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"QUIT"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Comm"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"4.00000000000000E+0002"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Contrat"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"67"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Debeffet"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2021-01-01T00:00:00.000"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Fineffet"</span> <span class="na">type=</span><span class="s">"ptDateTime"</span> <span class="na">date_val=</span><span class="s">"2021-12-31T00:00:00.000"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Frgest"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"0.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Hono"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Piece"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Pnette"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"2.00000000000000E+0004"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Police"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>GI - 1239587/M<span class="nt">&lt;/param&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Prorata"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"1.00000000000000E+0000"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Taxe"</span> <span class="na">type=</span><span class="s">"ptFloat"</span> <span class="na">float_val=</span><span class="s">"2.00000000000000E+0003"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;/quit&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">index=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+    ....
+    <span class="nt">&lt;/item&gt;</span>
+  <span class="nt">&lt;/items&gt;</span>
+<span class="nt">&lt;/qitimp_inputfromfilexml&gt;</span>
+
+</code></pre>
+
+	<ul>
+	<li><code>&lt;header&gt;</code>  infos générales sur le bordereau cible
+	<ul>
+	<li><code>&lt;bdx_numbe&gt;r</code> bordereau cible existant (0 si demande de création à partir d'un modèle)</li>
+		<li><code>&lt;bdx_model&gt;</code> numéro du bordereau modèle (uniquement si mode création)</li>
+		<li><code>&lt;bdx_year&gt;</code> année du bordereau  (obligatoire uniquement si mode création)</li>
+		<li><code>&lt;bdx_month&gt;</code> mois du bordereau  (obligatoire uniquement si mode création)</li>
+		<li><code>&lt;bdx_name&gt;</code> nom du bordereau  (optionnel, uniquement si mode création)</li>
+		<li><code>&lt;bdx_cie&gt;</code> Cie cible (optionnel, uniquement si mode création)</li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li><code>&lt;items&gt;</code>  liste des quittances à émettre
+	<ul>
+	<li><code>&lt;item rang="n"&gt;</code> quittance numéro n (liste des paramètres compatibles avec l'action <code>Quittance_Create</code> (<a class="issue tracker-2 status-18 priority-4 priority-default closed" title="Evolution: Evolution de l'action Quittance_Create : permettre l'injection directe de montant par garantie (Terminé (sans publication))" href="http://redmine4.belair.local/issues/19543">#19543</a>)
+	<ul>
+	<li><code>&lt;contrat&gt;</code> contrat cible</li>
+		<li><code>&lt;piece&gt;</code> piece cible</li>
+		<li><code>&lt;quit&gt;</code> infos sur la quittance à crééer (e.q. parametre <code>data</code> de l'action <code>Quittance_Create</code></li>
+		<li><code>&lt;endtoendid&gt;</code> optionnel : si présent, cette information sera remontée dans le flux d reporting</li>
+	</ul></li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Flux-XML-de-reporting"></a>
+<h3>Flux XML de reporting<a href="#Flux-XML-de-reporting" class="wiki-anchor"></a></h3>
+
+
+	<p>(écrit dans le fichier <code>XmlReportFileName</code> ou retourné  par l'action si <code>XmlReportFileName</code> n'est pas indiqué)</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;qitimp_inputfromfilexml_result</span> <span class="na">bdx_number=</span><span class="s">"162"</span> <span class="na">itemcount=</span><span class="s">"36"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;items&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">index=</span><span class="s">"1"</span> <span class="na">contrat=</span><span class="s">"67"</span> <span class="na">piece=</span><span class="s">"1"</span> <span class="na">endtoendid=</span><span class="s">"GI - 1239587/M/0"</span><span class="nt">&gt;</span>1760<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">index=</span><span class="s">"2"</span> <span class="na">contrat=</span><span class="s">"53"</span> <span class="na">piece=</span><span class="s">"1"</span> <span class="na">endtoendid=</span><span class="s">"2ROUES/1"</span><span class="nt">&gt;</span>1761<span class="nt">&lt;/item&gt;</span>
+    .....
+  <span class="nt">&lt;/items&gt;</span>
+<span class="nt">&lt;/qitimp_inputfromfilexml_result&gt;</span>
+</code></pre>
+
+	<p>chaque item indique le numéro interne de la quittance créée<br>En cas d'erreur pour une quittance, un bloc &lt;error&gt; est ajouté à l'item</p>
+	</div></body>

@@ -1,0 +1,73 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:SelectResultInt64(doc,path,default)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>cette fonction sélectionne la valeur comme <code>Json:SelectResult</code> puis la convertit en type entier (int64) comme <code>Json:GetCurrentValueInt64</code>.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			<li><code>path</code> : la requête JSONPath</li>
+			<li><code>default</code> : la valeur par défaut si la requête ne trouve aucun résultat (optionnel)</li>			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>la valeur convertie en type entier (int64).
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "Cars")
+  Json:NewArray(doc, "Renault")
+    Json:NewObject(doc)
+      Json:NewValue(doc, "Model", "clio")
+      Json:NewValue(doc, "Price", 10990.987)
+      Json:NewValue(doc, "Currency", "EUR")
+      Json:NewValue(doc, "InStock", false)
+      Json:NewValue(doc, "NbStock", 0)
+      Json:NewValue(doc, "Production", 2400000)
+      Json:NewValue(doc, "Production_Date", EncodeDateTime(2012, 01, 01, 10, 00, 00))
+    Json:EndObject(doc)
+    Json:NewObject(doc)
+      Json:NewValue(doc, "Model", "zoe")
+      Json:NewValue(doc, "Price", 25700.999)
+      Json:NewValue(doc, "Currency", "EUR")
+      Json:NewValue(doc, "InStock", true)
+      Json:NewValue(doc, "NbStock", 46)
+      Json:NewValue(doc, "Production", 100000)
+      Json:NewValue(doc, "Production_Date", EncodeDate(2013, 01, 01))
+    Json:EndObject(doc)
+  Json:EndArray(doc)
+Json:EndObject(doc)
+Json:Close(doc)            
+print(Json:SelectResultInt64(doc, "cars.renault[0].Production"))
+print(Json:SelectResultInt64(doc, "cars.renault[1].Production"))
+print(Json:SelectResultInt64(doc, "NotAGoodPath", 99999999))   
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+2400000
+100000
+99999999
+</pre>
+	</div>
+</div>
+</body>

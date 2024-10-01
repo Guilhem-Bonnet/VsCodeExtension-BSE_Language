@@ -1,0 +1,29 @@
+<body>
+	<h2>Paramètre permettant de tester le mode d'utilisation des procédures comptables</h2>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<code>MODEKPR</code>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Donne "+" (normal) ou "-" (inverse)<br>
+				<br>
+				Cette instruction, utilisée dans le titre d'une écriture de procédure comptable permet de changer le titre de l'écriture en fonction du mode d'utilisation de la procédure : utilisation normale de la procédure correspond au [+], inversion de la procédure correspond au [-]<br>
+				<br>
+				<b>Exemple :</b>
+				</p><div class="bai_exemple">
+					<span class="bai_code">SI MODEKPR = "+" ;="Emission quittance ......" ;="Annulation quittance......."</span>
+				</div>
+				Cette instruction peut également être utolisée pour la date comptable<br>
+				<br>
+				<b>Exemple dans une procédure d'émission :</b>
+				<div class="bai_exemple">
+					<span class="bai_code">SI MODEKPR = "+" ;=?QBOR("b_debit") ;=JOUR</span>
+				</div>
+				Dans ce cas, la date comptable à l'émission sera la date de débit indiquée sur le bordereau et lors de l'effacement de la quittance, la date comptable reprise sera la date du jour.
+			
+		</div>
+	</div>
+</body>

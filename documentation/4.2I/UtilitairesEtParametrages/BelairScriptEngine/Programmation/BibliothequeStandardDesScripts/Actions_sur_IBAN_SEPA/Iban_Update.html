@@ -1,0 +1,48 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+				<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Iban_Update</code></h3>
+		</div>
+
+<p>Modification d'un Iban</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+	<ul>
+	<li>dossier (int, obligatoire) : numéro de tiers (pour contrôle); on peut modifier le tiers de l'Iban en renseignant <code>numtiers</code> dans &lt;data&gt;</li>
+		<li>numero (int, obligatoire) : numéro de l'Iban</li>
+		<li>data : flux XML de toutes les informations de l'Iban à modifier<br><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;iban&gt;</span>
+<span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Iban"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Domicil"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>MASSY<span class="nt">&lt;/param&gt;</span>
+<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Iban"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>FR5110011000201111111111999<span class="nt">&lt;/param&gt;</span>
+<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Idbic"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"15"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Prelev"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Titul"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>MARTIN Pierre<span class="nt">&lt;/param&gt;</span>
+<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Virement"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/iban&gt;</span>
+</code></pre></li>
+	</ul>
+
+
+	<a name="Retour-n-de-lIban-modifi%C3%A9"></a>
+<h3>Retour : n. de l'Iban modifié<a href="#Retour-n-de-lIban-modifi%C3%A9" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;iban&gt;</span>
+<span class="nt">&lt;numero&gt;</span>63<span class="nt">&lt;/numero&gt;</span>
+<span class="nt">&lt;/iban&gt;</span>
+</code></pre>
+
+	<a name="Remarques-"></a>
+<h3>Remarques :<a href="#Remarques-" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Pas de contrôle de la validité de l'IBAN pour le moment</li>
+	</ul>
+</div></body>

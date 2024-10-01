@@ -1,0 +1,43 @@
+<body>
+	<h2>Fonctions de fichiers</h2>
+<br>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Library XmlToolsLIb</code>
+		</h3></div>
+		<div class="panel-body">
+<pre>function Xml_ExtractContent(Source, Path, RootName, CreateFirstNode, IgnoreNull)</pre>
+<p>Retourne un nouveau document XML représentant le contenu intégral d'un noeud d'un document XML</p>
+<h4>Paramètres:</h4>
+				<ul><li><b>Source :</b> document XML contenant le noeud à extraire</li>
+				<li><b>Path :</b> chemin Xpath vers le noeud à extraire</li>
+				<li><b>RootName :</b> nom du noeud principal du document XML à créer</li>
+				<li><b>CreateFirstNode (True/False) :</b> création de la balise correspondant au noeud à extraire (si false, on extrait juste son contenu)</li>
+				<li><b>IgnoreNull (Trus/False) :</b> si True, on ignore les balises de type <param .... is_null="True"></li></ul>
+<pre>function Xml_AddNodeinXml(Source, target, createnode, IgnoreNull)¶</pre>
+<p>Insère dans le noeud courant d'un document XML le contenu intégral du noeud courant d'un document XML
+				<br>
+</p><h4>Paramètres:</h4>
+				<ul><li><b>XmlTarget :</b> document XML à compléter</li>
+				<li><b>Source :</b> document XML contenant le noeud à extraire</li>
+				<li><b>Path :</b> chemin Xpath vers le noeud à extraire</li>
+				<li><b>RootName :</b> nom du noeud à créer dans le document XML de destination</li>
+				<li><b>CreateFirstNode (True/False) :</b> création de la balise correspondant au noeud à extraire (si false, on extrait juste son contenu)</li>
+				<li><b>IgnoreNull (Trus/False) :</b> si True, on ignore les balises de type <param .... is_null="True"></li></ul>
+<pre>function Xml_AddNodeinXml(Source, target, createnode, IgnoreNull)</pre>
+<p>Insère dans le noeud courant d'un document XML le contenu intégral du noeud courant d'un document XML
+				<br>
+</p><h4>Paramètres:</h4>
+				<ul><li><b>Source :</b> document XML de départ</li>
+				<li><b>Target :</b> document XML d'arrivée </li>
+				<li><b>CreateNode (True/False) :</b> création de la balise correspondant au noeud courant à extraire (si false, on extrait juste son contenu)</li>
+				<li><b>IgnoreNull (Trus/False) :</b> si True, on ignore les balises de type <param .... is_null="True"></li></ul>
+<pre>function GetAttrListOfParamNode(XmlDoc)</pre>
+<p>Retourne un tableau du nom des attributs standard d'un noeud
+				<br>
+</p><h4>Paramètres:</h4>
+				<ul><li><b>XmlDoc:</b> document XML</li></ul>
+				<br>
+<p>seuls les attribtus contrôlés sont extraits (attributs des balises de type " et ")</p>
+<br>
+</div></div></body>

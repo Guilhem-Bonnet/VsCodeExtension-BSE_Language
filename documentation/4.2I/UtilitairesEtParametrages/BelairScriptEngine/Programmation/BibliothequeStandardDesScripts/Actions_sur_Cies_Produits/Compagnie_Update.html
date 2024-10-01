@@ -1,0 +1,57 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Compagnie_Update</code></h3>
+		</div>
+
+<p>Modification d'une compagnie</p>
+
+
+	<p>entités concernés : cie, dpm et tiers</p>
+
+
+	<a name="parametres"></a>
+<h3>parametres<a href="#parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>numero (integer, obligatoire) : pour forcer le numéro de la compagnie à mettre à jour</li>
+		<li>data : flux XML contenant les données : obligatoire</li>
+	</ul>
+
+
+<pre><code class="xml syntaxhl"><span class="nt">&lt;cie&gt;</span>
+  <span class="nt">&lt;input&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"CIE"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPM"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"TIERS"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/input&gt;</span>
+<span class="nt">&lt;/cie&gt;</span>
+</code></pre>
+
+	<p>Remarque:<br>Les mêmes tables sont gérées que dans Tiers_UpDate, avec les mêmes conditions</p>
+
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>vérifier la présence des 2 paramètres</li>
+		<li>vérifier dans cie et tiers que les records existent</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="XML syntaxhl"><span class="nt">&lt;cie&gt;</span>
+  <span class="nt">&lt;numero&gt;</span>xxxxx<span class="nt">&lt;/numero&gt;</span>
+  <span class="nt">&lt;nomcie&gt;</span>aaaaaaaa<span class="nt">&lt;/nomcie&gt;</span>
+<span class="nt">&lt;/cie&gt;</span>
+</code></pre>
+</div></body>

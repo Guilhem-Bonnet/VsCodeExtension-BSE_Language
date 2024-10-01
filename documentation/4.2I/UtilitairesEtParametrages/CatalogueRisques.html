@@ -1,0 +1,186 @@
+<body>
+	<h2>Catalogues de Risques</h2>
+
+	<h3>Objectif</h3>
+
+	<p>
+		Permettre la création de données nécessaires à la saisie automatique d'informations reportées dans les champs d'un écran souhaité.
+		<br><br><b>Exemple :</b>
+		</p><div class="bai_exemple">
+			<p>
+				Fichier Automobiles, Fichier Motos, Fichier Bateaux, Fichier instruments de musique, etc...<br>
+				Après avoir créé la structure du catalogue, il sera alors possible de créer, modifier et ou recevoir, les nouvelles mises à jour des fichiers correspondants.
+			</p>
+		</div>
+	
+	<br>
+	<hr>
+
+	<h3>Fonctionnalités</h3>
+
+	<ol>
+		<li>Gestion des Catalogues</li>
+		<li>Consultation des Catalogues</li>
+		<li>Liens avec les Produits</li>
+	</ol>
+	<br>
+	<hr>
+	
+	<h3>Travaux préalables</h3>
+
+	<p>
+		Le module des Catalogues ne peut être disponible qu'après avoir lancé une nouvelle fonction dans les paramètres Généraux de l'application.<br>
+		Cette fonction est longue et doit être effectuée lorsque tous les utilisateurs ont quittés l'application
+	</p>
+	<br>
+	<hr>
+
+	<h3>Préparation</h3>
+
+	<p>
+		La nouvelle gestion des Catalogues n'est accessible qu'au SUPERVISEUR.
+		<br><br>
+		<img src="images/outils_parametres_parametres_generaux.jpg" class="img-responsive"><br>
+		Onglet : <img src="images/parametres_avances.jpg">
+		<br><br>Cocher «Utilisation du catalogue des objets de type véhiculier ».
+		<br>
+		Puis confirmer cette mise en œuvre en actionnant le bouton <img src="images/valider.jpg">
+	</p>
+
+	<br>
+	<p>
+		<img src="images/model_base_donnees.jpg" class="img-responsive"><br><br>
+		La fenêtre ci-dessous s'affiche alors :<br><br>
+		</p><div class="container-fluid">
+			<div class="col-md-4">
+				<img class="bai_image" src="images/modelisation_belair.jpg">
+			</div>
+			<div class="col-md-8">
+				Lors du premier lancement, un message vous avertira que la table est vide
+				<br><br>
+				En confirmant la création automatique du catalogue, l'ancienne table GTA (Fichier des véhicules) va être copiée dans la nouvelle table de BELAIR : ZXGTA (fonction longue).).
+				<br><br>
+				Cette structure pourra alors être utilisée comme telle, ou bien être modifiée en fonction de nouvelles normes instaurées.
+				<br><br>
+				Après toutes nouvelles créations et/ou modifications de cette seule table ZXGTA, il est obligatoire de lancer la fonction de mise à jour rapide : Fichier | Mise à jour d'accès rapide
+			</div>
+		</div>
+	
+		
+	<br><br>
+	
+	<p>
+		<b><u>Création de la Structure d'un nouveau Catalogue :</u></b>
+		<br><br>
+		Effectuer un clic droit sur "catalogues" et cliquer sur <img src="images/nouveau_catalogue.jpg">
+		</p><ul>
+			<li>
+				Déterminer un Code de 3 caractères (Colonne à gauche de l'écran) puis, renseigner le libellé du Catalogue.<br>
+				Il est même possible d'associer une image à chaque structure : Clic droit dans le cadre gris (en continuité de la zone « Libellé du catalogue »).
+			</li>
+
+			<li>
+				<p>
+					Renseigner les informations du catalogue :
+				</p>
+				<ul>
+					<li>«nom du champ» = Titre de la colonne dans le catalogue</li>
+					<li>«longueur» = Nombre de caractères maximum saisissables</li>
+					<li>«libellé» = Entête de colonne dans le catalogue</li>
+				</ul>
+				<p>
+					puis renseigner les 3 colonnes suivantes par ( T ) True ou ( F ) False :
+				</p>
+				<ul>
+					<li>Colonne 1 - Index : Détermine si ce champ fait parti de la clé</li>
+					<li>Colonne 2 - Groupe : Détermine si les champs doivent être regroupés (Ex. : Marque – Modèle) puis débouche sur l'ensemble de la gamme distribuée dans cette catégorie.</li>
+					<li>Colonne 3 - Recherche : Détermine si le champ peut être en recherche par la <b> loupe </b>, lors de la consultation du catalogue (Ex.: SRA ou type mine......)</li>
+				</ul>
+			</li>
+
+			<li>
+				"<b>destination</b>" = Si le champ a une concordance avec un existant dans Belair, ouvrir le dictionnaire et aller rechercher celui-ci dans la table concernée et le glisser dans la colonne « Destination ».
+			</li>
+
+			<li>
+				Créer autant de lignes nécessaires au rapatriement des données en portefeuille
+			</li>
+
+			<li>
+				Enregistrer par la disquette
+			</li>
+
+			<li>
+				Cliquer sur le bouton "création d'une Table ZX....
+			</li>
+		</ul>
+	
+	<p>
+		N.B. : Il est impossible d'insérer une nouvelle ligne dans une structure en cours de création et ou de modification. En effet, celle-ci se positionnera (automatiquement) en fin de tableau lors de l'enregistrement des modifications.
+	</p>
+
+	<p>
+		La confirmation de la création de la table vous sera donc demandée.
+	</p>
+
+	<p>
+		Si vous devez ensuite modifier cette structure, il vous faudra toujours « Enregistrer » les modifications <b>par la disquette</b> puis par le bouton <b>Création/Modification de table</b>
+	</p>
+
+	<p>
+		Puis, sortir complètement de l'application.
+	</p>
+
+	<h4>Création du contenu du Catalogue : Outils | Paramètres | Catalogue | Consultation des Catalogues</h4>
+
+	<p>
+		Il convient donc de sélectionner la ligne correspondant au catalogue que l'on souhaite consulter et cliquer sur le bouton <b> OK </b>.
+	</p>
+
+	<p>
+		Le Catalogue s'ouvre alors comme suit. Il convient ensuite de saisir les informations une par une : Marque – Modèle – Type.....etc,....
+	</p>
+
+	<p>
+		N.B. : A l'intérieur même d'un catalogue, il est possible de décomposer celui-ci en sous-catalogue. La création d'un sous-catalogue a pour but d'utiliser une même structure et de relier ensuite chacun de ces sous-catalogues à un produit « spécifique »
+	</p>
+
+	<p>
+		Pour créer un sous-catalogue, il suffit de cliquer sur le <b> + </b> situé à droite de la zone "sous-catalogue" et d'indiquer une nouveau n° à ce sous-catalogue.
+	</p>
+
+	<b>Exemple :</b>
+
+	<div class="bai_exemple">
+		<p>
+			Dans notre catalogue de bateaux de plaisance, nous avons créé 3 sous-catalogues :
+		</p>
+
+		<ol>
+			<li>Moteur ( qui regroupe tous les bateaux à moteur ) et relié à un Produit destiné à ne recevoir que des risques de ce type : BAT_MOTE</li>
+			<li>Pneumatique ( qui regroupe tous les bateaux pneumatique ) et relié à un Produit destiné à ne recevoir que des risques de ce type : BAT_PNEU</li>
+			<li>Voilier ( qui regroupe tous les bateaux à voiles ) et relié à un Produit destiné à ne recevoir que des risques de ce type : BAT_VOIL</li>
+		</ol>
+	</div>
+
+	<h4>Rattachement d'un Catalogue à un ou plusieurs produits : Fichier | Liens entre Produits et Catalogues</h4>
+
+	<p>
+		La liste des produits distribués s'affiche à l'écran et il convient de se positionner sur la ligne du produit concerné et de lui rattacher son catalogue par le biais du menu déroulant de la colonne « Catalogue ».
+	</p>
+	<br>
+	<hr>
+	
+	<h3>Utilisation</h3>
+
+	<p>
+		En portefeuille, lors de la création d'une affaire nouvelle, le catalogue rattaché à ce produit, s'ouvrira automatiquement.
+		Cela permet de sélectionner le type de risque voulu, et toutes les informations liées à un champ de l'écran, seront recopiées dans l'onglet « Risque ».
+	</p>
+
+	<p>
+		Le catalogue peut également être ouvert grâce à la commande de formule de calcul CATALOGUE("catalogue","sous-catalogue") pouvant par exemple être utilisée dans une formule de calcul associée à un bouton.
+	</p>
+
+
+</body>

@@ -1,0 +1,62 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:NewValue(doc, value)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>La fonction affecte le texte converti de <code>value</code> à la valeur courante.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			<li><code>value</code> : ne variable de n'importe quel type primitif (booléen, currency, date, float, integer, int64, UnicodeString).<br>
+			La valeur NULL est acceptée
+			</li></ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Aucun.
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "object")
+  Json:NewValue(doc, "varInt", 12)
+  Json:NewValue(doc, "varString", "Test")
+  Json:NewValue(doc, "varBool", True)
+  Json:NewValue(doc, "varDate", Now())
+  Json:NewValue(doc, "varNull", NULL()) 
+Json:EndObject(doc)
+Json:Close(doc)            
+return Json:PrettyFormat(doc)
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre style="color:#000000;background:#ffffff;"><span style="color:#696969; ">{</span>
+<span style="color:#696969; ">  "object": {</span>
+<span style="color:#696969; ">    "varInt": 12,</span>
+<span style="color:#696969; ">    "varString": "Test",</span>
+<span style="color:#696969; ">    "varBool": true,</span>
+<span style="color:#696969; ">    "varDate": "2019-09-16T17:32:19.189+02:00",</span>
+<span style="color:#696969; ">    "varNull": null</span>
+<span style="color:#696969; ">  }</span>
+}
+</pre>
+<!--Created using ToHtml.com on 2019-09-19 15:14:53 UTC -->
+	</div>
+</div>
+</body>

@@ -1,0 +1,25 @@
+<body>
+	<h2>Variables utilisables</h2>
+
+	<p>
+		En plus des variables définies dans la documentation des formules de calcul, il existe des variables spécifiques à l'automate d'import de données. 
+	</p>
+
+	<p>
+		<b>Xn</b> (de <b>XA</b> à <b>XZ</b>) :
+	</p>
+
+	<div class="alert alert-danger">
+		<p>
+			<b>Attention</b> :
+			</p><ul>
+				<li>
+					Ces nouvelles variables ont été créées pour parer à une propriété des variables In qui peut avoir de graves conséquences dans le traitement effectué par un script d'import. Ces variables <b>In</b> sont GLOBALES et accessibles par tous les traitements déclenchés par le script. Il peut donc, lors du traitement, être récupéré dans une variable de ce type, par exemple, une valeur calculée sur un champ consulté par le script.
+				</li>
+				<li>
+					Quelles qu'elles soient, les variables ne sont PAS REINITIALISEES lorsque le script passe à l'enregistrement suivant.
+				</li>
+			</ul>
+		
+	</div>
+</body>

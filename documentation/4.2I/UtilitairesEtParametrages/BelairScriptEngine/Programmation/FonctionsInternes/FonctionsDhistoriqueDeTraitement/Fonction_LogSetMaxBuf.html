@@ -1,0 +1,37 @@
+<body>
+
+
+<h3>Fonctions d'historique de traitement (log)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LogSetMaxBuf(nombre)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Assigne le nombre maximal des enregistrements dans l'historique.
+			<br>La valeur par défaut est : 25. Les nouveaux enregistrements poussent les anciens en ordre de queue. I.e. le 26ème appel de 
+<a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions d'historique de traitement (log)" name="Fonctions%20d'historique%20de%20traitement%20(log)%20:%20LogInfo">LogInfo</a>, 
+<a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions d'historique de traitement (log)" name="Fonctions%20d'historique%20de%20traitement%20(log)%20:%20LogError">LogError</a> ou 
+<a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions d'historique de traitement (log)" name="Fonctions%20d'historique%20de%20traitement%20(log)%20:%20LogWarning">LogWarning</a> supprime le premier enregistrement, etc.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>nombre</code> (integer): nombre maximal des enregistrements dans l'historique.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>LogSetMaxBuf(2)
+LogInfo("Test 1")
+LogInfo("Test 2")
+LogInfo("Test 3") // "Test 1" supprimé</pre>
+			
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

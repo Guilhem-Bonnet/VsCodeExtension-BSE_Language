@@ -1,0 +1,54 @@
+<body>
+
+<h3>Fonctions Zip</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>ZIP:AddTo(param1, param2)</code>
+	</h3></div>
+	<div class="panel-body">
+<p>La fonction permet d'ajouter un dossier ou un fichier au fichier zip. <br>Note :
+	</p><ul>
+	<li>Si le fichier zip existe déjà alors il ajoute sinon il crée le fichier.</li>
+	</ul>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+	</p><ul>
+	<li><code>param1 : </code>Le chemin d'accès au répertoire/ Fichier à archiver</li>
+		<li><code>param2 : </code>Le chemin de l'archive à créer</li>
+	</ul>
+		
+		<br>
+<b>Résultat</b>
+	<ul>
+	<li>true - Si la fonction a réussi</li>
+		<li>false - Si une erreur est survenue</li>
+	</ul>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><div class="bai_exemple"><pre><span class="n">local</span> <span class="n">file1</span><span class="p">,</span> <span class="n">file2</span>
+<span class="n">PathForceDirs</span><span class="p">(</span><span class="s">"c:</span><span class="se">\t</span><span class="s">est</span><span class="se">\"</span><span class="s">)</span><span class="err">
+</span><span class="s">PathForceDirs("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test2</span><span class="err">\</span><span class="s">")</span><span class="err">
+</span><span class="s">file1 := File:Create("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">zipTest1</span><span class="p">.</span><span class="n">txt</span><span class="s">")</span><span class="err">
+</span><span class="s">File:Close(file1)</span><span class="err">
+</span><span class="s">file2 := File:Create("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test2</span><span class="err">\</span><span class="n">zipTest2</span><span class="p">.</span><span class="n">txt</span><span class="s">")</span><span class="err">
+</span><span class="s">File:Close(file2)</span><span class="err">
+</span><span class="s">Zip:AddTo("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test2</span><span class="s">", "</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">ziptest</span><span class="p">.</span><span class="n">zip</span><span class="s">")</span><span class="err">
+</span><span class="s">Zip:AddTo("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">zipTest1</span><span class="p">.</span><span class="n">txt</span><span class="s">", "</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">ziptest</span><span class="p">.</span><span class="n">zip</span><span class="s">")</span><span class="err">
+</span><span class="s">return 0</span><span class="err">
+</span></pre></div>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<div class="bai_exemple">
+<pre>Script result:
+0
+</pre>
+	</div>
+</div>
+</div></body>

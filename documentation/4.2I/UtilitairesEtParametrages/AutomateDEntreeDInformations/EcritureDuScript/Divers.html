@@ -1,0 +1,244 @@
+<body>
+	<h2>Divers</h2>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>AFQUIT</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affectation de la quittance en ligne
+			</p>
+
+			<p>
+				Cette commande crée les lignes correspondantes dans les tables QINT, KENT, KMVT ainsi que l'écriture comptable d'émission si une procédure est indiquée sur le bordereau utilisé.
+			</p>
+
+			<p>
+				La quittance ne doit pas déjà être affectée.<br>
+				Le bordereau doit être affectée (?QBOR("B_AFFECTE")=VRAI).
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DELGAR("code_garantie")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Suppression d'une garantie acquise
+			</p>
+
+			<ul>
+				<li><b>code_garantie</b> : code de la garantie à supprimer</li>
+			</ul>
+
+			<p>
+				Si l'opération est effectuée sur un contrat multi-adhésions sans être positionné sur une adhésion donnée, la garantie est alors supprimée de l'ensemble des adhésions du contrat.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>CALCULTARIF</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				(Re)calcule la prime de base du risque mis en mémoire.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>CALCULTARIF("code_garantie")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Met en mémoire la prime de base DEJA EXISTANTE et recalcule la garantie "code_garantie" pour le risque en mémoire.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>COM(table,"commentaire")</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Insertion d’une ligne de commentaire dans une table
+			</p>
+
+			<ul>
+				<li><b>table</b> : code Belair de la table concernée, elle doit obligatoirement contenir un champ 'b_memo'</li>
+				<li><b>"commentaire"</b>  : chaîne de caractères</li>
+			</ul>
+
+			<p>
+				L’enregistrement doit être en ligne (par un RECSQL, RECALP, un NEWxxx)
+			</p>
+
+			<p>
+				Si commentaire est vide, la fonction est ignorée.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>KPR(entite,numkpr)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Déclenchement d'une procédure comptable
+			</p>
+
+			<ul>
+				<li><b>entité</b> : entier, n° de l'entité comptable</li>
+				<li><b>numkpr</b> : entier, n° de la procédure comptable à exploiter</li>
+			</ul>
+
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					KPR(1,132) <span class="bai_comment">// lancement de la procédure comptable 132 sur l'entité n° 1.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>KPRC(comptabilite,numkpr)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Déclenchement d'une procédure comptable
+			</p>
+
+			<ul>
+				<li><b>comptabilité</b> : entier, n° de la comptabilité</li>
+				<li><b>numkpr</b> : entier, n° de la procédure comptable a exploiter</li>
+			</ul>
+
+			<b>Exemple :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					KPR(1,132)    // lancement de la procédure comptable 132 sur la comptabilité n° 1.
+				</div>
+
+				<p>
+					La commande RESULT permet dans ce cas de récupérer le numéro interne de l'écriture (pas le n° dans l'exercice) qui vient d'être créée par KPRC.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>KPRD(entité,numkpr), KPRS(entité,numkpr) et KPRV</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Le but est de pouvoir utiliser des procédures comptables "complémentaires" pour générer une seule écriture.
+
+				</p><ul>
+					<li><b>KPRD(entité,numkpr)</b> : exécution de la procédure indiquée avec création d'une nouvelle écriture ("D" pour "début").</li>
+
+					<li><b>KPRS(entité,numkpr)</b> : exécution de la procédure indiquée sans création d'écriture ("S" pour "suite").</li>
+
+					<li>KPRV : validation de l'écriture en cours ("V" pour "validation").</li>
+				</ul>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>NUMCBT</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Affectation dynamique du n° de sinistre Cabinet en fonction de la date de survenance.<br>
+				Le sinistre doit être ouvert et l'information 'B_DATESURV' doit être renseignée.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>COPIE(dest,source)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Permet de recopier tous les champs d'une "source" (table ou SQL) vers une table
+			</p>
+
+			<div class="alert alert-danger">
+				<p>
+					<b>Attention :</b>
+				</p>
+				<ul>
+					<li>Si le but est de créer un nouvel enregistrement, il faut quand même faire un NEW("table") avant</li>
+					<li>La fonction copie TOUT, y compris la clé, donc bien prévoir la gestion des champs de la clé primaire</li>
+				</ul>
+			</div>
+
+			<b>Exemple : on recopie une extension XDABC d'une adhésion à une autre</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					<span class="bai_comment">// recopie de XDABC</span><br>
+					IA := ?ADH("B_ADHESION")<br>
+					IZ := ?DATA("NUMADH")<br>
+					<span class="bai_comment">// On récupère le contenu de l'extension XDABC de l'adhésion IZ</span><br>
+					SQL:NEW(EXTIZ)<br>
+					*SELECT  *  FROM  [XDABC]<br>
+					*WHERE  B_RISQUE = :IZ<br>
+					SQL:OPEN(EXTIZ)<br>
+					<span class="bai_comment">// On crée l'extension XDABC vide pour l'adhésion IA</span><br>
+					NEW("XDABC")<br>
+					<span class="bai_comment">// On bascule les données de IZ dans IA</span><br>
+					COPIE("XDABC","SQLEXTIZ")<br>
+					<span class="bai_comment">// La clé étant elle-même basculée, on la remplace avant de valider l'enregistrement par Ok</span><br>
+					?XDABC("B_RISQUE") := IA<br>
+					OK<br>
+					<br>
+					SQL:CLOSE(EXTIZ)<br>
+					SQL:FREE(EXTIZ)
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RECORDDATA</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Copie d'enregistrement d'un fichier texte<br>
+				Cette fonction, utilisable également dans une formule alphabétique, rend l'intégralité de l'enregistrement en cours de traitement dans l'automate (la ligne du fichier lu).<br>
+				Elle n'est exploitable que pour les scripts traitant un fichier texte.
+			</p>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>CALCULFIELDS(VRAI/FAUX)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p><b>Activer / désactiver les calculs dans un script Automate</b></p>
+			<p>
+				Si depuis un champ, exemple : <i>?TIERS(« B_REFEXT »)</i>, il existe une formule de calcul sur ce champ<br>
+				</p><pre>?TIERS("B_REFEXT") = ?TIERS("B_NUMEMAIL")</pre>
+			<br>
+			<p>Un paramétrage existe dans les scripts indiquant si on souhaite ou non activer le calcul des champs pendant l'exécution des scripts<br>
+			   Cette activation ou non est constante pendant l'exécution du script.<br>
+			   Dans certains cas, il est souhaitable de pouvoir désactiver/activer les calculs au sein du script. <br>
+			   </p><pre>CALCULFIELDS(VRAI/FAUX)</pre> qui active désactive le calcul des champs.<br>
+			   Au lancement du script, le mode doit être activé selon le paramétrage du script.<br>
+			
+</div></div></body>

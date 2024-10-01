@@ -1,0 +1,75 @@
+<body>
+
+
+<h3>Fonctions de manipulation des objets</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Obj:DumpVar (synonyme de VarDump)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie les types et les valeurs des propriétés d'un objet sous forme de chaîne de caractères séparés par CRLF.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. Une variable de type scalaire, de tableau ou d'objet.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>La chaîne de caractères contenant le dump.
+				
+				</p><div class="alert alert-info" role="alert"><p><b>Notez que :</b>
+				<br>
+				<br>La valeur "Unknown" correspond en général à un autre objet que vous pouvez récupérer dans une variable que vous pouvez ensuite explorer par un autre dump.</p></div>
+				<br>
+			
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local entity
+entity := Meta:GetEntityByCode(<span class="string"><span class="delimiter">"</span><span class="content">Adh</span><span class="delimiter">"</span></span>)
+Print(<span class="string"><span class="delimiter">"</span><span class="content">---</span><span class="delimiter">"</span></span>)
+Print(Obj:DumpVar(entity))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="text syntaxhl"><span class="CodeRay">Entity ADH
+---
+Caption (UnicodeString): Adhésion
+Changed (Boolean): False
+Code (UnicodeString): ADH
+ComponentName (UnicodeString): 
+Domain (UnicodeString): Tiers / Contrat / Sinistres
+FieldDefs (UnicodeString): 
+Fields (Unknown): unknown
+Group (UnicodeString): Contrats
+HistoryOptions (Unknown): unknown
+Indexes (Unknown): unknown
+IsComplement (Boolean): False
+IsDataDictionnaryItem (Boolean): False
+IsMaster (Boolean): True
+Locked (Boolean): False
+LockedByOwner (Boolean): False
+Model (Unknown): unknown
+Name (UnicodeString): ADHDEI
+OldName (UnicodeString): 
+Owner (Unknown): unknown
+Relations (Unknown): unknown
+TableType (Unknown): unknown
+Traced (Boolean): False
+UsesNameSuffix (Boolean): True
+</span></code></pre>
+				
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

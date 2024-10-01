@@ -1,0 +1,149 @@
+<body>
+	<h3>Fonctions numériques</h3>
+	
+	<!-- Fonction les arrondis -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LES ARRONDIS</code><span class="label label-danger pull-right">incomplet</span></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+			</p><pre><code class="c syntaxhl"><span class="CodeRay">Règle pour la fonction de calcul ARRONDI(montant, type, niveau)
+
+    si niveau arrondi  6 , on applique la "nouvelle règle"
+
+Ainsi, on ne touche à rien dans le résultat des fonctions programmées (les arrondis sont souvent sur des valeurs monétaires qui n'ont jamais d'arrondi &gt; 4 décimales) mais on règle le problème pour les autres cas éventuels
+</span></code></pre><br>Cela permet de bien séparer les deux méthodes de calculs d'arrondis, et donc des soucis dans le futur pour chercher à comprendre pourquoi l'arrondi est parfois juste, ou parfois faux, selon le nombre de décimales demandées.<br><br>
+			<p>La modification du programme consiste à ajouter une option <b><i>Arrondi historique</i></b>, disponible dans <u>les paramètres avancés d'application.</u><br><br><img src="images/arrondis02.png"><br><br><img src="images/arrondis03.png"></p>
+<br><p><u>Cette option est cochée par défaut.</u><br><img src="images/arrondis04.png"><br>Lorsqu'elle est cochée, on ajoute toujours la valeur de 0.000001, ce qui rend tout arrondi à plus de 5 décimales faux.
+<br></p><p><u>Si on la décoche,</u><br><img src="images/arrondis05.png"><br>cette valeur de 0.000001 n'est plus ajoutée, les résultats sont justes.
+			</p><p>
+				<b>Exemple :</b><br>
+				</p><div class="bai_exemple">	
+					Après le calcul, la formule donne <span class="bai_code">12,3456</span>
+					<br><br>
+					Si la case cochée est :<br><br>
+					<ul>
+						<li><u>Aucune</u> (quel que soit le niveau) : le résultat rendu est <span class="bai_code">12,3456</span></li>
+						<br>
+						<li>
+							<u>Au plus près</u> :
+							<ul>
+								<li>niveau : 0,1 le résultat rendu est <span class="bai_code">12,3</span></li>
+								<li>niveau : 0,01 le résultat rendu est <span class="bai_code">12.35</span></li>
+							</ul>
+						</li>
+						<br>
+						<li>
+							<u>Inférieure</u> :
+							<ul>
+								<li>niveau : 0,1 le résultat rendu est <span class="bai_code">12,3</span></li>
+								<li>niveau : 0,01 le résultat rendu est <span class="bai_code">12,34</span></li>
+								<li>niveau : 1 le résultat rendu est <span class="bai_code">12</span></li>
+							</ul>
+						</li>
+						<br>
+						<li>
+							<u>Supérieure</u> :
+							<ul>
+								<li>niveau : 0,1 le résultat rendu est <span class="bai_code">12,4</span></li>
+								<li>niveau : 0,01 le résultat rendu est <span class="bai_code">12,35</span></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			
+			<hr>
+			<b>ARRONDI(<i>N,A,B</i>) :</b>
+			<p>
+				Permet d'obtenir des arrondis dans des calculs pour des valeurs qui ne sont pas le résultat de la formule
+			</p>
+			<p>
+				<b>Paramètres :</b>
+				<br><br>
+				<code>N</code> : montant à arrondir
+				<br><br>
+				<code>A</code> : type d'arrondi : "" (au dessus)
+				<br><br>
+				<code>B</code> : niveau d'arrondi : "0,01", "1", etc...
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>ABS(<i>X</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne la valeur absolue de "X".
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>TRUNC(<i>X</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne la valeur tronquée à l'unité de "X".
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>EXP(<i>X</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne la valeur exponentielle de "X".
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>PUISS(<i>X, Y</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne la puissance de "X" à la puissance "Y"
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LOGN(<i>X, Y</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne le logarithme base "X" de "Y".
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LN(<i>X</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne le logarithme népérien de "X".
+			</p>
+		</div>
+	</div>
+	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>RACINE(<i>X, Y</i>)</code></h3>
+		</div>
+		<div class="panel-body">
+			<p>
+				Retourne la racine X de Y.
+			</p>
+		</div>
+	</div>
+</body>

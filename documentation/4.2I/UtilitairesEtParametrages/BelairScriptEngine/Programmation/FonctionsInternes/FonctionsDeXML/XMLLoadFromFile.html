@@ -1,0 +1,54 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:LoadFromFile(filename)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction crée et initialise le document XML à partir d'un fichier XML.
+			</p>
+			
+			<br>
+			<p><b>Paramètres d'entrée :</b></p>
+				<ul>
+				<li><code>filename</code> : le nom du fichier.</li>
+				</ul>			
+			<br>
+			<p><b>Résultat :</b>
+			<br>Le document XML.</p>
+			
+			
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc1, doc2
+doc1 := XML:New()
+XML:StartNode(doc1, <span class="string"><span class="delimiter">"</span><span class="content">colors</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc1, <span class="string"><span class="delimiter">"</span><span class="content">color</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">red</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc1, <span class="string"><span class="delimiter">"</span><span class="content">color</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">green</span><span class="delimiter">"</span></span>)
+  XML:AppendNode(doc1, <span class="string"><span class="delimiter">"</span><span class="content">color</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">blue</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc1)
+XML:SaveToFile(doc1, <span class="string"><span class="delimiter">"</span><span class="content">test.xml</span><span class="delimiter">"</span></span>)
+doc2 := XML:LoadFromFile(<span class="string"><span class="delimiter">"</span><span class="content">test.xml</span><span class="delimiter">"</span></span>)
+Print(XML:PrettyFormat(doc2))
+</span></code></pre>
+
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;colors&gt;</span>
+  <span class="tag">&lt;color&gt;</span>red<span class="tag">&lt;/color&gt;</span>
+  <span class="tag">&lt;color&gt;</span>green<span class="tag">&lt;/color&gt;</span>
+  <span class="tag">&lt;color&gt;</span>blue<span class="tag">&lt;/color&gt;</span>
+<span class="tag">&lt;/colors&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

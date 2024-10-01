@@ -1,0 +1,57 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Ktie_Manage</code></h3>
+		</div>
+
+<p>Création / Modification de comptes de tiers</p>
+
+
+	<p>Cette fonction permet de créer ou modifier un tiers en comptabilité, ainisi que l'ensemble des comptes d'un groupe de tiers, pour ce tiers</p>
+
+
+	<a name="Parametres"></a>
+<h2>Parametres<a href="#Parametres" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li> Codek (string, obligatoire) : code comptabilité</li>
+		<li> Tiers (string, obligatoire) : code Tiers</li>
+		<li>Name (string, optionnel) : nom du tiers (par défaut, constante 'TIERS xxxxx')</li>
+		<li>Group (string, optionnel) : nom du groupe de tiers (si non renseigné, seul le record de KTIE sera géré</li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h2>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h2>
+
+
+	<ul>
+	<li>Création ou modification dans KTIE</li>
+		<li>Si Group est renseigné, création ou modification des comptes(KCTE)  listés dans le groupe de comptes (table KGT)</li>
+	</ul>
+
+
+	<a name="Resultat"></a>
+<h2>Resultat<a href="#Resultat" class="wiki-anchor"></a></h2>
+
+
+	<p>Flux XML indiquant le(s) compte(s) créé(s)</p>
+
+
+<pre><code class="XML syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;kctes</span> <span class="na">codek=</span><span class="s">"1"</span> <span class="na">tiers=</span><span class="s">"AB1234"</span> <span class="na">name=</span><span class="s">"Assurance Blanchi"</span> <span class="na">group=</span><span class="s">"APPORTEURS"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;kcte&gt;</span>
+    <span class="nt">&lt;compte&gt;</span>468900<span class="nt">&lt;/compte&gt;</span>
+    <span class="nt">&lt;tiers&gt;</span>AB1234<span class="nt">&lt;/tiers&gt;</span>
+    <span class="nt">&lt;intitule&gt;</span>Assurance Blanchi commissions <span class="nt">&lt;/intitule&gt;</span>
+  <span class="nt">&lt;/kcte&gt;</span>
+  <span class="nt">&lt;kcte&gt;</span>
+    <span class="nt">&lt;compte&gt;</span>469000<span class="nt">&lt;/compte&gt;</span>
+    <span class="nt">&lt;tiers&gt;</span>AB1234<span class="nt">&lt;/tiers&gt;</span>
+    <span class="nt">&lt;intitule&gt;</span>Assurance Blanchi commissions <span class="nt">&lt;/intitule&gt;</span>
+  <span class="nt">&lt;/kcte&gt;</span>
+<span class="nt">&lt;/kctes&gt;</span>
+</code></pre>
+</div></body>

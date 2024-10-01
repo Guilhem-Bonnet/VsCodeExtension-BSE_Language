@@ -1,0 +1,47 @@
+<body>
+
+
+<h3>Fonctions de système</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Null()</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie la valeur vide.
+<br>Pour comparer utiliser <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions de système" name="Fonctions%20de%20syst%C3%A8me%20:%20IsNull">IsNull()</a>.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><p>Aucun.</p>
+				<br>
+			
+			<b><br>Résultat :</b>
+			<p>La valeur vide.</p>
+			<p>
+				<b><br>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local o1
+o1 := Obj:New()
+o1.PropInt := <span class="integer">123</span>
+o1.EmptyProp := Null()
+Print(DumpVar(o1))
+Print(<span class="string"><span class="delimiter">"</span><span class="content">IsNull(EmptyProp): %s</span><span class="delimiter">"</span></span>, IsNull(o1.EmptyProp))
+</span></code></pre>
+				
+<p>Résultat :</p>
+
+<pre>
+Object (Object):
+  EmptyProp (Empty): 
+  PropInt (Integer): 123
+IsNull(EmptyProp): True
+</pre>
+				
+			
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

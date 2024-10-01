@@ -1,0 +1,47 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>DPP_Details</code></h3>
+		</div>
+		<div class="panel-body">
+
+<p>Détail d'un DPP</p>
+
+	<a name="parametre"></a>
+<h4>Parametre<a href="#parametre" class="wiki-anchor"></a></h4>
+
+
+	<ul>
+	<li>numdpp (integer, obligatoire) : numéro du DPP</li>
+	</ul>
+
+
+	<a name="Contr%C3%B4les"></a>
+<h3>Contrôles<a href="#Contr%C3%B4les" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Existence en BDD =&gt; Error("DPP %s inexistant")</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;dpp&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"DPP"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Activite"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>ACTIF<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Age"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Agemsme"</span> <span class="na">type=</span><span class="s">"ptUnknown"</span> <span class="na">is_null=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Alias"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>TUTU<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Catprof"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>C<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Condacc"</span> <span class="na">type=</span><span class="s">"ptBool"</span> <span class="na">bool_val=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Csp"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>33<span class="nt">&lt;/param&gt;</span>
+    <span class="c">&lt;!-- ..... etc..... --&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/dpp&gt;</span>
+</code></pre>
+</div></div></body>

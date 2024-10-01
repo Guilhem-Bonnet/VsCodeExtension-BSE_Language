@@ -1,0 +1,32 @@
+<body>
+
+
+<h3>Fonctions d'historique de traitement (log)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LogInfo(message, arguments)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Ajoute un message d'information dans l'historique.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><li><code>message</code> (string) - le message d'erreur, ou la chaîne de format, comme dans la fonction <a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Programmation, Les fonctions internes, Fonctions d'interaction" name="Fonctions%20d'interaction%20:%20Print">Print</a>.</li>
+				<li><code>arguments</code> (optionnel) les arguments à formater.</li>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>LogInfo("Processing invoices")
+LogInfo("Processing finished at %s", Now())</pre>
+			
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

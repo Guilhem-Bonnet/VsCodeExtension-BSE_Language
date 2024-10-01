@@ -1,0 +1,52 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Tab_ListValues</code></h3>
+		</div>
+
+<p>Tab_ListValues</p>
+
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>tabcode (string, obligatoire) : nom de la table</li>
+	</ul>
+
+
+	<a name="retour"></a>
+<h3>retour<a href="#retour" class="wiki-anchor"></a></h3>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;tab</span> <span class="na">tabcode=</span><span class="s">"TITRE"</span> <span class="na">type=</span><span class="s">"C"</span> <span class="na">align=</span><span class="s">"G"</span> <span class="na">size=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;items&gt;</span>
+    <span class="nt">&lt;objects&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"tab"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tabaff"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Auto Ecole<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tabcode"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>TITRE<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tabref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AE<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tabval"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Auto Ecole<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Valref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AE:Auto Ecole<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"tab"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tabaff"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Aréo-Club<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tabcode"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>TITRE<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tabref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AERO<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Tabval"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>Aréo-Club<span class="nt">&lt;/param&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Valref"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>AERO:Aréo-Club<span class="nt">&lt;/param&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+      ....    
+      <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;/items&gt;</span>
+<span class="nt">&lt;/tab&gt;</span>
+</code></pre>
+
+	<ul>
+	<li>Les attributs type, align et size sont extraites du 'header' (ligne '.' dans TAB)</li>
+		<li>les balises &lt;items&gt; sont les lignes autres que '.'</li>
+	</ul>
+</div></body>

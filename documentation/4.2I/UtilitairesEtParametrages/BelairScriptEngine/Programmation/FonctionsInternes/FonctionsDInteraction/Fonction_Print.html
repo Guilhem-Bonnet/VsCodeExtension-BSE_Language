@@ -1,0 +1,41 @@
+<body>
+
+
+<h3>Fonctions d'interaction</h3>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Print(text,variables)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie le texte vers la sortie abstraite, qui est définie par le programme d'exécution des scripts, par exemple :</p>
+			<ul><li>la console Windows, en cas de 
+<a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Outils, BSEExec" name="BSEExec%20-%20l'outil%20d'ex%C3%A9cution%20des%20scripts%20%C3%A0%20partir%20de%20ligne%20de%20commande">BSEExec</a> ;</li>
+			<li>la fenêtre de sortie, en cas de 
+<a class="doc-link" categories="Utilitaires et paramétrages, BSE Belair Script Engine, Outils, BSEDev" name="BSEDev%20-%20l'environnement%20de%20d%C3%A9veloppement%20des%20scripts/tests">BSEDev</a> ;</li>
+			<li>etc.</li>
+			</ul>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>texte</code> : le texte ou la variable de type string,</li></ul>
+				ou :
+				<ul><li><code>texte</code> : Une chaine de format compatible à celui de la fonction <a href="http://docwiki.embarcadero.com/Libraries/Tokyo/fr/System.SysUtils.Format" target="__BLANK">Format</a> de Delphi ;
+				<br><b>(Uniquement l'indication de format %s est acceptée !)</b></li>
+				<li><code>variables</code> : liste des variables à formater (de 1 à 99 au maximum)
+				</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>print("Message")
+print(SomeStringVariable)
+print("Format avec %s", param1)
+print(FormatVariable, param1)
+print("Format avec %s, %s, %s", param1, param2, param3)</pre>
+			
+		</div>
+	</div>
+</body>

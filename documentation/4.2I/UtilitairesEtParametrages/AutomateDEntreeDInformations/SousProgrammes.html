@@ -1,0 +1,78 @@
+<body>
+	<h2>Utilisation de sous-programmes</h2>
+
+	<p>
+		Dans un script, elle permet de créer des fonctions qui peuvent être appelées plusieurs fois depuis le corps du script. Cela évite des duplications inutiles.<br>
+		On peut passer jusqu'à 9 paramètres et récupérer une valeur en retour.
+	</p>
+
+	<p>
+		Appel d'un sous-programme.<br>
+		Il se fait à l'aide de la ligne :
+	</p>
+
+	<div class="bai_code">
+		EXEC maproc(P1, P2, ..., P9) [Iy]
+	</div>
+
+	<p>
+		</p><ul>
+			<li>P1, ... , P9 sont les paramètres (optionnels) que l'on veut fournir en entrée au sous-programme. Ces paramètres sont impérativement du type « chaîne de caractères ».</li>
+			<li>"maproc" est le nom du sous-programme que l'on veut appeler.</li>
+			<li>[Iy] donne le nom de la variable qui recevra la valeur de retour (facultatif).</li>
+		</ul>
+	
+
+	<p>
+		Les sous-programmes doivent être placés à la fin du script, après toutes les lignes du corps du script.
+		Le corps du script doit obligatoirement se terminer par une instruction FIN.
+	</p>
+	<br>
+	<p>
+		Chaque sous-programme a un nom, défini dans sa première ligne qui a la forme :
+	</p>
+
+	<div class="bai_code">
+		SUBR maproc
+	</div>
+
+	<p>
+		</p><ul>
+			<li>"maproc" est le nom du sous-programme. Comme pour les étiquettes de débranchement, il ne doit y avoir rien d'autre sur cette ligne (pas de commentaires).</li>
+		</ul>
+	
+	<br>
+	<p>
+		La fin du sous-programme est matérialisée par une ligne :
+	</p>
+
+	<div class="bai_code">
+		RETURN [Ix]
+	</div>
+
+	<p>
+		</p><ul>
+			<li>dans laquelle [Ix] indique la variable dont le contenu sera renvoyé en retour (facultatif).</li>
+		</ul>
+	
+
+	<p>
+		Tous les traitements nécessaires sont inclus entre ces deux lignes.
+	</p>
+	<br>
+	<p>
+		Les paramètres passés P1, …,P9 peuvent être lus via les variables I1 à I9.<br>
+		Ces variables sont des variables locales au sous-programme.<br>
+		Ce dernier peut néanmoins utiliser les variables IA, ..., IZ, communes à tous les traitements.<br>
+		(en ce cas, veiller aux « écrasements » sournois qui pourraient se produire).<br>
+		Un sous-programme peut en appeler un autre (imbrication limitée à 9 niveaux).<br>
+		Les variables I1, .., I9 sont locales propres à chaque sous-programme : elles ne se mélangent pas en cas de sous-programmes imbriqués. Ceci implique que les différents niveaux ne peuvent communiquer que par le passage de paramètres lors de l'appel ou bien par les variables globales IA, ..., IZ.
+	</p>
+
+	<p>
+		L'emploi de débranchements est possible dans un sous-programme, à condition de toujours rester au sein du sous-programme (pas de débranchement vers des lignes en dehors de l'intervalle SUBR … RETURN).
+	</p>
+	<div class="alert alert-danger">
+		<b>Attention :</b> Une telle anomalie n'est pas actuellement détectable par l'automate. Il n'y aura pas de message d'erreur, mais le comportement du script sera imprévisible
+	</div>
+</body>

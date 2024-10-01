@@ -1,0 +1,59 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Xtlog_Search</code></h3>
+		</div>
+
+	<p>Recherche d'un login de connexion à une plate forme externe (extranet, etc...)</p>
+
+
+	<p>Cette fonction peut être utilisée pour mettre en place un système "mot de passe perdu"</p>
+
+
+	<a name="Param%C3%A8tres"></a>
+<h3>Paramètres<a href="#Param%C3%A8tres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>domain (string, obligatoire) : domaine concerné (ex. 'ECF', 'CMI', 'INTRANET'...)</li>
+		<li>email (string, obligatoire) : email associé</li>
+		<li>login (string, optionnel) : login utilisateur</li>
+		<li>dossier (entier, optionnel) : dossier dans Belair (xtlog.b_numtiers)</li>
+	</ul>
+
+
+	<a name="Retour"></a>
+<h3>Retour<a href="#Retour" class="wiki-anchor"></a></h3>
+
+
+	<p>Flux Xml:</p>
+
+
+<pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;xtlog&gt;</span>
+  <span class="nt">&lt;object</span> <span class="na">typename=</span><span class="s">"Xtlog"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Email"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>broche@belair-info.fr<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Login"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>rochebruno<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Numtiers"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"1007"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Ordreext"</span> <span class="na">type=</span><span class="s">"ptInt"</span> <span class="na">int_val=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Role"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>C<span class="nt">&lt;/param&gt;</span>
+    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"Site"</span> <span class="na">type=</span><span class="s">"ptString"</span><span class="nt">&gt;</span>ESPCLI<span class="nt">&lt;/param&gt;</span>
+  <span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/xtlog&gt;</span>
+</code></pre>
+
+	<p>En cas d'erreur, i.e. nombre de résultat(s)  1 :</p>
+
+
+	<ul>
+	<li>retour vide : <br><pre><code class="xml syntaxhl"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;xtlog/&gt;</span>
+</code></pre></li>
+	</ul>
+
+
+	<ul>
+	<li>et message dans le logError "réponse non exploitable (vide ou multiple)"</li>
+	</ul>
+</div></body>

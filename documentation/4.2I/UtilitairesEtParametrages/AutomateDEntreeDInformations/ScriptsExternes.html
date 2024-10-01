@@ -1,0 +1,113 @@
+<body>
+	<h2>Utilisation de scripts externes</h2>
+	<br>
+	<p>
+		Onglet : <img src="images/description.jpg">
+		<br><br>
+		Si la case a cocher "Script externe" est cochée, les informations se trouvant dans la liste accessible par le bouton du même nom sont véhiculées avec le script principal.
+		Cocher cette case permet d'indiquer que l'on va (éventuellement) utiliser des scripts externes.
+	</p>
+
+	<p>
+		Un script externe est un ensemble de lignes enregistrées dans un fichier externe (autre que le script "maître").
+		Ces lignes sont structurées en blocs à inclure dans le script.
+		Un bloc débute par son nom précédé de ":" et finit par l'instruction "STOP" (cette instruction est facultative, si elle n'est pas présente l'ensemble des lignes qui suit le nom du bloc est considéré comme en faisant partie).
+	</p>
+
+	<ul>
+		<li>
+			Dans la liste des fichiers à inclure, on indique le nom du fichier, si ce nom est enregistré sans indication d'un répertoire spécifique, il sera recherché dans le même répertoire que le script "maître".
+		</li>
+
+		<li>
+			Au moment de l'ouverture/exécution du script "maître", ses lignes sont balayées, si une commence par le caractère #, il est recherché l'étiquette qui suit ce signe dans les fichiers définis dans la liste.<br>
+			Si cette étiquette est trouvée, les lignes du bloc sont insérées dans le script "maître".
+		</li>
+
+		<li>
+			Au moment de l'ouverture du script qui comporte les fichiers (scripts) à inclure, ceux ci sont aussi ouverts et accessibles par le menu général de l'automate : 'Fenêtres'.<br>
+			On peut modifier leur contenu (les lignes du bloc). Ces modifications doivent être enregistrées pour qu'elles soient prises en compte au moment de l'exécution du script maître.
+		</li>
+
+		<li>
+			Lors de l'exécution, il est constitué un ensemble des lignes "a exécuter" dans l'onglet 'script (exécution)' contenant le script maître et les éventuels blocs externes. Les blocs externes apparaissent en violet sur un fond grisé, ils sont encadrés par des commentaires redonnant le nom du bloc ce qui permet de les repérer facilement au sein du script compilé.<br>
+			Cet onglet est accessible en dehors de l'exécution si l'automate est en mode débogage.<br>
+			Il est possible de positionner des 'points d'arrêt' dans l'ensemble du script ainsi formé.
+		</li>
+	</ul>
+
+	<div class="alert alert-warning">
+		<p>
+			<b>Remarque :</b> les fichiers externes doivent être dans le même format que le script maître, donc en fichier *.BSI.
+		</p>
+	</div>
+
+	<div class="alert alert-danger">
+		<p>
+			<b>Attention :</b> un fichier externe peut contenir plusieurs blocs externes bornés par :nom_bloc et STOP(nom_bloc), chaque bloc étant appelé par #nom_bloc dans le script maître
+		</p>
+	</div>
+
+	<u><b>Exemples</b></u>
+	<br><br>
+	<ul>
+		<li>
+			<b>Script maître :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					IA$ := "BB"<br>
+					PRINT("1-"+IA)<br>
+					#EDITXX<br>
+					PRINT("2-"+IA)<br>
+					<br>
+					FIN
+				</div>
+				<p>
+					fait appel a un bloc EDITXX externe
+				</p>
+			</div>
+		</li>
+
+		<li>
+			<b>Script externe :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					:EDITXX<br>
+					IA$:="UUU"<br>
+					<br>
+					ECRAN("INC")<br>
+					<br>
+					STOP(EDITXX)<br>
+					<br>
+					IA$ := "GGGG"<br>
+				</div>
+			</div>
+		</li>
+
+		<li>
+			<b>Script compilé accessible par l'onglet 'Script (exécution)' :</b>
+			<div class="bai_exemple">
+				<div class="bai_code">
+					IA$ := "BB"<br>
+					PRINT("1-"+IA)<br>
+					<span class="bai_comment">//DEBUT BLOC EXTERNE =&gt; #EDITXX</span><br>
+					IA$:="UUU"<br>
+					<br>
+					ECRAN("INC")<br>
+					<br>
+					<span class="bai_comment">//FIN BLOC EXTERNE =&gt; #EDITXX</span><br>
+					PRINT("2-"+IA)<br>
+					<br>
+					FIN
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<p>
+		A l'execution, dans l'encadré "Messages" de l'onglet 'Compte-rendu', il s'affichera une ligne "INC"<br>
+		et dans la fenêtre "Compte-rendu", s'afficheront deux lignes :<br>
+		"1-BB"<br>
+		"2-UUU"
+	</p>
+</body>

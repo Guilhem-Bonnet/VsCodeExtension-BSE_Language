@@ -1,0 +1,62 @@
+<body>
+
+
+<h3>Fonctions de fichiers</h3>
+
+<h4>Fonctions de manipulation de fichiers texte</h4>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>File:OpenWrite(FileName, Encodage)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction ouvre un ficher texte pour l'écriture en mode exclusive.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>FileName</code> : le nom de fichier (string).</li>
+				<li><code>Encodage</code> : l'encodage (optionnel, string) :
+				<ul>
+					<li>ANSI</li>
+					<li>UTF8 ou UTF-8 (valeur par défaut)</li>
+					<li>UTF16 ou UTF-16</li>
+				</ul></li></ul>
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>Un objet de type <i>FileDescriptor</i>.
+			</p>
+			
+			
+			<p>
+				<b><br>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local f1
+f1 := File:Create(<span class="string"><span class="delimiter">"</span><span class="content">test.txt</span><span class="delimiter">"</span></span>)
+File:WriteLine(f1, <span class="string"><span class="delimiter">"</span><span class="content">First line</span><span class="delimiter">"</span></span>)
+File:Close(f1)
+<span class="comment">// Append second line</span>
+f1 := File:OpenWrite(<span class="string"><span class="delimiter">"</span><span class="content">test.txt</span><span class="delimiter">"</span></span>)
+File:WriteLine(f1, <span class="string"><span class="delimiter">"</span><span class="content">Second line</span><span class="delimiter">"</span></span>)
+File:Close(f1)
+<span class="comment">//</span>
+f1 := File:OpenRead(<span class="string"><span class="delimiter">"</span><span class="content">test.txt</span><span class="delimiter">"</span></span>)
+<span class="keyword">while</span> not f1.<span class="predefined-constant">EOF</span> begin
+  Print(File:ReadLine(f1))
+end
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+<pre>
+First line
+Second line
+</pre>
+				
+			
+		</div>
+	</div>
+	<br><br>
+</body>

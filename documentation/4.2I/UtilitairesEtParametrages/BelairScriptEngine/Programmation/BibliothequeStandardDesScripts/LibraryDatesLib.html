@@ -1,0 +1,66 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+<br>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Library Dateslib</code>
+		</h3></div>
+		<div class="panel-body">
+<p>Cette librairie complète les fonctions internes de manipulation des dates</p>
+<pre>function Get_Easter(Year)</pre>
+<p>Calcul du jour de Paques de l'année</p>
+<pre>print(" Paques : " + FormatDatetime("dddddd", Get_Easter(2018)))</pre>
+<pre>Paques : dimanche 1 avril 2018</pre>
+<br>
+<pre>function GetHolidaysList(year)</pre>
+<p>Donne un tableau de dates de tous les jours fériés de l'année</p>
+<pre>Holidays := GetHolidaysList(2018)
+Print(DumpVar(Holidays))</pre>
+<br>
+<pre>Array length: 10
+  [0]: 01/01/2018
+  [1]: 02/04/2018
+  [2]: 10/05/2018
+  [3]: 21/05/2018
+  [4]: 01/05/2018
+  [5]: 08/05/2018
+  [6]: 14/07/2018
+  [7]: 15/08/2018
+  [8]: 11/11/2018
+  [9]: 25/12/2018</pre>
+<br>
+<pre>function GetHolidayNames(year)</pre>
+<p>Donne un tableau de tous les jours fériés de l'année (en clair)</p>
+<pre>Holidaynames := GetHolidayNames(2018)
+Print(DumpVar(Holidaynames))</pre>
+<br>
+<pre>Array length: 10
+  [0]: Jour de l'An: lundi 1 janvier 2018
+  [1]: Lundi de Pâques: lundi 2 avril 2018
+  [2]: Ascension: jeudi 10 mai 2018
+  [3]: Pentecôte: lundi 21 mai 2018
+  [4]: 1er mai: mardi 1 mai 2018
+  [5]: Victoire 1945: mardi 8 mai 2018
+  [6]: Fête nationale: samedi 14 juillet 2018
+  [7]: Ascomption: mercredi 15 août 2018
+  [8]: Armistice 1918: dimanche 11 novembre 2018
+  [9]: Noël: mardi 25 décembre 2018</pre>
+<br>
+<pre>function DayisinWeekend(date)</pre>	
+<p>indique si date tombe un week-end ou non (True, False)</p>
+<br>
+<pre>function DayisHoliday(date)</pre>	
+<p>indique si date tombe est un jour férié ou non (True, False)</p>
+<br>
+<pre>function DayIsWorkingDay(date)</pre>	
+<p>indique si date tombe est un jour ouvré ou non (True, False)</p>
+<br>
+<pre>function GetNextWorkingDay(date, delay)</pre>	
+<p>Donne le 1er jour ouvré, delay jour(s) après date</p>
+<pre>start := Encodedate(2018,5, 16)
+delay := 3
+date := GetNextWorkingDay(start, delay)
+print("premier jour ouvré, %s jour(s) après %s : ", delay, start,FormatDatetime("dddddd", date))</pre>	
+<br>
+<pre>premier jour ouvré, 3 jour(s) après 16/05/2018 : mardi 22 mai 2018</pre>		
+</div></div></body>

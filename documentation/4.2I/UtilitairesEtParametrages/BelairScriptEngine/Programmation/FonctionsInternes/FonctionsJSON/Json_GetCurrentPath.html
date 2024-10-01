@@ -1,0 +1,56 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:GetCurrentPath(doc)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>La fonction renvoie le JSONPaths de la valeur courante.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>La valeur de type UnicodeString.<br>
+			Une chaîne vide est retournée si on est au début ou à la fin du 'document JSON'.
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "colors")
+  Json:NewValue(doc, "color1", "Red")
+  Json:NewValue(doc, "color2", "Green")
+  Json:NewValue(doc, "color3", "Blue")
+Json:EndObject(doc)
+Json:Close(doc)            
+Json:ValueExists(doc, "colors.color1")
+print(Json:GetCurrentPath(doc))
+Json:First(doc)
+print(Json:GetCurrentPath(doc))
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre>
+colors.color1
+""
+</pre>
+	</div>
+</div>
+</body>

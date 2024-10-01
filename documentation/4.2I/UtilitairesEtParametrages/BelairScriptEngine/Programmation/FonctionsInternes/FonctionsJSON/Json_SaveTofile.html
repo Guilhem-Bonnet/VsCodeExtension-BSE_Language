@@ -1,0 +1,65 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:SaveTofile(doc, filename, prettyformat)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>cette fonction enregistre un document JSON dans un fichier.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			<li><code>filename</code> : un nom de fichier</li>
+			<li><code>prettyformat</code> : Un booléen afin d'avoir le contenue du fichier en PrettyFormat (optionnel)</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>Aucun.
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewArray(doc, "colors")
+  Json:NewArrayValue(doc, "Red")
+  Json:NewArrayValue(doc, "Green")
+  Json:NewArrayValue(doc, "Blue")
+Json:EndArray(doc)
+Json:Close(doc)  
+Json:SaveToFile(doc, "Test_PrettyFormat.json", true)
+Json:SaveToFile(doc, "Test_String.json")                                  
+return 0
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+Fichier Test_PrettyFormat.json 
+<pre style="color:#000000;background:#ffffff;"><span style="color:#696969; ">{</span>
+<span style="color:#696969; ">  "colors": [</span>
+<span style="color:#696969; ">    "Red",</span>
+<span style="color:#696969; ">    "Green",</span>
+<span style="color:#696969; ">    "Blue" </span>
+<span style="color:#696969; ">  ]</span>
+<span style="color:#696969; ">}</span>
+</pre>
+<!--Created using ToHtml.com on 2019-09-20 14:21:45 UTC -->
+Fichier Test_String.json 
+<pre style="color:#000000;background:#ffffff;"><span style="color:#696969; ">{"colors":["Red","Green","Blue"]}</span>
+</pre>
+<!--Created using ToHtml.com on 2019-09-20 14:22:25 UTC -->
+	</div>
+</div>
+</body>

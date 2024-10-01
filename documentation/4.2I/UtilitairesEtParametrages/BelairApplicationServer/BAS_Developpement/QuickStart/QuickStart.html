@@ -1,0 +1,367 @@
+<body>
+<!-- titre page -->
+<h1 class="h1">BAS Quick start (Démarrage rapide)</h1>
+
+<!-- presentation page -->
+<div class="alert alert-primary">
+	Guide de démarrage rapide de BAS "Belair Application Services"
+</div>
+
+
+<!-- Rubrique -->
+<section class="my-4">
+	<!-- Titre rubrique -->
+	<h2 class="h2">Pré-requis</h2>
+
+	<!-- Chapitre  -->
+	<div class="row">
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Poste Serveur</h3>
+
+				<!-- paragraphe -->
+				<p>
+					</p><ul>
+						<li>Windows 10 64 bits, 4 Go de mémoire vive au minimum (optionnel : désactiver le pare-feu)</li>
+						<li>SGBD installé (Firebird 2.5.x ou SQL Server depuis la version 2008).</li>
+						<li>
+							Belair v.4.x (ou ultérieur) installé en mode "serveur" (ou "monoposte" si vous souhaitez pouvoir utiliser Belair à partir du serveur)
+							<div class="alert alert-warning" role="alert">
+							BAS n'est pas installé dans le mode d'installation "Client"
+							</div>							
+						</li>
+						<li>Les binaires de support SSL dans le répertoire (doivent être déployés lors de l'installation).</li>
+					</ul>
+				
+
+		</div>
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Structure de répertoire recommandée</h3>
+
+				<!-- paragraphe -->
+<div class="border">
+<pre>D:
+|-- Belair4
+    |-- APPDEI
+        ...
+        |-- BASScripts
+            |-- Std
+                DetailTiers.bsi
+                ...
+    ...
+    Bas.exe
+    ...
+    libeay32.dll
+    ssleay32.dll
+    ...
+    Belair.exe
+</pre>
+</div>
+
+		</div>
+
+	</div>
+	
+</section>
+
+<!-- Rubrique -->
+<section class="my-4">
+	<!-- Titre rubrique -->
+	<h2 class="h2">Démarrer BAS</h2>
+	<div class="alert alert-info">
+		Toutes ces opérations se font grâce à l'utilitaire d'aministration du BAS
+	</div>
+	<p>
+		Depuis le SERVEUR BELAIR, dans le dossier C:\Belair4 (par défaut), trouver le programme BasAdmin.exe, puis exécuter <b>avec les droits d’ADMIN du poste Windows</b>
+	</p>
+
+	<!-- Chapitre  -->
+	<div class="row">
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Installation du service</h3>
+				<div>Onglet <button type="button" class="btn btn-secondary btn-sm">Administration BasDeamon</button></div>
+				<!-- paragraphe -->
+				<div>
+					Sélectionner le fichier de configuration "BasDeamon.conf" , situé dans répertoire d'installation de Belair<br>
+					Cliquer sur <button type="button" class="btn btn-outline-secondary">Installation de BasDaemon</button>
+				</div>
+		</div>
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Installation d'une base</h3>
+
+				<!-- paragraphe -->
+				<div>
+					Onglet <button type="button" class="btn btn-secondary btn-sm">Installer une base</button></div>
+					<table class="table">
+					  <tbody>
+						<tr>
+						  <th scope="row">Sélectionner un fichier de configuration</th>
+						  <td>utiliser <button type="button" class="btn-outline-secondary"><i class="fas fa-search"></i></button> pour sélectionner le fichier APPxxx.conf de l'application Belair</td>
+						</tr>
+						<tr>
+						  <th scope="row">Entrer le nom de votre serveur</th>
+						  <td>Nom du serveur où est installé BAS<br>
+							<div class="alert alert-warning">
+								(pas le serveur où est installé l'application Belair, si différent)
+							</div>
+						  </td>
+						</tr>
+						<tr>
+						  <th scope="row">Choix du port</th>
+						  <td>8080 (par défaut)
+							<div class="alert alert-warning">
+								Si vous installez plusieurs applications, un port différent doit être paramétré par application.
+							</div>
+						  </td>
+						</tr>
+					  </tbody>
+					</table>
+					<p><button type="button" class="btn btn-outline-secondary">Enregistrer</button></p>
+					<div class="alert alert-success">
+						<ul>
+							<li>l'application est ajoutée dans le fichier de configuration du BAS</li>
+							<li>Le fichier APPxxx.conf de l'application est modifié pour prendre en compte ces paramètres</li>
+						</ul>
+					</div>
+					<div>
+						Une fois la (les) base(s) installée(s), le service BasDeamon doit être démarré ou relancé.<br>
+						Onglet <button type="button" class="btn btn-secondary btn-sm">Administration BasDeamon</button>
+						<i class="fas fa-chevron-right ml-2 mr-2"></i>
+						<button type="button" class="btn btn-outline-secondary">Démarrer le service</button> ou <button type="button" class="btn btn-outline-secondary">Relancer le service</button>
+					</div>
+
+				</div>
+				
+		</div>
+</section>
+
+<!-- Rubrique -->
+<section class="my-4">
+	<!-- Titre rubrique -->
+	<h2 class="h2">Vérification du bon fonctionnement du BAS pour une application</h2>
+
+	<div class="row">
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Vérification de la connection http</h3>
+
+				<!-- paragraphe -->
+				<p>
+					Dans votre navigateur internet, taper : <code>http://votreserveur:8080</code> (exemple).<br>
+					</p><div class="alert alert-success">
+						<i class="fas fa-chevron-right mr-2"></i>la page "Bas - Page Infos service" doit s'afficher.
+					</div>
+				
+		</div>
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Vérification de la connection de votre application Belair</h3>
+
+				<!-- paragraphe -->
+				<div>
+					Un script "automate" livré en standard permet de vérifier la bonne installation de votre application dans le BAS.
+				</div>
+				<div>
+					A partir du bureau de Belair:
+					<nav aria-label="breadcrumb">
+					  <ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">Bureautique</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Automate</li>
+					  </ol>
+					</nav>
+					Choisir le script "...\APPXXX\BSIScripts\Std\BUREAU - Test de votre Services BAS.BSI<br>
+					<button type="button" class="btn btn-outline-secondary">Executer</button>
+				</div>
+				<div class="alert alert-success">
+					<i class="fas fa-chevron-right mr-2"></i>le compte-rendu doit indiquer : "Votre serveur Bas est bien démarré".
+				</div>
+				<div class="alert alert-warning">
+					Il est possible que que le pare-feu de Windows vous demande d'autoriser bas.exe à communiquer avec le réseau: donnez cette autorisation.
+				</div>
+		</div>
+	</div>
+</section>
+
+<!-- Rubrique -->
+<section class="my-4">
+	<!-- Titre rubrique -->
+	<h2 class="h2">Configuration avancée</h2>
+
+	<div class="alert alert-info">
+		Les paramètres de configuration du BAS pour une application sont stockés dans le fichier de configuration "APPXXX\appxxx.conf" de votre application, dans la section <b>AppServer</b>
+	</div>
+	<div>
+		Exemple de configuration "standard":
+	</div>
+	<div class="border">
+<pre>[AppServer]
+Host=localhost
+Port=8080
+Endpoint=soap
+</pre>
+	</div>
+	<div class="alert alert-info">
+		Les modes de configuration avancée ci-dessous ne sont pas gérés par la consolde d'amnistration BasAdmin.<br>
+		<i class="fas fa-chevron-right mr-2"></i>Le fichier Appxxx.conf devra donc être modifié par un éditeur de textes pour mettre en place ces modes de configuration avancée.
+	</div>
+			
+
+	<div class="row">
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Configuration en mode HTTPS</h3>
+			<div>
+				Si vous souhaitez mettre en place une connexion au BAS via HTTPS, une nouvelle section doit être ajoutée au fichier de configuration Appxxx.conf.
+				<div class="border">
+				<pre>
+[AppServer.HTTPS]
+SSLPort=443
+HttpEnable=True
+SSLProtocol=5
+SSLPassPhrase=TestBasHTTPS
+SSLCACertificateFile=
+SSLCertificateFile=certificat.crt
+SSLCertificateKeyFile=certificat.key.lock</pre>
+				</div>
+				<div class="alert alert-warning">
+					Les fichiers SSL nécessaires doivent être placés dans ...\Appxxx\OpenSSL\Bas
+				</div>
+				<p><u>Paramètres</u>: 
+				</p><pre>
+SSLPort --&gt; Valeur par défaut 443
+SSLProtocol --valeur par défaut 3
+	Valeurs possible:
+		0 --&gt; SSLv2
+		1 --&gt; SSLv23
+		2 --&gt; SSLv3
+		3 --&gt; TLSv1
+		4 --&gt; TLSv1.1
+		5 --&gt; TLSv1.2
+HttpEnable --&gt; valeur par défaut false
+SSLCACertificateFile --&gt; valeur par défaut ''
+SSLCertificateFile --&gt; valeur par défaut ''
+SSLCertificateKeyFile --&gt; valeur par défaut ''
+SSLPassPhrase --&gt; valeur par défaut ''
+				</pre>
+				
+			</div>
+		</div>
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Configuration du BAS CORS policy</h3>
+			<div>
+				Le CORS (Cross-Origin Resource Sharing) est un mécanisme qui permet à des ressources restreintes d'une page web d'être récupérées par un autre domaine extérieur au domaine à partir duquel la première ressource a été servie.<br>
+				CORS définit une manière dont un navigateur et un serveur peuvent interagir afin de déterminer si oui ou non il est sûr de permettre une demande inter-origines.<br>
+				Cela permet plus de liberté et de fonctionnalités que les requêtes de même origine, mais est plus sécurisé que la simple autorisation d'avoir toutes les requêtes inter-origines.<br>
+				<a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS" target="__BLANK">Références techniques</a>
+			</div>
+				Si vous souhaitez mettre en place ce mécanisme dans BAS, une nouvelle section <b>AppServer.CORS</b>doit être ajoutée au fichier de configuration Appxxx.conf.<br>
+				Exemple:
+				<div class="border">
+				<pre>
+AllowOrigin= "*"
+AllowHeaders ='content-type,soapaction'
+AllowMethods= 'POST'
+AllowMaxAge= 600</pre>
+			</div>
+		</div>
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Utiliser un "Endpoint" différent que "soap"</h3>
+
+				<!-- paragraphe -->
+				<p>
+					La section <b>AppServer</b> doit être modifiée ainsi:
+				</p>
+				<div class="border">
+<pre>[AppServer]
+Host=localhost
+Port=8080
+Endpoint=services</pre>
+				</div>
+		</div>
+	</div>		
+</section>
+
+<!-- Rubrique -->
+<section class="my-4">
+	<!-- Titre rubrique -->
+	<h2 class="h2">Exemples PHP</h2>
+
+	<div class="alert alert-secondary">
+		Environnement (installation WAMP):
+		<ul>
+			<li>Windows 10 64-bits ;</li>
+			<li>Apache 2.4.23 ;</li>
+			<li>PHP 5.6.25.</li>
+		</ul>
+	</div>
+
+	<!-- Chapitre  -->
+	<div class="row">
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Utilisation  avec "endpoint=soap"</h3>
+
+			<b>Script PHP testecho.php:</b>
+			<div class="border">
+			  
+			  <pre>
+<code class="php syntaxhl"><span class="CodeRay"><span class="inline-delimiter">&lt;?php</span>
+<span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;IBasAuthService::Echo() test</span><span class="delimiter">"</span></span>;
+<span class="local-variable">$url</span> = <span class="string"><span class="delimiter">"</span><span class="content">http://localhost:8080/wsdl/IBasAuthService</span><span class="delimiter">"</span></span>;
+<span class="local-variable">$client</span> = <span class="keyword">new</span> <span class="constant">SoapClient</span>(<span class="local-variable">$url</span>); 
+<span class="local-variable">$message</span> = <span class="string"><span class="delimiter">"</span><span class="content">Hello from PHP5 client</span><span class="delimiter">"</span></span>;
+<span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;Echo() response is: </span><span class="delimiter">"</span></span> . <span class="local-variable">$client</span>-&gt;<span class="predefined">Echo</span>(<span class="local-variable">$message</span>) . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+<span class="inline-delimiter">?&gt;</span></span></code></pre>
+			</div>
+
+			<div>
+				Affichage attendu:
+				<div class="border">
+				<pre>
+IBasAuthService::Echo() test
+
+C:\wamp64\www\bastest\testecho.php:6:
+array (size=4)
+  0 =&gt; string 'string Echo(string $message)' (length=28)
+  1 =&gt; string 'BasSecurityContext OpenSession(string $logon, string $password)' (length=63)
+  2 =&gt; string 'void CloseSession(BasSecurityContext $sc)' (length=41)
+  3 =&gt; string 'void CheckSession(BasSecurityContext $sc)' (length=41)
+
+Echo() response is: Hello from PHP5 client</pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-12 ml-3">
+			<!-- Titre Chapitre  -->
+			<h3 class="h3">Utilisation avec endpoint différent</h3>
+
+			<p>
+				Utiliser la méthode <a href="http://php.net/manual/en/soapclient.setlocation.php" target="__BLANK">SoapClient::__setLocation</a>.
+			</p>
+			<div class="border">
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="inline-delimiter">&lt;?php</span>
+  <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;IBasAuthService::Echo() test</span><span class="delimiter">"</span></span>;
+  <span class="local-variable">$base_url</span> = <span class="string"><span class="delimiter">"</span><span class="content">http://localhost:8080</span><span class="delimiter">"</span></span>;
+  <span class="local-variable">$client</span> = <span class="keyword">new</span> <span class="constant">SoapClient</span>(<span class="local-variable">$base_url</span> . <span class="string"><span class="delimiter">"</span><span class="content">/wsdl/IBasAuthService</span><span class="delimiter">"</span></span>); 
+  <span class="local-variable">$client</span>-&gt;__setLocation(<span class="local-variable">$base_url</span> . <span class="string"><span class="delimiter">"</span><span class="content">/services/IBasAuthService</span><span class="delimiter">"</span></span>);
+  <span class="local-variable">$message</span> = <span class="string"><span class="delimiter">"</span><span class="content">Hello from PHP5 client</span><span class="delimiter">"</span></span>;
+  <span class="predefined">print</span> <span class="string"><span class="delimiter">"</span><span class="content">&lt;p&gt;Echo() response is: </span><span class="delimiter">"</span></span> . <span class="local-variable">$client</span>-&gt;<span class="predefined">Echo</span>(<span class="local-variable">$message</span>) . <span class="string"><span class="delimiter">"</span><span class="content">&lt;/p&gt;</span><span class="delimiter">"</span></span>;
+<span class="inline-delimiter">?&gt;</span></span></code></pre>
+			</div>
+		</div>
+	</div>		
+</section>
+</body>

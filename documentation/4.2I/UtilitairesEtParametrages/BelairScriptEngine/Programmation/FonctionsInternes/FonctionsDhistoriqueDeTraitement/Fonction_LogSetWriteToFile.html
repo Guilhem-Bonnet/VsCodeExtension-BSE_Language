@@ -1,0 +1,38 @@
+<body>
+
+
+<h3>Fonctions d'historique de traitement (log)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>LogSetWriteToFile(valeur)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Active l'écriture des informations dans le log système de Belair ou de BAS.
+			<br>La valeur est "false" par défaut.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>valeur</code> (True/False) - activer ou déactiver l'écriture dans le log système.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br>Aucun.</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>LogInfo("Test 1")
+LogSetWriteToFile(true)
+LogInfo("Hello from script")
+LogSetWriteToFile(false)
+LogInfo("Test 3")</pre>
+			
+			<p>Résultat :</p>
+			<p>Dans "Belair.log ou bas_XXX.log".</p>
+			<pre>Bas:5420 [2018-03-20 18:34:48.427 Info] Hello from script</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

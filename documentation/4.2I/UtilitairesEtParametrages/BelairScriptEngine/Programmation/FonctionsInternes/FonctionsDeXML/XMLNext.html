@@ -1,0 +1,71 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XML:Next(doc)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction rend courant le nœud suivant celui courant (next sibling).
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			</p><ul><li>True - l'opération est réussie.</li>
+			<li>False - le nœud courant est le dernier (n'a plus de "frère") ; le nœud courant n'est pas changé.</li></ul>
+
+			
+				<br><b>Exemples :</b><br>
+				
+				<pre><code class="c syntaxhl"><span class="CodeRay">local doc
+<span class="comment">// Create document</span>
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">items</span><span class="delimiter">"</span></span>)
+  XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item1</span><span class="delimiter">"</span></span>)
+    XML:AppendNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item11</span><span class="delimiter">"</span></span>)
+  XML:EndNode(doc)
+  XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">item2</span><span class="delimiter">"</span></span>)
+<span class="comment">// Navigation</span>
+XML:First(doc)
+Print(XML:GetNodeName(doc))
+XML:FirstChild(doc)
+Print(XML:GetNodeName(doc))
+XML:FirstChild(doc)
+Print(XML:GetNodeName(doc))
+<span class="keyword">if</span> XML:Next(doc) then Print(<span class="string"><span class="delimiter">"</span><span class="content">Exists</span><span class="delimiter">"</span></span>) <span class="keyword">else</span> Print(<span class="string"><span class="delimiter">"</span><span class="content">No more children</span><span class="delimiter">"</span></span>)
+XML:Parent(doc)
+XML:Next(doc)
+Print(XML:GetNodeName(doc))
+Print(XML:PrettyFormat(doc))
+</span></code></pre>
+
+<p>Résultat :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay">items
+item1
+item11
+No more children
+item2
+<span class="preprocessor">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;items&gt;</span>
+  <span class="tag">&lt;item1&gt;</span>
+    <span class="tag">&lt;item11</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/item1&gt;</span>
+  <span class="tag">&lt;item2</span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/items&gt;</span>
+</span></code></pre>
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

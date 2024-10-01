@@ -1,0 +1,68 @@
+<body>
+
+
+<h3>Fonctions de XML</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>XMLData(doc, name, Qry, Columns)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction crée des balises XML correspondant à l'ensemble des données (DataSet) retournées par une requête SQL.
+			</p>
+			<br>
+			<p>
+				<b>Paramètres d'entrée :</b>
+				</p><ul>
+				<li><code>doc</code> : le document XML.</li>
+				<li><code>name</code> : le nom de balise pour chaque ligne de dataset.</li>
+				<li><code>Qry</code> : l'objet SQL.</li>
+				<li><code>Columns</code> (optionnel) : une chaîne de caractères contenant les noms de colonnes retenues séparés par "," (virgule) ou ";" (point-virgule).</li>
+				</ul>
+			
+			<br>
+			<p><b>Résultat :</b>
+			<br>Aucun.
+			</p>
+			<br>
+			<p>
+				<b>Exemples :</b><br>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local doc, qry
+qry := SQL:New(<span class="string"><span class="delimiter">"</span><span class="content">SELECT * FROM [tiers] WHERE b_numtierS IN (1000, 1009)</span><span class="delimiter">"</span></span>)
+SQL:Open(qry)
+doc := XML:New()
+XML:StartNode(doc, <span class="string"><span class="delimiter">"</span><span class="content">tiers</span><span class="delimiter">"</span></span>)
+  XML:Data(doc, <span class="string"><span class="delimiter">"</span><span class="content">tier</span><span class="delimiter">"</span></span>, qry, <span class="string"><span class="delimiter">"</span><span class="content">b_numtiers;b_typtiers;b_numdpp;b_titre;b_rsociale</span><span class="delimiter">"</span></span>)
+XML:EndNode(doc)
+<span class="keyword">return</span> doc
+</span></code></pre>
+
+<p>Le document retourné :</p>
+
+<pre><code class="xml syntaxhl"><span class="CodeRay"><span class="preprocessor">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;tiers&gt;</span>
+  <span class="tag">&lt;tier&gt;</span>
+    <span class="tag">&lt;b_numtiers&gt;</span>1000<span class="tag">&lt;/b_numtiers&gt;</span>
+    <span class="tag">&lt;b_typtiers&gt;</span>18<span class="tag">&lt;/b_typtiers&gt;</span>
+    <span class="tag">&lt;b_numdpp&gt;</span>1<span class="tag">&lt;/b_numdpp&gt;</span>
+    <span class="tag">&lt;b_titre&gt;</span>MR<span class="tag">&lt;/b_titre&gt;</span>
+    <span class="tag">&lt;b_rsociale&gt;</span>MARTIN Pierre<span class="tag">&lt;/b_rsociale&gt;</span>
+  <span class="tag">&lt;/tier&gt;</span>
+  <span class="tag">&lt;tier&gt;</span>
+    <span class="tag">&lt;b_numtiers&gt;</span>1009<span class="tag">&lt;/b_numtiers&gt;</span>
+    <span class="tag">&lt;b_typtiers&gt;</span>1T<span class="tag">&lt;/b_typtiers&gt;</span>
+    <span class="tag">&lt;b_numdpp&gt;</span>0<span class="tag">&lt;/b_numdpp&gt;</span>
+    <span class="tag">&lt;b_titre&gt;</span>ETS<span class="tag">&lt;/b_titre&gt;</span>
+    <span class="tag">&lt;b_rsociale&gt;</span>USINE<span class="tag">&lt;/b_rsociale&gt;</span>
+  <span class="tag">&lt;/tier&gt;</span>
+<span class="tag">&lt;/tiers&gt;</span>
+</span></code></pre>
+
+			
+		</div>
+	</div>
+	<br>
+	<br>
+</body>

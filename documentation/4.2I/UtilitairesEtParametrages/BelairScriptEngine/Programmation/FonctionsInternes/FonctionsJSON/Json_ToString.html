@@ -1,0 +1,54 @@
+<body>
+
+<h3>Fonctions JSON</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>Json:ToString(doc)</code>
+	</h3></div>
+	<div class="panel-body">
+		<p>cette fonction renvoie le document Json sous forme de chaîne de caractères.
+		</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+			</p><ul>
+			<li><code>doc</code> : un objet de type 'document JSON'</li>
+			</ul>
+		
+		<br>
+
+		<p>
+			<b>Résultat :</b>
+			<br>La chaîne de caractères contenant le JSON.
+		</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><pre>
+local doc
+doc := Json:New()
+Json:NewObject(doc, "Cars")
+  Json:NewArray(doc, "Renault")
+    Json:NewObject(doc)
+      Json:NewValue(doc, "Model", "zoe")
+      Json:NewValue(doc, "Price", 25700.999)
+      Json:NewValue(doc, "Currency", "EUR")
+    Json:EndObject(doc)
+  Json:EndArray(doc)
+Json:EndObject(doc)
+Json:Close(doc)            
+return Json:ToString(doc)
+</pre>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+<pre style="color:#000000;background:#ffffff;"><span style="color:#696969; ">{"Cars":{"Renault":[{"Model":"zoe","Price":25700.999,"Currency":"EUR"}</span><span style="color:#808030; ">]</span>}}
+</pre>
+<!--Created using ToHtml.com on 2019-09-20 14:40:11 UTC -->
+	</div>
+</div>
+</body>

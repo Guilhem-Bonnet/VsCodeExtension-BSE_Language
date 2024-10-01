@@ -1,0 +1,51 @@
+<body>
+
+<h3>Fonctions Zip</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title"><code>ZIP:UnZip(param1, param2)</code>
+	</h3></div>
+	<div class="panel-body">
+<p>La fonction permet de dézipper un fichier zip. <br>Elle retourne la liste des fichier dézipper</p>
+		<br>
+		<p>
+			<b>Paramètres d'entrée :</b>
+	</p><ul>
+	<li><code>param1 : </code>Le chemin d'accès à l'archive à extraire</li>
+		<li><code>param2 : </code>Le chemin d'accès au répertoire dans lequel placer les fichiers extraits</li>
+	</ul>
+		
+		<b>Résultat</b>
+	<p>Un tableau constitué de chaîne de caractères.</p>
+		<br>
+		<p>
+			<b>Exemple :</b>
+			<br>
+</p><div class="bai_exemple"><pre><span class="n">local</span> <span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="p">,</span> <span class="n">filesList</span>
+<span class="n">PathForceDirs</span><span class="p">(</span><span class="s">"c:</span><span class="se">\t</span><span class="s">est</span><span class="se">\"</span><span class="s">)</span><span class="err">
+</span><span class="s">PathForceDirs("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">test2</span><span class="err">\</span><span class="s">")</span><span class="err">
+</span><span class="s">file1 := File:Create("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">zipTest1</span><span class="p">.</span><span class="n">txt</span><span class="s">")</span><span class="err">
+</span><span class="s">File:Write(file1, "</span><span class="n">BELAIR</span> <span class="n">Informatique</span><span class="s">")</span><span class="err">
+</span><span class="s">File:Close(file1)</span><span class="err">
+</span><span class="s">file1 := File:Create("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">test2</span><span class="err">\</span><span class="n">zipTest2</span><span class="p">.</span><span class="n">txt</span><span class="s">")</span><span class="err">
+</span><span class="s">File:Write(file1, "</span><span class="n">BELAIR</span> <span class="n">Informatique</span><span class="s">")</span><span class="err">
+</span><span class="s">File:Close(file1)</span><span class="err">
+</span><span class="s">Zip:AddTo("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">zipTest1</span><span class="p">.</span><span class="n">txt</span><span class="s">", "</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">ziptest</span><span class="p">.</span><span class="n">zip</span><span class="s">")</span><span class="err">
+</span><span class="s">Zip:AddTo("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">test2</span><span class="err">\</span><span class="n">zipTest2</span><span class="p">.</span><span class="n">txt</span><span class="s">", "</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">ziptest</span><span class="p">.</span><span class="n">zip</span><span class="s">")   </span><span class="err">
+</span><span class="s">filesList := Zip:UnZip("</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">test</span><span class="err">\</span><span class="n">ziptest</span><span class="p">.</span><span class="n">zip</span><span class="s">", "</span><span class="n">c</span><span class="o">:</span><span class="err">\</span><span class="n">testUnzip</span><span class="s">")       </span><span class="err">
+</span><span class="s">return DumpVar(filesList)</span><span class="err">
+</span></pre></div>
+			<br>
+		
+
+		<p><b>Résultat :</b>
+		</p>
+		<div class="bai_exemple">
+<pre>Array length: 2
+  [0]: c:\testUnzip\test\zipTest1.txt
+  [1]: c:\testUnzip\test\test2\zipTest2.txt
+</pre>
+	</div>
+</div>
+</div></body>

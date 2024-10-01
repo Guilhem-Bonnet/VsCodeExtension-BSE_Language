@@ -1,0 +1,74 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:GetRelations(Entity, RelationNumber)/(RelationNumber)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie une relation, selon son numéro dans la liste.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Entity</code> : l'entité.</li>
+				<li><code>RelationNumber</code> : le numéro de relation.</li></ul>
+				<p>ou :</p>
+				<ul><li><code>RelationNumber</code> : le numéro de relation.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>L'objet de type "TRelation".</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre>local entity, relation1, relation2
+entity := Meta:GetEntityByCode("Adh")
+relation1 := Meta:GetRelations(entity, 0) // first entity relation
+Print(Obj:DumpVar(relation1))
+relation2 := Meta:GetRelations(0) // first relation in model 
+Print(Obj:DumpVar(relation2))</pre>
+			
+			<p>Résultat :</p>
+			<pre>Cardinality (Int64): 0
+Changed (Boolean): False
+HasForeignKey (Boolean): True
+IsComplement (Boolean): False
+IsDataDictionnaryItem (Boolean): True
+IsMaster (Boolean): True
+IsMasterDetailDefault (Boolean): True
+Links (Unknown): unknown
+Locked (Boolean): False
+LockedByOwner (Boolean): False
+Model (Unknown): unknown
+Name (UnicodeString): ADH--GARAN
+OldName (UnicodeString): 
+Owner (Unknown): unknown
+Required (Boolean): True
+TableCode (UnicodeString): ADH
+TableCode2 (UnicodeString): GARAN
+
+Cardinality (Int64): 0
+Changed (Boolean): False
+HasForeignKey (Boolean): True
+IsComplement (Boolean): False
+IsDataDictionnaryItem (Boolean): False
+IsMaster (Boolean): True
+IsMasterDetailDefault (Boolean): False
+Links (Unknown): unknown
+Locked (Boolean): False
+LockedByOwner (Boolean): False
+Model (Unknown): unknown
+Name (UnicodeString): CLA--LET
+OldName (UnicodeString): 
+Owner (Unknown): unknown
+Required (Boolean): True
+TableCode (UnicodeString): CLA
+TableCode2 (UnicodeString): LET</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>

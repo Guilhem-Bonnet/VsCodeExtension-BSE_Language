@@ -1,0 +1,130 @@
+<body>
+<h2>Modélisation des données</h2>
+
+
+<h3>Connexion</h3>
+<p>
+	Seul le SUPERVISEUR peut accéder à la modélisation des données.
+	<img src="images/baimodel_login.png" class="img-responsive">
+</p>
+
+
+<h3>Ecran principal</h3>
+<p><img src="images/baimodel_mainscreen.png" class="img-responsive"></p>
+
+ 
+<h3>Liste des tables disponibles</h3>
+
+<div class="alert alert-info" role="alert"> 
+	<p> 
+		La liste affichée dépend des licences acquises
+	</p>
+</div>
+
+	<ul>
+		<li><strong>Toutes les tables</strong> : ensemble des tables (nécessite le module 'modélisation des données')</li>
+		<li><strong>Tables d'extension</strong>. : ensemble des tables d'extension (nécessite le module 'Personnalisation d'extension')</li>
+		<li><strong>Catalogues</strong>. : ensemble des tables de catalogue</li>
+	</ul>
+
+
+<h3>Caractéristiques d'une table</h3>
+<p>
+	En cliquant sur une table, la fenêtre de droite affiche les caractéristiques générales de la table.
+</p>
+<p><img src="images/baimodel_params_table.png" class="img-responsive"></p>
+
+<p>
+	</p><table class="table table-bordered"><tbody>
+			<tr>
+				<td><b>Nom</b></td>
+				<td><b>Valeur</b></td>
+				<td><b>Obligatoire</b></td>
+			</tr>
+			<tr>
+				<td>Code</td>
+				<td>Code logique de la table dans Belair</td>
+				<td>OUI</td>
+			</tr>
+			<tr>
+				<td>Domaine</td>
+				<td>Domaine fonctionnel</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Groupe</td>
+				<td>Groupe fonctionnel</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Intitulé</td>
+				<td>Intitulé de la table  <span class="label label-info ">(titre de l'onglet pour une extension)</span></td>
+				<td>OUI</td>
+			</tr>
+			<tr>
+				<td><b>Nom</b></td>
+				<td>Nom physique de la table dans la base de données</td>
+				<td>OUI</td>
+			</tr>
+			<tr>
+				<td>Tracée ?</td>
+				<td>Indique si toutes les modifications dans cette table sont tracées (si l'option est activée)</td>
+				<td>OUI</td>
+			</tr>
+			<tr>
+				<td>Type de table</td>
+				<td>Indique le type de table :systême, protégée, applicative, extension ou catalogue</td>
+				<td>OUI</td>
+			</tr>
+			</tbody>
+		</table>
+
+
+<h3>Caractéristiques spécifiques aux extensions</h3>
+<p>
+	</p><table class="table table-bordered"><tbody>
+	<tr>
+		<td><b>Nom</b></td>
+		<td><b>Valeur</b></td>
+		<td><b>Obligatoire</b></td>
+	</tr>
+	<tr>
+		<td>Extension multiple</td>
+		<td>indique si la relation avec la table maitre est 0-1 ou 0-N</td>
+		<td>OUI</td>
+	</tr>
+	<tr>
+		<td>Type d'extension</td>
+		<td>Indique la table principale à laquelle l'extension est attachée</td>
+		<td>OUI</td>
+	</tr>
+	</tbody>
+	</table>
+
+
+<h3>Caractéristiques spécifiques aux catalogues</h3>
+<p>
+</p><table class="table table-bordered"><tbody>
+	<tr>
+		<td><b>Nom</b></td>
+		<td><b>Valeur</b></td>
+		<td><b>Obligatoire</b></td>
+	</tr>
+	<tr>
+		<td>Code</td>
+		<td><code> = 'ZX' + {Code Catalogue}</code></td>
+		<td>OUI</td>
+	</tr>
+	<tr>
+		<td>Code Catalogue</td>
+		<td>identifiant du catalogue (détermine le code ci-dessus)</td>
+		<td>OUI</td>
+	</tr>
+	<tr>
+		<td>Fichier logo</td>
+		<td><span class="label label-danger ">a quoi ça sert ??????????</span></td>
+		<td></td>
+	</tr>
+</tbody>
+</table>
+</body>

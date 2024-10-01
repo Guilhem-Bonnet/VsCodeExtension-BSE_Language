@@ -1,0 +1,49 @@
+<body>
+
+
+<h3>Fonctions de manipulation des chaînes de caractères (strings)</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>StrFormat</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie une chaîne formatée et assemblée, à partir d'une chaîne de format et d'un tableau d'arguments.
+			</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li>1. Un string de format compatible à celui de la fonction <a href="http://docwiki.embarcadero.com/Libraries/Tokyo/fr/System.SysUtils.Format" target="__BLANK">Format</a> de Delphi.
+				<br><b>Seule l'indication de format %s est acceptée !</b></li>
+				<li>2. Variable(s) ou constant(s) à formater.
+				<br>Le nombre de paramètres est limité à 99.</li></ul>
+			
+			
+			<p>
+				<b><br>Résultat :</b>
+				<br>La chaîne de caractères formatée.
+
+			</p>
+			
+			<p>
+				<b><br>Exemples :</b>
+				
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local s, i
+i := <span class="integer">123</span>
+s := StrFormat(<span class="string"><span class="delimiter">"</span><span class="content">i = %s</span><span class="delimiter">"</span></span>, i)
+Print(s)
+</span></code></pre>
+
+	<p>Résultat :</p>
+
+
+<pre>
+i = 123
+</pre>
+			
+			
+		</div>
+	</div>
+	<br><br>
+</body>

@@ -1,0 +1,53 @@
+<body>
+
+
+<h3>Fonctions de système</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>GetSysInfo()</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>La fonction renvoie les informations système.
+			</p>
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><p>Aucun.</p>
+				<br>
+			
+			<b><br>Résultat :</b>
+			<p>L'objet concernant les informations suivantes :<br>
+</p><ul><li>Version : une chaîne contenant une version de Belair soit :
+<ul><li>versionMajor ;</li>
+<li>versionMinor ;</li>
+<li>versionRelease ;</li>
+<li>versionRevision.</li></ul></li>
+<li>ApplicationName : le nom d'application.</li>
+<li>OSVersionName : la chaîne contenant la version du système d'exploitation.</li></ul>
+			<p>
+				<b><br>Exemples :</b><br>
+				</p><pre>local sysinfo
+sysinfo := GetSysInfo()
+Print(sysinfo.Version)
+Print(sysinfo.VersionMajor)
+Print(sysinfo.VersionMinor)
+Print(sysinfo.VersionRelease)
+Print(sysinfo.VersionRevision)
+Print(sysinfo.ApplicationName)
+Print(sysinfo.OSVersionName)</pre>
+
+<p>Résultat :</p>
+
+<pre>4.2A.18655
+4
+2
+A
+18655
+DEI
+Windows 10 (Version 10.0, Build 17134, 64-bit Edition)</pre>
+			
+			<br>
+		</div>
+	</div>
+</body>

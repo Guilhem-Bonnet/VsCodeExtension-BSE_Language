@@ -1,0 +1,38 @@
+<body>
+	<h2>Bibliothèque standard des scripts</h2>
+				<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Cont_Newpiece</code></h3>
+		</div>
+
+<p>Création d'une nouvelle pièce sur un contrat</p>
+
+	<a name="Parametres"></a>
+<h3>Parametres<a href="#Parametres" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>contrat (int, obligatoire) : numéro de contrat</li>
+		<li>produit (string, obligatoire) : code produit de la nouvelle pièce</li>
+		<li>Effet (date, par défaut, date du jour) : date d'effet de la pièce</li>
+		<li>data (string, optionnel) : données administratives à modifier, une fois la pièce créée (c.f. action <code>Cont_Update</code>)</li>
+	</ul>
+
+
+	<a name="Op%C3%A9rations"></a>
+<h3>Opérations<a href="#Op%C3%A9rations" class="wiki-anchor"></a></h3>
+
+
+	<ul>
+	<li>Fermeture pièce précédente éventuelle et de toutes les adhésions de cette pièce précédente</li>
+		<li>Création nouvelle pièce</li>
+		<li>alimentation des garanties
+	<ul>
+	<li>garanties obligatoires du produit de la nouvelle pièce</li>
+		<li>reprise des garanties de la pièce précédente si le code garantie existe dans le produit de la nouvelle pièce</li>
+	</ul>
+	</li>
+		<li>en fonction des garanties reprises, alimentation de REPGAR et de POLI (création POLI si une nouvelle compagnie intervient; reprise de POLI pièce précédente pour les compagnies déjà concernées)</li>
+		<li>si flux de données XML dans <em>data</em>, même traitement que <code>Cont_Update</code></li>
+	</ul>
+</div></body>

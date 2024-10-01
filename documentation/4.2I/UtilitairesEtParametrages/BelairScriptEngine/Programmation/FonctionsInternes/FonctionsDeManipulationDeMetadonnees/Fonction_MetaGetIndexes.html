@@ -1,0 +1,51 @@
+<body>
+
+
+<h3>Fonctions de manipulation de métadonnées</h3>
+
+	<!-- Fonction DATEALP -->
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><code>Meta:GetIndexes(Entity, Number)</code>
+		</h3></div>
+		<div class="panel-body">
+			<p>Renvoie un index d'entité, selon son numéro dans la liste des index.</p>
+			
+			<p>
+				<b><br>Paramètres d'entrée :</b>
+				</p><ul><li><code>Entity</code> : l'entité.</li>
+				<li><code>Number</code> : le numéro de l'index.</li></ul>
+			
+			
+			<p><b><br>Résultat :</b>
+			<br></p><ul><li>L'objet de type "TMetaIndex".</li></ul>
+			
+			<p>
+				<b><br>Exemples :</b>
+				</p><pre><code class="c syntaxhl"><span class="CodeRay">local i, j, entity, index
+i := <span class="integer">0</span>
+<span class="keyword">while</span> i &lt; Meta:EntityCount() 
+begin
+  entity := Meta:GetEntities(i)
+  Print(<span class="string"><span class="delimiter">"</span><span class="content">Entity %s (%s). Code: %s, name: %s</span><span class="delimiter">"</span></span>, i, entity.TypeName, entity.Code, entity.Name)
+  i := i + <span class="integer">1</span>
+  j := <span class="integer">0</span>
+  <span class="keyword">while</span> j &lt; Meta:IndexCount(entity)
+  begin
+    index := Meta:GetIndexes(entity, j)
+    Print(<span class="string"><span class="delimiter">"</span><span class="content">Index %s (%s). Name: %s</span><span class="delimiter">"</span></span>, j, index.TypeName, index.Name)
+    j := j + <span class="integer">1</span>
+  end
+end
+</span></code></pre>
+			
+			<p>Résultat :</p>
+			<pre>Entity 0 (TMetaTable). Code: ADH, name: ADHDEI
+Index 0 (TMetaIndex). Name: IX1_ADH
+Index 1 (TMetaIndex). Name: IX2_ADH
+...</pre>
+			<br>
+			<br>
+		</div>
+	</div>
+</body>
