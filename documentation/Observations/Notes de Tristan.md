@@ -40,3 +40,6 @@ Les noms disponibles sont :
  ```
 
  En bref, pour le booléen, le BSE comme les autres languages. Youpi!
+
+  ## Fonctions qui ne sont PAS dans la doc (genre du tout)
+ - FileToStrBase64(string path) //returns string
