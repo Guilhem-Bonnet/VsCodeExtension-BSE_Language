@@ -1,0 +1,1377 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="1346" height="2329" view_box="0 0 1346 2329"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Fri, 15 May 2020 04:41:45</desc>
+
+<rect id="frame" x="0" y="0" width="1346" height="2329" fill="#ffffbf" stroke="none" stroke-width="0"/>
+
+<!-- Association garanties acquises -->
+<line x1="921" y1="2185" x2="921" y2="2084" stroke="#66bd63" stroke-width="2"/>
+<text x="895.0" y="2135" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="745" y1="1160" x2="921" y2="2084" stroke="#66bd63" stroke-width="2"/>
+<text x="725.924144188" y="1211" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-garanties acquises">
+	<path d="M 971 2059 a 14 14 90 0 1 14 14 V 2084 h -128 V 2073 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 985 2084.0 v 11 a 14 14 90 0 1 -14 14 H 871 a 14 14 90 0 1 -14 -14 V 2084.0 H 128" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="857" y="2059" width="128" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="857" y1="2084" x2="985" y2="2084" stroke="#66bd63" stroke-width="1"/>
+	<text x="864" y="2076.7" fill="#000000" font-family="Verdana" font-size="12">garanties acquises</text>
+</g>
+
+<!-- Association risque divers assuré -->
+<line x1="921" y1="1513" x2="745" y2="1597" stroke="#66bd63" stroke-width="2"/>
+<text x="840" y="1534.98524549" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="745" y1="1689" x2="745" y2="1597" stroke="#66bd63" stroke-width="2"/>
+<text x="750.0" y="1656" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-risque divers assuré">
+	<path d="M 799 1572 a 14 14 90 0 1 14 14 V 1597 h -136 V 1586 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 813 1597.0 v 11 a 14 14 90 0 1 -14 14 H 691 a 14 14 90 0 1 -14 -14 V 1597.0 H 136" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="677" y="1572" width="136" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="677" y1="1597" x2="813" y2="1597" stroke="#66bd63" stroke-width="1"/>
+	<text x="684" y="1589.7" fill="#000000" font-family="Verdana" font-size="12">risque divers assuré</text>
+</g>
+
+<!-- Association personne assurée -->
+<line x1="921" y1="1513" x2="921" y2="1597" stroke="#66bd63" stroke-width="2"/>
+<text x="926.0" y="1564" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="921" y1="1689" x2="921" y2="1597" stroke="#66bd63" stroke-width="2"/>
+<text x="895.0" y="1639" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-personne assurée">
+	<path d="M 968 1572 a 14 14 90 0 1 14 14 V 1597 h -122 V 1586 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 982 1597.0 v 11 a 14 14 90 0 1 -14 14 H 874 a 14 14 90 0 1 -14 -14 V 1597.0 H 122" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="860" y="1572" width="122" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="860" y1="1597" x2="982" y2="1597" stroke="#66bd63" stroke-width="1"/>
+	<text x="867" y="1589.7" fill="#000000" font-family="Verdana" font-size="12">personne assurée</text>
+</g>
+
+<!-- Association garantie réglé -->
+<line x1="921" y1="2185" x2="745" y2="2185" stroke="#66bd63" stroke-width="2"/>
+<text x="809" y="2202.0" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="572" y1="2185" x2="745" y2="2185" stroke="#66bd63" stroke-width="2"/>
+<text x="630" y="2202.0" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<g id="association-garantie réglé">
+	<path d="M 781 2160 a 14 14 90 0 1 14 14 V 2185 h -100 V 2174 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 795 2185.0 v 11 a 14 14 90 0 1 -14 14 H 709 a 14 14 90 0 1 -14 -14 V 2185.0 H 100" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="695" y="2160" width="100" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="695" y1="2185" x2="795" y2="2185" stroke="#66bd63" stroke-width="1"/>
+	<text x="702" y="2177.7" fill="#000000" font-family="Verdana" font-size="12">garantie réglé</text>
+</g>
+
+<!-- Association a une adhésion -->
+<line x1="404" y1="916" x2="404" y2="1034" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="984" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<line x1="404" y1="1160" x2="404" y2="1034" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="1076" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-a une adhésion">
+	<path d="M 444 1009 a 14 14 90 0 1 14 14 V 1034 h -108 V 1023 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 458 1034.0 v 11 a 14 14 90 0 1 -14 14 H 364 a 14 14 90 0 1 -14 -14 V 1034.0 H 108" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="350" y="1009" width="108" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="350" y1="1034" x2="458" y2="1034" stroke="#66bd63" stroke-width="1"/>
+	<text x="357" y="1026.7" fill="#000000" font-family="Verdana" font-size="12">a une adhésion</text>
+</g>
+
+<!-- Association implique les intervenants -->
+<line x1="1101" y1="1983" x2="404" y2="1983" stroke="#66bd63" stroke-width="2"/>
+<text x="1030" y="2000.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="404" y1="2084" x2="404" y2="1983" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="2025" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-implique les intervenants">
+	<path d="M 474 1958 a 14 14 90 0 1 14 14 V 1983 h -168 V 1972 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 488 1983.0 v 11 a 14 14 90 0 1 -14 14 H 334 a 14 14 90 0 1 -14 -14 V 1983.0 H 168" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="320" y="1958" width="168" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="320" y1="1983" x2="488" y2="1983" stroke="#66bd63" stroke-width="1"/>
+	<text x="327" y="1975.7" fill="#000000" font-family="Verdana" font-size="12">implique les intervenants</text>
+</g>
+
+<!-- Association correspondant(s) -->
+<line x1="745" y1="454" x2="921" y2="454" stroke="#66bd63" stroke-width="2"/>
+<text x="804" y="471.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="1101" y1="454" x2="921" y2="454" stroke="#66bd63" stroke-width="2"/>
+<text x="1033" y="471.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-correspondant(s)">
+	<path d="M 967 429 a 14 14 90 0 1 14 14 V 454 h -120 V 443 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 981 454.0 v 11 a 14 14 90 0 1 -14 14 H 875 a 14 14 90 0 1 -14 -14 V 454.0 H 120" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="861" y="429" width="120" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="861" y1="454" x2="981" y2="454" stroke="#66bd63" stroke-width="1"/>
+	<text x="868" y="446.7" fill="#000000" font-family="Verdana" font-size="12">correspondant(s)</text>
+</g>
+
+<!-- Association PROD-CLAUSE -->
+<line x1="745" y1="916" x2="745" y2="807" stroke="#66bd63" stroke-width="2"/>
+<text x="718.0" y="849" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="745" y1="715" x2="745" y2="807" stroke="#66bd63" stroke-width="2"/>
+<text x="750.0" y="766" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-PROD-CLAUSE">
+	<path d="M 783 782 a 14 14 90 0 1 14 14 V 807 h -104 V 796 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 797 807.0 v 11 a 14 14 90 0 1 -14 14 H 707 a 14 14 90 0 1 -14 -14 V 807.0 H 104" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="693" y="782" width="104" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="693" y1="807" x2="797" y2="807" stroke="#66bd63" stroke-width="1"/>
+	<text x="700" y="799.7" fill="#000000" font-family="Verdana" font-size="12">PROD-CLAUSE</text>
+</g>
+
+<!-- Association entreprise -->
+<line x1="95" y1="538" x2="404" y2="454" stroke="#66bd63" stroke-width="2"/>
+<text x="154" y="538.217862698" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="404" y1="345" x2="404" y2="454" stroke="#66bd63" stroke-width="2"/>
+<text x="378.0" y="421" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<g id="association-entreprise">
+	<path d="M 454 429 a 14 14 90 0 1 14 14 V 454 h -128 V 443 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 468 454.0 v 11 a 14 14 90 0 1 -14 14 H 354 a 14 14 90 0 1 -14 -14 V 454.0 H 128" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="340" y="429" width="128" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="340" y1="454" x2="468" y2="454" stroke="#66bd63" stroke-width="1"/>
+	<text x="373" y="446.7" fill="#000000" font-family="Verdana" font-size="12">entreprise</text>
+	<text x="347" y="471.8" fill="#000000" font-family="Verdana" font-size="12">tiers.b_numdpp=0</text>
+</g>
+
+<!-- Association est une personne 1 -->
+<line x1="745" y1="144" x2="921" y2="144" stroke="#66bd63" stroke-width="2"/>
+<text x="792" y="161.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="1268" y1="144" x2="921" y2="144" stroke="#66bd63" stroke-width="2"/>
+<text x="1199" y="136.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-est une personne 1">
+	<path d="M 969 119 a 14 14 90 0 1 14 14 V 144 h -124 V 133 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 983 144.0 v 11 a 14 14 90 0 1 -14 14 H 873 a 14 14 90 0 1 -14 -14 V 144.0 H 124" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="859" y="119" width="124" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="859" y1="144" x2="983" y2="144" stroke="#66bd63" stroke-width="1"/>
+	<text x="866" y="136.7" fill="#000000" font-family="Verdana" font-size="12">est une personne </text>
+</g>
+
+<!-- Association PIEC-PROD -->
+<line x1="404" y1="916" x2="572" y2="916" stroke="#66bd63" stroke-width="2"/>
+<text x="481" y="908.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="745" y1="916" x2="572" y2="916" stroke="#66bd63" stroke-width="2"/>
+<text x="673" y="933.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-PIEC-PROD">
+	<path d="M 600 891 a 14 14 90 0 1 14 14 V 916 h -84 V 905 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 614 916.0 v 11 a 14 14 90 0 1 -14 14 H 544 a 14 14 90 0 1 -14 -14 V 916.0 H 84" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="530" y="891" width="84" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="530" y1="916" x2="614" y2="916" stroke="#66bd63" stroke-width="1"/>
+	<text x="537" y="908.7" fill="#000000" font-family="Verdana" font-size="12">PIEC-PROD</text>
+</g>
+
+<!-- Association est une personne 2 -->
+<line x1="1101" y1="454" x2="1101" y2="345" stroke="#66bd63" stroke-width="2"/>
+<text x="1106.0" y="387" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="1268" y1="144" x2="1101" y2="345" stroke="#66bd63" stroke-width="2"/>
+<text x="1199" y="192.701912247" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-est une personne 2">
+	<path d="M 1149 320 a 14 14 90 0 1 14 14 V 345 h -124 V 334 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 1163 345.0 v 11 a 14 14 90 0 1 -14 14 H 1053 a 14 14 90 0 1 -14 -14 V 345.0 H 124" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="1039" y="320" width="124" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="1039" y1="345" x2="1163" y2="345" stroke="#66bd63" stroke-width="1"/>
+	<text x="1046" y="337.7" fill="#000000" font-family="Verdana" font-size="12">est une personne </text>
+</g>
+
+<!-- Association est une personne 3 -->
+<line x1="745" y1="253" x2="921" y2="253" stroke="#66bd63" stroke-width="2"/>
+<text x="810" y="270.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="1268" y1="144" x2="921" y2="253" stroke="#66bd63" stroke-width="2"/>
+<text x="1199" y="151.637139117" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-est une personne 3">
+	<path d="M 969 228 a 14 14 90 0 1 14 14 V 253 h -124 V 242 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 983 253.0 v 11 a 14 14 90 0 1 -14 14 H 873 a 14 14 90 0 1 -14 -14 V 253.0 H 124" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="859" y="228" width="124" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="859" y1="253" x2="983" y2="253" stroke="#66bd63" stroke-width="1"/>
+	<text x="866" y="245.7" fill="#000000" font-family="Verdana" font-size="12">est une personne </text>
+</g>
+
+<!-- Association est une personne 4 -->
+<line x1="921" y1="1689" x2="1268" y2="1513" stroke="#66bd63" stroke-width="2"/>
+<text x="1001" y="1663.99632868" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="1268" y1="144" x2="1268" y2="1513" stroke="#66bd63" stroke-width="2"/>
+<text x="1273.0" y="212" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-est une personne 4">
+	<path d="M 1316 1488 a 14 14 90 0 1 14 14 V 1513 h -124 V 1502 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 1330 1513.0 v 11 a 14 14 90 0 1 -14 14 H 1220 a 14 14 90 0 1 -14 -14 V 1513.0 H 124" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="1206" y="1488" width="124" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="1206" y1="1513" x2="1330" y2="1513" stroke="#66bd63" stroke-width="1"/>
+	<text x="1213" y="1505.7" fill="#000000" font-family="Verdana" font-size="12">est une personne </text>
+</g>
+
+<!-- Association famille -->
+<line x1="404" y1="345" x2="572" y2="144" stroke="#66bd63" stroke-width="2"/>
+<text x="456" y="299.587602564" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<line x1="745" y1="144" x2="572" y2="144" stroke="#66bd63" stroke-width="2"/>
+<text x="677" y="161.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-famille">
+	<path d="M 586 119 a 14 14 90 0 1 14 14 V 144 h -56 V 133 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 600 144.0 v 11 a 14 14 90 0 1 -14 14 H 558 a 14 14 90 0 1 -14 -14 V 144.0 H 56" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="544" y="119" width="56" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="544" y1="144" x2="600" y2="144" stroke="#66bd63" stroke-width="1"/>
+	<text x="551" y="136.7" fill="#000000" font-family="Verdana" font-size="12">famille</text>
+</g>
+
+<!-- Association particulier -->
+<line x1="95" y1="538" x2="216" y2="345" stroke="#66bd63" stroke-width="2"/>
+<text x="84.4940621155" y="513" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="404" y1="345" x2="216" y2="345" stroke="#66bd63" stroke-width="2"/>
+<text x="331" y="362.0" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<g id="association-particulier">
+	<path d="M 273 320 a 14 14 90 0 1 14 14 V 345 h -142 V 334 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 287 345.0 v 11 a 14 14 90 0 1 -14 14 H 159 a 14 14 90 0 1 -14 -14 V 345.0 H 142" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="145" y="320" width="142" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="145" y1="345" x2="287" y2="345" stroke="#66bd63" stroke-width="1"/>
+	<text x="185" y="337.7" fill="#000000" font-family="Verdana" font-size="12">particulier</text>
+	<text x="152" y="362.8" fill="#000000" font-family="Verdana" font-size="12">tiers.b_numdpp != 0</text>
+</g>
+
+<!-- Association compose -->
+<line x1="745" y1="1429" x2="921" y2="1320" stroke="#66bd63" stroke-width="2"/>
+<text x="794" y="1413.96746754" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="921" y1="1160" x2="921" y2="1320" stroke="#66bd63" stroke-width="2"/>
+<text x="926.0" y="1219" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<g id="association-compose">
+	<path d="M 941 1295 a 14 14 90 0 1 14 14 V 1320 h -68 V 1309 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 955 1320.0 v 11 a 14 14 90 0 1 -14 14 H 901 a 14 14 90 0 1 -14 -14 V 1320.0 H 68" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="887" y="1295" width="68" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="887" y1="1320" x2="955" y2="1320" stroke="#66bd63" stroke-width="1"/>
+	<text x="894" y="1312.7" fill="#000000" font-family="Verdana" font-size="12">compose</text>
+</g>
+
+<!-- Association concerne -->
+<line x1="404" y1="1320" x2="572" y2="1320" stroke="#66bd63" stroke-width="2"/>
+<text x="444" y="1337.0" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<line x1="572" y1="1429" x2="572" y2="1320" stroke="#66bd63" stroke-width="2"/>
+<text x="577.0" y="1362" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-concerne">
+	<path d="M 593 1295 a 14 14 90 0 1 14 14 V 1320 h -70 V 1309 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 607 1320.0 v 11 a 14 14 90 0 1 -14 14 H 551 a 14 14 90 0 1 -14 -14 V 1320.0 H 70" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="537" y="1295" width="70" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="537" y1="1320" x2="607" y2="1320" stroke="#66bd63" stroke-width="1"/>
+	<text x="544" y="1312.7" fill="#000000" font-family="Verdana" font-size="12">concerne</text>
+</g>
+
+<!-- Association est une option -->
+<line x1="745" y1="1160" x2="921" y2="916" stroke="#66bd63" stroke-width="2"/>
+<text x="748.997369766" y="1118" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="1101" y1="807" x2="921" y2="916" stroke="#66bd63" stroke-width="2"/>
+<text x="1027" y="832.146330659" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-est une option">
+	<path d="M 958 891 a 14 14 90 0 1 14 14 V 916 h -102 V 905 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 972 916.0 v 11 a 14 14 90 0 1 -14 14 H 884 a 14 14 90 0 1 -14 -14 V 916.0 H 102" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="870" y="891" width="102" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="870" y1="916" x2="972" y2="916" stroke="#66bd63" stroke-width="1"/>
+	<text x="877" y="908.7" fill="#000000" font-family="Verdana" font-size="12">est une option</text>
+</g>
+
+<!-- Association immeuble assuré -->
+<line x1="921" y1="1513" x2="572" y2="1597" stroke="#66bd63" stroke-width="2"/>
+<text x="840" y="1520.0887959" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="572" y1="1689" x2="572" y2="1597" stroke="#66bd63" stroke-width="2"/>
+<text x="577.0" y="1647" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-immeuble assuré">
+	<path d="M 617 1572 a 14 14 90 0 1 14 14 V 1597 h -118 V 1586 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 631 1597.0 v 11 a 14 14 90 0 1 -14 14 H 527 a 14 14 90 0 1 -14 -14 V 1597.0 H 118" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="513" y="1572" width="118" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="513" y1="1597" x2="631" y2="1597" stroke="#66bd63" stroke-width="1"/>
+	<text x="520" y="1589.7" fill="#000000" font-family="Verdana" font-size="12">immeuble assuré</text>
+</g>
+
+<!-- Association composé de -->
+<line x1="1101" y1="807" x2="1101" y2="916" stroke="#66bd63" stroke-width="2"/>
+<text x="1106.0" y="866" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<line x1="921" y1="1160" x2="1101" y2="916" stroke="#66bd63" stroke-width="2"/>
+<text x="931.562093947" y="1110" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-composé de">
+	<path d="M 1131 891 a 14 14 90 0 1 14 14 V 916 h -88 V 905 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 1145 916.0 v 11 a 14 14 90 0 1 -14 14 H 1071 a 14 14 90 0 1 -14 -14 V 916.0 H 88" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="1057" y="891" width="88" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="1057" y1="916" x2="1145" y2="916" stroke="#66bd63" stroke-width="1"/>
+	<text x="1064" y="908.7" fill="#000000" font-family="Verdana" font-size="12">composé de</text>
+</g>
+
+<!-- Association véhicule assuré -->
+<line x1="921" y1="1513" x2="404" y2="1597" stroke="#66bd63" stroke-width="2"/>
+<text x="840" y="1515.16168981" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="404" y1="1689" x2="404" y2="1597" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="1647" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-véhicule assuré">
+	<path d="M 444 1572 a 14 14 90 0 1 14 14 V 1597 h -108 V 1586 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 458 1597.0 v 11 a 14 14 90 0 1 -14 14 H 364 a 14 14 90 0 1 -14 -14 V 1597.0 H 108" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="350" y="1572" width="108" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="350" y1="1597" x2="458" y2="1597" stroke="#66bd63" stroke-width="1"/>
+	<text x="357" y="1589.7" fill="#000000" font-family="Verdana" font-size="12">véhicule assuré</text>
+</g>
+
+<!-- Association 2 -->
+<line x1="404" y1="345" x2="572" y2="454" stroke="#66bd63" stroke-width="2"/>
+<text x="456" y="372.481835044" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="745" y1="454" x2="572" y2="454" stroke="#66bd63" stroke-width="2"/>
+<text x="665" y="471.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-2">
+	<path d="M 566 429 a 14 14 90 0 1 14 14 V 454 h -16 V 443 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 580 454.0 v 11 a 14 14 90 0 1 -14 14 H 578 a 14 14 90 0 1 -14 -14 V 454.0 H 16" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="564" y="429" width="16" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="564" y1="454" x2="580" y2="454" stroke="#66bd63" stroke-width="1"/>
+	<text x="571" y="446.7" fill="#000000" font-family="Verdana" font-size="12"></text>
+</g>
+
+<!-- Association auprès de -->
+<line x1="404" y1="1320" x2="404" y2="1429" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="1396" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="216" y1="1429" x2="404" y2="1429" stroke="#66bd63" stroke-width="2"/>
+<text x="254" y="1421.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-auprès de">
+	<path d="M 428 1404 a 14 14 90 0 1 14 14 V 1429 h -76 V 1418 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 442 1429.0 v 11 a 14 14 90 0 1 -14 14 H 380 a 14 14 90 0 1 -14 -14 V 1429.0 H 76" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="366" y="1404" width="76" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="366" y1="1429" x2="442" y2="1429" stroke="#66bd63" stroke-width="1"/>
+	<text x="373" y="1421.7" fill="#000000" font-family="Verdana" font-size="12">auprès de</text>
+</g>
+
+<!-- Association est client -->
+<line x1="95" y1="538" x2="216" y2="538" stroke="#66bd63" stroke-width="2"/>
+<text x="154" y="555.0" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="404" y1="538" x2="216" y2="538" stroke="#66bd63" stroke-width="2"/>
+<text x="329" y="530.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-est client">
+	<path d="M 237 513 a 14 14 90 0 1 14 14 V 538 h -70 V 527 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 251 538.0 v 11 a 14 14 90 0 1 -14 14 H 195 a 14 14 90 0 1 -14 -14 V 538.0 H 70" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="181" y="513" width="70" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="181" y1="538" x2="251" y2="538" stroke="#66bd63" stroke-width="1"/>
+	<text x="188" y="530.7" fill="#000000" font-family="Verdana" font-size="12">est client</text>
+</g>
+
+<!-- Association est salarié -->
+<line x1="745" y1="253" x2="745" y2="345" stroke="#66bd63" stroke-width="2"/>
+<text x="750.0" y="312" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="745" y1="454" x2="745" y2="345" stroke="#66bd63" stroke-width="2"/>
+<text x="750.0" y="412" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-est salarié">
+	<path d="M 770 320 a 14 14 90 0 1 14 14 V 345 h -78 V 334 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 784 345.0 v 11 a 14 14 90 0 1 -14 14 H 720 a 14 14 90 0 1 -14 -14 V 345.0 H 78" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="706" y="320" width="78" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="706" y1="345" x2="784" y2="345" stroke="#66bd63" stroke-width="1"/>
+	<text x="713" y="337.7" fill="#000000" font-family="Verdana" font-size="12">est salarié</text>
+</g>
+
+<!-- Association garanties sinistrées -->
+<line x1="1101" y1="1983" x2="1101" y2="2084" stroke="#66bd63" stroke-width="2"/>
+<text x="1074.0" y="2051" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="921" y1="2185" x2="1101" y2="2084" stroke="#66bd63" stroke-width="2"/>
+<text x="974.216047466" y="2135" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-garanties sinistrées">
+	<path d="M 1153 2059 a 14 14 90 0 1 14 14 V 2084 h -132 V 2073 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 1167 2084.0 v 11 a 14 14 90 0 1 -14 14 H 1049 a 14 14 90 0 1 -14 -14 V 2084.0 H 132" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="1035" y="2059" width="132" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="1035" y1="2084" x2="1167" y2="2084" stroke="#66bd63" stroke-width="1"/>
+	<text x="1042" y="2076.7" fill="#000000" font-family="Verdana" font-size="12">garanties sinistrées</text>
+</g>
+
+<!-- Association compagnie -->
+<line x1="95" y1="538" x2="216" y2="1320" stroke="#66bd63" stroke-width="2"/>
+<text x="72.7948301406" y="572" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="216" y1="1429" x2="216" y2="1320" stroke="#66bd63" stroke-width="2"/>
+<text x="221.0" y="1387" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-compagnie">
+	<path d="M 242 1295 a 14 14 90 0 1 14 14 V 1320 h -80 V 1309 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 256 1320.0 v 11 a 14 14 90 0 1 -14 14 H 190 a 14 14 90 0 1 -14 -14 V 1320.0 H 80" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="176" y="1295" width="80" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="176" y1="1320" x2="256" y2="1320" stroke="#66bd63" stroke-width="1"/>
+	<text x="183" y="1312.7" fill="#000000" font-family="Verdana" font-size="12">compagnie</text>
+</g>
+
+<!-- Association a clause -->
+<line x1="404" y1="715" x2="404" y2="807" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="774" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="404" y1="916" x2="404" y2="807" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="857" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-a clause">
+	<path d="M 422 782 a 14 14 90 0 1 14 14 V 807 h -64 V 796 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 436 807.0 v 11 a 14 14 90 0 1 -14 14 H 386 a 14 14 90 0 1 -14 -14 V 807.0 H 64" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="372" y="782" width="64" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="372" y1="807" x2="436" y2="807" stroke="#66bd63" stroke-width="1"/>
+	<text x="379" y="799.7" fill="#000000" font-family="Verdana" font-size="12">a clause</text>
+</g>
+
+<!-- Association sinistré -->
+<line x1="921" y1="1513" x2="1268" y2="1689" stroke="#66bd63" stroke-width="2"/>
+<text x="981" y="1536.8595791" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="1101" y1="1983" x2="1268" y2="1689" stroke="#66bd63" stroke-width="2"/>
+<text x="1108.38447409" y="1924" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-sinistré">
+	<path d="M 1284 1664 a 14 14 90 0 1 14 14 V 1689 h -60 V 1678 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 1298 1689.0 v 11 a 14 14 90 0 1 -14 14 H 1252 a 14 14 90 0 1 -14 -14 V 1689.0 H 60" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="1238" y="1664" width="60" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="1238" y1="1689" x2="1298" y2="1689" stroke="#66bd63" stroke-width="1"/>
+	<text x="1245" y="1681.7" fill="#000000" font-family="Verdana" font-size="12">sinistré</text>
+</g>
+
+<!-- Association est un particulier -->
+<line x1="404" y1="345" x2="572" y2="253" stroke="#66bd63" stroke-width="2"/>
+<text x="456" y="331.996547774" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="745" y1="253" x2="572" y2="253" stroke="#66bd63" stroke-width="2"/>
+<text x="659" y="270.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-est un particulier">
+	<path d="M 617 228 a 14 14 90 0 1 14 14 V 253 h -118 V 242 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 631 253.0 v 11 a 14 14 90 0 1 -14 14 H 527 a 14 14 90 0 1 -14 -14 V 253.0 H 118" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="513" y="228" width="118" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="513" y1="253" x2="631" y2="253" stroke="#66bd63" stroke-width="1"/>
+	<text x="520" y="245.7" fill="#000000" font-family="Verdana" font-size="12">est un particulier</text>
+</g>
+
+<!-- Association intervient sur sinistre -->
+<line x1="95" y1="538" x2="216" y2="1983" stroke="#66bd63" stroke-width="2"/>
+<text x="70.0382297981" y="572" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="404" y1="2084" x2="216" y2="1983" stroke="#66bd63" stroke-width="2"/>
+<text x="342" y="2077.47114363" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-intervient sur sinistre">
+	<path d="M 274 1958 a 14 14 90 0 1 14 14 V 1983 h -144 V 1972 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 288 1983.0 v 11 a 14 14 90 0 1 -14 14 H 158 a 14 14 90 0 1 -14 -14 V 1983.0 H 144" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="144" y="1958" width="144" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="144" y1="1983" x2="288" y2="1983" stroke="#66bd63" stroke-width="1"/>
+	<text x="151" y="1975.7" fill="#000000" font-family="Verdana" font-size="12">intervient sur sinistre</text>
+</g>
+
+<!-- Association a la garantie -->
+<line x1="404" y1="1160" x2="572" y2="1160" stroke="#66bd63" stroke-width="2"/>
+<text x="450" y="1152.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="745" y1="1160" x2="572" y2="1160" stroke="#66bd63" stroke-width="2"/>
+<text x="678" y="1177.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-a la garantie">
+	<path d="M 604 1135 a 14 14 90 0 1 14 14 V 1160 h -92 V 1149 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 618 1160.0 v 11 a 14 14 90 0 1 -14 14 H 540 a 14 14 90 0 1 -14 -14 V 1160.0 H 92" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="526" y="1135" width="92" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="526" y1="1160" x2="618" y2="1160" stroke="#66bd63" stroke-width="1"/>
+	<text x="533" y="1152.7" fill="#000000" font-family="Verdana" font-size="12">a la garantie</text>
+</g>
+
+<!-- Association souscrit -->
+<line x1="404" y1="538" x2="216" y2="622" stroke="#66bd63" stroke-width="2"/>
+<text x="328" y="555.393276608" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="216" y1="715" x2="216" y2="622" stroke="#66bd63" stroke-width="2"/>
+<text x="190.0" y="673" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-souscrit">
+	<path d="M 233 597 a 14 14 90 0 1 14 14 V 622 h -62 V 611 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 247 622.0 v 11 a 14 14 90 0 1 -14 14 H 199 a 14 14 90 0 1 -14 -14 V 622.0 H 62" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="185" y="597" width="62" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="185" y1="622" x2="247" y2="622" stroke="#66bd63" stroke-width="1"/>
+	<text x="192" y="614.7" fill="#000000" font-family="Verdana" font-size="12">souscrit</text>
+</g>
+
+<!-- Association correspond à -->
+<line x1="404" y1="715" x2="572" y2="715" stroke="#66bd63" stroke-width="2"/>
+<text x="450" y="732.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="745" y1="715" x2="572" y2="715" stroke="#66bd63" stroke-width="2"/>
+<text x="675" y="732.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-correspond à">
+	<path d="M 605 690 a 14 14 90 0 1 14 14 V 715 h -94 V 704 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 619 715.0 v 11 a 14 14 90 0 1 -14 14 H 539 a 14 14 90 0 1 -14 -14 V 715.0 H 94" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="525" y="690" width="94" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="525" y1="715" x2="619" y2="715" stroke="#66bd63" stroke-width="1"/>
+	<text x="532" y="707.7" fill="#000000" font-family="Verdana" font-size="12">correspond à</text>
+</g>
+
+<!-- Association PROD-OPT -->
+<line x1="745" y1="916" x2="921" y2="715" stroke="#66bd63" stroke-width="2"/>
+<text x="795" y="875.198624936" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="1101" y1="807" x2="921" y2="715" stroke="#66bd63" stroke-width="2"/>
+<text x="1028" y="795.984951112" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-PROD-OPT">
+	<path d="M 947 690 a 14 14 90 0 1 14 14 V 715 h -80 V 704 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 961 715.0 v 11 a 14 14 90 0 1 -14 14 H 895 a 14 14 90 0 1 -14 -14 V 715.0 H 80" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="881" y="690" width="80" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="881" y1="715" x2="961" y2="715" stroke="#66bd63" stroke-width="1"/>
+	<text x="888" y="707.7" fill="#000000" font-family="Verdana" font-size="12">PROD-OPT</text>
+</g>
+
+<!-- Association assure le risque -->
+<line x1="404" y1="1160" x2="745" y2="1320" stroke="#66bd63" stroke-width="2"/>
+<text x="450" y="1174.91074073" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="921" y1="1513" x2="745" y2="1320" stroke="#66bd63" stroke-width="2"/>
+<text x="888.384030703" y="1471" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-assure le risque">
+	<path d="M 786 1295 a 14 14 90 0 1 14 14 V 1320 h -110 V 1309 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 800 1320.0 v 11 a 14 14 90 0 1 -14 14 H 704 a 14 14 90 0 1 -14 -14 V 1320.0 H 110" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="690" y="1295" width="110" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="690" y1="1320" x2="800" y2="1320" stroke="#66bd63" stroke-width="1"/>
+	<text x="697" y="1312.7" fill="#000000" font-family="Verdana" font-size="12">assure le risque</text>
+</g>
+
+<!-- Association données étendues T -->
+<line x1="404" y1="345" x2="404" y2="43" stroke="#66bd63" stroke-width="2"/>
+<text x="377.0" y="278" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="572" y1="43" x2="404" y2="43" stroke="#66bd63" stroke-width="2"/>
+<text x="494" y="60.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-données étendues T">
+	<path d="M 459 18 a 14 14 90 0 1 14 14 V 43 h -138 V 32 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 473 43.0 v 11 a 14 14 90 0 1 -14 14 H 349 a 14 14 90 0 1 -14 -14 V 43.0 H 138" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="335" y="18" width="138" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="335" y1="43" x2="473" y2="43" stroke="#66bd63" stroke-width="1"/>
+	<text x="342" y="35.7" fill="#000000" font-family="Verdana" font-size="12">données étendues T</text>
+</g>
+
+<!-- Association données étendues V -->
+<line x1="404" y1="1689" x2="404" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="1740" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="404" y1="1873" x2="404" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="1831" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-données étendues V">
+	<path d="M 459 1756 a 14 14 90 0 1 14 14 V 1781 h -138 V 1770 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 473 1781.0 v 11 a 14 14 90 0 1 -14 14 H 349 a 14 14 90 0 1 -14 -14 V 1781.0 H 138" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="335" y="1756" width="138" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="335" y1="1781" x2="473" y2="1781" stroke="#66bd63" stroke-width="1"/>
+	<text x="342" y="1773.7" fill="#000000" font-family="Verdana" font-size="12">données étendues V</text>
+</g>
+
+<!-- Association données étendues P -->
+<line x1="921" y1="1689" x2="921" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="926.0" y="1748" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="921" y1="1873" x2="921" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="926.0" y="1823" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-données étendues P">
+	<path d="M 975 1756 a 14 14 90 0 1 14 14 V 1781 h -136 V 1770 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 989 1781.0 v 11 a 14 14 90 0 1 -14 14 H 867 a 14 14 90 0 1 -14 -14 V 1781.0 H 136" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="853" y="1756" width="136" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="853" y1="1781" x2="989" y2="1781" stroke="#66bd63" stroke-width="1"/>
+	<text x="860" y="1773.7" fill="#000000" font-family="Verdana" font-size="12">données étendues P</text>
+</g>
+
+<!-- Association données étendues S -->
+<line x1="1101" y1="1983" x2="1268" y2="2084" stroke="#66bd63" stroke-width="2"/>
+<text x="1150" y="2006.29055981" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="1101" y1="2286" x2="1268" y2="2084" stroke="#66bd63" stroke-width="2"/>
+<text x="1109.23564861" y="2244" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-données étendues S">
+	<path d="M 1323 2059 a 14 14 90 0 1 14 14 V 2084 h -138 V 2073 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 1337 2084.0 v 11 a 14 14 90 0 1 -14 14 H 1213 a 14 14 90 0 1 -14 -14 V 2084.0 H 138" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="1199" y="2059" width="138" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="1199" y1="2084" x2="1337" y2="2084" stroke="#66bd63" stroke-width="1"/>
+	<text x="1206" y="2076.7" fill="#000000" font-family="Verdana" font-size="12">données étendues S</text>
+</g>
+
+<!-- Association données étendues R -->
+<line x1="921" y1="1513" x2="1101" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="922.97938634" y="1564" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="1101" y1="1873" x2="1101" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="1106.0" y="1831" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-données étendues R">
+	<path d="M 1156 1756 a 14 14 90 0 1 14 14 V 1781 h -138 V 1770 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 1170 1781.0 v 11 a 14 14 90 0 1 -14 14 H 1046 a 14 14 90 0 1 -14 -14 V 1781.0 H 138" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="1032" y="1756" width="138" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="1032" y1="1781" x2="1170" y2="1781" stroke="#66bd63" stroke-width="1"/>
+	<text x="1039" y="1773.7" fill="#000000" font-family="Verdana" font-size="12">données étendues R</text>
+</g>
+
+<!-- Association CONT-PIEC -->
+<line x1="216" y1="715" x2="216" y2="916" stroke="#66bd63" stroke-width="2"/>
+<text x="221.0" y="766" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<line x1="404" y1="916" x2="216" y2="916" stroke="#66bd63" stroke-width="2"/>
+<text x="306" y="908.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-CONT-PIEC">
+	<path d="M 244 891 a 14 14 90 0 1 14 14 V 916 h -84 V 905 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 258 916.0 v 11 a 14 14 90 0 1 -14 14 H 188 a 14 14 90 0 1 -14 -14 V 916.0 H 84" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="174" y="891" width="84" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="174" y1="916" x2="258" y2="916" stroke="#66bd63" stroke-width="1"/>
+	<text x="181" y="908.7" fill="#000000" font-family="Verdana" font-size="12">CONT-PIEC</text>
+</g>
+
+<!-- Association polices -->
+<line x1="404" y1="1320" x2="216" y2="1034" stroke="#66bd63" stroke-width="2"/>
+<text x="343" y="1278.70898941" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="404" y1="916" x2="216" y2="1034" stroke="#66bd63" stroke-width="2"/>
+<text x="305" y="958.032532761" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<g id="association-polices">
+	<path d="M 230 1009 a 14 14 90 0 1 14 14 V 1034 h -56 V 1023 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 244 1034.0 v 11 a 14 14 90 0 1 -14 14 H 202 a 14 14 90 0 1 -14 -14 V 1034.0 H 56" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="188" y="1009" width="56" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="188" y1="1034" x2="244" y2="1034" stroke="#66bd63" stroke-width="1"/>
+	<text x="195" y="1026.7" fill="#000000" font-family="Verdana" font-size="12">polices</text>
+</g>
+
+<!-- Association commercialise -->
+<line x1="216" y1="1429" x2="404" y2="1513" stroke="#66bd63" stroke-width="2"/>
+<text x="254" y="1439.24434044" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="745" y1="1429" x2="404" y2="1513" stroke="#66bd63" stroke-width="2"/>
+<text x="675" y="1433.73522303" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-commercialise">
+	<path d="M 441 1488 a 14 14 90 0 1 14 14 V 1513 h -102 V 1502 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 455 1513.0 v 11 a 14 14 90 0 1 -14 14 H 367 a 14 14 90 0 1 -14 -14 V 1513.0 H 102" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="353" y="1488" width="102" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="353" y1="1513" x2="455" y2="1513" stroke="#66bd63" stroke-width="1"/>
+	<text x="360" y="1505.7" fill="#000000" font-family="Verdana" font-size="12">commercialise</text>
+</g>
+
+<!-- Association données étendues D -->
+<line x1="745" y1="1689" x2="745" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="750.0" y="1731" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="745" y1="1873" x2="745" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="750.0" y="1831" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-données étendues D">
+	<path d="M 800 1756 a 14 14 90 0 1 14 14 V 1781 h -138 V 1770 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 814 1781.0 v 11 a 14 14 90 0 1 -14 14 H 690 a 14 14 90 0 1 -14 -14 V 1781.0 H 138" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="676" y="1756" width="138" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="676" y1="1781" x2="814" y2="1781" stroke="#66bd63" stroke-width="1"/>
+	<text x="683" y="1773.7" fill="#000000" font-family="Verdana" font-size="12">données étendues D</text>
+</g>
+
+<!-- Association données étendues A -->
+<line x1="404" y1="916" x2="572" y2="1034" stroke="#66bd63" stroke-width="2"/>
+<text x="481" y="963.920312753" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="745" y1="1034" x2="572" y2="1034" stroke="#66bd63" stroke-width="2"/>
+<text x="647" y="1051.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-données étendues A">
+	<path d="M 627 1009 a 14 14 90 0 1 14 14 V 1034 h -138 V 1023 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 641 1034.0 v 11 a 14 14 90 0 1 -14 14 H 517 a 14 14 90 0 1 -14 -14 V 1034.0 H 138" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="503" y="1009" width="138" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="503" y1="1034" x2="641" y2="1034" stroke="#66bd63" stroke-width="1"/>
+	<text x="510" y="1026.7" fill="#000000" font-family="Verdana" font-size="12">données étendues A</text>
+</g>
+
+<!-- Association données étendues C -->
+<line x1="216" y1="715" x2="404" y2="622" stroke="#66bd63" stroke-width="2"/>
+<text x="256" y="710.817843616" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="572" y1="622" x2="404" y2="622" stroke="#66bd63" stroke-width="2"/>
+<text x="494" y="639.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-données étendues C">
+	<path d="M 459 597 a 14 14 90 0 1 14 14 V 622 h -138 V 611 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 473 622.0 v 11 a 14 14 90 0 1 -14 14 H 349 a 14 14 90 0 1 -14 -14 V 622.0 H 138" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="335" y="597" width="138" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="335" y1="622" x2="473" y2="622" stroke="#66bd63" stroke-width="1"/>
+	<text x="342" y="614.7" fill="#000000" font-family="Verdana" font-size="12">données étendues C</text>
+</g>
+
+<!-- Association règlements -->
+<line x1="404" y1="2084" x2="404" y2="2185" stroke="#66bd63" stroke-width="2"/>
+<text x="409.0" y="2152" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="572" y1="2185" x2="404" y2="2185" stroke="#66bd63" stroke-width="2"/>
+<text x="493" y="2202.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-règlements">
+	<path d="M 432 2160 a 14 14 90 0 1 14 14 V 2185 h -84 V 2174 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 446 2185.0 v 11 a 14 14 90 0 1 -14 14 H 376 a 14 14 90 0 1 -14 -14 V 2185.0 H 84" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="362" y="2160" width="84" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="362" y1="2185" x2="446" y2="2185" stroke="#66bd63" stroke-width="1"/>
+	<text x="369" y="2177.7" fill="#000000" font-family="Verdana" font-size="12">règlements</text>
+</g>
+
+<!-- Association données étendues I -->
+<line x1="572" y1="1689" x2="572" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="577.0" y="1740" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="572" y1="1873" x2="572" y2="1781" stroke="#66bd63" stroke-width="2"/>
+<text x="577.0" y="1831" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-données étendues I">
+	<path d="M 625 1756 a 14 14 90 0 1 14 14 V 1781 h -134 V 1770 a 14 14 90 0 1 14 -14" fill="#a6d96a" stroke="#a6d96a" stroke-width="0"/>
+	<path d="M 639 1781.0 v 11 a 14 14 90 0 1 -14 14 H 519 a 14 14 90 0 1 -14 -14 V 1781.0 H 134" fill="#d9ef8b" stroke="#d9ef8b" stroke-width="0"/>
+	<rect x="505" y="1756" width="134" height="50" fill="none" rx="14" stroke="#66bd63" stroke-width="2"/>
+	<line x1="505" y1="1781" x2="639" y2="1781" stroke="#66bd63" stroke-width="1"/>
+	<text x="512" y="1773.7" fill="#000000" font-family="Verdana" font-size="12">données étendues I</text>
+</g>
+
+<!-- Entity TIERS -->
+<g id="entity-TIERS">
+	<g id="frame-TIERS">
+		<rect x="357" y="286" width="94" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="357" y="311.0" width="94" height="93" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="357" y="286" width="94" height="118" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="357" y1="311" x2="451" y2="311" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="385" y="303.7" fill="#000000" font-family="Verdana" font-size="12">TIERS</text>
+	<text x="362" y="328.7" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="362" y1="331" x2="406" y2="331" stroke="#000000" stroke-width="1"/>
+	<text x="362" y="345.8" fill="#000000" font-family="Verdana" font-size="12">n. personne</text>
+	<text x="362" y="362.8" fill="#000000" font-family="Verdana" font-size="12">raison sociale</text>
+	<text x="362" y="379.8" fill="#000000" font-family="Verdana" font-size="12">adresse</text>
+	<text x="362" y="396.8" fill="#000000" font-family="Verdana" font-size="12">...</text>
+</g>
+
+<!-- Entity COR -->
+<g id="entity-COR">
+	<g id="frame-COR">
+		<rect x="1059" y="395" width="84" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="1059" y="420.0" width="84" height="93" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="1059" y="395" width="84" height="118" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="1059" y1="420" x2="1143" y2="420" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="1087" y="412.7" fill="#000000" font-family="Verdana" font-size="12">COR</text>
+	<text x="1064" y="437.7" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="1064" y1="440" x2="1108" y2="440" stroke="#000000" stroke-width="1"/>
+	<text x="1064" y="454.8" fill="#000000" font-family="Verdana" font-size="12">n. personne</text>
+	<line x1="1064" y1="457" x2="1137" y2="457" stroke="#000000" stroke-width="1"/>
+	<text x="1064" y="471.8" fill="#000000" font-family="Verdana" font-size="12">role</text>
+	<text x="1064" y="488.8" fill="#000000" font-family="Verdana" font-size="12">service</text>
+	<text x="1064" y="505.8" fill="#000000" font-family="Verdana" font-size="12">...</text>
+</g>
+
+<!-- Entity CONT -->
+<g id="entity-CONT">
+	<g id="frame-CONT">
+		<rect x="181" y="681" width="70" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="181" y="706.0" width="70" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="181" y="681" width="70" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="181" y1="706" x2="251" y2="706" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="198" y="698.7" fill="#000000" font-family="Verdana" font-size="12">CONT</text>
+	<text x="186" y="723.8" fill="#000000" font-family="Verdana" font-size="12">n. contrat</text>
+	<line x1="186" y1="726" x2="246" y2="726" stroke="#000000" stroke-width="1"/>
+	<text x="186" y="740.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+</g>
+
+<!-- Entity XPxxx -->
+<g id="entity-XPxxx">
+	<g id="frame-XPxxx">
+		<rect x="846" y="1831" width="150" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="846" y="1856.0" width="150" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="846" y="1831" width="150" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="846" y1="1856" x2="996" y2="1856" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="902" y="1848.7" fill="#000000" font-family="Verdana" font-size="12">XPxxx</text>
+	<text x="851" y="1873.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="851" y1="1876" x2="922" y2="1876" stroke="#000000" stroke-width="1"/>
+	<text x="851" y="1890.8" fill="#000000" font-family="Verdana" font-size="12">n. personne</text>
+	<line x1="851" y1="1893" x2="924" y2="1893" stroke="#000000" stroke-width="1"/>
+	<text x="851" y="1907.8" fill="#000000" font-family="Verdana" font-size="12">infos personne assurée</text>
+</g>
+
+<!-- Entity CIE -->
+<g id="entity-CIE">
+	<g id="frame-CIE">
+		<rect x="183" y="1395" width="66" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="183" y="1420.0" width="66" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="183" y="1395" width="66" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="183" y1="1420" x2="249" y2="1420" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="205" y="1412.7" fill="#000000" font-family="Verdana" font-size="12">CIE</text>
+	<text x="188" y="1437.8" fill="#000000" font-family="Verdana" font-size="12">n. cie</text>
+	<line x1="188" y1="1440" x2="222" y2="1440" stroke="#000000" stroke-width="1"/>
+	<text x="188" y="1454.8" fill="#000000" font-family="Verdana" font-size="12">infos CIE</text>
+</g>
+
+<!-- Entity DPP -->
+<g id="entity-DPP">
+	<g id="frame-DPP">
+		<rect x="1226" y="93" width="84" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="1226" y="118.0" width="84" height="77" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="1226" y="93" width="84" height="102" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="1226" y1="118" x2="1310" y2="118" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="1255" y="110.7" fill="#000000" font-family="Verdana" font-size="12">DPP</text>
+	<text x="1231" y="135.7" fill="#000000" font-family="Verdana" font-size="12">n. personne</text>
+	<line x1="1231" y1="138" x2="1304" y2="138" stroke="#000000" stroke-width="1"/>
+	<text x="1231" y="152.8" fill="#000000" font-family="Verdana" font-size="12">nom</text>
+	<text x="1231" y="169.8" fill="#000000" font-family="Verdana" font-size="12">prenom</text>
+	<text x="1231" y="186.8" fill="#000000" font-family="Verdana" font-size="12">...</text>
+</g>
+
+<!-- Entity RDIV -->
+<g id="entity-RDIV">
+	<g id="frame-RDIV">
+		<rect x="684" y="1664" width="122" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="684" y="1689.0" width="122" height="25" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="684" y="1664" width="122" height="50" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="684" y1="1689" x2="806" y2="1689" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="729" y="1681.7" fill="#000000" font-family="Verdana" font-size="12">RDIV</text>
+	<text x="689" y="1706.8" fill="#000000" font-family="Verdana" font-size="12">infos risque divers</text>
+	<line x1="689" y1="1709" x2="800" y2="1709" stroke="#000000" stroke-width="1"/>
+</g>
+
+<!-- Entity Xtc -->
+<g id="entity-Xtc">
+	<g id="frame-Xtc">
+		<rect x="869" y="9" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="869" y="34.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="869" y="9" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="869" y1="34" x2="973" y2="34" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="911" y="26.7" fill="#000000" font-family="Verdana" font-size="12">Xtc</text>
+	<text x="874" y="51.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="874" y1="54" x2="918" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="874" y="68.8" fill="#000000" font-family="Verdana" font-size="12">données type c</text>
+</g>
+
+<!-- Entity Xtb -->
+<g id="entity-Xtb">
+	<g id="frame-Xtb">
+		<rect x="693" y="9" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="693" y="34.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="693" y="9" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="693" y1="34" x2="797" y2="34" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="734" y="26.7" fill="#000000" font-family="Verdana" font-size="12">Xtb</text>
+	<text x="698" y="51.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="698" y1="54" x2="742" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="698" y="68.8" fill="#000000" font-family="Verdana" font-size="12">données type b</text>
+</g>
+
+<!-- Entity SINREG -->
+<g id="entity-SINREG">
+	<g id="frame-SINREG">
+		<rect x="519" y="2134" width="106" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="519" y="2159.0" width="106" height="77" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="519" y="2134" width="106" height="102" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="519" y1="2159" x2="625" y2="2159" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="547" y="2151.7" fill="#000000" font-family="Verdana" font-size="12">SINREG</text>
+	<text x="524" y="2176.7" fill="#000000" font-family="Verdana" font-size="12">n. sinistre</text>
+	<line x1="524" y1="2179" x2="585" y2="2179" stroke="#000000" stroke-width="1"/>
+	<text x="524" y="2193.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="524" y1="2196" x2="568" y2="2196" stroke="#000000" stroke-width="1"/>
+	<text x="524" y="2210.8" fill="#000000" font-family="Verdana" font-size="12">n. garantie</text>
+	<text x="524" y="2227.8" fill="#000000" font-family="Verdana" font-size="12">infos reglement</text>
+</g>
+
+<!-- Entity DPM -->
+<g id="entity-DPM">
+	<g id="frame-DPM">
+		<rect x="691" y="420" width="108" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="691" y="445.0" width="108" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="691" y="420" width="108" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="691" y1="445" x2="799" y2="445" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="731" y="437.7" fill="#000000" font-family="Verdana" font-size="12">DPM</text>
+	<text x="696" y="462.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="696" y1="465" x2="740" y2="465" stroke="#000000" stroke-width="1"/>
+	<text x="696" y="479.8" fill="#000000" font-family="Verdana" font-size="12">données société</text>
+</g>
+
+<!-- Entity SIN -->
+<g id="entity-SIN">
+	<g id="frame-SIN">
+		<rect x="1057" y="1932" width="88" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="1057" y="1957.0" width="88" height="77" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="1057" y="1932" width="88" height="102" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="1057" y1="1957" x2="1145" y2="1957" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="1089" y="1949.7" fill="#000000" font-family="Verdana" font-size="12">SIN</text>
+	<text x="1062" y="1974.7" fill="#000000" font-family="Verdana" font-size="12">b_sinistre</text>
+	<line x1="1062" y1="1977" x2="1122" y2="1977" stroke="#000000" stroke-width="1"/>
+	<text x="1062" y="1991.8" fill="#000000" font-family="Verdana" font-size="12">b_contrat</text>
+	<text x="1062" y="2008.8" fill="#000000" font-family="Verdana" font-size="12">b_risque</text>
+	<text x="1062" y="2025.8" fill="#000000" font-family="Verdana" font-size="12">infos sinistre</text>
+</g>
+
+<!-- Entity POLI -->
+<g id="entity-POLI">
+	<g id="frame-POLI">
+		<rect x="369" y="1261" width="70" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="369" y="1286.0" width="70" height="93" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="369" y="1261" width="70" height="118" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="369" y1="1286" x2="439" y2="1286" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="389" y="1278.7" fill="#000000" font-family="Verdana" font-size="12">POLI</text>
+	<text x="374" y="1303.7" fill="#000000" font-family="Verdana" font-size="12">n. contrat</text>
+	<line x1="374" y1="1306" x2="434" y2="1306" stroke="#000000" stroke-width="1"/>
+	<text x="374" y="1320.8" fill="#000000" font-family="Verdana" font-size="12">n. piece</text>
+	<line x1="374" y1="1323" x2="423" y2="1323" stroke="#000000" stroke-width="1"/>
+	<text x="374" y="1337.8" fill="#000000" font-family="Verdana" font-size="12">n. cie</text>
+	<line x1="374" y1="1340" x2="408" y2="1340" stroke="#000000" stroke-width="1"/>
+	<text x="374" y="1354.8" fill="#000000" font-family="Verdana" font-size="12">n. police</text>
+	<text x="374" y="1371.8" fill="#000000" font-family="Verdana" font-size="12">...</text>
+</g>
+
+<!-- Entity RDPP -->
+<g id="entity-RDPP">
+	<g id="frame-RDPP">
+		<rect x="846" y="1647" width="150" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="846" y="1672.0" width="150" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="846" y="1647" width="150" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="846" y1="1672" x2="996" y2="1672" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="904" y="1664.7" fill="#000000" font-family="Verdana" font-size="12">RDPP</text>
+	<text x="851" y="1689.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="851" y1="1692" x2="922" y2="1692" stroke="#000000" stroke-width="1"/>
+	<text x="851" y="1706.8" fill="#000000" font-family="Verdana" font-size="12">n. personne</text>
+	<line x1="851" y1="1709" x2="924" y2="1709" stroke="#000000" stroke-width="1"/>
+	<text x="851" y="1723.8" fill="#000000" font-family="Verdana" font-size="12">infos personne assurée</text>
+</g>
+
+<!-- Entity CATAL -->
+<g id="entity-CATAL">
+	<g id="frame-CATAL">
+		<rect x="701" y="1387" width="88" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="701" y="1412.0" width="88" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="701" y="1387" width="88" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="701" y1="1412" x2="789" y2="1412" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="725" y="1404.7" fill="#000000" font-family="Verdana" font-size="12">CATAL</text>
+	<text x="706" y="1429.8" fill="#000000" font-family="Verdana" font-size="12">n. cie</text>
+	<line x1="706" y1="1432" x2="740" y2="1432" stroke="#000000" stroke-width="1"/>
+	<text x="706" y="1446.8" fill="#000000" font-family="Verdana" font-size="12">code cie</text>
+	<text x="706" y="1463.8" fill="#000000" font-family="Verdana" font-size="12">info garantie</text>
+</g>
+
+<!-- Entity SAL -->
+<g id="entity-SAL">
+	<g id="frame-SAL">
+		<rect x="685" y="211" width="120" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="685" y="236.0" width="120" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="685" y="211" width="120" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="685" y1="236" x2="805" y2="236" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="733" y="228.7" fill="#000000" font-family="Verdana" font-size="12">SAL</text>
+	<text x="690" y="253.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers entreprise</text>
+	<line x1="690" y1="256" x2="799" y2="256" stroke="#000000" stroke-width="1"/>
+	<text x="690" y="270.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers salarié</text>
+	<line x1="690" y1="273" x2="777" y2="273" stroke="#000000" stroke-width="1"/>
+	<text x="690" y="287.8" fill="#000000" font-family="Verdana" font-size="12">n. personne</text>
+</g>
+
+<!-- Entity REPGAR -->
+<g id="entity-REPGAR">
+	<g id="frame-REPGAR">
+		<rect x="533" y="1370" width="78" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="533" y="1395.0" width="78" height="93" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="533" y="1370" width="78" height="118" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="533" y1="1395" x2="611" y2="1395" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="547" y="1387.7" fill="#000000" font-family="Verdana" font-size="12">REPGAR</text>
+	<text x="538" y="1412.7" fill="#000000" font-family="Verdana" font-size="12">n. contrat</text>
+	<line x1="538" y1="1415" x2="598" y2="1415" stroke="#000000" stroke-width="1"/>
+	<text x="538" y="1429.8" fill="#000000" font-family="Verdana" font-size="12">n. piece</text>
+	<line x1="538" y1="1432" x2="587" y2="1432" stroke="#000000" stroke-width="1"/>
+	<text x="538" y="1446.8" fill="#000000" font-family="Verdana" font-size="12">n. garantie</text>
+	<line x1="538" y1="1449" x2="605" y2="1449" stroke="#000000" stroke-width="1"/>
+	<text x="538" y="1463.8" fill="#000000" font-family="Verdana" font-size="12">code cie</text>
+	<line x1="538" y1="1466" x2="588" y2="1466" stroke="#000000" stroke-width="1"/>
+	<text x="538" y="1480.8" fill="#000000" font-family="Verdana" font-size="12">cie</text>
+</g>
+
+<!-- Entity XSb -->
+<g id="entity-XSb">
+	<g id="frame-XSb">
+		<rect x="869" y="2252" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="869" y="2277.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="869" y="2252" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="869" y1="2277" x2="973" y2="2277" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="908" y="2269.7" fill="#000000" font-family="Verdana" font-size="12">XSb</text>
+	<text x="874" y="2294.8" fill="#000000" font-family="Verdana" font-size="12">b_sinistre</text>
+	<line x1="874" y1="2297" x2="934" y2="2297" stroke="#000000" stroke-width="1"/>
+	<text x="874" y="2311.8" fill="#000000" font-family="Verdana" font-size="12">données type b</text>
+</g>
+
+<!-- Entity XSc -->
+<g id="entity-XSc">
+	<g id="frame-XSc">
+		<rect x="693" y="2252" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="693" y="2277.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="693" y="2252" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="693" y1="2277" x2="797" y2="2277" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="733" y="2269.7" fill="#000000" font-family="Verdana" font-size="12">XSc</text>
+	<text x="698" y="2294.8" fill="#000000" font-family="Verdana" font-size="12">b_sinistre</text>
+	<line x1="698" y1="2297" x2="758" y2="2297" stroke="#000000" stroke-width="1"/>
+	<text x="698" y="2311.8" fill="#000000" font-family="Verdana" font-size="12">données type c</text>
+</g>
+
+<!-- Entity XRxxx -->
+<g id="entity-XRxxx">
+	<g id="frame-XRxxx">
+		<rect x="1028" y="1839" width="146" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="1028" y="1864.0" width="146" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="1028" y="1839" width="146" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="1028" y1="1864" x2="1174" y2="1864" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="1081" y="1856.7" fill="#000000" font-family="Verdana" font-size="12">XRxxx</text>
+	<text x="1033" y="1881.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="1033" y1="1884" x2="1104" y2="1884" stroke="#000000" stroke-width="1"/>
+	<text x="1033" y="1898.8" fill="#000000" font-family="Verdana" font-size="12">infos risque générique</text>
+</g>
+
+<!-- Entity XSa -->
+<g id="entity-XSa">
+	<g id="frame-XSa">
+		<rect x="1049" y="2252" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="1049" y="2277.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="1049" y="2252" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="1049" y1="2277" x2="1153" y2="2277" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="1088" y="2269.7" fill="#000000" font-family="Verdana" font-size="12">XSa</text>
+	<text x="1054" y="2294.8" fill="#000000" font-family="Verdana" font-size="12">b_sinistre</text>
+	<line x1="1054" y1="2297" x2="1114" y2="2297" stroke="#000000" stroke-width="1"/>
+	<text x="1054" y="2311.8" fill="#000000" font-family="Verdana" font-size="12">données type a</text>
+</g>
+
+<!-- Entity FAM -->
+<g id="entity-FAM">
+	<g id="frame-FAM">
+		<rect x="703" y="102" width="84" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="703" y="127.0" width="84" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="703" y="102" width="84" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="703" y1="127" x2="787" y2="127" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="732" y="119.7" fill="#000000" font-family="Verdana" font-size="12">FAM</text>
+	<text x="708" y="144.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="708" y1="147" x2="752" y2="147" stroke="#000000" stroke-width="1"/>
+	<text x="708" y="161.8" fill="#000000" font-family="Verdana" font-size="12">n. personne</text>
+	<line x1="708" y1="164" x2="781" y2="164" stroke="#000000" stroke-width="1"/>
+	<text x="708" y="178.8" fill="#000000" font-family="Verdana" font-size="12">role</text>
+</g>
+
+<!-- Entity DOSSIER TIERS -->
+<g id="entity-DOSSIER TIERS">
+	<g id="frame-DOSSIER TIERS">
+		<rect x="41" y="521" width="108" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="41" y="546.0" width="108" height="9" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="41" y="521" width="108" height="34" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="41" y1="546" x2="149" y2="546" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="46" y="538.8" fill="#000000" font-family="Verdana" font-size="12">DOSSIER TIERS</text>
+</g>
+
+<!-- Entity PCLA -->
+<g id="entity-PCLA">
+	<g id="frame-PCLA">
+		<rect x="363" y="673" width="82" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="363" y="698.0" width="82" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="363" y="673" width="82" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="363" y1="698" x2="445" y2="698" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="388" y="690.7" fill="#000000" font-family="Verdana" font-size="12">PCLA</text>
+	<text x="368" y="715.8" fill="#000000" font-family="Verdana" font-size="12">n. contrat</text>
+	<line x1="368" y1="718" x2="428" y2="718" stroke="#000000" stroke-width="1"/>
+	<text x="368" y="732.8" fill="#000000" font-family="Verdana" font-size="12">n. piece</text>
+	<line x1="368" y1="735" x2="417" y2="735" stroke="#000000" stroke-width="1"/>
+	<text x="368" y="749.8" fill="#000000" font-family="Verdana" font-size="12">code clause</text>
+	<line x1="368" y1="752" x2="439" y2="752" stroke="#000000" stroke-width="1"/>
+</g>
+
+<!-- Entity XCb -->
+<g id="entity-XCb">
+	<g id="frame-XCb">
+		<rect x="693" y="588" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="693" y="613.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="693" y="588" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="693" y1="613" x2="797" y2="613" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="732" y="605.7" fill="#000000" font-family="Verdana" font-size="12">XCb</text>
+	<text x="698" y="630.8" fill="#000000" font-family="Verdana" font-size="12">n. contrat</text>
+	<line x1="698" y1="633" x2="758" y2="633" stroke="#000000" stroke-width="1"/>
+	<text x="698" y="647.8" fill="#000000" font-family="Verdana" font-size="12">données type b</text>
+</g>
+
+<!-- Entity XCc -->
+<g id="entity-XCc">
+	<g id="frame-XCc">
+		<rect x="869" y="588" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="869" y="613.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="869" y="588" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="869" y1="613" x2="973" y2="613" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="909" y="605.7" fill="#000000" font-family="Verdana" font-size="12">XCc</text>
+	<text x="874" y="630.8" fill="#000000" font-family="Verdana" font-size="12">n. contrat</text>
+	<line x1="874" y1="633" x2="934" y2="633" stroke="#000000" stroke-width="1"/>
+	<text x="874" y="647.8" fill="#000000" font-family="Verdana" font-size="12">données type c</text>
+</g>
+
+<!-- Entity XCa -->
+<g id="entity-XCa">
+	<g id="frame-XCa">
+		<rect x="520" y="588" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="520" y="613.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="520" y="588" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="520" y1="613" x2="624" y2="613" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="559" y="605.7" fill="#000000" font-family="Verdana" font-size="12">XCa</text>
+	<text x="525" y="630.8" fill="#000000" font-family="Verdana" font-size="12">n. contrat</text>
+	<line x1="525" y1="633" x2="585" y2="633" stroke="#000000" stroke-width="1"/>
+	<text x="525" y="647.8" fill="#000000" font-family="Verdana" font-size="12">données type a</text>
+</g>
+
+<!-- Entity CLI -->
+<g id="entity-CLI">
+	<g id="frame-CLI">
+		<rect x="355" y="504" width="98" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="355" y="529.0" width="98" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="355" y="504" width="98" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="355" y1="529" x2="453" y2="529" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="393" y="521.7" fill="#000000" font-family="Verdana" font-size="12">CLI</text>
+	<text x="360" y="546.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="360" y1="549" x2="404" y2="549" stroke="#000000" stroke-width="1"/>
+	<text x="360" y="563.8" fill="#000000" font-family="Verdana" font-size="12">données client</text>
+</g>
+
+<!-- Entity CLAUSE -->
+<g id="entity-CLAUSE">
+	<g id="frame-CLAUSE">
+		<rect x="702" y="681" width="86" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="702" y="706.0" width="86" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="702" y="681" width="86" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="702" y1="706" x2="788" y2="706" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="720" y="698.7" fill="#000000" font-family="Verdana" font-size="12">CLAUSE</text>
+	<text x="707" y="723.8" fill="#000000" font-family="Verdana" font-size="12">code produit</text>
+	<line x1="707" y1="726" x2="783" y2="726" stroke="#000000" stroke-width="1"/>
+	<text x="707" y="740.8" fill="#000000" font-family="Verdana" font-size="12">code clause</text>
+	<line x1="707" y1="743" x2="778" y2="743" stroke="#000000" stroke-width="1"/>
+</g>
+
+<!-- Entity SININT -->
+<g id="entity-SININT">
+	<g id="frame-SININT">
+		<rect x="368" y="2033" width="72" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="368" y="2058.0" width="72" height="77" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="368" y="2033" width="72" height="102" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="368" y1="2058" x2="440" y2="2058" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="381" y="2050.7" fill="#000000" font-family="Verdana" font-size="12">SININT</text>
+	<text x="373" y="2075.7" fill="#000000" font-family="Verdana" font-size="12">n. sinistre</text>
+	<line x1="373" y1="2078" x2="434" y2="2078" stroke="#000000" stroke-width="1"/>
+	<text x="373" y="2092.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="373" y1="2095" x2="417" y2="2095" stroke="#000000" stroke-width="1"/>
+	<text x="373" y="2109.8" fill="#000000" font-family="Verdana" font-size="12">rôle</text>
+	<text x="373" y="2126.8" fill="#000000" font-family="Verdana" font-size="12">...</text>
+</g>
+
+<!-- Entity PIEC -->
+<g id="entity-PIEC">
+	<g id="frame-PIEC">
+		<rect x="332" y="865" width="144" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="332" y="890.0" width="144" height="77" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="332" y="865" width="144" height="102" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="332" y1="890" x2="476" y2="890" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="389" y="882.7" fill="#000000" font-family="Verdana" font-size="12">PIEC</text>
+	<text x="337" y="907.7" fill="#000000" font-family="Verdana" font-size="12">numero contrat</text>
+	<line x1="337" y1="910" x2="432" y2="910" stroke="#000000" stroke-width="1"/>
+	<text x="337" y="924.8" fill="#000000" font-family="Verdana" font-size="12">n. piece</text>
+	<line x1="337" y1="927" x2="386" y2="927" stroke="#000000" stroke-width="1"/>
+	<text x="337" y="941.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion principale</text>
+	<text x="337" y="958.8" fill="#000000" font-family="Verdana" font-size="12">code produit</text>
+</g>
+
+<!-- Entity RISA -->
+<g id="entity-RISA">
+	<g id="frame-RISA">
+		<rect x="866" y="1479" width="110" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="866" y="1504.0" width="110" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="866" y="1479" width="110" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="866" y1="1504" x2="976" y2="1504" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="905" y="1496.7" fill="#000000" font-family="Verdana" font-size="12">RISA</text>
+	<text x="871" y="1521.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="871" y1="1524" x2="942" y2="1524" stroke="#000000" stroke-width="1"/>
+	<text x="871" y="1538.8" fill="#000000" font-family="Verdana" font-size="12">infos génériques</text>
+</g>
+
+<!-- Entity RVEH -->
+<g id="entity-RVEH">
+	<g id="frame-RVEH">
+		<rect x="357" y="1655" width="94" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="357" y="1680.0" width="94" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="357" y="1655" width="94" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="357" y1="1680" x2="451" y2="1680" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="387" y="1672.7" fill="#000000" font-family="Verdana" font-size="12">RVEH</text>
+	<text x="362" y="1697.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="362" y1="1700" x2="433" y2="1700" stroke="#000000" stroke-width="1"/>
+	<text x="362" y="1714.8" fill="#000000" font-family="Verdana" font-size="12">infos véhicule</text>
+</g>
+
+<!-- Entity SINGAR -->
+<g id="entity-SINGAR">
+	<g id="frame-SINGAR">
+		<rect x="835" y="2143" width="172" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="835" y="2168.0" width="172" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="835" y="2143" width="172" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="835" y1="2168" x2="1007" y2="2168" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="896" y="2160.7" fill="#000000" font-family="Verdana" font-size="12">SINGAR</text>
+	<text x="840" y="2185.8" fill="#000000" font-family="Verdana" font-size="12">n. sinistre</text>
+	<line x1="840" y1="2188" x2="901" y2="2188" stroke="#000000" stroke-width="1"/>
+	<text x="840" y="2202.8" fill="#000000" font-family="Verdana" font-size="12">n. garantie</text>
+	<line x1="840" y1="2205" x2="907" y2="2205" stroke="#000000" stroke-width="1"/>
+	<text x="840" y="2219.8" fill="#000000" font-family="Verdana" font-size="12">infos sur garantie sinistrée</text>
+</g>
+
+<!-- Entity XDxxx -->
+<g id="entity-XDxxx">
+	<g id="frame-XDxxx">
+		<rect x="684" y="1839" width="122" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="684" y="1864.0" width="122" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="684" y="1839" width="122" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="684" y1="1864" x2="806" y2="1864" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="725" y="1856.7" fill="#000000" font-family="Verdana" font-size="12">XDxxx</text>
+	<text x="689" y="1881.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="689" y1="1884" x2="760" y2="1884" stroke="#000000" stroke-width="1"/>
+	<text x="689" y="1898.8" fill="#000000" font-family="Verdana" font-size="12">infos risque divers</text>
+</g>
+
+<!-- Entity RIMM -->
+<g id="entity-RIMM">
+	<g id="frame-RIMM">
+		<rect x="520" y="1655" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="520" y="1680.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="520" y="1655" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="520" y1="1680" x2="624" y2="1680" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="554" y="1672.7" fill="#000000" font-family="Verdana" font-size="12">RIMM</text>
+	<text x="525" y="1697.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="525" y1="1700" x2="596" y2="1700" stroke="#000000" stroke-width="1"/>
+	<text x="525" y="1714.8" fill="#000000" font-family="Verdana" font-size="12">infos immeuble</text>
+</g>
+
+<!-- Entity ADH -->
+<g id="entity-ADH">
+	<g id="frame-ADH">
+		<rect x="363" y="1084" width="82" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="363" y="1109.0" width="82" height="127" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="363" y="1084" width="82" height="152" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="363" y1="1109" x2="445" y2="1109" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="390" y="1101.7" fill="#000000" font-family="Verdana" font-size="12">ADH</text>
+	<text x="368" y="1126.7" fill="#000000" font-family="Verdana" font-size="12">n. contrat</text>
+	<line x1="368" y1="1129" x2="428" y2="1129" stroke="#000000" stroke-width="1"/>
+	<text x="368" y="1143.7" fill="#000000" font-family="Verdana" font-size="12">n. piece</text>
+	<line x1="368" y1="1146" x2="417" y2="1146" stroke="#000000" stroke-width="1"/>
+	<text x="368" y="1160.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="368" y1="1163" x2="439" y2="1163" stroke="#000000" stroke-width="1"/>
+	<text x="368" y="1177.8" fill="#000000" font-family="Verdana" font-size="12">n. assuré</text>
+	<text x="368" y="1194.8" fill="#000000" font-family="Verdana" font-size="12">date entrée</text>
+	<text x="368" y="1211.8" fill="#000000" font-family="Verdana" font-size="12">date sortie</text>
+	<text x="368" y="1228.8" fill="#000000" font-family="Verdana" font-size="12">...</text>
+</g>
+
+<!-- Entity OPT -->
+<g id="entity-OPT">
+	<g id="frame-OPT">
+		<rect x="1054" y="765" width="94" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="1054" y="790.0" width="94" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="1054" y="765" width="94" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="1054" y1="790" x2="1148" y2="790" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="1088" y="782.7" fill="#000000" font-family="Verdana" font-size="12">OPT</text>
+	<text x="1059" y="807.8" fill="#000000" font-family="Verdana" font-size="12">code produit</text>
+	<line x1="1059" y1="810" x2="1135" y2="810" stroke="#000000" stroke-width="1"/>
+	<text x="1059" y="824.8" fill="#000000" font-family="Verdana" font-size="12">code garantie</text>
+	<line x1="1059" y1="827" x2="1142" y2="827" stroke="#000000" stroke-width="1"/>
+	<text x="1059" y="841.8" fill="#000000" font-family="Verdana" font-size="12">n. garantie</text>
+</g>
+
+<!-- Entity XAc -->
+<g id="entity-XAc">
+	<g id="frame-XAc">
+		<rect x="1029" y="1000" width="144" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="1029" y="1025.0" width="144" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="1029" y="1000" width="144" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="1029" y1="1025" x2="1173" y2="1025" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="1089" y="1017.7" fill="#000000" font-family="Verdana" font-size="12">XAc</text>
+	<text x="1034" y="1042.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion principale</text>
+	<line x1="1034" y1="1045" x2="1167" y2="1045" stroke="#000000" stroke-width="1"/>
+	<text x="1034" y="1059.8" fill="#000000" font-family="Verdana" font-size="12">données type c</text>
+</g>
+
+<!-- Entity XIxxx -->
+<g id="entity-XIxxx">
+	<g id="frame-XIxxx">
+		<rect x="520" y="1839" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="520" y="1864.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="520" y="1839" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="520" y1="1864" x2="624" y2="1864" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="554" y="1856.7" fill="#000000" font-family="Verdana" font-size="12">XIxxx</text>
+	<text x="525" y="1881.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="525" y1="1884" x2="596" y2="1884" stroke="#000000" stroke-width="1"/>
+	<text x="525" y="1898.8" fill="#000000" font-family="Verdana" font-size="12">infos immeuble</text>
+</g>
+
+<!-- Entity XVxxx -->
+<g id="entity-XVxxx">
+	<g id="frame-XVxxx">
+		<rect x="357" y="1839" width="94" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="357" y="1864.0" width="94" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="357" y="1839" width="94" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="357" y1="1864" x2="451" y2="1864" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="384" y="1856.7" fill="#000000" font-family="Verdana" font-size="12">XVxxx</text>
+	<text x="362" y="1881.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="362" y1="1884" x2="433" y2="1884" stroke="#000000" stroke-width="1"/>
+	<text x="362" y="1898.8" fill="#000000" font-family="Verdana" font-size="12">infos véhicule</text>
+</g>
+
+<!-- Entity GARAN -->
+<g id="entity-GARAN">
+	<g id="frame-GARAN">
+		<rect x="704" y="1126" width="82" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="704" y="1151.0" width="82" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="704" y="1126" width="82" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="704" y1="1151" x2="786" y2="1151" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="723" y="1143.7" fill="#000000" font-family="Verdana" font-size="12">GARAN</text>
+	<text x="709" y="1168.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion</text>
+	<line x1="709" y1="1171" x2="780" y2="1171" stroke="#000000" stroke-width="1"/>
+	<text x="709" y="1185.8" fill="#000000" font-family="Verdana" font-size="12">n. garantie</text>
+</g>
+
+<!-- Entity COMPO -->
+<g id="entity-COMPO">
+	<g id="frame-COMPO">
+		<rect x="878" y="1118" width="86" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="878" y="1143.0" width="86" height="59" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="878" y="1118" width="86" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="878" y1="1143" x2="964" y2="1143" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="898" y="1135.7" fill="#000000" font-family="Verdana" font-size="12">COMPO</text>
+	<text x="883" y="1160.8" fill="#000000" font-family="Verdana" font-size="12">code produit</text>
+	<line x1="883" y1="1163" x2="959" y2="1163" stroke="#000000" stroke-width="1"/>
+	<text x="883" y="1177.8" fill="#000000" font-family="Verdana" font-size="12">n. garantie</text>
+	<line x1="883" y1="1180" x2="950" y2="1180" stroke="#000000" stroke-width="1"/>
+	<text x="883" y="1194.8" fill="#000000" font-family="Verdana" font-size="12">code cie</text>
+	<line x1="883" y1="1197" x2="933" y2="1197" stroke="#000000" stroke-width="1"/>
+</g>
+
+<!-- Entity XTa -->
+<g id="entity-XTa">
+	<g id="frame-XTa">
+		<rect x="520" y="9" width="104" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="520" y="34.0" width="104" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="520" y="9" width="104" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="520" y1="34" x2="624" y2="34" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="560" y="26.7" fill="#000000" font-family="Verdana" font-size="12">XTa</text>
+	<text x="525" y="51.8" fill="#000000" font-family="Verdana" font-size="12">n. tiers</text>
+	<line x1="525" y1="54" x2="569" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="525" y="68.8" fill="#000000" font-family="Verdana" font-size="12">données type a</text>
+</g>
+
+<!-- Entity XAa -->
+<g id="entity-XAa">
+	<g id="frame-XAa">
+		<rect x="673" y="1000" width="144" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="673" y="1025.0" width="144" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="673" y="1000" width="144" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="673" y1="1025" x2="817" y2="1025" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="732" y="1017.7" fill="#000000" font-family="Verdana" font-size="12">XAa</text>
+	<text x="678" y="1042.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion principale</text>
+	<line x1="678" y1="1045" x2="811" y2="1045" stroke="#000000" stroke-width="1"/>
+	<text x="678" y="1059.8" fill="#000000" font-family="Verdana" font-size="12">données type a</text>
+</g>
+
+<!-- Entity XAb -->
+<g id="entity-XAb">
+	<g id="frame-XAb">
+		<rect x="849" y="1000" width="144" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="849" y="1025.0" width="144" height="43" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="849" y="1000" width="144" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="849" y1="1025" x2="993" y2="1025" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="908" y="1017.7" fill="#000000" font-family="Verdana" font-size="12">XAb</text>
+	<text x="854" y="1042.8" fill="#000000" font-family="Verdana" font-size="12">n. adhesion principale</text>
+	<line x1="854" y1="1045" x2="987" y2="1045" stroke="#000000" stroke-width="1"/>
+	<text x="854" y="1059.8" fill="#000000" font-family="Verdana" font-size="12">données type b</text>
+</g>
+
+<!-- Entity PROD -->
+<g id="entity-PROD">
+	<g id="frame-PROD">
+		<rect x="700" y="857" width="90" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="700" y="882.0" width="90" height="93" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="700" y="857" width="90" height="118" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="700" y1="882" x2="790" y2="882" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="727" y="874.7" fill="#000000" font-family="Verdana" font-size="12">PROD</text>
+	<text x="705" y="899.7" fill="#000000" font-family="Verdana" font-size="12">code produit</text>
+	<line x1="705" y1="902" x2="781" y2="902" stroke="#000000" stroke-width="1"/>
+	<text x="705" y="916.8" fill="#000000" font-family="Verdana" font-size="12">cie principale</text>
+	<text x="705" y="933.8" fill="#000000" font-family="Verdana" font-size="12">type</text>
+	<text x="705" y="950.8" fill="#000000" font-family="Verdana" font-size="12">branche</text>
+	<text x="705" y="967.8" fill="#000000" font-family="Verdana" font-size="12">...</text>
+</g>
+</svg>
