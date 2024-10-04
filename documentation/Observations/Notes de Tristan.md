@@ -43,3 +43,8 @@ Les noms disponibles sont :
 
   ## Fonctions qui ne sont PAS dans la doc (genre du tout)
  - FileToStrBase64(string path) //returns string
+
+
+ ## Comportement de fonctions indésirables
+ ### FileExtractName(string)
+ La fonction marche si le path contient des \ (backlash) et ne marche pas avec des / (slash).

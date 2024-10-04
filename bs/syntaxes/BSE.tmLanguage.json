@@ -26,10 +26,7 @@
         "strings": {
             "name": "string.quoted.double.bse",
             "begin": "\"",
-            "end": "\"",
-            "beginCaptures": {"0": {"name": "punctuation.definition.string.begin.bse"}},
-            "endCaptures": {"0": {"name": "punctuation.definition.string.end.bse"}},
-            "patterns": [{"name": "constant.character.escape.bse", "match": "\\\\(.)"}]
+            "end": "\""
         },
         "keywords": {
             "patterns": [
