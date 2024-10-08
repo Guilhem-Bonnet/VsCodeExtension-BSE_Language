@@ -48,3 +48,11 @@ Les noms disponibles sont :
  ## Comportement de fonctions indésirables
  ### FileExtractName(string)
  La fonction marche si le path contient des \ (backlash) et ne marche pas avec des / (slash).
+
+ ### GetHolidaysList(int), GetHolidayNames(int), DayIsHoliday(date) et possiblement GetNextWorkingDay(date, int)
+ Les jours fériés de Belair sont ceux de la France donc pratiquement inutiles dans notre cas... (A vérifier)
+ Selon mes tests (4 octobre), ça semble fonctionner
+
+ ### DayOf(date) et MonthOf(date) (À valider / Source douteuse)
+ À partir du 13ème jour du mois (date locale du PC) les fonctions marchent.
+ Sinon elles ne marchent pas (wtf).
