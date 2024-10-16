@@ -26,3 +26,6 @@ Vu que le nom pour la librairie ChienLib n'est pas écrite <b>exactement de la m
 
 # Erreurs Runtime
 ## [Error] : Could not convert variant of type into type
+
+## [Error] : (Code 400) No automate on this base
+ - Il faut que le service BaiimpPool soit démarré (et préférablement configuré avec la bonne config).
