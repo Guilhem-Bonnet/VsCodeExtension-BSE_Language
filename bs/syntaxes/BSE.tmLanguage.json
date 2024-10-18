@@ -38,7 +38,11 @@
             "patterns": [
                 {
                     "name": "support.function.bse",
-                    "match": "\\b(print|LogInfo|LogError|SQL:New|SQL:Open|Obj:NewArray|obj:GetByKey|Obj:AddArrayItems|sendEmail|sendEmailMultiDestinaire|StringExplode|dumpvar|SQL:ExecDirect|SQL:Eof|SQL:fieldValue|formatdatetime|Now)\\b"
+                    "match": "\\b(print|LogInfo|LogError|SQL:New|SQL:Open|Obj:NewArray|obj:GetByKey|Obj:AddArrayItems|StringExplode|dumpvar|SQL:ExecDirect|SQL:Eof|SQL:fieldValue|formatdatetime|Now)\\b"
+                },
+                {
+                    "name": "support.function.custom.bse",
+                    "match": "\\bfunction\\s+\\w+.*return\\b"
                 }
             ]
         },
@@ -76,7 +80,7 @@
             "patterns": [
                 {
                     "name": "keyword.other.import.bse",
-                    "match": "^\\s*Uses\\s+([\\w\\s,]+)"
+                    "match": "^(?i)uses\\s+([\\w\\s,]+)\\s*$"
                 }
             ]
         }
