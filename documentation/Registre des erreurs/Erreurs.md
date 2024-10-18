@@ -25,7 +25,11 @@ Vu que le nom pour la librairie ChienLib n'est pas écrite <b>exactement de la m
  - Il manque un statement <i>then</i> après ta condition
 
 # Erreurs Runtime
-## [Error] : Could not convert variant of type into type
+## [Error] : Could not convert variant of (Type) into (Type)
 
 ## [Error] : (Code 400) No automate on this base
  - Il faut que le service BaiimpPool soit démarré (et préférablement configuré avec la bonne config).
+
+## [Error] : Access violation at address 00EFBF23 in module 'BSEDev.exe'. Read of 00000004
+ - Note importante : Cette erreur est CHIANTE!
+ - Il semble que certaines variables espions (watches) font planter l'éxécution du script apparemment au hasard. L'erreur peut quasiment t'empêcher de déboguer effectivement parce que, tel que mentionné, on dirait du hasard. Le mieux est de <i>Clear all</i> les Watches.
