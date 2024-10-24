@@ -33,3 +33,6 @@ Vu que le nom pour la librairie ChienLib n'est pas écrite <b>exactement de la m
 ## [Error] : Access violation at address 00EFBF23 in module 'BSEDev.exe'. Read of 00000004
  - Note importante : Cette erreur est CHIANTE!
  - Il semble que certaines variables espions (watches) font planter l'éxécution du script apparemment au hasard. L'erreur peut quasiment t'empêcher de déboguer effectivement parce que, tel que mentionné, on dirait du hasard. Le mieux est de <i>Clear all</i> les Watches.
+
+ ## [Error] : Not a SimpleObject
+  - Tu essaies d'accéder à des propriétés d'une variable quand elle n'est pas un object.

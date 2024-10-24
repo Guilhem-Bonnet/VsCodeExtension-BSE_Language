@@ -122,3 +122,19 @@ Les noms disponibles sont :
    print("--------")
  ```
 
+## Bug lors du déboguage 4.2I (just you wait 'til they tell us it's a feature)
+
+Rouler ce script avec un breakpoint et un watch sur la variable policy
+
+ ```
+local policy
+
+policy := from poli where contrat = 269755 and piece = 1 and role = "P"
+policy := policy[0]
+//policy := Obj:GetByKey("POLI", 269755, 1, cie)
+
+print(Dumpvar(policy))
+
+return 
+ ```
+
