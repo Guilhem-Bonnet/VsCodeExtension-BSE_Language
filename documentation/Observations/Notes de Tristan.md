@@ -98,6 +98,15 @@ Les noms disponibles sont :
     print(MonthOf(debug2))
  ```
 
+ ### Piec_New (et toutes les fonctions qui l'appellent)
+ Dans la fonction, la ligne suivante ne fonctionne pas parce que le nom de la propriété est Sitpiece et non Sitpiec (on est dans une libraire de Belair pour info).
+ ```
+ Piec.Sitpiec := Obj:GetPropDef(PiecCodes,"Sit_EnEtablissement","2")
+ ```
+
+ Vu que cette ligne ne marche pas, la nouvelle pièce a toujours la situation de la dernière pièce (vu qu'elle en est une copie). Dans le cas de FullCont_CreateNewPiece, la fonction ferme la pièce précédente et en ouvre une nouvelle donc la nouvelle pièce est créée avec une situation de "Fin de pièce". smh 
+ Un autre truc bizarre d'ailleurs est que la situation de départ pour une nouvelle pièce est "2" mais, dans notre bd, "2" signifie Erreur...
+
  ## Comportements étranges
  Le CRLF() peut être appelé sans les parenthèses (sauf sous certaines conditions). Voir le script suivant, il est vraiment intéressant
 
