@@ -153,21 +153,7 @@ Les noms disponibles sont :
 
  ### Bug lors du déboguage 4.2I 
 
- Rouler ce script avec un breakpoint et un watch sur la variable policy
-
- ```
-   local policy
-
-   policy := from poli where contrat = 269755 and piece = 1 and role = "P"
-   policy := policy[0]
-   //policy := Obj:GetByKey("POLI", 269755, 1, cie)
-
-   print(Dumpvar(policy))
-
-   return 
- ```
-
- On a report le bug à Dimitri/Belair, ils ont créé un ticket.
+ Voir <b>Access violation at address 00EFBF23 in module 'BSEDev.exe'. Read of 00000004</b> dans Erreurs.md
 
  ## Features ABSOLUMENT INUTILES
 
