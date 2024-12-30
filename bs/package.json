@@ -7,6 +7,10 @@
   "engines": {
     "vscode": "^1.88.0"
   },
+  "activationEvents": [
+    "onLanguage:bse" 
+  ],
+  "main": "./out/extension.js",
   "categories": [
     "Programming Languages"
   ],
@@ -14,20 +18,15 @@
     "languages": [
       {
         "id": "bse",
-        "aliases": [
-          "BSE",
-          "BSE"
-        ],
-        "extensions": [
-          ".bs"
-        ],
-        "configuration": "./language-configuration.json"
+        "aliases": ["BSE"],
+        "extensions": [".bs"],
+        "configuration": "./language-configuration.json" 
       }
     ],
     "grammars": [
       {
         "language": "bse",
-        "scopeName": "source.bse",
+        "scopeName": "source.bse", 
         "path": "./syntaxes/BSE.tmLanguage.json"
       }
     ]

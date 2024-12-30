@@ -1,88 +1,125 @@
 {
-    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-    "scopeName": "source.bse",
-    "name": "BSE",
-    "patterns": [
-        {"include": "#comments"},
-        {"include": "#strings"},
-        {"include": "#keywords"},
-        {"include": "#functions"},
-        {"include": "#declarations"},
-        {"include": "#imports"}
-    ],
-    "repository": {
-        "comments": {
-            "patterns": [
-                {"name": "comment.line.double-slash.bse", "match": "//.*$"},
-                {
-                    "name": "comment.block.bse",
-                    "begin": "/\\*",
-                    "end": "\\*/",
-                    "beginCaptures": {"0": {"name": "punctuation.definition.comment.bse"}},
-                    "endCaptures": {"0": {"name": "punctuation.definition.comment.bse"}}
-                }
-            ]
-        },
-        "strings": {
-            "name": "string.quoted.double.bse",
-            "begin": "\"",
-            "end": "\""
-        },
-        "keywords": {
-            "patterns": [
-                {"name": "keyword.control.bse", "match": "\\b(if|else|while|begin|end|and|or|not|return|function|then)\\b"},
-                {"name": "keyword.other.bse", "match": "\\b(local|uses|error)\\b"}
-            ]
-        },
-        "functions": {
-            "patterns": [
-                {
-                    "name": "support.function.bse",
-                    "match": "\\b(print|LogInfo|LogError|SQL:New|SQL:Open|Obj:NewArray|obj:GetByKey|Obj:AddArrayItems|StringExplode|dumpvar|SQL:ExecDirect|SQL:Eof|SQL:fieldValue|formatdatetime|Now)\\b"
-                },
-                {
-                    "name": "support.function.custom.bse",
-                    "match": "\\bfunction\\s+\\w+.*return\\b"
-                }
-            ]
-        },
-        "declarations": {
-			"patterns": [
-				{
-					"begin": "\\blocal\\s",
-					"end": "$",
-					"beginCaptures": {"0": {"name": "storage.type.variable.bse"}},
-					"patterns": [{"include": "#variable"}]
-				}
-			]
-		},
-		"assignments": {
-			"patterns": [
-				{
-					"name": "variable.assignment.bse",
-					"match": "\\b(\\w+)\\s*:=\\s*(.*)"
-				}
-			]
-		},
-		"variable": {
-			"patterns": [
-				{
-					"name": "variable.other.bse",
-					"match": "\\b\\w+\\b"
-				}
-			]
-		},
-		"logError": {
-			"name": "message.error.bse",
-			"match": "\\bLogError\\(.*\\)"
-		},
-        "imports": {
-            "patterns": [
-                {
-                    "name": "keyword.other.import.bse",
-                    "match": "^(?i)uses\\s+([\\w\\s,]+)\\s*$"
-                }
-            ]
-        }
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.bse",
+  "name": "BSE",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#declarations"
+    },
+    {
+      "include": "#imports"
     }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.bse",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.bse",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.bse"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.bse"
+            }
+          }
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.bse",
+      "begin": "\"",
+      "end": "\""
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.bse",
+          "match": "\\b(if|else|while|begin|end|and|or|not|return|function|then)\\b"
+        },
+        {
+          "name": "keyword.other.bse",
+          "match": "\\b(local|uses|error)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "support.function.bse",
+          "match": "\\b(print|LogInfo|LogError|SQL:New|SQL:Open|Obj:New|Obj:NewArray|obj:GetByKey|Obj:AddArrayItems|StringExplode|dumpvar|SQL:ExecDirect|SQL:Eof|SQL:fieldValue|formatdatetime|Now)\\b"
+        },
+        {
+          "name": "support.function.custom.bse",
+          "match": "\\bfunction\\s+\\w+.*return\\b"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "begin": "\\blocal\\s",
+          "end": "$",
+          "beginCaptures": {
+            "0": {
+              "name": "storage.type.variable.bse"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#variable"
+            }
+          ]
+        }
+      ]
+    },
+    "assignments": {
+      "patterns": [
+        {
+          "name": "variable.assignment.bse",
+          "match": "\\b(\\w+)\\s*:=\\s*(.*)"
+        }
+      ]
+    },
+    "variable": {
+      "patterns": [
+        {
+          "name": "variable.other.bse",
+          "match": "\\b\\w+\\b"
+        }
+      ]
+    },
+    "logError": {
+      "name": "message.error.bse",
+      "match": "\\bLogError\\(.*\\)"
+    },
+    "imports": {
+      "patterns": [
+        {
+          "name": "keyword.other.import.bse",
+          "match": "^(?i)uses\\s+([\\w\\s,]+)\\s*$"
+        }
+      ]
+    }
+  }
 }

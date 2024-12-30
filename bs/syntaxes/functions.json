@@ -1,0 +1,20 @@
+{
+    "functions": [
+      "print",
+      "LogInfo",
+      "LogError",
+      "SQL:New",
+      "SQL:Open",
+      "Obj:New",
+      "Obj:NewArray",
+      "obj:GetByKey",
+      "Obj:AddArrayItems",
+      "StringExplode",
+      "dumpvar",
+      "SQL:ExecDirect",
+      "SQL:Eof",
+      "SQL:fieldValue",
+      "formatdatetime",
+      "Now"
+    ]
+  }
