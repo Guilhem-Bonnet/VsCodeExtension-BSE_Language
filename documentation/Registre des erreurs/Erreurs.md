@@ -28,7 +28,6 @@ Vu que le nom pour la librairie ChienLib n'est pas écrite <b>exactement de la m
 ## [Error] : Could not convert variant of (Type) into (Type)
  - Le message est assez self-explanatory
  - Un truc à noter c'est que des fois, on peut avoir <b>Could not convert variant of (Null) into (OleStr)</b> alors qu'un string devrait pouvoir être null. Je ne suis pas trop sur de ce cas parce qu'avec un watch le TYPE de ma var est null.
- - NE PAS SOUS-ESTIMER CETTE ERREUR! Elle peut mener à une autre erreur : <b>Abnormal program termination</b> (en dev) ou <b>XML document must have a top level element</b> (serveur) qui fait planter le BAS.
 
 ## [Error] : (Code 400) No automate on this base
  - Il faut que le service BaiimpPool soit démarré (et préférablement configuré avec la bonne config).
@@ -36,13 +35,15 @@ Vu que le nom pour la librairie ChienLib n'est pas écrite <b>exactement de la m
 ## [Error] (BasError) : Votre serveur d'application n'est pas démarré.
  - Le BAS est down. Il faut le redémarrer. 
 
+## [Error] (BasError) : No license for BAS Module
+
 ## [Error] : Access violation at address 00EFBF23 in module 'BSEDev.exe'. Read of 00000004
  - Note importante : Cette erreur est CHIANTE! Elle rend le déboguage un enfer.
- - Si une variable contient un objet ou un tableau qui provient du SQL, il devient impossible de mettre des variables espions pour en visionner le contenu.
+ - Si une variable contient un objet ou un tableau, il devient impossible de mettre des variables espions pour en visionner le contenu.
  - Cette erreur n'apparait pas s'il n'y a pas de breakpoint lors du déboguage (sauf que tu ne peux pas plus visionner le contenu de la variable).
- - Si tu as un espion sur une variable, que tu avances ligne-par-ligne et que cette variable reçoit son contenu de la BD, cette erreur apparait et fait planter l'éxécution de ton script IMMÉDIATEMENT. Celà outrepasse les redirections d'erreur (donc try/catch).
+ - Si tu as un espion sur une variable, que tu avances ligne-par-ligne et que cette variable reçoit son contenu, cette erreur apparait et fait planter l'éxécution de ton script IMMÉDIATEMENT. Celà outrepasse les redirections d'erreur (donc try/catch).
 #### Counterplay
- - Si tu n'as pas un espion sur une variable, que tu avances ligne-par-ligne et que cette variable reçoit son contenu de la BD, tu peux alors essayer de mettre un watch sur la variable pour voir si c'est "safe". Si le contenu ne peut pas être lu, l'erreur se produit MAIS N'ARRÊTE PAS L'ÉXÉCUTION (comme expliqué plus haut) tant que tu ne continues pas le programme (avec F7/F8/Éxécuter). Si l'erreur ce produit, tu peux enlever l'espion avant de continuer l'éxécution. Cela te permet de "Peek" une variable pour savoir si elle est "safe" à regarder. 
+ - Si tu n'as pas un espion sur une variable, que tu avances ligne-par-ligne et que cette variable reçoit son contenu, tu peux alors essayer de mettre un watch sur la variable pour voir si c'est "safe". Si le contenu ne peut pas être lu, l'erreur se produit MAIS N'ARRÊTE PAS L'ÉXÉCUTION (comme expliqué plus haut) tant que tu ne continues pas le programme (avec F7/F8/Éxécuter). Si l'erreur ce produit, tu peux enlever l'espion avant de continuer l'éxécution. Cela te permet de "Peek" une variable pour savoir si elle est "safe" à regarder. 
  - Utiliser print(dumpvar(myVar)), sauf qu'il faut y penser AVANT l'éxécution.
  - Les propriétés des objets peuvent être visionnées individuellement. Ex: ma variable Cont contient un contrat (que je ne peux pas visionner), je peux mettre un espion sur Cont.contrat pour voir sa clé primaire. Cela est bonne alternative (bien que lente) pour lire le contenu mais elle requiert la connaissance des propriétés de la variable.
 #### Autres
@@ -52,11 +53,14 @@ Vu que le nom pour la librairie ChienLib n'est pas écrite <b>exactement de la m
 
 ## [Error] : Not a SimpleObject
  - Tu essaies d'accéder à des propriétés d'une variable quand elle n'est pas un object.
+ - Tu essaies d'accéder à la propriété d'une propriété (ex: dto.Quote.Id). Il faut d'abord mettre dto.Quote dans un variable et prendre Quote.Id.
 
 ## Abnormal program termination (BSEDev)
 ## XML document must have a top level element (BAS)
 ![alt text](image.png) 
  - Ces deux erreurs sont la même mais le message d'erreur change dépendement de l'environment (BSEDev/Appel de script BAS).
- - Quand il y a une erreur dans ton script BSE, il se peut que Belair renvoie cette erreur aussi. Sur le BSEDev, le message de cette erreur apprait après le message de l'erreur qui a engendré celle-ci. Lors d'un click de bouton sur Belair (donc appel de BAS), le message de l'erreur précédente n'apparait pas. C'est juste le <b>XML document must have a top level element</b> qui est affiché. 
- - D'après mon expérience (à prendre avec un grain de sel), quand celà se produit, la vraie erreur est une erreur de typage ex: <b>Could not convert variant of (Null) into (OleStr)</b> 
- - Si cette erreur ce produit, ÇA PLANTE LE BAS/BSEDev. En staging/prod, c'est chiant pcq le BAS est down, down quoi... Mais je dois dire que je n'ai jamais vu cette erreur en prod (yet).
+ - Cette erreur fait planter l'hôte de l'environment (BSEDev ou BAS).
+ - Cette erreur survient lorsqu'une variable de type Json est envoyée au garbage collector et qu'elle n'a pas été fermée (avec Json:Close()). //Confirmé par Dimitri
+ - Il faut donc mettre des try/catch lors de la création de json. Dans le catch, il faut mettre le Json:Close() en cas d'exception (mais aussi fermer préalablement toutes les autres balises).
+ 
+
