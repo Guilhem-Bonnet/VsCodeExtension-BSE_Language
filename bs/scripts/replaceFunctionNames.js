@@ -6,7 +6,8 @@ const functionsPath = path.join(__dirname, '..', 'syntaxes', 'functions.json');
 const functions = JSON.parse(fs.readFileSync(functionsPath, 'utf-8')).functions;
 
 // Generate the regex pattern from the list of functions
-const regexPattern = `\\b(${functions.join('|')})\\b`;
+const functionNames = Object.keys(functions).join('|')
+const regexPattern = `\\b(${Object.keys(functions).join('|')})\\b`;
 
 // Inject the generated regex into your syntax highlight JSON
 const syntaxFilePath = path.join(__dirname, '..', 'syntaxes', 'BSE.tmLanguage.json');

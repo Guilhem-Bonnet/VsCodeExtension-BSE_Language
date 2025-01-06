@@ -36,25 +36,24 @@ exports.deactivate = exports.activate = void 0;
 //https://code.visualstudio.com/api/references/vscode-api
 const vscode = __importStar(require("vscode"));
 const path = __importStar(require("path"));
-const fs_1 = require("fs");
 const child_process_1 = require("child_process");
+const syntaxValidator_1 = require("./syntaxValidator");
 function activate(context) {
     console.log('Encore un jour à se lever, en même temps que le soleil. La face encore un peu poquée, mon quatre heures de sommeil yeah!');
-    addFunctionNames(context);
+    addFunctionNamesToSyntaxFile(context);
     let diagnosticCollection = vscode.languages.createDiagnosticCollection('bseErrors');
-    context.subscriptions.push(vscode.workspace.onDidSaveTextDocument((document) => {
-        if (document.languageId === 'bse') {
-            checkLibraries(document);
-        }
-    }));
-    context.subscriptions.push(vscode.workspace.onDidOpenTextDocument((document) => {
-        if (document.languageId === 'bse') {
-            checkLibraries(document);
-        }
-    }));
-    context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(event => {
-        checkLibraries(event.document);
-    }));
+    context.subscriptions.push(vscode.workspace.onDidSaveTextDocument((document) => __awaiter(this, void 0, void 0, function* () {
+        diagnosticCollection.delete(document.uri);
+        let validator = new syntaxValidator_1.SyntaxValidator(document);
+        yield validator.checkSyntax();
+        diagnosticCollection.set(document.uri, validator.diagnostics);
+    })));
+    context.subscriptions.push(vscode.workspace.onDidOpenTextDocument((document) => __awaiter(this, void 0, void 0, function* () {
+        diagnosticCollection.delete(document.uri);
+        let validator = new syntaxValidator_1.SyntaxValidator(document);
+        yield validator.checkSyntax();
+        diagnosticCollection.set(document.uri, validator.diagnostics);
+    })));
     context.subscriptions.push(vscode.workspace.onDidCloseTextDocument((doc) => {
         diagnosticCollection.delete(doc.uri);
     }));
@@ -72,56 +71,8 @@ function activate(context) {
     context.subscriptions.push(hoverProvider);
 }
 exports.activate = activate;
-function checkLibraries(document) {
-    return __awaiter(this, void 0, void 0, function* () {
-        console.log('Checking Libs');
-        if (document.languageId !== 'bse') {
-            return;
-        }
-        const diagnostics = [];
-        const lines = document.getText().split(/\r?\n/);
-        for (const [i, line] of lines.entries()) {
-            if (!line.match(/^\s*(Uses|uses)\s+/))
-                continue;
-            console.log('using found! => ' + line);
-            //le .replace(/^\/\/.*/, ''), c'est pour enlever les commentaires
-            const libraryNames = line.replace(/\/\/.*$/, '').replace(/uses/gi, '').trim().split(',');
-            console.log(libraryNames);
-            if (libraryNames.length == 0) {
-                diagnostics.push(new vscode.Diagnostic(new vscode.Range(i, 0, i, line.length), "Invalid uses statement", vscode.DiagnosticSeverity.Error));
-                return;
-            }
-            for (let library of libraryNames) {
-                library = library.trim();
-                // Construction du chemin relatif à l'emplacement du document actuel
-                if (yield checkIfFileExists(path.join(path.dirname(document.uri.fsPath), '../../Custom/', `${library}.bs`)))
-                    continue;
-                if (yield checkIfFileExists(path.join(path.dirname(document.uri.fsPath), '../../Custom/Libs', `${library}.bs`)))
-                    continue;
-                if (yield checkIfFileExists(path.join(path.dirname(document.uri.fsPath), '../../Std', `${library}.bs`)))
-                    continue;
-                if (yield checkIfFileExists(path.join(path.dirname(document.uri.fsPath), '../../Std/Libs', `${library}.bs`)))
-                    continue;
-                diagnostics.push(new vscode.Diagnostic(new vscode.Range(i, 0, i, line.length), `Couldn't find ${library}.bs`, vscode.DiagnosticSeverity.Error));
-            }
-        }
-        let diagnosticCollection = vscode.languages.createDiagnosticCollection('bseErrors');
-        diagnosticCollection.set(document.uri, diagnostics);
-    });
-}
-function checkIfFileExists(fileName) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield fs_1.promises.access(fileName);
-            console.log('found ' + fileName);
-            return true;
-        }
-        catch (_a) {
-            return false;
-        }
-    });
-}
-function addFunctionNames(context) {
+//Rajoute les noms de fonctions (propriétaires à Belair) dans le syntax highlight. C'est pour que les noms de fonctions soient dans un fichier différent
+function addFunctionNamesToSyntaxFile(context) {
     return __awaiter(this, void 0, void 0, function* () {
         const scriptPath = path.join(context.extensionPath, 'scripts', 'replaceFunctionNames.js');
         // Run the script
