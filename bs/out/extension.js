@@ -43,12 +43,16 @@ function activate(context) {
     addFunctionNamesToSyntaxFile(context);
     let diagnosticCollection = vscode.languages.createDiagnosticCollection('bseErrors');
     context.subscriptions.push(vscode.workspace.onDidSaveTextDocument((document) => __awaiter(this, void 0, void 0, function* () {
+        if (document.languageId !== 'bse')
+            return; //sinon ça le fait pour les .bs.git
         diagnosticCollection.delete(document.uri);
         let validator = new syntaxValidator_1.SyntaxValidator(document);
         yield validator.checkSyntax();
         diagnosticCollection.set(document.uri, validator.diagnostics);
     })));
     context.subscriptions.push(vscode.workspace.onDidOpenTextDocument((document) => __awaiter(this, void 0, void 0, function* () {
+        if (document.languageId !== 'bse')
+            return; //sinon ça le fait pour les .bs.git
         diagnosticCollection.delete(document.uri);
         let validator = new syntaxValidator_1.SyntaxValidator(document);
         yield validator.checkSyntax();

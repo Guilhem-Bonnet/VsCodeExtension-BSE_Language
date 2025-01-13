@@ -41,33 +41,41 @@ class SyntaxValidator {
         this.diagnostics = [];
         this.functionDeclarations = {};
         this.lineBreakPattern = /\r?\n/;
-        this.singleLineCommentPattern = /\/\/.*$/gm;
+        this.singleLineCommentPattern = /\/\/.*(\r?\n|$)/g;
         this.multiLineCommentPattern = /\/\*[\s\S]*?\*\//g;
-        //si tu as "qqchose qqchose */ du code /* nouv comment" sur une ligne => Seek mental help
-        this.blockCommentPattern = /\/\*[\s\S]*?\*\//gm;
-        this.functionCallPattern = /(?<!\bfunction\s+)\b[\w:]+\s*\(.*\)/g;
-        this.functionDeclarationPattern = /\bfunction\s+[\w:]+\s*\([\w\s,]*\)/;
+        this.functionCallPattern = /(?<!\bfunction\s+)\b[\w:]+\s*\(.*\)/gi;
+        this.functionDeclarationPattern = /\bfunction\s+[\w:]+\s*\([\w\s,]*\)/i;
         this.importPattern = /^\s*(uses|Uses)\s+/i;
+        //needs work 
+        this.variableAssignmentPattern = /\w+\s*:=\s*.+/;
+        this.wrongVarAssignmentPattern = /\w+\s*=\s*.+/; //will pickup if (contract.id = 4) then
         this.document = document;
+        // Split the path into components
+        const segments = this.document.uri.fsPath.split(path.sep);
+        // Find the index of the 'BASScripts' folder
+        const bassScriptsIndex = segments.indexOf('BASScripts');
+        // If 'BASScripts' is found, return the path up to and including 'BASScripts'
+        if (bassScriptsIndex == -1)
+            throw new Error('BASScripts not found');
+        this.basScriptsPath = path.join(...segments.slice(0, bassScriptsIndex + 1));
+        console.log(this.basScriptsPath);
         this.diagnostics = [];
         this.functionDeclarations = {};
     }
     checkSyntax() {
         return __awaiter(this, void 0, void 0, function* () {
-            if (this.document.languageId !== 'bse')
-                return; //sinon ça le fait pour les .bs.git
-            //load Belair functions
+            //Add Belair functions (and some keywords) to the available functions
             let functionsPath = path.join(__dirname, '..', 'syntaxes', 'functions.json');
             let functions = JSON.parse(yield fs_1.promises.readFile(functionsPath, 'utf-8')).functions;
             Object.entries(functions).forEach(([functionName, nOfParams]) => {
                 this.functionDeclarations[functionName.toLowerCase()] = new functionDeclaration('Belair', nOfParams);
             });
             let content = this.document.getText();
-            let code = this.replaceStringContent(content);
-            code = this.replaceSinglelineCommentContent(code);
-            code = this.replaceMultilineCommentContent(code);
+            let code = content;
+            code = this.replaceStringContent(code); //on remplace le contenu des strings pour pas qu'il y ait des conflits avec la validation
+            code = this.replaceSinglelineCommentContent(code); //on supprime les commentaires inline pcq'il sont INUTILES
+            code = this.replaceMultilineCommentContent(code); //on remplace le contenu des commentaires multilignes pour pas qu'il y ait des conflits avec la validation
             const lines = code.split(this.lineBreakPattern);
-            console.log(code);
             console.log(lines);
             //Check des imports
             for (const [i, line] of lines.entries()) {
@@ -76,9 +84,18 @@ class SyntaxValidator {
             }
             //Check des déclarations de fonctions du fichier en cours
             this.getFunctionNames('current', code);
-            //console.log(this.functionDeclarations);
+            console.log(this.functionDeclarations);
             //Check du fichier en cours
             for (const [i, line] of lines.entries()) {
+                //TODO checks for local myVar := 3 (I always forget we can't do this shit)
+                //TODO checks for "=" and ":=" pwease
+                //TODO checks for "then" after if condition (I always forget it)
+                //TODO implement checks for variable declarations (with dictionary), don't forget labels (and gotos) as they're technically not functions
+                // if(line.match(this.functionDeclarationPattern))
+                // {
+                //     isInFunction = true;
+                //     continue;
+                // }
                 if (line.match(this.functionCallPattern))
                     this.checkFunctionCalls(line, i);
             }
@@ -102,6 +119,7 @@ class SyntaxValidator {
                     this.diagnostics.push(new vscode_1.Diagnostic(new vscode_1.Range(lineNumber, indexOfLibrary, lineNumber, indexOfLibrary + library.length - 1), `Couldn't find library : ${library}`, vscode_1.DiagnosticSeverity.Error));
                     return;
                 }
+                libraryContent = this.replaceStringContent(libraryContent);
                 libraryContent = this.replaceSinglelineCommentContent(libraryContent);
                 libraryContent = this.replaceMultilineCommentContent(libraryContent);
                 this.getFunctionNames(library, libraryContent);
@@ -163,10 +181,10 @@ class SyntaxValidator {
     getLibraryContent(library) {
         return __awaiter(this, void 0, void 0, function* () {
             const possiblePaths = [
-                path.join(path.dirname(this.document.uri.fsPath), '../../Custom/', `${library}.bs`),
-                path.join(path.dirname(this.document.uri.fsPath), '../../Custom/Libs', `${library}.bs`),
-                path.join(path.dirname(this.document.uri.fsPath), '../../Std', `${library}.bs`),
-                path.join(path.dirname(this.document.uri.fsPath), '../../Std/Libs', `${library}.bs`)
+                path.join(this.basScriptsPath, 'Custom/', `${library}.bs`),
+                path.join(this.basScriptsPath, 'Custom/Libs', `${library}.bs`),
+                path.join(this.basScriptsPath, 'Std', `${library}.bs`),
+                path.join(this.basScriptsPath, 'Std/Libs', `${library}.bs`)
             ];
             for (const libraryPath of possiblePaths) {
                 const content = yield this.getFileContent(libraryPath);
@@ -184,9 +202,10 @@ class SyntaxValidator {
                 //console.log("##" + line); //ex : ## function myLittleFunction(param1, param2)
                 let openParenthesis = line.indexOf('(');
                 let closeParenthesis = line.indexOf(')');
-                let functionName = line.substring(0, openParenthesis).replace('function', '').trim();
+                let functionName = line.substring(0, openParenthesis).replace(/\bfunction\b/i, '').trim();
                 let paramsString = line.substring(openParenthesis + 1, closeParenthesis);
                 if (this.functionDeclarations[functionName.toLowerCase()]) {
+                    console.log('Dupe found! => ', line);
                     this.diagnostics.push(new vscode_1.Diagnostic(new vscode_1.Range(0, 0, 0, 0), `Duplicate function found : ${functionName}`, vscode_1.DiagnosticSeverity.Error));
                     continue;
                 }
@@ -225,7 +244,7 @@ class SyntaxValidator {
         });
     }
     replaceSinglelineCommentContent(input) {
-        return input.replace(/\/\/.*(\r?\n|$)/g, (match, newline) => {
+        return input.replace(this.singleLineCommentPattern, (match, newline) => {
             return newline; // Replace the entire comment with just the line break
         });
     }

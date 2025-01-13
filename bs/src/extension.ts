@@ -12,6 +12,8 @@ export function activate(context: vscode.ExtensionContext) {
     let diagnosticCollection = vscode.languages.createDiagnosticCollection('bseErrors');
 
     context.subscriptions.push(vscode.workspace.onDidSaveTextDocument(async (document) => { 
+        if (document.languageId !== 'bse') return; //sinon ça le fait pour les .bs.git
+
         diagnosticCollection.delete(document.uri);
         let validator = new SyntaxValidator(document);
         await validator.checkSyntax();
@@ -19,6 +21,8 @@ export function activate(context: vscode.ExtensionContext) {
     }));
 
     context.subscriptions.push(vscode.workspace.onDidOpenTextDocument(async (document) => { 
+        if (document.languageId !== 'bse') return; //sinon ça le fait pour les .bs.git
+        
         diagnosticCollection.delete(document.uri);
         let validator = new SyntaxValidator(document);
         await validator.checkSyntax();

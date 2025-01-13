@@ -8,16 +8,31 @@ export class SyntaxValidator {
     private document : TextDocument;
     public diagnostics: Diagnostic[] = [];
     private functionDeclarations: { [functionName: string] : functionDeclaration} = {};
+    private basScriptsPath: string;
     
     private lineBreakPattern = /\r?\n/;
     private singleLineCommentPattern = /\/\/.*(\r?\n|$)/g;
     private multiLineCommentPattern = /\/\*[\s\S]*?\*\//g; 
-    private functionCallPattern = /(?<!\bfunction\s+)\b[\w:]+\s*\(.*\)/g;
-    private functionDeclarationPattern = /\bfunction\s+[\w:]+\s*\([\w\s,]*\)/;
+    private functionCallPattern = /(?<!\bfunction\s+)\b[\w:]+\s*\(.*\)/gi;
+    private functionDeclarationPattern = /\bfunction\s+[\w:]+\s*\([\w\s,]*\)/i;
     private importPattern = /^\s*(uses|Uses)\s+/i;
+
+    //needs work 
+    private variableAssignmentPattern = /\w+\s*:=\s*.+/;
+    private wrongVarAssignmentPattern = /\w+\s*=\s*.+/; //will pickup if (contract.id = 4) then
 
     constructor(document: TextDocument) {
         this.document = document;
+
+        // Split the path into components
+        const segments = this.document.uri.fsPath.split(path.sep);
+        // Find the index of the 'BASScripts' folder
+        const bassScriptsIndex = segments.indexOf('BASScripts');
+        // If 'BASScripts' is found, return the path up to and including 'BASScripts'
+        if (bassScriptsIndex == -1) 
+            throw new Error('BASScripts not found');
+        this.basScriptsPath = path.join(...segments.slice(0, bassScriptsIndex + 1));
+        console.log(this.basScriptsPath);
 
         this.diagnostics = [];
         this.functionDeclarations = {};
@@ -25,8 +40,7 @@ export class SyntaxValidator {
 
 
     public async checkSyntax(): Promise<void> {
-        if (this.document.languageId !== 'bse') return; //sinon ça le fait pour les .bs.git
-
+        
         //Add Belair functions (and some keywords) to the available functions
         let functionsPath = path.join(__dirname, '..', 'syntaxes', 'functions.json');
         let functions: { [functionName: string] : number } = JSON.parse(await fs.readFile(functionsPath, 'utf-8')).functions;
@@ -55,6 +69,9 @@ export class SyntaxValidator {
 
         //Check du fichier en cours
         for (const [i, line] of lines.entries()) {
+            //TODO checks for local myVar := 3 (I always forget we can't do this shit)
+            //TODO checks for "=" and ":=" pwease
+            //TODO checks for "then" after if condition (I always forget it)
             //TODO implement checks for variable declarations (with dictionary), don't forget labels (and gotos) as they're technically not functions
             // if(line.match(this.functionDeclarationPattern))
             // {
@@ -89,6 +106,7 @@ export class SyntaxValidator {
                 return;
             }
     
+            libraryContent = this.replaceStringContent(libraryContent);
             libraryContent = this.replaceSinglelineCommentContent(libraryContent);
             libraryContent = this.replaceMultilineCommentContent(libraryContent)
             this.getFunctionNames(library, libraryContent);
@@ -160,10 +178,10 @@ export class SyntaxValidator {
     
     private async getLibraryContent(library: string): Promise<string | null> {
         const possiblePaths = [
-            path.join(path.dirname(this.document.uri.fsPath), '../../Custom/', `${library}.bs`),
-            path.join(path.dirname(this.document.uri.fsPath), '../../Custom/Libs', `${library}.bs`),
-            path.join(path.dirname(this.document.uri.fsPath), '../../Std', `${library}.bs`),
-            path.join(path.dirname(this.document.uri.fsPath), '../../Std/Libs', `${library}.bs`)
+            path.join(this.basScriptsPath, 'Custom/', `${library}.bs`),
+            path.join(this.basScriptsPath, 'Custom/Libs', `${library}.bs`),
+            path.join(this.basScriptsPath, 'Std', `${library}.bs`),
+            path.join(this.basScriptsPath, 'Std/Libs', `${library}.bs`)
         ];
     
         for (const libraryPath of possiblePaths) {
@@ -185,10 +203,11 @@ export class SyntaxValidator {
                 //console.log("##" + line); //ex : ## function myLittleFunction(param1, param2)
                 let openParenthesis = line.indexOf('(');
                 let closeParenthesis = line.indexOf(')');
-                let functionName = line.substring(0, openParenthesis).replace('function', '').trim();
+                let functionName = line.substring(0, openParenthesis).replace(/\bfunction\b/i, '').trim();
                 let paramsString = line.substring(openParenthesis + 1, closeParenthesis);
     
                 if (this.functionDeclarations[functionName.toLowerCase()]) {
+                    console.log('Dupe found! => ', line);
                     this.diagnostics.push(new Diagnostic(new Range(0, 0, 0, 0), `Duplicate function found : ${functionName}`, DiagnosticSeverity.Error));
                     continue;
                 }
