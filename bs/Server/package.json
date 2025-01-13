@@ -1,0 +1,17 @@
+{
+    "name": "bse-language-server",
+    "version": "0.0.1",
+    "description": "Language server for BSE",
+    "main": "./server.ts",
+    "scripts": {
+        "start": "node ./server.js",
+        "watch": "tsc -w"
+    },
+    "dependencies": {
+        "vscode-languageserver": "^8.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.5",
+        "typescript": "^5.4.5"
+    }
+}

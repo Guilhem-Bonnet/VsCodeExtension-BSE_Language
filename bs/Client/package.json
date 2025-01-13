@@ -1,0 +1,51 @@
+{
+  "name": "bs",
+  "displayName": "BSE Language Support",
+  "description": "Syntax color for BSE",
+  "version": "0.0.1",
+  "publisher": "Bonnet Guilhem",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "activationEvents": [
+    "onLanguage:bse"
+  ],
+  "main": "./out/extension.js",
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "bse",
+        "aliases": [
+          "BSE"
+        ],
+        "extensions": [
+          ".bs"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bse",
+        "scopeName": "source.bse",
+        "path": "./syntaxes/BSE.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/vscode": "^1.88.0",
+    "@vscode/test-electron": "^2.3.9",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc -p ./"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  }
+}
