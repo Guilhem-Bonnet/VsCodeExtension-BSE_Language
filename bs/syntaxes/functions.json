@@ -1,13 +1,9 @@
 {
     "functions": {
-        "if": 1,
-        "while" : 1,
-        "return": 1,
-        "Not": 1,
-        "Or": -1,
         "error": 2,
         "toStr": 1,
         "print": 4,
+        "Obj:SelectSql": 1,
         "Obj:NewArray": 0,
         "Obj:GetByKey": -1,
         "Obj:AddArrayItems": 2,
@@ -158,7 +154,6 @@
         "IsNull": 1,
         "Null": 0,
         "Coalesce": -1,
-        "Obj : DumpVar": 1,
         "VarIsBool": 1,
         "VarIsDate": 1,
         "VarIsFloat": 1,
@@ -318,6 +313,7 @@
         "LastErrText": 0,
         "LastErrType": 0,
         "LastErrNativeCode": 0,
-        "LastErrNativeType": 0
+        "LastErrNativeType": 0,
+        "GetExtParam": 1
     }
 }

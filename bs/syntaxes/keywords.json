@@ -1,0 +1,26 @@
+{
+    "keywords": [
+        "true",
+        "false",
+        "from",
+        "where",
+        "on",
+        "error",
+        "raise",
+        "goto",
+        "if",
+        "then",
+        "else",
+        "while",
+        "return",
+        "function",
+        "local",
+        "uses",
+        "library",
+        "begin",
+        "end",
+        "or",
+        "and",
+        "not"
+    ]
+}

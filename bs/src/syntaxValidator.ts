@@ -5,23 +5,50 @@ import { exec } from 'child_process';
 import { Diagnostic, DiagnosticSeverity, Range, TextDocument } from 'vscode';
 
 export class SyntaxValidator {
+    //variable de diagnostic
     private document : TextDocument;
-    public diagnostics: Diagnostic[] = [];
-    private functionDeclarations: { [functionName: string] : functionDeclaration} = {};
     private basScriptsPath: string;
-    
-    private lineBreakPattern = /\r?\n/;
-    private singleLineCommentPattern = /\/\/.*(\r?\n|$)/g;
-    private multiLineCommentPattern = /\/\*[\s\S]*?\*\//g; 
-    private functionCallPattern = /(?<!\bfunction\s+)\b[\w:]+\s*\(.*\)/gi;
-    private functionDeclarationPattern = /\bfunction\s+[\w:]+\s*\([\w\s,]*\)/i;
-    private importPattern = /^\s*(uses|Uses)\s+/i;
+    public diagnostics: Diagnostic[] = [];
 
-    //needs work 
-    private variableAssignmentPattern = /\w+\s*:=\s*.+/;
-    private wrongVarAssignmentPattern = /\w+\s*=\s*.+/; //will pickup if (contract.id = 4) then
+    //collections de déclarations
+    private keywords: Set<string> = new Set<string>();
+    private functionDeclarations: { [functionName: string] : functionDeclaration} = {};
+    private variableDeclarations: Set<string> | null = null;
+    private labelDeclarations: Set<string> = new Set<string>();
+    
+    //regex de déclarations
+    private importPattern: RegExp = /^\s*(uses|Uses)\s+/i;
+    private functionDeclarationPattern: RegExp = /\bfunction\s+[\w:]+\s*\([\w\s,]*\)/i;
+    private variableDeclarationPattern: RegExp = /^\s*local\s+([a-zA-Z_][a-zA-Z0-9_]*(\s*,\s*[a-zA-Z_][a-zA-Z0-9_]*\s*)*)\s*$/i;
+    private labelDeclarationPattern: RegExp = /^\s*:([a-zA-Z_][a-zA-Z0-9_]*)/;
+
+    //regex de code à remplacer
+    private lineBreakPattern: RegExp = /\r?\n/;
+    private singleLineCommentPattern: RegExp = /\/\/.*(\r?\n|$)/g;
+    private multiLineCommentPattern: RegExp = /\/\*[\s\S]*?\*\//g; 
+    private singleLineLINQPattern: RegExp = /\bfrom\b.*(\r?\n|$)/gi;
+    private multiLineLINQPattern: RegExp = /from.*(?:\\\s*\r?\n.*)+[^\\\r\n]*\s*$/gi;
+    // private multiLineLINQPattern: RegExp = /from.*(?:\\\s*\r?\n.*)+[^\\]*\s*$/gmi;
+    // private multiLineLINQPattern: RegExp = /from.*(?:\\\s*\r?\n[^\r\n]+)*\\?\s*$/gmi;
+
+    //regex d'un identifier (functions, variables, labels, keywords, etc) - mots contenant des lettres, underscores et deux-points (ne termine pas par un deux-point)
+    private identifierPattern: RegExp = /(?:[a-zA-Z]+[\w:]*|[\w:]*[a-zA-Z][\w:]*)(?<!:)/g;
+
+    //regex de keywords
+    private localPattern: RegExp = /\blocal\b/i;
+    private libraryPattern: RegExp = /\blibrary\b/i;
+    private gotoPattern: RegExp = /\bgoto\b/i;
+
+    //TODO FIX //i := 0 //Non instanciée, l'erreur est décalée
+    //TODO GOTOs AND LABELS
+    //TODO KEYWORDS VALIDATION //if-then //we could perhaps make scopes
+    //TODO multiline LINQ support
+    //TODO handle dupe variable declarations
+    //TODO improve dupe function declarations checks
+    //TODO improve function handling for surcharged libraries (ex: ContsLib)
 
     constructor(document: TextDocument) {
+        console.clear();
         this.document = document;
 
         // Split the path into components
@@ -32,7 +59,7 @@ export class SyntaxValidator {
         if (bassScriptsIndex == -1) 
             throw new Error('BASScripts not found');
         this.basScriptsPath = path.join(...segments.slice(0, bassScriptsIndex + 1));
-        console.log(this.basScriptsPath);
+        //console.log(this.basScriptsPath);
 
         this.diagnostics = [];
         this.functionDeclarations = {};
@@ -41,21 +68,28 @@ export class SyntaxValidator {
 
     public async checkSyntax(): Promise<void> {
         
-        //Add Belair functions (and some keywords) to the available functions
+        //Add Belair functions to the available functions
         let functionsPath = path.join(__dirname, '..', 'syntaxes', 'functions.json');
         let functions: { [functionName: string] : number } = JSON.parse(await fs.readFile(functionsPath, 'utf-8')).functions;
         Object.entries(functions).forEach(([functionName, nOfParams]) => {
-            this.functionDeclarations[functionName.toLowerCase()] = new functionDeclaration('Belair', nOfParams);
+            this.functionDeclarations[this.normalizeIdentifier(functionName)] = new functionDeclaration('Belair', nOfParams);
         });
+
+        //Add Belair keywords
+        let keywordsPath = path.join(__dirname, '..', 'syntaxes', 'keywords.json');
+        this.keywords = new Set<string>(JSON.parse(await fs.readFile(keywordsPath, 'utf-8')).keywords);
 
         let content = this.document.getText();
         let code = content;
         code = this.replaceStringContent(code); //on remplace le contenu des strings pour pas qu'il y ait des conflits avec la validation
         code = this.replaceSinglelineCommentContent(code); //on supprime les commentaires inline pcq'il sont INUTILES
         code = this.replaceMultilineCommentContent(code); //on remplace le contenu des commentaires multilignes pour pas qu'il y ait des conflits avec la validation
+        //l'ordre des appels à une importance, il faut remplacer le LINQ APRÈS le reste et comment par le LINQ multiligne //what is this, some Fallout 4 mods load order?
+        //code = this.replaceMultilineLINQContent(code); //I H8 THIS USELESS SH*T
+        code = this.replaceSinglelineLINQContent(code); 
 
         const lines = code.split(this.lineBreakPattern);
-        console.log(lines);
+        //console.log(lines);
 
         //Check des imports
         for (const [i, line] of lines.entries()) {
@@ -64,28 +98,172 @@ export class SyntaxValidator {
         }
     
         //Check des déclarations de fonctions du fichier en cours
-        this.getFunctionNames('current', code);
-        console.log(this.functionDeclarations);
+        this.getFunctionNames('current', code, true);
+        //console.log(this.functionDeclarations);
 
         //Check du fichier en cours
-        for (const [i, line] of lines.entries()) {
-            //TODO checks for local myVar := 3 (I always forget we can't do this shit)
-            //TODO checks for "=" and ":=" pwease
-            //TODO checks for "then" after if condition (I always forget it)
-            //TODO implement checks for variable declarations (with dictionary), don't forget labels (and gotos) as they're technically not functions
-            // if(line.match(this.functionDeclarationPattern))
-            // {
-            //     isInFunction = true;
-            //     continue;
-            // }
+        let isLibrary = code.trimStart().match(this.libraryPattern);
+        if(!isLibrary) 
+            this.variableDeclarations = new Set<string>(); //si c'est un script, on instancie le tableau tout de suite 
 
-            if (line.match(this.functionCallPattern)) 
-                this.checkFunctionCalls(line, i);
+        for (const [i, line] of lines.entries()) {
+            //TODO checks for "then" after if condition (I always forget it)
+            if(line.match(this.functionDeclarationPattern))
+            {
+                this.variableDeclarations = new Set<string>(); //on rentre dans une nouvelle fonction donc on vide le tableau des variables
+                let openParenthesis = line.indexOf('(');
+                let closeParenthesis = line.indexOf(')');
+                let paramsString = line.substring(openParenthesis + 1, closeParenthesis);
+                paramsString.split(',').forEach(v => this.variableDeclarations?.add(this.normalizeIdentifier(v))) //on ajoute les paramètres de la fonction aux déclarations de variable
+                continue;
+            }
+
+            if(isLibrary && !this.variableDeclarations) //l'array n'est pas instancié donc on n'est pas encore rentré dans une fonction //skip
+                continue;
+
+            if(line.match(this.localPattern)) //déclarations de variables
+            {
+                console.log('declaration => ' + line);
+                if(!line.match(this.variableDeclarationPattern)) {
+                    this.diagnostics.push(new Diagnostic(new Range(i, 0, i, line.length), `Invalid variable declaration`, DiagnosticSeverity.Error));
+                    continue;
+                }
+
+                //déclaration correcte => on prend le nom de
+                //TODO handle duplicate declarations
+                //TODO throw error when var has the same name as a keyword
+                line.replace(this.localPattern, '').split(',').forEach(v => {
+                    let regexIndexOf = new RegExp(`(?:^|\\s|[^a-zA-Z:_])${v}(?=\\s|[^a-zA-Z:_]|$)`, 'i');
+                    let index = line.search(regexIndexOf) + 1;
+                    if(this.keywords.has(this.normalizeIdentifier(v))) {
+                        this.diagnostics.push(new Diagnostic(new Range(i, index, i, index + v.length), `Illegal variable name (keyword)`, DiagnosticSeverity.Error));
+                        return;
+                    }
+
+                    this.variableDeclarations?.add(this.normalizeIdentifier(v));
+                });
+                console.log(this.variableDeclarations);
+                continue;
+            }
+
+            
+            if (!line.includes(":=") && line.match(/^\s*[^=]+(\s*=\s*[^=]+)+\s*$/)) {
+                // Ensure it's not a part of a comparison expression (like `if`, `for`, or function params)
+                // Match cases where '=' is used for assignment and is not part of an expression (i.e., not '==' or part of SQL)
+                if (line.includes("=") && !line.match(/\b(?:if|else|while|return)\b/)) {
+                    // Ignore comparisons and control flow conditions (e.g., 'if', 'else', 'while')
+                    this.diagnostics.push(new Diagnostic(new Range(i, 0, i, line.length), `Wrong assignation symbol used`, DiagnosticSeverity.Error));
+                }
+            }
+
+            //on match tous les mots (contient lettres, underscore, deux-points)
+            line.match(this.identifierPattern)?.forEach((match) => {
+                let regexIndexOf = new RegExp(`(?:^|\\s|[^a-zA-Z:_])${match}(?=\\s|[^a-zA-Z:_]|$)`, 'i');
+                let index = line.search(regexIndexOf) + 1;  // Find the first occurrence of the identifier as a whole word
+                console.log('symbol found ', match, i, index);
+                if(this.keywords.has(this.normalizeIdentifier(match))) {
+                    console.log('keyword found ', match);
+                    return; //keyword => pas de validation (yet, il faut checker pour les then manquants)
+                }
+                    
+
+                let nextChar = line.slice(index + match.length).trim()[0] || null; //on peut espacer les parenthèse du nom de la fonction (un peu trop)
+                if(nextChar == '(') 
+                { //appel de fonction
+                    
+                    if(!this.functionDeclarations[this.normalizeIdentifier(match)]) {
+                        this.diagnostics.push(new Diagnostic(new Range(i, index, i, index + match.length), `Unknown function : ${match}`, DiagnosticSeverity.Error));
+                    }
+                    console.log('function found ', match);
+                    return;
+                }
+
+                
+                let prevChar = line[index - 1] || null;
+                if(prevChar == ".") {
+                    console.log('property found ', match);
+                    return; //propriété d'objet //aucun façon de savoir si existe //btw ... urgh nvm
+                }
+                     
+
+                if(this.variableDeclarations?.has(this.normalizeIdentifier(match))) {
+                    console.log('variable found ', match);
+                    return; //appel de variable
+                }
+
+                //normalement, on mettrait une erreur ici.
+                //mais Belair! et oui y'a une gimmick!
+                //Si une fonction (de Belair seulement) prend 0 param, les paranthèses peuvent omises
+                let functionInfos = this.functionDeclarations[this.normalizeIdentifier(match)];
+                if(functionInfos && functionInfos.numberOfParams == 0) {
+                    console.log('paramless found ', match)
+                    return; //c'est good
+                }
+
+                //TODO gotos && labels
+                if(match[0] == ':') { //could a label OR a SQLParam (not handled yet but in LINQ, so ignored)
+                    if(this.labelDeclarations.has(this.normalizeIdentifier(match))) {
+                        console.log('label found ', match);
+                        return; //est un label (pour goto)
+                    }
+
+                    //est un param SQL dans le LINQ (je n'ai pas réussi à supprimer les LINQs multilignes yet)
+                    return;
+                }
+
+                if(line.match(this.gotoPattern)) {
+                    if(this.labelDeclarations.has(this.normalizeIdentifier(':'+ match))) {
+                        console.log('anchor found ', match);
+                        return;
+                    }
+                    this.diagnostics.push(new Diagnostic(new Range(i, index, i, index + match.length), `Unknown label : ${match}`, DiagnosticSeverity.Error));
+                }
+
+
+                this.diagnostics.push(new Diagnostic(new Range(i, index, i, index + match.length), `Unknown variable : ${match}`, DiagnosticSeverity.Error));
+            });
         }
     
         
     }
     
+    private getFunctionNames(source: string, code: string, checkForLabels: boolean = false) : void  {
+        let lines = code.split(/\r?\n/);
+        for (let [i, line] of lines.entries()) {
+
+            if (line.match(this.functionDeclarationPattern)) 
+            {
+                //console.log("##" + line); //ex : ## function myLittleFunction(param1, param2)
+                let openParenthesis = line.indexOf('(');
+                let closeParenthesis = line.indexOf(')');
+                let functionName = line.substring(0, openParenthesis).replace(/\bfunction\b/i, '').trim();
+                let paramsString = line.substring(openParenthesis + 1, closeParenthesis);
+    
+                if (this.functionDeclarations[this.normalizeIdentifier(functionName)]) {
+                    console.log('Dupe found! => ', line);
+                    this.diagnostics.push(new Diagnostic(new Range(0, 0, 0, 0), `Duplicate function found : ${functionName}`, DiagnosticSeverity.Error));
+                    continue;
+                }
+    
+                this.functionDeclarations[this.normalizeIdentifier(functionName)] = new functionDeclaration(source, (paramsString ? paramsString.split(',').length : 0))
+                continue;
+            }
+
+            if(!checkForLabels)
+                continue;
+
+            let match = line.match(this.labelDeclarationPattern);
+            if(match) { 
+                this.labelDeclarations.add(this.normalizeIdentifier(match[0]));
+                console.log('label found ', match, i, this.labelDeclarations);
+            }
+        }
+    }
+
+    // #region Fonctions de gestions des libraires (imports)
+    // Ces fonctions servent à trouver les librairies des imports, ouvrir les fichiers et
+    // d'en extraire les noms de fonctions. 
+
     private async checkLibraries(line: string, lineNumber: number): Promise<void> {
         //console.log(line); //ex : uses MyLib, My2ndLib
         const libraryNames = line.replace(/uses/gi, '').trim().split(',');
@@ -110,70 +288,7 @@ export class SyntaxValidator {
             libraryContent = this.replaceSinglelineCommentContent(libraryContent);
             libraryContent = this.replaceMultilineCommentContent(libraryContent)
             this.getFunctionNames(library, libraryContent);
-        }    
-    }
-    
-    //PURE GPT
-    private findFunctionNamesInCode(line: string): string[] {
-        const functionRegex = /(?<!\bfunction\s+)\b[\w:]+\s*\(/g;  // Match function names followed by opening parentheses
-        let functionNames: string[] = [];
-        let match;
-    
-        // Search for all function calls in the line of code
-        while ((match = functionRegex.exec(line)) !== null) {
-            let fullMatch = match[0];
-            let functionName = fullMatch.split('(')[0].trim(); // Extract function name before '('
-            functionNames.push(functionName);
-    
-            // Now look for the content inside parentheses (handle nested calls)
-            let paramsStart = match.index + fullMatch.length;
-            let paramsContent = this.getParamsContent(line, paramsStart);
-            
-            if (paramsContent) {
-                // Recursively search for functions within parameters
-                let nestedCalls = this.findFunctionNamesInCode(paramsContent);
-                functionNames.push(...nestedCalls);
-            }
         }
-    
-        return functionNames;
-    }
-    
-    // PURE GPT Helper function to extract the content within parentheses (handles nested parentheses)
-    private getParamsContent(line: string, startIdx: number): string | null { 
-        let depth = 0;
-        let paramsContent = '';
-        
-        for (let i = startIdx; i < line.length; i++) {
-            const char = line[i];
-            
-            if (char === '(') {
-                depth++;
-            } else if (char === ')') {
-                depth--;
-                if (depth === 0) {
-                    return paramsContent.trim();  // Return content up to the first closing parenthesis
-                }
-            }
-            
-            if (depth > 0) {
-                paramsContent += char;  // Accumulate content inside parentheses
-            }
-        }
-    
-        return null;  // Return null if no closing parenthesis was found
-    }
-    
-    private checkFunctionCalls(line: string, lineNumber: number) : void {
-        let functionNames = [...new Set(this.findFunctionNamesInCode(line))]; // [...newSet()], c'est pour enlever les doublons
-        for (let i in functionNames) {
-            let functionName = functionNames[i];
-            if(!this.functionDeclarations[functionName.toLowerCase()]) {
-                let indexOf = line.indexOf(functionName);
-                this.diagnostics.push(new Diagnostic(new Range(lineNumber, indexOf, lineNumber, indexOf + functionName.length), `Function not found : ${functionName}`, DiagnosticSeverity.Error));
-            }
-        }
-    
     }
     
     private async getLibraryContent(library: string): Promise<string | null> {
@@ -192,29 +307,6 @@ export class SyntaxValidator {
         }
     
         return null;
-    }
-    
-    private getFunctionNames(source: string, code: string) : void  {
-        let lines = code.split(/\r?\n/);
-        for (let [i, line] of lines.entries()) {
-
-            if (line.match(this.functionDeclarationPattern)) 
-            {
-                //console.log("##" + line); //ex : ## function myLittleFunction(param1, param2)
-                let openParenthesis = line.indexOf('(');
-                let closeParenthesis = line.indexOf(')');
-                let functionName = line.substring(0, openParenthesis).replace(/\bfunction\b/i, '').trim();
-                let paramsString = line.substring(openParenthesis + 1, closeParenthesis);
-    
-                if (this.functionDeclarations[functionName.toLowerCase()]) {
-                    console.log('Dupe found! => ', line);
-                    this.diagnostics.push(new Diagnostic(new Range(0, 0, 0, 0), `Duplicate function found : ${functionName}`, DiagnosticSeverity.Error));
-                    continue;
-                }
-    
-                this.functionDeclarations[functionName.toLowerCase()] = new functionDeclaration(source, (paramsString ? paramsString.split(',').length : 0))
-            }
-        }
     }
     
     private async getFileContent(fileName: string): Promise<string | null> {
@@ -244,9 +336,24 @@ export class SyntaxValidator {
         }
     }
 
+    // #endregion
+
+
+    // #region Fonctions de remplacement de code
+    // Ces fonctions servent à remplacer/enlever le contenu de certains bouts du code qui peuvent
+    // interférer avec la validation du code. Ex: Il ne faut pas mettre des erreurs pour le code commenté.
+    // On remplace donc les commentaires et string. Je remplace aussi le LINQ pcq'il est trop chiant à gérer.
+
     private replaceSinglelineCommentContent(input: string): string {
         return input.replace(this.singleLineCommentPattern, (match, newline) => {
             return newline; // Replace the entire comment with just the line break
+        });
+    }
+
+    private replaceSinglelineLINQContent(input: string): string { //srx le LINQ casse les couilles dans la validation donc OSEF
+        return input.replace(this.singleLineLINQPattern, (match, newline) => {
+            //console.log('linq found!: ', match);
+            return "true" + newline; // Replace the LINQ with null + the line break //The null is to not fuck over the assignation validation
         });
     }
 
@@ -260,6 +367,18 @@ export class SyntaxValidator {
         });
     }
 
+    //TODO Fix
+    private replaceMultilineLINQContent(input: string): string {
+        //LE REGEX MARCHE PAS DONC, J'AIMERAIS QUE VOUS SACHIEZ QUE SI VOUS UTILISEZ DU LINQ MULTILIGNE BEN I TRIED...
+        //TEST AVEC CustomAprilRVEH.bs
+        return input.replace(this.multiLineLINQPattern, (match) => {
+            console.log('multiline linq found!', match);
+            let lines = match.split('\n'); // Split the content by line breaks
+            let replacedLines = lines.map(line => '_'.repeat(line.length)); // Replace each line with underscores
+            return replacedLines.join('\n'); 
+        });
+    }
+
     private replaceStringContent(input: string): string {
         // Regular expression for matching strings (both single-line and multi-line)
         return input.replace(/"(.*?)"/g, (match) => {
@@ -269,13 +388,23 @@ export class SyntaxValidator {
             return '"' + replacedLines.join('\n') + '"'; // Rebuild the string with underscores and quotes
         });
     }
+
+    // #endregion
+
+
+    private normalizeIdentifier(identifier: string): string { 
+        //on veut normaliser les noms de fonctions/variables puisque sur Belair, tout est case insensitive
+        return identifier.trim().toLowerCase();
+    }
+
+    private getRangeForIdentifier()
 }
 
 class functionDeclaration {
     numberOfParams: number;
     source: string;
-    constructor(source: string, numberOfParams?: number) {
+    constructor(source: string, numberOfParams: number) {
         this.source = source;
-        this.numberOfParams = numberOfParams || -1;
+        this.numberOfParams = numberOfParams;
     }
 }
